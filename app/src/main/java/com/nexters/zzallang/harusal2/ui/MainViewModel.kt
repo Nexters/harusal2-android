@@ -2,7 +2,7 @@ package com.nexters.zzallang.harusal2.ui
 
 import android.util.Log
 import com.nexters.zzallang.harusal2.base.BaseViewModel
-import com.nexters.zzallang.harusal2.data.model.SampleModel
+import com.nexters.zzallang.harusal2.data.entity.SampleModel
 import com.nexters.zzallang.harusal2.usecase.SampleUseCase
 import kotlinx.coroutines.launch
 

@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nexters.zzallang.harusal2.data.dao.SampleDao
-import com.nexters.zzallang.harusal2.data.model.SampleModel
+import com.nexters.zzallang.harusal2.data.entity.SampleModel
 
 @Database(entities = [SampleModel::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

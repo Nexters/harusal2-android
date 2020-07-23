@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.data.model
+package com.nexters.zzallang.harusal2.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.nexters.zzallang.harusal2.data.model.SampleModel
+import com.nexters.zzallang.harusal2.data.entity.SampleModel
 
 @Dao
 interface SampleDao {

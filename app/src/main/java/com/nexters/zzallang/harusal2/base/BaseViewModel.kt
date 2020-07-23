@@ -10,4 +10,9 @@ open class BaseViewModel : ViewModel(), CoroutineScope {
     private val job = Job()
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
 }
