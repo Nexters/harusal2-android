@@ -1,24 +1,25 @@
 package com.nexters.zzallang.harusal2.ui
 
-import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.base.BaseViewModel
-import com.nexters.zzallang.harusal2.data.entity.SampleModel
-import com.nexters.zzallang.harusal2.usecase.SampleUseCase
+import com.nexters.zzallang.harusal2.data.entity.Statement
+import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import kotlinx.coroutines.launch
+import java.util.*
 
-class MainViewModel(private val sampleUseCase: SampleUseCase) : BaseViewModel() {
-    fun insertSampleData(sampleData: SampleModel) {
+class MainViewModel(private val statementUseCase: StatementUseCase) : BaseViewModel() {
+    val data = MutableLiveData<Statement>()
+    val id = MutableLiveData<String>()
+
+    fun insertData() {
         launch {
-            sampleUseCase.sampleInsertData(sampleData)
+            statementUseCase.insertData(Statement(1L, 1L, Date(), "first", 100, 1))
         }
     }
 
-    fun checkSampleData(sampleId: Long) {
+    fun getData() {
         launch {
-            val data = sampleUseCase.sampleGetData(sampleId)
-
-            Log.d("dataId: ", data.sampleId.toString())
-            Log.d("dataName: ", data.sampleName)
+            data.postValue(statementUseCase.getData(id.value!!.toLong()))
         }
     }
 }
