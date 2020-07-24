@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.bindingView()
 
         binding.getButton.setOnClickListener {
-            viewModel.update()
+            viewModel.delete()
         }
 
         binding.insertButton.setOnClickListener {

@@ -13,4 +13,7 @@ interface StatementDao {
 
     @Update
     suspend fun updateStatement(value: Statement)
+
+    @Query("DELETE FROM statement WHERE id= :id")
+    suspend fun deleteStatement(id: Long)
 }

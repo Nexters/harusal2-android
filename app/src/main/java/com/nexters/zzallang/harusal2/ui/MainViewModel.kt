@@ -34,4 +34,14 @@ class MainViewModel(private val statementUseCase: StatementUseCase) : BaseViewMo
             }
         }
     }
+
+    fun delete() {
+        launch {
+            if (id.value != null) {
+                statementUseCase.deleteStatement(id.value!!.toLong())
+                data.postValue(statementUseCase.getData(id.value!!.toLong())
+                    ?: Statement(1L, 1L, Date(), "first", 100, 1))
+            }
+        }
+    }
 }

@@ -21,4 +21,10 @@ class StatementRepository : BaseRepository() {
         withContext(coroutineContext) {
             AppDatabase.instance.statementDao().updateStatement(statement)
         }
+
+    suspend fun deleteStatement(id: Long) {
+        withContext(coroutineContext) {
+            AppDatabase.instance.statementDao().deleteStatement(id)
+        }
+    }
 }
