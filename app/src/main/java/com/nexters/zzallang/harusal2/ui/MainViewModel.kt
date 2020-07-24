@@ -19,7 +19,19 @@ class MainViewModel(private val statementUseCase: StatementUseCase) : BaseViewMo
 
     fun getData() {
         launch {
-            data.postValue(statementUseCase.getData(id.value!!.toLong()))
+            if (id.value != null) {
+                data.postValue(statementUseCase.getData(id.value!!.toLong()))
+            }
+        }
+    }
+
+    fun update() {
+        launch {
+            statementUseCase.updateStatement(Statement(1L, 1L, Date(), "second", 100, 1))
+
+            if (id.value != null) {
+                data.postValue(statementUseCase.getData(id.value!!.toLong()))
+            }
         }
     }
 }

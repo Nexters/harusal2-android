@@ -16,4 +16,9 @@ class StatementRepository : BaseRepository() {
         withContext(coroutineContext) {
             AppDatabase.instance.statementDao().getStatement(id)
         }
+
+    suspend fun updateStatement(statement: Statement) =
+        withContext(coroutineContext) {
+            AppDatabase.instance.statementDao().updateStatement(statement)
+        }
 }
