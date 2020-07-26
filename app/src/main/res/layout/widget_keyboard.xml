@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/keyboard_row1"
+        style="@style/Keyboard.Row">
+
+        <TextView
+            android:id="@+id/keyboard_key1"
+            style="@style/Keyboard.Key"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/keyboard_key2"
+            style="@style/Keyboard.Key"
+            android:text="2" />
+
+        <TextView
+            android:id="@+id/keyboard_key3"
+            style="@style/Keyboard.Key"
+            android:text="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/keyboard_row2"
+        style="@style/Keyboard.Row">
+
+        <TextView
+            android:id="@+id/keyboard_key4"
+            style="@style/Keyboard.Key"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/keyboard_key5"
+            style="@style/Keyboard.Key"
+            android:text="5" />
+
+        <TextView
+            android:id="@+id/keyboard_key6"
+            style="@style/Keyboard.Key"
+            android:text="6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/keyboard_row3"
+        style="@style/Keyboard.Row">
+
+        <TextView
+            android:id="@+id/keyboard_key7"
+            style="@style/Keyboard.Key"
+            android:text="7" />
+
+        <TextView
+            android:id="@+id/keyboard_key8"
+            style="@style/Keyboard.Key"
+            android:text="8" />
+
+        <TextView
+            android:id="@+id/keyboard_key9"
+            style="@style/Keyboard.Key"
+            android:text="9" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/keyboard_row4"
+        style="@style/Keyboard.Row">
+
+        <TextView
+            android:id="@+id/keyboard_key00"
+            style="@style/Keyboard.Key"
+            android:text="00"/>
+
+        <TextView
+            android:id="@+id/keyboard_key0"
+            style="@style/Keyboard.Key"
+            android:text="0" />
+
+        <com.nexters.zzallang.harusal2.keyboard.view.IconifiedTextView
+            android:id="@+id/keyboard_key_remove"
+            style="@style/Keyboard.Key"
+            android:text="&#xe14a;" />
+    </LinearLayout>
+</LinearLayout>
