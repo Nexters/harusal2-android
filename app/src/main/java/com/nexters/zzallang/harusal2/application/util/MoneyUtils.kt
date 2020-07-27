@@ -1,13 +1,11 @@
 package com.nexters.zzallang.harusal2.application.util
 
 object MoneyUtils {
-    private val DIGIT = arrayOf("", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구", "십")
-    private val UNIT = arrayOf("", "십", "백", "천")
-    private val TEMP = arrayOf("", "만", "억", "조", "경", "해")
+    private val UNIT = arrayOf("", "만", "억", "조", "경", "해")
 
     fun convertString(money: Long): String {
         if (money == 0L) {
-            return "영원"
+            return "0원"
         }
 
         var money = money
@@ -15,25 +13,33 @@ object MoneyUtils {
         val subKorean = StringBuilder()
         var unit = 0
         var isFirst = true
+        var zeroCount = 0;
 
         while (money > 0) {
             val digit = (money % 10).toInt()
+            money /= 10
+
             if (unit % 4 == 0) {
                 isFirst = true
+                zeroCount = 0
             }
 
-            if (DIGIT[digit] != "") {
-                subKorean.append(DIGIT[digit] + UNIT[unit % 4])
-                if (isFirst) {
-                    subKorean.append(TEMP[unit / 4])
-                    isFirst = false;
-                }
+            if (digit == 0) {
+                zeroCount++
+                unit++
+                continue
+            }
+
+            subKorean.append(digit).append("0".repeat(zeroCount))
+            if (isFirst) {
+                subKorean.append(UNIT[unit / 4])
+                isFirst = false;
             }
 
             korean.insert(0, subKorean)
             subKorean.setLength(0)
-            money /= 10
             unit++
+            zeroCount = 0
         }
         return korean.append("원").toString()
     }
