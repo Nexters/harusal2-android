@@ -16,4 +16,7 @@ interface StatementDao {
 
     @Query("DELETE FROM statement WHERE id= :id")
     suspend fun deleteStatement(id: Long)
+
+    @Query("select * from statement where date between :startTime AND :endTime")
+    suspend fun selectStatementWhereDate(startTime: Long, endTime: Long): List<Statement>
 }
