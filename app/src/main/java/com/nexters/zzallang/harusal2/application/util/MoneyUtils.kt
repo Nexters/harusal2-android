@@ -11,13 +11,14 @@ object MoneyUtils {
         var money = money
         val korean = StringBuilder()
         val subKorean = StringBuilder()
-        var unit = 0
+        var unit = -1
         var isFirst = true
         var zeroCount = 0;
 
         while (money > 0) {
             val digit = (money % 10).toInt()
             money /= 10
+            unit++
 
             if (unit % 4 == 0) {
                 isFirst = true
@@ -26,7 +27,7 @@ object MoneyUtils {
 
             if (digit == 0) {
                 zeroCount++
-                unit++
+
                 continue
             }
 
@@ -38,7 +39,6 @@ object MoneyUtils {
 
             korean.insert(0, subKorean)
             subKorean.setLength(0)
-            unit++
             zeroCount = 0
         }
         return korean.append("원").toString()
