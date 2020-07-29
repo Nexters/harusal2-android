@@ -5,5 +5,6 @@ import com.nexters.zzallang.harusal2.usecase.SampleUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    single { BudgetUseCase(get()) }
+    single { SampleUseCase(get()) }
+    single { BudgetUseCase() }
 }
