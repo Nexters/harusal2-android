@@ -7,7 +7,7 @@ import com.nexters.zzallang.harusal2.application.util.Constants
 
 
 class BudgetUseCase {
-    private val sharedPreferences: SharedPreferences = App.app.applicationContext.getSharedPreferences("prefs_name", Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences = App.app.applicationContext.getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
     private val prefEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
     fun setAmount(amount: Long){
