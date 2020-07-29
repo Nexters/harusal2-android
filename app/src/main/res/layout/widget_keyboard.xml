@@ -84,6 +84,6 @@
         <com.nexters.zzallang.harusal2.keyboard.view.IconifiedTextView
             android:id="@+id/keyboard_key_remove"
             style="@style/Keyboard.Key"
-            android:text="&#xe14a;" />
+            android:text="DEL" />
     </LinearLayout>
 </LinearLayout>
