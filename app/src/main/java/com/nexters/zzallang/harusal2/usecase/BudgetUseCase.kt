@@ -11,11 +11,11 @@ class BudgetUseCase {
     private val prefEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
     fun setAmount(amount: Long){
-        prefEditor.putLong("amount", amount).apply()
+        prefEditor.putLong(Constants.AMOUNT_KEY, amount).apply()
     }
 
     fun setStartDate(startDate: Int){
-        prefEditor.putInt("start_date", startDate).apply()
+        prefEditor.putInt(Constants.START_DATE_KEY, startDate).apply()
     }
 
     fun getAmount(): Long {
