@@ -8,7 +8,6 @@ import java.util.*
 @TypeConverters(DateConverter::class)
 data class Statement(
     @PrimaryKey @ColumnInfo(name = "id") val id: Long,
-    @ColumnInfo(name = "budget_id") val budgetId: Long,
     @ColumnInfo(name = "date") val date: Date,
     @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "amount") val amount: Int,

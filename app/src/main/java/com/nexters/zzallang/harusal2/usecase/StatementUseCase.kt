@@ -20,10 +20,21 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
     }
 
     suspend fun getStatementHistoryAtMonth(date: Date) : List<Statement> {
+        date.date = 1
         date.hours = 0
         date.minutes = 0
         date.seconds = 0
         val startTime = date.time
+
+        date.date = when(date.month) {
+            1, 3, 5, 7, 8, 10, 12 -> 31
+            2 -> if (date.year % 4 == 0) {
+                29
+            } else {
+                28
+            }
+            else -> 30
+        }
 
         date.hours = 23
         date.minutes = 59
