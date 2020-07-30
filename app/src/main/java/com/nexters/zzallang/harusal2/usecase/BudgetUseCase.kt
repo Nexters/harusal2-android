@@ -19,19 +19,19 @@ class BudgetUseCase {
     }
 
     fun getAmount(): Long {
-        return sharedPreferences.getLong("amount", Constants.DEFAULT_AMOUNT)
+        return sharedPreferences.getLong(Constants.AMOUNT_KEY, Constants.DEFAULT_AMOUNT)
     }
 
     fun getStartDate(): Int {
-        return sharedPreferences.getInt("start_date", Constants.DEFAULT_STARTDATE)
+        return sharedPreferences.getInt(Constants.START_DATE_KEY, Constants.DEFAULT_STARTDATE)
     }
 
     fun removeAmount(){
-        prefEditor.remove("amount").apply()
+        prefEditor.remove(Constants.AMOUNT_KEY).apply()
     }
 
     fun removeStartDate(){
-        prefEditor.remove("start_date").apply()
+        prefEditor.remove(Constants.START_DATE_KEY).apply()
     }
 
     fun clearBudget(){
