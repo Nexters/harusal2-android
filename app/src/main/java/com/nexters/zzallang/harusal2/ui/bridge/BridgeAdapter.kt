@@ -29,7 +29,7 @@ class BridgeAdapter(private val context: Context) : RecyclerView.Adapter<BridgeA
 
     class BridgeViewHolder(private val binding: ItemBridgeBinding): RecyclerView.ViewHolder(binding.root) {
         fun onBind(activity: Class<out Activity>) {
-            binding.txtActivityName.text = activity.simpleName
+            binding.tvActivityName.text = activity.simpleName
             binding.root.setOnClickListener {
                 it.context.startActivity(Intent(it.context, activity))
             }
