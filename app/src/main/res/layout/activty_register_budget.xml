@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.nexters.zzallang.harusal2.ui.register.BudgetRegisterViewModel" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="예산 설정" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="X" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이번달 예산은\n얼마인가요?" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="하루 생활비 " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.averageBudget}" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_register_budget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="금액을 입력해 주세요"
+            android:inputType="number"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30dp"
+            android:text="@={vm.budget}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.hangeulBudget}"/>
+
+        <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:field="@+id/edit_register_budget"
+            app:keyTextColor="@color/colorPrimaryDark"
+            app:fieldMaxLength="15"
+            />
+
+        <Button
+            android:id="@+id/get_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음" />
+    </LinearLayout>
+</layout>
