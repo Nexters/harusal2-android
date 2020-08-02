@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui
+package com.nexters.zzallang.harusal2.ui.main
 
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
@@ -14,15 +14,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
-    }
 
-    override fun bindingView() {
-        super.bindingView()
-
-        binding.getButton.setOnClickListener {
-        }
-
-        binding.insertButton.setOnClickListener {
+        when (viewModel.isBudgetEmpty()) {
+            true -> supportFragmentManager.beginTransaction().replace(R.id.container, EmptyMainFragment()).commit()
+            false -> supportFragmentManager.beginTransaction().replace(R.id.container, DefaultMainFragment()).commit()
         }
     }
 }
