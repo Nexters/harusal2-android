@@ -9,9 +9,9 @@ import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 
 
 class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
-    val budget: MutableLiveData<String> = MutableLiveData("")
-    val hangeulBudget: MutableLiveData<String> = MutableLiveData("")
-    val averageBudget: MutableLiveData<String> = MutableLiveData("")
+    val budget = MutableLiveData("")
+    val hangeulBudget = MutableLiveData("")
+    val averageBudget = MutableLiveData("")
 
     fun budgetChanged(text: String) {
         if (text == "") {
@@ -21,7 +21,7 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
             return
         }
 
-        var inputBudget: Long = java.lang.Long.valueOf(text)
+        val inputBudget: Long = java.lang.Long.valueOf(text)
         budget.postValue(text)
 
         averageBudget.postValue((inputBudget / 30L).toString() + "원")
@@ -29,7 +29,7 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
     }
 
     fun hangeulBudget(budget: Long) {
-        this.hangeulBudget.postValue(MoneyUtils.convertString(budget) + "원")
+        this.hangeulBudget.postValue(MoneyUtils.convertString(budget))
     }
 
     fun toNext(activity: Activity){
@@ -37,7 +37,6 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
             "" -> 0L
             else -> x.toLong()
         }
-
 
         budgetUseCase.setAmount(savedBudget)
 

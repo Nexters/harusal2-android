@@ -49,7 +49,7 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오늘은 17일입니다.\n매달 17일을 시작일자로\n지정할까요?"
+            android:text="description"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_page" />
@@ -58,7 +58,7 @@
             android:id="@+id/btn_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17일자로 시작하기"
+            android:text="button_text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_description" />

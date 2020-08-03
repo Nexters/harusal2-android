@@ -15,4 +15,15 @@ class BudgetDayRegisterActivity : BaseActivity<ActivtyRegisterBudgetDayBinding>(
         binding.vm = viewModel
         binding.lifecycleOwner = this
     }
+
+    override fun bindingView() {
+        super.bindingView()
+        binding.tvDescription.text = viewModel.getDescription()
+        binding.btnComplete.text = viewModel.getButtonText()
+        binding.btnPrev.setOnClickListener { viewModel.toPrev(this) }
+        binding.btnNext.setOnClickListener {
+            viewModel.toNext(this) }
+        binding.btnComplete.setOnClickListener { viewModel.toComplete(this) }
+        binding.btnClose.setOnClickListener { viewModel.toClose(this) }
+    }
 }
