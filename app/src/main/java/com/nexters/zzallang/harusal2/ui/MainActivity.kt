@@ -3,7 +3,6 @@ package com.nexters.zzallang.harusal2.ui
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
-import com.nexters.zzallang.harusal2.data.entity.SampleModel
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,11 +20,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.bindingView()
 
         binding.getButton.setOnClickListener {
-            viewModel.checkSampleData(2)
         }
 
         binding.insertButton.setOnClickListener {
-            viewModel.insertSampleData(SampleModel(2, "hello"))
         }
     }
 }
