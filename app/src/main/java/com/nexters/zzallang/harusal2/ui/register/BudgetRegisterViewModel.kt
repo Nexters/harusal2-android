@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.register
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
@@ -32,6 +33,8 @@ class BudgetRegisterViewModel : BaseViewModel() {
         this.hangeulBudget.postValue(MoneyUtils.convertString(budget) + "원")
     }
 
-    fun toNext(){
+    fun toNext(activity: Activity){
+        val intent = Intent(activity, BudgetDayRegisterActivity::class.java)
+        activity.startActivity(intent)
     }
 }
