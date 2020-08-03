@@ -1,15 +1,14 @@
 package com.nexters.zzallang.harusal2.ui.register
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
+import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 
 
-class BudgetRegisterViewModel : BaseViewModel() {
+class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
     val budget: MutableLiveData<String> = MutableLiveData("")
     val hangeulBudget: MutableLiveData<String> = MutableLiveData("")
     val averageBudget: MutableLiveData<String> = MutableLiveData("")
@@ -34,6 +33,14 @@ class BudgetRegisterViewModel : BaseViewModel() {
     }
 
     fun toNext(activity: Activity){
+        val savedBudget = when(val x = budget.value.toString()){
+            "" -> 0L
+            else -> x.toLong()
+        }
+
+
+        budgetUseCase.setAmount(savedBudget)
+
         val intent = Intent(activity, BudgetDayRegisterActivity::class.java)
         activity.startActivity(intent)
     }

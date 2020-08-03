@@ -15,6 +15,4 @@ class BudgetDayRegisterActivity : BaseActivity<ActivtyRegisterBudgetDayBinding>(
         binding.vm = viewModel
         binding.lifecycleOwner = this
     }
-
-
 }
