@@ -1,5 +1,8 @@
 package com.nexters.zzallang.harusal2.ui.register
 
+import android.content.Context
+import android.content.Intent
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
@@ -27,5 +30,8 @@ class BudgetRegisterViewModel : BaseViewModel() {
 
     fun hangeulBudget(budget: Long) {
         this.hangeulBudget.postValue(MoneyUtils.convertString(budget) + "원")
+    }
+
+    fun toNext(){
     }
 }

@@ -23,5 +23,7 @@ class BudgetRegisterActivity : BaseActivity<ActivtyRegisterBudgetBinding>() {
         viewModel.budget.observe(this, Observer {
             viewModel.budgetChanged(it)
         })
+
+        binding.btnNext.setOnClickListener { viewModel.toNext() }
     }
 }

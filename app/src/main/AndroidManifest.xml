@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.register.BudgetRegisterActivity"/>
+        <activity android:name=".ui.register.BudgetDayRegisterActivity"/>
     </application>
 
 </manifest>
