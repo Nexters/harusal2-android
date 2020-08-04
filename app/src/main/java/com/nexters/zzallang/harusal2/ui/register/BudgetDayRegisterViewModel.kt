@@ -33,24 +33,7 @@ class BudgetDayRegisterViewModel(private val budgetUseCase: BudgetUseCase) : Bas
         return calendar.get(Calendar.DAY_OF_MONTH)
     }
 
-    fun toNext(activity: Activity) {
-        val intent = Intent(activity, BudgetDayRegisterActivity::class.java)
-        activity.startActivity(intent)
-    }
-
-    fun toPrev(activity: Activity) {
-        val intent = Intent(activity, BudgetRegisterActivity::class.java)
-        activity.startActivity(intent)
-    }
-
-    fun toClose(activity: Activity) {
-        val intent = Intent(activity, BudgetRegisterActivity::class.java)
-        activity.startActivity(intent)
-    }
-
-    fun toComplete(activity: Activity) {
+    fun saveBudgetDay() {
         budgetUseCase.setStartDate(day)
-        val intent = Intent(activity, BudgetRegisterActivity::class.java)
-        activity.startActivity(intent)
     }
 }
