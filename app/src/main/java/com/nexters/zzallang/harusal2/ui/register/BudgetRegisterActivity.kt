@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
-import com.nexters.zzallang.harusal2.databinding.ActivtyRegisterBudgetBinding
+import com.nexters.zzallang.harusal2.databinding.ActivityRegisterBudgetBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BudgetRegisterActivity : BaseActivity<ActivtyRegisterBudgetBinding>() {
-    override fun layoutRes(): Int = R.layout.activty_register_budget
+class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
+    override fun layoutRes(): Int = R.layout.activity_register_budget
     override val viewModel: BudgetRegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {

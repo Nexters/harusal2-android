@@ -19,7 +19,7 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
         if (text == "") {
             _hangeulBudget.postValue("0원")
             _averageBudget.postValue("0원")
-            _averageBudget.postValue("")
+            budget.postValue("")
             return
         }
 

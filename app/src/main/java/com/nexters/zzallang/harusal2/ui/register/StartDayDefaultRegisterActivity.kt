@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
-import com.nexters.zzallang.harusal2.databinding.ActivtyRegisterDayDefaultBinding
+import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayDefaultBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class StartDayDefaultRegisterActivity : BaseActivity<ActivtyRegisterDayDefaultBinding>(){
-    override fun layoutRes(): Int = R.layout.activty_register_day_default
+class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultBinding>(){
+    override fun layoutRes(): Int = R.layout.activity_register_day_default
     override val viewModel: StartDayDefaultRegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
