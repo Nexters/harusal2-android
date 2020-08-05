@@ -1,7 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.register
 
-import android.app.Activity
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils

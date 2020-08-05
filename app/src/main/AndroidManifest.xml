@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.register.BudgetRegisterActivity"/>
-        <activity android:name=".ui.register.BudgetDayRegisterActivity"/>
+        <activity android:name=".ui.register.StartDayDefaultRegisterActivity"/>
+        <activity android:name=".ui.register.StartDayClickRegisterActivity"/>
     </application>
 
 </manifest>

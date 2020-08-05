@@ -1,16 +1,11 @@
 package com.nexters.zzallang.harusal2.ui.register
 
-import android.app.Activity
-import android.content.Intent
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
-import java.util.*
 
-class BudgetDayRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
-    private val day:Int
-    init {
-        day = getDay()
-    }
+class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
+    private val day:Int = DateUtils.getDay()
 
     fun getDescription():String {
         return StringBuilder()
@@ -22,15 +17,8 @@ class BudgetDayRegisterViewModel(private val budgetUseCase: BudgetUseCase) : Bas
 
     fun getButtonText():String{
         return StringBuilder()
-            .append(getDay()).append("일로 시작하기")
+            .append(day).append("일로 시작하기")
             .toString()
-    }
-
-    private fun getDay(): Int {
-        val date = Date()
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        return calendar.get(Calendar.DAY_OF_MONTH)
     }
 
     fun saveBudgetDay() {

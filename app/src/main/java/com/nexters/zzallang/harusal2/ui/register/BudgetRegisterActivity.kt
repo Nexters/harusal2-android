@@ -22,13 +22,14 @@ class BudgetRegisterActivity : BaseActivity<ActivtyRegisterBudgetBinding>() {
     override fun bindingView() {
         super.bindingView()
 
+        //TODO - 양방향 무한 호출 개선
         viewModel.budget.observe(this, Observer {
             viewModel.budgetChanged(it)
         })
 
         binding.btnNext.setOnClickListener {
             viewModel.saveBudget()
-            val intent = Intent(this, BudgetDayRegisterActivity::class.java)
+            val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)
             this.startActivity(intent)
         }
 
