@@ -125,6 +125,16 @@ class NumericKeyboard : FrameLayout {
             }
         }
 
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    var topMargin: Int = 0
+        set(value) {
+            field = value
+            if (childCount > 0) {
+                updateView(getChildAt(0))
+            }
+        }
+
     private fun initAttributes(context: Context, attrs: AttributeSet, defStyleAttr: Int) {
         val attributes = context.theme.obtainStyledAttributes(attrs, R.styleable.NumericKeyboard, defStyleAttr, 0)
         val defaultKeyTextSize = context.resources.getDimensionPixelSize(R.dimen.keyboard_text_size)
@@ -132,6 +142,7 @@ class NumericKeyboard : FrameLayout {
 
         fieldId = attributes.getResourceId(R.styleable.NumericKeyboard_field, 0)
         fieldMaxLength = attributes.getInteger(R.styleable.NumericKeyboard_fieldMaxLength, 0)
+        topMargin = attributes.getInteger(R.styleable.NumericKeyboard_topMargin, 0)
 
         keyHeight = attributes.getDimensionPixelSize(R.styleable.NumericKeyboard_keyHeight, defaultKeyHeight)
         keyTextSize = attributes.getDimensionPixelSize(R.styleable.NumericKeyboard_keyTextSize, defaultKeyTextSize).toFloat()
@@ -177,6 +188,10 @@ class NumericKeyboard : FrameLayout {
         val listener = KeyboardClickListener(field, fieldMaxLength)
 
         row1.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, keyHeight)
+        val param = row1.layoutParams as MarginLayoutParams
+        param.setMargins(0,topMargin,0,0)
+        row1.layoutParams = param
+
         row2.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, keyHeight)
         row3.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, keyHeight)
         row4.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, keyHeight)
@@ -204,6 +219,8 @@ class NumericKeyboard : FrameLayout {
         key8.setTextSize(TypedValue.COMPLEX_UNIT_PX, keyTextSize)
         key9.setTextSize(TypedValue.COMPLEX_UNIT_PX, keyTextSize)
         key0.setTextSize(TypedValue.COMPLEX_UNIT_PX, keyTextSize)
+        key00.setTextSize(TypedValue.COMPLEX_UNIT_PX, keyTextSize)
+
         keyRemove.setTextSize(TypedValue.COMPLEX_UNIT_PX, 0.8F * keyTextSize)
 
         key1.setOnClickListener(listener)
