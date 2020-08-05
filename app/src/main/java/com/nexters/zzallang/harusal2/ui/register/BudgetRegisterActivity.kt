@@ -27,6 +27,8 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
             viewModel.budgetChanged(it)
         })
 
+        binding.btnClear.setOnClickListener { viewModel.textClear() }
+
         binding.btnNext.setOnClickListener {
             viewModel.saveBudget()
             val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)

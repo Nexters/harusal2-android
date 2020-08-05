@@ -12,14 +12,19 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
 
     private val _hangeulBudget = MutableLiveData("")
     private val _averageBudget = MutableLiveData("")
-    val hangeulBudget:LiveData<String> get() = _hangeulBudget
-    val averageBudget:LiveData<String> get() = _averageBudget
+    val hangeulBudget: LiveData<String> get() = _hangeulBudget
+    val averageBudget: LiveData<String> get() = _averageBudget
+
+    fun textClear() {
+        _hangeulBudget.postValue("0원")
+        _averageBudget.postValue("0원")
+        budget.postValue("")
+        return
+    }
 
     fun budgetChanged(text: String) {
         if (text == "") {
-            _hangeulBudget.postValue("0원")
-            _averageBudget.postValue("0원")
-            budget.postValue("")
+            textClear()
             return
         }
 
@@ -34,8 +39,8 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
         _hangeulBudget.postValue(MoneyUtils.convertString(budget))
     }
 
-    fun saveBudget(){
-        val savedBudget = when(val x = budget.value.toString()){
+    fun saveBudget() {
+        val savedBudget = when (val x = budget.value.toString()) {
             "" -> 0L
             else -> x.toLong()
         }
