@@ -2,6 +2,8 @@ package com.nexters.zzallang.harusal2.ui.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.DateUtils.getDay
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMonth
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getMonth
 import com.nexters.zzallang.harusal2.base.BaseViewModel
@@ -12,6 +14,12 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
 
     private val _description = MutableLiveData("")
     val description: LiveData<String> get() = _description
+
+    init {
+        val initDay = getDay()
+        pickedDay.postValue(initDay)
+        setDescription(initDay)
+    }
 
     fun saveBudgetDay() {
         budgetUseCase.setStartDate(pickedDay.value!!)
@@ -29,7 +37,7 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
             1 -> thisMonth
             else -> thisMonth + 1
         }
-        val endDay = when(pickedDay){
+        val endDay = when (pickedDay) {
             1 -> getLastDayOfMonth()
             else -> pickedDay - 1
         }

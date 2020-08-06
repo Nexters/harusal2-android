@@ -26,13 +26,15 @@
             app:layout_constraintRight_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginRight="24dp"
-            android:text="X"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_close_btn"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,25 +87,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
+            android:layout_marginTop="34dp"
             android:layout_marginRight="24dp"
             android:background="@android:color/transparent"
-            android:hint="금액을 입력해 주세요"
+            android:hint="예산 입력"
             android:inputType="number"
             android:text="@={vm.budget}"
             android:textColor="@color/colorBlack"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
+            android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_avg_description" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
-            android:layout_marginBottom="8dp"
-            android:text="X"
+            android:layout_marginBottom="16dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_clear_btn"
             app:layout_constraintBottom_toTopOf="@id/line_guide"
             app:layout_constraintRight_toRightOf="parent" />
 
@@ -133,7 +137,7 @@
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="270dp"
             android:layout_gravity="bottom"
             android:background="@color/colorKeyboardBackground"
             app:field="@+id/edit_register_budget"
@@ -141,13 +145,13 @@
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:topMargin="100" />
+            app:topMargin="60" />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:background="@color/colorBtnNext"
+            android:background="@color/colorDarkGray"
             android:text="다음"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
