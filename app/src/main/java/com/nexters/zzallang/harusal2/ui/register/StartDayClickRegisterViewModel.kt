@@ -10,19 +10,17 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 
 class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
-    val pickedDay = MutableLiveData(15)
-
+    private val todayDay = getDay()
     private val _description = MutableLiveData("")
     val description: LiveData<String> get() = _description
-
+    val pickedDay = MutableLiveData(15)
     init {
-        val initDay = getDay()
-        pickedDay.postValue(initDay)
-        setDescription(initDay)
+        pickedDay.postValue(todayDay)
+        setDescription(todayDay)
     }
 
     fun saveBudgetDay() {
-        budgetUseCase.setStartDate(pickedDay.value!!)
+        budgetUseCase.setStartDate(pickedDay.value?:todayDay)
     }
 
     //TODO - 양방향 무한 호출 개선

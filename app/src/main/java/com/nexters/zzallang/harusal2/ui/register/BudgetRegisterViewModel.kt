@@ -19,7 +19,6 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
         _hangeulBudget.postValue("0원")
         _averageBudget.postValue("0원")
         budget.postValue("")
-        return
     }
 
     fun budgetChanged(text: String) {
