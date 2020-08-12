@@ -9,4 +9,6 @@
     <color name="colorKeyboardBackground">#EEECEC</color>
     <color name="colorSubDescription">#666666</color>
     <color name="dividerColor">#FBA806</color>
+    <color name="completeButtonColor">#2C2C2C</color>
+    <color name="colorWarning">#E61B1B</color>
 </resources>

@@ -21,6 +21,7 @@
         <activity android:name=".ui.register.BudgetRegisterActivity"/>
         <activity android:name=".ui.register.StartDayDefaultRegisterActivity"/>
         <activity android:name=".ui.register.StartDayClickRegisterActivity"/>
+        <activity android:name=".ui.budget.edit.BudgetChangeActivity"/>
     </application>
 
 </manifest>
