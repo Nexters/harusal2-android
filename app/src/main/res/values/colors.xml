@@ -8,4 +8,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorKeyboardBackground">#EEECEC</color>
     <color name="colorSubDescription">#666666</color>
+    <color name="dividerColor">#FBA806</color>
 </resources>
