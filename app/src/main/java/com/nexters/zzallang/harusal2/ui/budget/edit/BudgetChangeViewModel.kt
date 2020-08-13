@@ -19,14 +19,7 @@ class BudgetChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseView
     val averageBudget: LiveData<String> get() = _averageBudget
 
     init {
-        val initBudget = budgetUseCase.getAmount()
-        budget.postValue(initBudget.toString())
-    }
-
-    private fun textClear() {
-        setHangleBudget(0)
-        setAverageBudget("0원")
-        return
+        budget.postValue(budgetUseCase.getAmount().toString())
     }
 
     fun budgetChanged(text: String) {
@@ -41,19 +34,32 @@ class BudgetChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseView
         setHangleBudget(inputBudget)
     }
 
-    private fun setAverageBudget(averageBudget: String) {
-        _averageBudget.postValue(PREFIX + averageBudget)
-    }
-
-    private fun setHangleBudget(budget: Long) {
-        _hangeulBudget.postValue(MoneyUtils.convertString(budget))
-    }
-
     fun saveBudget() {
         val savedBudget = when (val x = budget.value.toString()) {
             "" -> 0L
             else -> x.toLong()
         }
         budgetUseCase.setAmount(savedBudget)
+    }
+
+    fun reset() {
+        budget.postValue(
+            budgetUseCase.getAmount().toString()
+        )
+
+    }
+
+    private fun textClear() {
+        setHangleBudget(0)
+        setAverageBudget("0원")
+        return
+    }
+
+    private fun setAverageBudget(averageBudget: String) {
+        _averageBudget.postValue(PREFIX + averageBudget)
+    }
+
+    private fun setHangleBudget(budget: Long) {
+        _hangeulBudget.postValue(MoneyUtils.convertString(budget))
     }
 }
