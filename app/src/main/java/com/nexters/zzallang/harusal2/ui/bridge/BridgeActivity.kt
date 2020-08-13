@@ -7,6 +7,7 @@ import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityBridgeBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetChangeActivity
+import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayChangeActivity
 import com.nexters.zzallang.harusal2.ui.register.StartDayDefaultRegisterActivity
 import com.nexters.zzallang.harusal2.ui.register.BudgetRegisterActivity
 import com.nexters.zzallang.harusal2.ui.register.StartDayClickRegisterActivity
@@ -26,7 +27,8 @@ class BridgeActivity: BaseActivity<ActivityBridgeBinding>() {
                 BudgetRegisterActivity::class.java,
                 StartDayDefaultRegisterActivity::class.java,
                 StartDayClickRegisterActivity::class.java,
-                BudgetChangeActivity::class.java
+                BudgetChangeActivity::class.java,
+                StartDayChangeActivity::class.java
             )
             adapter = bridgeAdapter
             layoutManager = LinearLayoutManager(this@BridgeActivity)

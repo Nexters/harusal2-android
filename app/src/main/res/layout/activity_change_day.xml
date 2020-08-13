@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.budget.edit.BudgetChangeViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.budget.edit.StartDayChangeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="이번 달 생활비 수정"
+            android:text="매월 시작일 수정"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -46,64 +46,56 @@
             android:layout_marginRight="20dp"
             android:background="@null"
             android:text="초기화"
-            android:textSize="12sp"
             android:textColor="@color/colorBlack"
+            android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--Body-->
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="130dp"
+            android:layout_width="170dp"
             android:layout_height="24dp"
             android:layout_marginTop="75dp"
             android:background="@drawable/shape_round_btn_orange"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@{vm.averageBudget}"
+            android:text="@{vm.description}"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_header" />
 
-        <EditText
-            android:id="@+id/edit_register_budget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginRight="24dp"
-            android:background="@android:color/transparent"
-            android:gravity="center"
-            android:inputType="number"
-            android:text="@={vm.budget}"
-            android:textColor="@color/colorBlack"
-            android:textSize="40sp"
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/picker_day"
+            android:layout_width="100dp"
+            android:layout_height="350dp"
+            android:layout_centerInParent="true"
+            android:value="@{vm.pickedDay}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_warning"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description" />
-
-        <TextView
-            android:id="@+id/tv_unit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:text="원"
-            android:textColor="@color/colorBlack"
-            android:textSize="40sp"
-            app:layout_constraintStart_toEndOf="@id/edit_register_budget"
-            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            app:np_dividerColor="@color/dividerColor"
+            app:np_dividerDistance="76dp"
+            app:np_dividerThickness="2dp"
+            app:np_selectedTextSize="38sp"
+            app:np_textColor="@color/colorSubDescription"
+            app:np_textSize="28sp"
+            app:np_wheelItemCount="5" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="10dp"
-            android:text="@{vm.hangeulBudget}"
-            android:textColor="@color/colorSubDescription"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_register_budget" />
+            android:layout_marginLeft="10dp"
+            android:text="일"
+            android:textSize="28sp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintStart_toEndOf="@id/picker_day"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@+id/tv_warning"
 
+            />
         <!--TODO: 아이콘 변경-->
         <ImageView
             android:id="@+id/iv_navigation"
@@ -114,7 +106,7 @@
             android:background="@null"
             android:scaleType="fitXY"
             android:src="@drawable/ic_info_18"
-            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
+            app:layout_constraintBottom_toTopOf="@id/btn_complete"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
@@ -123,23 +115,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:layout_marginBottom="20dp"
-            android:text="금액 수정시 남은 잔여일수 기준으로 다시 계산됩니다."
+            android:text="시작일 수정시 남은 생활비가 다시 계산됩니다."
             android:textColor="@color/colorWarning"
-            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
-            app:layout_constraintLeft_toRightOf="@id/iv_navigation" />
-
-        <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
-            android:id="@+id/keyboard_numeric"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:layout_gravity="bottom"
-            android:background="@color/colorKeyboardBackground"
-            app:field="@+id/edit_register_budget"
-            app:fieldMaxLength="8"
-            app:keyTextColor="#111111"
             app:layout_constraintBottom_toTopOf="@id/btn_complete"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintLeft_toRightOf="@id/iv_navigation" />
 
         <Button
             android:id="@+id/btn_complete"

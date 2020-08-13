@@ -2,6 +2,7 @@ package com.nexters.zzallang.harusal2.application.di
 
 import com.nexters.zzallang.harusal2.ui.MainViewModel
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetChangeViewModel
+import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayChangeViewModel
 import com.nexters.zzallang.harusal2.ui.register.StartDayDefaultRegisterViewModel
 import com.nexters.zzallang.harusal2.ui.register.BudgetRegisterViewModel
 import com.nexters.zzallang.harusal2.ui.register.StartDayClickRegisterViewModel
@@ -14,4 +15,5 @@ val viewModelModule = module {
     viewModel { StartDayDefaultRegisterViewModel(get()) }
     viewModel { StartDayClickRegisterViewModel(get()) }
     viewModel { BudgetChangeViewModel(get()) }
+    viewModel { StartDayChangeViewModel(get()) }
 }
