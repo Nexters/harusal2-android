@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.register
+package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +18,6 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
     fun textClear() {
         _hangeulBudget.postValue("0원")
         _averageBudget.postValue("0원")
-        budget.postValue("")
         return
     }
 
@@ -29,7 +28,6 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
         }
 
         val inputBudget: Long = java.lang.Long.valueOf(text)
-        budget.postValue(text)
 
         _averageBudget.postValue((inputBudget / 30L).toString() + "원")
         hangeulBudget(inputBudget)
