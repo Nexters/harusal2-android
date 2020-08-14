@@ -49,9 +49,11 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_statement"
+            android:id="@+id/rcv_statement"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

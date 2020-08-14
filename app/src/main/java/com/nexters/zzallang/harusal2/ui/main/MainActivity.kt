@@ -6,6 +6,7 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.main.adapter.MainStatementAdapter
+import com.nexters.zzallang.harusal2.ui.main.decoration.MainStatementDecoration
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,8 +23,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        binding.recyclerStatement.layoutManager = LinearLayoutManager(this)
-        binding.recyclerStatement.adapter = MainStatementAdapter(this).apply {
+        binding.rcvStatement.layoutManager = LinearLayoutManager(this)
+        binding.rcvStatement.addItemDecoration(MainStatementDecoration())
+        binding.rcvStatement.adapter = MainStatementAdapter(this).apply {
             clearMainStatementList()
             addStatements(arrayListOf(
                 MainStatement(1000, "hi"),
@@ -49,6 +51,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 MainStatement(7000, "hi")
             ))
         }
-        binding.recyclerStatement.setHasFixedSize(true)
+        binding.rcvStatement.setHasFixedSize(true)
     }
 }
