@@ -28,27 +28,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.rcvStatement.adapter = MainStatementAdapter(this).apply {
             clearMainStatementList()
             addStatements(arrayListOf(
-                MainStatement(1000, "hi"),
-                MainStatement(2000, "hi"),
-                MainStatement(3000, "hi"),
-                MainStatement(4000, "hi"),
-                MainStatement(5000, "hi"),
-                MainStatement(6000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi"),
-                MainStatement(7000, "hi")
+                MainStatement(1000, "편의점 김밥"),
+                MainStatement(2000, "편의점 김밥"),
+                MainStatement(3000, "편의점 김밥"),
+                MainStatement(4000, "편의점 김밥"),
+                MainStatement(5000, "편의점 김밥"),
+                MainStatement(6000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥")
             ))
         }
         binding.rcvStatement.setHasFixedSize(true)

@@ -5,7 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="@drawable/item_main_statement_background">
 
         <TextView
@@ -16,7 +16,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
-            tools:text="1000원" />
+            tools:text="1000원"
+            android:textSize="16sp"
+            android:textColor="@color/default_black"/>
 
         <TextView
             android:id="@+id/tv_content"
@@ -26,15 +28,19 @@
             app:layout_constraintStart_toEndOf="@id/tv_money"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="50dp"
-            tools:text="돈을 사용한 내역"/>
+            tools:text="돈을 사용한 내역"
+            android:textSize="14sp"
+            android:textColor="@color/default_black"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_statement_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/icn_arrow_24"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

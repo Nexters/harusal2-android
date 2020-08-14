@@ -6,16 +6,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp">
+        android:paddingTop="19dp">
 
         <TextView
             android:id="@+id/tv_today_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="오늘의 기록"
+            android:textSize="16sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@android:color/white"/>
 
         <!-- TODO: 바 이미지로 바꾸자 -->
         <TextView
@@ -25,16 +27,19 @@
             android:text="ㅣ"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_today_record"/>
+            app:layout_constraintStart_toEndOf="@id/tv_today_record"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="2020.07.20"
+            android:textSize="12sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_bar"/>
+            app:layout_constraintStart_toEndOf="@id/iv_bar"
+            android:textColor="@android:color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -29,7 +29,7 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
                         false
                     )
             )
-        }  else {
+        } else {
             MainStatementViewHolder(
                 DataBindingUtil
                     .inflate(
@@ -58,7 +58,7 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
         statementList.clear()
     }
 
-    fun addStatement(item: MainStatement) {
+    private fun addStatement(item: MainStatement) {
         statementList.add(item)
     }
 
