@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.main.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.databinding.ItemMainDateBinding
 import com.nexters.zzallang.harusal2.databinding.ItemMainStatementBinding
+import com.nexters.zzallang.harusal2.databinding.ItemMainStatementEmptyBinding
 import com.nexters.zzallang.harusal2.ui.main.model.BaseMainRecyclerViewStatementItem
 import com.nexters.zzallang.harusal2.ui.main.model.MainDate
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
@@ -19,8 +21,8 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
     private val date = MainDate("2020.07.20")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
-        if (viewType == 0) {
-            MainDateViewHolder(
+        when (viewType) {
+            0 -> MainDateViewHolder(
                 DataBindingUtil
                     .inflate(
                         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
@@ -29,28 +31,48 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
                         false
                     )
             )
-        } else {
-            MainStatementViewHolder(
+            1 -> MainEmptyStatementViewHolder(
                 DataBindingUtil
                     .inflate(
                         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-                        R.layout.item_main_statement,
+                        R.layout.item_main_statement_empty,
                         parent,
                         false
                     )
             )
+            else ->
+                MainStatementViewHolder(
+                    DataBindingUtil
+                        .inflate(
+                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                            R.layout.item_main_statement,
+                            parent,
+                            false
+                        )
+                )
         }
 
-    override fun getItemCount(): Int = statementList.size
+    // 오늘의 기록이 있기 때문에 +1 해줌
+    override fun getItemCount(): Int = if (statementList.size == 0) 2 else statementList.size + 1
 
     // 0은 오늘의 기록 표기, 1은 statement 표기
-    override fun getItemViewType(position: Int): Int = if (position == 0) 0 else 1
+    override fun getItemViewType(position: Int): Int = if (position == 0) {
+        0
+    } else if (statementList.size == 0){
+        1
+    } else {
+        2
+    }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         // position 0은 날짜로 쓰고있기 때문에 statement 를 사용하려면 -1을 하여 사용해야한다.
         holder.onBind(when (position) {
             0 -> date
-            else -> statementList[position - 1]
+            else -> if (statementList.size == 0) {
+                MainStatement()
+            } else {
+                statementList[position - 1]
+            }
         })
     }
 
@@ -82,8 +104,12 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
     class MainStatementViewHolder(private val binding: ItemMainStatementBinding): BaseViewHolder(binding.root) {
         override fun onBind(item: BaseMainRecyclerViewStatementItem) {
             item as MainStatement
-            binding.tvMoney.text = item.money.toString().plus("원")
+            binding.tvMoney.text = "${item.money}원"
             binding.tvContent.text = item.content
         }
+    }
+
+    class MainEmptyStatementViewHolder(private val binding: ItemMainStatementEmptyBinding): BaseViewHolder(binding.root) {
+        override fun onBind(item: BaseMainRecyclerViewStatementItem) {}
     }
 }
