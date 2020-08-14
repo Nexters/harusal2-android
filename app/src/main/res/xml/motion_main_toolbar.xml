@@ -20,15 +20,17 @@
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/iv_emoji"/>
+            motion:layout_constraintBottom_toTopOf="@id/layout_today_money"
+            android:layout_marginBottom="4dp"/>
 
         <Constraint
-            android:id="@+id/tv_today_money"
+            android:id="@+id/layout_today_money"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/tv_current_money"/>
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="13dp"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -37,14 +39,18 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"/>
 
         <Constraint
-            android:id="@+id/tv_today_money"
+            android:id="@+id/layout_today_money"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_marginStart="20dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="28dp"/>
     </ConstraintSet>
 
 </MotionScene>
