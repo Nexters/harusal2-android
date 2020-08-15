@@ -25,6 +25,29 @@
                 app:layoutDescription="@xml/motion_main_toolbar"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+                <RelativeLayout
+                    android:id="@+id/layout_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <ImageView
+                        android:id="@+id/iv_1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_launcher_background"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_centerVertical="true"/>
+                    <ImageView
+                        android:id="@+id/iv_2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_launcher_background"
+                        android:layout_toStartOf="@id/iv_1"
+                        android:layout_marginEnd="12dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
                 <ImageView
                     android:id="@+id/iv_emoji"
                     android:layout_width="wrap_content"
@@ -68,5 +91,12 @@
             android:layout_marginEnd="20dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/icn_addbtn"
+            app:backgroundTint="#000000"
+            android:layout_margin="30dp"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
