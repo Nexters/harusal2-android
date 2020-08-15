@@ -31,13 +31,13 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
                     binding.ivWarning.visibility = View.INVISIBLE
                     binding.tvAvgDescription.visibility = View.INVISIBLE
                     binding.tvAvgBudget.visibility = View.INVISIBLE
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorSubDescription))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
                 }
                 else -> {
                     binding.ivWarning.visibility = View.VISIBLE
                     binding.tvAvgDescription.visibility = View.VISIBLE
                     binding.tvAvgBudget.visibility = View.VISIBLE
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorBlack))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
                 }
             }
             viewModel.budgetChanged(it)
