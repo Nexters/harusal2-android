@@ -12,13 +12,13 @@
         android:id="@+id/layout_whole"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FBB606">
+        android:background="@color/colorPointYellowBackground">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/layout_appbar"
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            android:background="#FBB606">
+            android:background="@color/colorPointYellowBackground">
 
             <com.nexters.zzallang.harusal2.CollapsibleToolbar
                 android:layout_width="match_parent"

@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        setBackgroundColor(R.color.test)
+        setBackgroundColor(R.color.colorPointYellowBackground)
 
         binding.ivEmoji.playAnimation()
         binding.ivEmoji.repeatCount = LottieDrawable.INFINITE

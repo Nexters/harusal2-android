@@ -18,7 +18,7 @@
             android:layout_marginStart="16dp"
             tools:text="1000원"
             android:textSize="16sp"
-            android:textColor="@color/default_black"/>
+            android:textColor="@color/colorDarkBlack"/>
 
         <TextView
             android:id="@+id/tv_content"
@@ -30,7 +30,7 @@
             android:layout_marginStart="50dp"
             tools:text="돈을 사용한 내역"
             android:textSize="14sp"
-            android:textColor="@color/default_black"/>
+            android:textColor="@color/colorDarkBlack"/>
 
         <ImageButton
             android:id="@+id/btn_statement_detail"
