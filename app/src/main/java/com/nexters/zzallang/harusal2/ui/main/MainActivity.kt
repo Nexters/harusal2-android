@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        setBackgroundColor(R.color.colorPointYellowBackground)
+        setBackgroundColor(R.color.colorPointYellow)
 
         binding.ivEmoji.playAnimation()
         binding.ivEmoji.repeatCount = LottieDrawable.INFINITE
@@ -37,6 +37,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.rcvStatement.adapter = MainStatementAdapter(this).apply {
             clearMainStatementList()
             addStatements(arrayListOf(
+                MainStatement(1000, "편의점 김밥"),
+                MainStatement(2000, "편의점 김밥"),
+                MainStatement(3000, "편의점 김밥"),
+                MainStatement(4000, "편의점 김밥"),
+                MainStatement(5000, "편의점 김밥"),
+                MainStatement(6000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥"),
+                MainStatement(8000, "편의점 김밥"),
+                MainStatement(9000, "편의점 김밥"),
+                MainStatement(10000, "편의점 김밥"),
+                MainStatement(9000, "편의점 김밥"),
+                MainStatement(8000, "편의점 김밥"),
+                MainStatement(7000, "편의점 김밥")
             ))
         }
         binding.rcvStatement.setHasFixedSize(true)

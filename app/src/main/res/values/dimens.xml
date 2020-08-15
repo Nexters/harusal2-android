@@ -2,4 +2,5 @@
 <resources>
     <dimen name="keyboard_row_height">64.25dp</dimen>
     <dimen name="keyboard_text_size">20sp</dimen>
+    <dimen name="item_main_statement_height">56dp</dimen>
 </resources>
