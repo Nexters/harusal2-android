@@ -9,11 +9,13 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_whole"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FBB606">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/layout_appbar"
             android:layout_width="match_parent"
             android:layout_height="360dp"
             android:background="#FBB606">
@@ -31,19 +33,19 @@
                     android:layout_height="60dp">
 
                     <ImageView
-                        android:id="@+id/iv_1"
+                        android:id="@+id/iv_menu"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_launcher_background"
+                        android:src="@drawable/icn_menu_24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="20dp"
                         android:layout_centerVertical="true"/>
                     <ImageView
-                        android:id="@+id/iv_2"
+                        android:id="@+id/iv_list"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_launcher_background"
-                        android:layout_toStartOf="@id/iv_1"
+                        android:src="@drawable/icn_list_24"
+                        android:layout_toStartOf="@id/iv_menu"
                         android:layout_marginEnd="12dp"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
