@@ -48,11 +48,11 @@
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
 
-                <ImageView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/iv_emoji"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher_background"/>
+                    app:lottie_fileName="welcome_coin.json"/>
 
                 <TextView
                     android:id="@+id/tv_current_money"

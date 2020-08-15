@@ -2,6 +2,7 @@ package com.nexters.zzallang.harusal2.ui.main
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
@@ -14,6 +15,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun layoutRes(): Int = R.layout.activity_main
     override val viewModel: MainViewModel by viewModel()
 
+    private val LOTTIE_INFINITE_COUNT: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -22,6 +25,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun bindingView() {
         super.bindingView()
+
+        binding.ivEmoji.playAnimation()
+        binding.ivEmoji.repeatCount = LOTTIE_INFINITE_COUNT
 
         binding.rcvStatement.layoutManager = LinearLayoutManager(this)
         binding.rcvStatement.addItemDecoration(MainStatementDecoration())
