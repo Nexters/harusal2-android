@@ -63,4 +63,6 @@ dependencies {
     releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_version"
 
     implementation 'com.google.android.material:material:1.2.0'
+
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
