@@ -141,7 +141,7 @@
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorKeyboardBackground"
             app:field="@+id/edit_register_budget"
@@ -149,7 +149,7 @@
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:topMargin="60" />
+            />
 
         <Button
             android:id="@+id/btn_next"

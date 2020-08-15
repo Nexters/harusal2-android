@@ -24,7 +24,6 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
 
         binding.pickerDay.minValue = 1
         binding.pickerDay.maxValue = DateUtils.getLastDayOfMonth()
-
         binding.pickerDay.setOnValueChangedListener({ picker, oldVal, newVal ->
             viewModel.pickedDayChanged(newVal)
         })
