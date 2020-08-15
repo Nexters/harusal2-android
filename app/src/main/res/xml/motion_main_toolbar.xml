@@ -14,12 +14,21 @@
             motion:layout_constraintTop_toTopOf="parent"/>
 
         <Constraint
+            android:id="@+id/layout_speech_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layout_top"
+            android:layout_marginTop="32dp"/>
+
+        <Constraint
             android:id="@+id/iv_emoji"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/layout_top"/>
+            motion:layout_constraintTop_toBottomOf="@id/layout_speech_bubble"/>
 
         <Constraint
             android:id="@+id/tv_current_money"
@@ -48,7 +57,16 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="160dp" />
+            android:layout_marginTop="220dp" />
+
+        <Constraint
+            android:id="@+id/layout_speech_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/iv_emoji"
+            android:layout_marginTop="32dp"/>
 
         <Constraint
             android:id="@+id/iv_emoji"
@@ -56,7 +74,7 @@
             android:layout_width="wrap_content"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="@id/parent"/>
+            motion:layout_constraintBottom_toTopOf="@id/layout_top"/>
 
         <Constraint
             android:id="@+id/tv_current_money"
