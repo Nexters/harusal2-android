@@ -2,7 +2,6 @@ package com.nexters.zzallang.harusal2.keyboard.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.TextView
 

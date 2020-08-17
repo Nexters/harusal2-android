@@ -2,4 +2,5 @@
 <resources>
     <dimen name="keyboard_row_height">64.25dp</dimen>
     <dimen name="keyboard_text_size">20sp</dimen>
+    <dimen name="btn_round_radius">10dp</dimen>
 </resources>
