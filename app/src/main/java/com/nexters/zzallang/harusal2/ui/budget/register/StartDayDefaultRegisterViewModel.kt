@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.register
+package com.nexters.zzallang.harusal2.ui.budget.register
 
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
@@ -9,16 +9,13 @@ class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase)
 
     fun getDescription():String {
         return StringBuilder()
-            .append("오늘은 ").append(day).append("일입니다.\n")
-            .append("매달 ").append(day).append("일을 시작일자로\n")
-            .append("지정할까요?")
+            .append("매달 ").append(day).append("일을\n")
+            .append("시작일자로 할까요?")
             .toString()
     }
 
-    fun getButtonText():String{
-        return StringBuilder()
-            .append(day).append("일로 시작하기")
-            .toString()
+    fun getDay():Int{
+        return day
     }
 
     fun saveBudgetDay() {

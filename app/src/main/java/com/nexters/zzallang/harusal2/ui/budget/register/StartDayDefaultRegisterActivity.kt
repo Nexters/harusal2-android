@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.register
+package com.nexters.zzallang.harusal2.ui.budget.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -20,8 +20,8 @@ class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultB
 
     override fun bindingView() {
         super.bindingView()
-        binding.tvDescription.text = viewModel.getDescription()
-        binding.btnComplete.text = viewModel.getButtonText()
+        binding.tvNoticeDay.text = viewModel.getDescription()
+        binding.tvDescription.text = viewModel.getDay().toString()
 
         binding.btnPrev.setOnClickListener {
             val intent = Intent(this, BudgetRegisterActivity::class.java)

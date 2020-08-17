@@ -8,9 +8,9 @@ import com.nexters.zzallang.harusal2.databinding.ActivityBridgeBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetChangeActivity
 import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayChangeActivity
-import com.nexters.zzallang.harusal2.ui.register.StartDayDefaultRegisterActivity
-import com.nexters.zzallang.harusal2.ui.register.BudgetRegisterActivity
-import com.nexters.zzallang.harusal2.ui.register.StartDayClickRegisterActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BridgeActivity: BaseActivity<ActivityBridgeBinding>() {

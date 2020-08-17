@@ -1,7 +1,8 @@
-package com.nexters.zzallang.harusal2.ui.register
+package com.nexters.zzallang.harusal2.ui.budget.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
@@ -22,12 +23,20 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        //TODO - 양방향 무한 호출 개선
         viewModel.budget.observe(this, Observer {
+
+            when (it) {
+                "" -> {
+                    binding.layoutWarningWrapper.visibility = View.INVISIBLE
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
+                }
+                else -> {
+                    binding.layoutWarningWrapper.visibility = View.VISIBLE
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
+                }
+            }
             viewModel.budgetChanged(it)
         })
-
-        binding.btnClear.setOnClickListener { viewModel.textClear() }
 
         binding.btnNext.setOnClickListener {
             viewModel.saveBudget()

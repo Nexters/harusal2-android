@@ -27,10 +27,6 @@ class BudgetChangeActivity : BaseActivity<ActivityChangeBudgetBinding>() {
             binding.editRegisterBudget.setSelection(binding.editRegisterBudget.text.length)
         })
 
-        binding.btnReset.setOnClickListener {
-            viewModel.reset()
-        }
-
         binding.btnPrev.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)

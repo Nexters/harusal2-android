@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.budget.edit
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.DateUtils
@@ -16,7 +15,9 @@ class StartDayChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
     val pickedDay = MutableLiveData(15)
 
     init {
-        reset()
+        val savedDay = budgetUseCase.getStartDate()
+        pickedDay.postValue(savedDay)
+        setDescription(savedDay)
     }
 
     fun saveBudgetDay() {
@@ -26,12 +27,6 @@ class StartDayChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
     fun pickedDayChanged(pickedDay: Int) {
         this.pickedDay.postValue(pickedDay)
         this.setDescription(pickedDay)
-    }
-
-    fun reset(){
-        val savedDay = budgetUseCase.getStartDate()
-        pickedDay.postValue(savedDay)
-        setDescription(savedDay)
     }
 
     private fun setDescription(pickedDay: Int) {

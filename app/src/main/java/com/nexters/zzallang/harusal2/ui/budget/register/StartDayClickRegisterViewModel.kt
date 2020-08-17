@@ -1,8 +1,7 @@
-package com.nexters.zzallang.harusal2.ui.register
+package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getDay
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMonth
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getMonth
@@ -23,7 +22,6 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
         budgetUseCase.setStartDate(pickedDay.value?:todayDay)
     }
 
-    //TODO - 양방향 무한 호출 개선
     fun pickedDayChanged(pickedDay: Int) {
         this.pickedDay.postValue(pickedDay)
         this.setDescription(pickedDay)
@@ -41,9 +39,10 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
         }
 
         _description.postValue(
-            StringBuilder("생활비 사용기간은\n")
-                .append(thisMonth).append(".").append(pickedDay).append(" ~ ")
-                .append(nextMonth).append(".").append(endDay).append("입니다.")
+            StringBuilder("생활비 사용기간은 ")
+                .append(thisMonth).append(".").append(pickedDay)
+                .append(" - ")
+                .append(nextMonth).append(".").append(endDay)
                 .toString()
         )
     }

@@ -7,7 +7,6 @@ import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityChangeDayBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
-import com.nexters.zzallang.harusal2.ui.register.StartDayDefaultRegisterActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StartDayChangeActivity : BaseActivity<ActivityChangeDayBinding>() {
@@ -31,7 +30,6 @@ class StartDayChangeActivity : BaseActivity<ActivityChangeDayBinding>() {
         })
 
         binding.btnPrev.setOnClickListener { this.startActivity(Intent(this, MainActivity::class.java)) }
-        binding.btnReset.setOnClickListener { viewModel.reset() }
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudgetDay()
             this.startActivity(Intent(this, MainActivity::class.java))

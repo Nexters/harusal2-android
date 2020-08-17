@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.register.BudgetRegisterActivity"/>
-        <activity android:name=".ui.register.StartDayDefaultRegisterActivity"/>
-        <activity android:name=".ui.register.StartDayClickRegisterActivity"/>
         <activity android:name=".ui.budget.edit.BudgetChangeActivity"/>
         <activity android:name=".ui.budget.edit.StartDayChangeActivity"/>
+        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity"/>
+        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity"/>
+        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity"/>
     </application>
 
 </manifest>

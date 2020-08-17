@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.register.BudgetRegisterViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +14,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--HEADER-->
         <TextView
             android:id="@+id/tv_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="예산 설정"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintRight_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,127 +36,129 @@
             android:layout_marginRight="24dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_close_btn"
+            android:src="@drawable/ic_close_24"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_page"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_header" />
-
+        <!--Body-->
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="51dp"
             android:text="이번달 예산은\n얼마인가요?"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorDarkBlack"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_page" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_header" />
 
-        <TextView
-            android:id="@+id/tv_avg_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/iv_page"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:text="하루 생활비 "
-            android:textColor="@color/colorSubDescription"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@{vm.averageBudget}"
-            android:textColor="@color/colorSubDescription"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/tv_avg_description"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_pagenation_1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_header" />
 
         <EditText
             android:id="@+id/edit_register_budget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginRight="24dp"
-            android:background="@android:color/transparent"
-            android:hint="예산 입력"
-            android:inputType="number"
-            android:text="@={vm.budget}"
-            android:textColor="@color/colorBlack"
-            android:textSize="40sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_avg_description" />
-
-        <ImageButton
-            android:id="@+id/btn_clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="16dp"
-            android:background="@null"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_clear_btn"
-            app:layout_constraintBottom_toTopOf="@id/line_guide"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="38sp"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:hint="0"
+            android:inputType="number"
+            android:text="@={vm.budget}"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="38sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
-        <View
-            android:id="@+id/line_guide"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="24dp"
-            android:background="#000000"
+        <TextView
+            android:id="@+id/tv_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="원"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="38sp"
+            app:layout_constraintStart_toEndOf="@id/edit_register_budget"
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{vm.hangeulBudget}"
+            android:textColor="@color/colorGray"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_register_budget" />
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/layout_warning_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="8dp"
-            android:text="@{vm.hangeulBudget}"
-            android:textColor="@color/colorSubDescription"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
+            app:layout_constraintLeft_toLeftOf="parent">
 
-            app:layout_constraintTop_toBottomOf="@id/line_guide" />
+            <ImageView
+                android:id="@+id/iv_warning"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_info_18" />
+
+            <TextView
+                android:id="@+id/tv_avg_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="이번달 하루 생활비 "
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_avg_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.averageBudget}"
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/colorKeyboardBackground"
+            android:background="@color/colorLightGray"
             app:field="@+id/edit_register_budget"
             app:fieldMaxLength="15"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:topMargin="60" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:background="@color/colorDarkGray"
+            android:background="@color/colorBtnBlack"
             android:text="다음"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

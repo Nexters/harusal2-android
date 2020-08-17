@@ -42,13 +42,6 @@ class BudgetChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseView
         budgetUseCase.setAmount(savedBudget)
     }
 
-    fun reset() {
-        budget.postValue(
-            budgetUseCase.getAmount().toString()
-        )
-
-    }
-
     private fun textClear() {
         setHangleBudget(0)
         setAverageBudget("0원")
