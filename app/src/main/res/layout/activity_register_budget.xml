@@ -36,7 +36,7 @@
             android:layout_marginRight="24dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_close_btn"
+            android:src="@drawable/ic_close_24"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,38 +105,38 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_register_budget" />
 
-        <ImageView
-            android:id="@+id/iv_warning"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_info_18"
-            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_avg_description"
+        <LinearLayout
+            android:id="@+id/layout_warning_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginBottom="21dp"
-            android:text="이번달 하루 생활비 "
-            android:textColor="@color/colorWarning"
-            android:textSize="12sp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
-            app:layout_constraintLeft_toRightOf="@id/iv_warning" />
+            app:layout_constraintLeft_toLeftOf="parent">
 
-        <TextView
-            android:id="@+id/tv_avg_budget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="21dp"
-            android:text="@{vm.averageBudget}"
-            android:textColor="@color/colorWarning"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/keyboard_numeric"
-            app:layout_constraintStart_toEndOf="@id/tv_avg_description" />
+            <ImageView
+                android:id="@+id/iv_warning"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_info_18" />
+
+            <TextView
+                android:id="@+id/tv_avg_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="이번달 하루 생활비 "
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_avg_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.averageBudget}"
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"
@@ -148,8 +148,7 @@
             app:fieldMaxLength="15"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/btn_next"

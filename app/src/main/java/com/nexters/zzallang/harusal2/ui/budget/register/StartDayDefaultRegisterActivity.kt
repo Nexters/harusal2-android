@@ -20,7 +20,7 @@ class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultB
 
     override fun bindingView() {
         super.bindingView()
-        binding.tvPostfixDescription2.text = viewModel.getDescription()
+        binding.tvNoticeDay.text = viewModel.getDescription()
         binding.tvDescription.text = viewModel.getDay().toString()
 
         binding.btnPrev.setOnClickListener {
