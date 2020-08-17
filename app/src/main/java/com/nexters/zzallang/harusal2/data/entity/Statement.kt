@@ -1,6 +1,9 @@
 package com.nexters.zzallang.harusal2.data.entity
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.nexters.zzallang.harusal2.data.DateConverter
 import java.util.*
 

@@ -6,8 +6,10 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityBridgeBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity
+import com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
-import com.nexters.zzallang.harusal2.ui.history.HistoryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BridgeActivity : BaseActivity<ActivityBridgeBinding>() {
@@ -21,7 +23,10 @@ class BridgeActivity : BaseActivity<ActivityBridgeBinding>() {
             val bridgeAdapter = BridgeAdapter(this@BridgeActivity)
             bridgeAdapter.activityList = arrayListOf(
                 MainActivity::class.java,
-                HistoryActivity::class.java
+                HistoryActivity::class.java,
+                BudgetRegisterActivity::class.java,
+                StartDayDefaultRegisterActivity::class.java,
+                StartDayClickRegisterActivity::class.java
             )
             adapter = bridgeAdapter
             layoutManager = LinearLayoutManager(this@BridgeActivity)
