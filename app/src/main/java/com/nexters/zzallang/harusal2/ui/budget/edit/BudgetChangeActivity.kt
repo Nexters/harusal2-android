@@ -29,12 +29,14 @@ class BudgetChangeActivity : BaseActivity<ActivityChangeBudgetBinding>() {
 
         binding.btnPrev.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            this.startActivity(intent)
+            this.finish()
+//            this.startActivity(intent)
         }
 
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudget()
             val intent = Intent(this, MainActivity::class.java)
+            this.finish()
             this.startActivity(intent)
         }
     }

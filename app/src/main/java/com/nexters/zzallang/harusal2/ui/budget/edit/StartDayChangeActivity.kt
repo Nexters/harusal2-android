@@ -29,7 +29,7 @@ class StartDayChangeActivity : BaseActivity<ActivityChangeDayBinding>() {
             viewModel.pickedDayChanged(newVal)
         })
 
-        binding.btnPrev.setOnClickListener { this.startActivity(Intent(this, MainActivity::class.java)) }
+        binding.btnPrev.setOnClickListener { this.finish() }
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudgetDay()
             this.startActivity(Intent(this, MainActivity::class.java))
