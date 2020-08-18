@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.statement
+package com.nexters.zzallang.harusal2.ui.statement.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,11 +16,14 @@ class AddStatementActivity: BaseActivity<ActivityAddStatementBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container_add_statement, AddInputFragment()).commit()
     }
 
     override fun bindingView() {
         super.bindingView()
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container_add_statement,
+            AddInputFragment()
+        ).commit()
+
         binding.btnStatementX.setOnClickListener {
             finish()
             val intent = Intent(this, MainActivity::class.java)

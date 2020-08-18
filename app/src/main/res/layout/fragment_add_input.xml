@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.statement.AddInputViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.statement.register.AddInputViewModel" />
 
     </data>
 

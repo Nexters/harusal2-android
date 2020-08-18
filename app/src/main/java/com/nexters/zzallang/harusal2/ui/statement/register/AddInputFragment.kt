@@ -1,7 +1,6 @@
-package com.nexters.zzallang.harusal2.ui.statement
+package com.nexters.zzallang.harusal2.ui.statement.register
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,9 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
         binding.btnStatementNext.setOnClickListener {
             setFragmentResult("statement_data_passing", bundleOf("amount" to viewModel.statementAmount.value.toString()))
             setFragmentResult("statement_data_passing", bundleOf("type" to viewModel.getType()))
-            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_add_statement, AddMemoFragment()).addToBackStack(null).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_add_statement,
+                AddMemoFragment()
+            ).addToBackStack(null).commit()
         }
     }
 }

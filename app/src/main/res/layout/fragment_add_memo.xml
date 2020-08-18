@@ -6,14 +6,14 @@
     <data>
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.statement.AddMemoViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.statement.register.AddMemoViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.statement.AddMemoFragment">
+        tools:context=".ui.statement.register.AddMemoFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

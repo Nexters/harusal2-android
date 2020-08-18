@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.statement
+package com.nexters.zzallang.harusal2.ui.statement.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
