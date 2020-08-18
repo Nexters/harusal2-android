@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.nexters.zzallang.harusal2.ui.statement.AddMemoViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.statement.AddMemoFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_statement_memo_btn"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_statement_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="32dp"
+                android:text="금액"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/tv_statement_amount"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_amount_title"
+                android:layout_marginTop="12dp"
+                android:padding="17dp"
+                android:background="@drawable/shape_round_edit_gray"
+                android:text="@{vm.stateAmount}"
+                android:textStyle="bold"
+                android:textColor="@color/colorDarkBlack"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_statement_memo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_amount"
+                android:layout_marginTop="40dp"
+                android:text="내역"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_memo_title"
+                android:layout_marginTop="12dp"
+                android:padding="17dp"
+                android:background="@drawable/selector_edit"
+                android:hint="내역을 입력해주세요."
+                android:text="@={vm.stateMemo}"
+                android:textSize="16sp"
+                android:textColor="@color/colorDarkBlack"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:maxLength="20"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_statement_memo_btn"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/btn_statement_pre"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/btn_statement_done"
+                android:background="@color/colorBtnBlack"
+                android:text="이전"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btn_statement_done"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/btn_statement_pre"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@color/colorPointYellow"
+                android:text="완료"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@android:color/white">
+
+            </Button>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
