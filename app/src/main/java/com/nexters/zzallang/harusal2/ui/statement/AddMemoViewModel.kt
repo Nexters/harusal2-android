@@ -23,8 +23,9 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase): BaseView
         statementType = type
     }
 
-    // TODO : id auto increment / Date format..? / Statement type ( entity type을 사용하는 게 이상한데..흠 )
-    fun createStatement(){
-        // statementUseCase.insertData()
+    // TODO : id auto increment!/ Date format? / memo amount nullable?
+    suspend fun createStatement(){
+        val statementData = Statement(0L, Date(), stateMemo.value ?: "", (stateAmount.value ?: "0").toInt(), statementType)
+        statementUseCase.insertData(statementData)
     }
 }

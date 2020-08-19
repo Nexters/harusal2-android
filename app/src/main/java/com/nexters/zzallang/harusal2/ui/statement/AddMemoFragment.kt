@@ -12,6 +12,8 @@ import com.nexters.zzallang.harusal2.application.App
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
@@ -40,8 +42,9 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
         }
 
         binding.btnStatementDone.setOnClickListener {
-            // TODO createStatement 구현 후 주석 해제하기
-            //viewModel.createStatement()
+            GlobalScope.launch {
+                viewModel.createStatement()
+            }
             val intent = Intent()
             intent.setClass(App.app, MainActivity::class.java)
             startActivity(intent)
