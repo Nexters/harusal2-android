@@ -32,11 +32,8 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        // TODO amount get..null.. whyrano..
-        setFragmentResultListener("statement_data_passing"){ _, bundle ->
-            viewModel.setAmount(bundle.getString("amount", "0"))
-            viewModel.setType(bundle.getInt("type"))
-        }
+        viewModel.setAmount(requireArguments().getString("amount") ?: "0")
+        viewModel.setType(requireArguments().getInt("type"))
 
         binding.btnStatementPre.setOnClickListener {
             parentFragmentManager.popBackStack()

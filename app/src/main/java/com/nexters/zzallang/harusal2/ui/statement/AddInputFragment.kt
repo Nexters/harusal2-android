@@ -38,9 +38,12 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
         })
 
         binding.btnStatementNext.setOnClickListener {
-            setFragmentResult("statement_data_passing", bundleOf("amount" to viewModel.statementAmount.value.toString()))
-            setFragmentResult("statement_data_passing", bundleOf("type" to viewModel.getType()))
-            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_add_statement, AddMemoFragment()).addToBackStack(null).commit()
+            val bundle = Bundle()
+            bundle.putInt("type", viewModel.getType())
+            bundle.putString("amount", viewModel.statementAmount.value)
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_add_statement, AddMemoFragment().apply {
+                arguments = bundle
+            }).addToBackStack(null).commit()
         }
     }
 }
