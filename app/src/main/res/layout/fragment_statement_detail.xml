@@ -41,7 +41,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_date"
                 android:layout_marginTop="40dp"
-                android:text="금액"
+                android:text="@string/amount_title"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:textColor="@color/colorGray">
@@ -67,7 +67,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount"
                 android:layout_marginTop="40dp"
-                android:text="내역"
+                android:text="@string/memo_title"
                 android:textStyle="normal"
                 android:textSize="16sp"
                 android:textColor="@color/colorGray"/>
@@ -92,7 +92,7 @@
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/colorBtnBlack"
-            android:text="수정하기"
+            android:text="@string/btn_text_edit"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="16sp"
