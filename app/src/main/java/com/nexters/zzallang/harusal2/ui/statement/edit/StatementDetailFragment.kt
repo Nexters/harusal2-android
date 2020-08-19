@@ -26,5 +26,22 @@ class StatementDetailFragment: BaseFragment<FragmentStatementDetailBinding>() {
 
     override fun bindingView() {
         super.bindingView()
+
+        // TODO : 뷰 연결하면 수정
+        viewModel.setDate("2020.07.22")
+        viewModel.setAmount("5400")
+        viewModel.setMemo("편의점 김밥")
+
+        binding.btnStatementDetailEdit.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("date", viewModel.getDate())
+            bundle.putString("amount", viewModel.getAmount())
+            bundle.putString("memo", viewModel.getMemo())
+            parentFragmentManager.beginTransaction().replace(R.id.fragment_container_statement,
+                StatementEditFragment().apply {
+                    arguments = bundle
+                }
+            ).addToBackStack(null).commit()
+        }
     }
 }

@@ -18,6 +18,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
+                android:id="@+id/btn_statement_back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -30,6 +31,7 @@
             </ImageButton>
 
             <ImageButton
+                android:id="@+id/btn_statement_delete"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 app:layout_constraintRight_toRightOf="parent"

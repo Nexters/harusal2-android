@@ -57,6 +57,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/btn_edit_type_out"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -67,10 +68,12 @@
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    android:textColor="@color/btn_text_color">
+                    android:textColor="@color/btn_text_color"
+                    android:onClick="@{()->vm.setTypeOut()}">
 
                 </RadioButton>
                 <RadioButton
+                    android:id="@+id/btn_edit_type_in"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -80,7 +83,8 @@
                     android:textStyle="normal"
                     android:textSize="14sp"
                     android:textColor="@color/btn_text_color"
-                    android:button="@android:color/transparent">
+                    android:button="@android:color/transparent"
+                    android:onClick="@{()->vm.setTypeIn()}">
 
                 </RadioButton>
 
@@ -94,7 +98,7 @@
                 android:layout_marginTop="8sp"
                 android:background="@drawable/selector_edit"
                 android:padding="17dp"
-                android:text="5400원"
+                android:text="@={vm.statementAmount}"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -122,7 +126,7 @@
                 android:layout_marginTop="8sp"
                 android:background="@drawable/selector_edit"
                 android:padding="17dp"
-                android:text="편의점 김밥"
+                android:text="@={vm.statementMemo}"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
