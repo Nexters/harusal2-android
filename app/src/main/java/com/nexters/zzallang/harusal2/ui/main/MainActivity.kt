@@ -34,7 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.rcvStatement.layoutManager = LinearLayoutManager(this)
         binding.rcvStatement.addItemDecoration(MainStatementDecoration())
-        binding.rcvStatement.adapter = MainStatementAdapter(this).apply {
+        binding.rcvStatement.adapter = MainStatementAdapter().apply {
             clearMainStatementList()
             addStatements(arrayListOf())
         }

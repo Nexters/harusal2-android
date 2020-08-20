@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.main.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import com.nexters.zzallang.harusal2.ui.main.model.BaseMainRecyclerViewStatement
 import com.nexters.zzallang.harusal2.ui.main.model.MainDate
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
 
-class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
+class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
     private val statementList = arrayListOf<MainStatement>()
     private val date = MainDate(DateUtils.getToday())
 
@@ -24,7 +23,7 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
             0 -> MainDateViewHolder(
                 DataBindingUtil
                     .inflate(
-                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                        LayoutInflater.from(parent.context),
                         R.layout.item_main_date,
                         parent,
                         false
@@ -33,7 +32,7 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
             1 -> MainEmptyStatementViewHolder(
                 DataBindingUtil
                     .inflate(
-                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                        LayoutInflater.from(parent.context),
                         R.layout.item_main_statement_empty,
                         parent,
                         false
@@ -43,7 +42,7 @@ class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<
                 MainStatementViewHolder(
                     DataBindingUtil
                         .inflate(
-                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                            LayoutInflater.from(parent.context),
                             R.layout.item_main_statement,
                             parent,
                             false
