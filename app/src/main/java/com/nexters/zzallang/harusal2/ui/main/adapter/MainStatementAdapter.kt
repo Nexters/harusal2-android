@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.main.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.databinding.ItemMainDateBinding
 import com.nexters.zzallang.harusal2.databinding.ItemMainStatementBinding
 import com.nexters.zzallang.harusal2.databinding.ItemMainStatementEmptyBinding
@@ -17,8 +17,7 @@ import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
 
 class MainStatementAdapter(private val context: Context) : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
     private val statementList = arrayListOf<MainStatement>()
-    /* TODO: date set, get 만들자 */
-    private val date = MainDate("2020.07.20")
+    private val date = MainDate(DateUtils.getToday())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         when (viewType) {
