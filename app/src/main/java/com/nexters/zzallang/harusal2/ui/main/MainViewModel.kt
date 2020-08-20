@@ -12,12 +12,4 @@ class MainViewModel(
 ) : BaseViewModel() {
     private val _todayMoney = MutableLiveData<String>("10000원")
     val todayMoney: LiveData<String> get() = _todayMoney
-
-    fun budgetPlus() {
-        budgetUseCase.setAmount(0L)
-    }
-
-    fun isBudgetEmpty(): Boolean {
-        return budgetUseCase.getAmount() == 0L
-    }
 }
