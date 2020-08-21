@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentEditStatementBinding
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +48,19 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
                 if(isFocused) binding.layoutStatementEditKeypad.visibility = View.VISIBLE
                 else binding.layoutStatementEditKeypad.visibility = View.GONE
             }
+
+        binding.btnGroupStatementEdit.setOnCheckedChangeListener { radioGroup, id ->
+            var type = Constants.STATEMENT_TYPE_DEFALT
+            when(id){
+                binding.btnEditTypeOut.id -> {
+                    type = Constants.STATEMENT_TYPE_OUT
+                }
+                binding.btnEditTypeIn.id -> {
+                    type = Constants.STATEMENT_TYPE_IN
+                }
+            }
+            viewModel.setType(type)
+        }
 
         binding.btnStatementEditKeypad.setOnClickListener {
             binding.editStatementEditAmount.clearFocus()

@@ -67,8 +67,7 @@
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    android:textColor="@color/btn_text_color"
-                    android:onClick="@{()->vm.setTypeOut()}">
+                    android:textColor="@color/btn_text_color">
 
                 </RadioButton>
                 <RadioButton
@@ -83,7 +82,7 @@
                     android:textSize="14sp"
                     android:textColor="@color/btn_text_color"
                     android:button="@android:color/transparent"
-                    android:onClick="@{()->vm.setTypeIn()}">
+                    >
 
                 </RadioButton>
 

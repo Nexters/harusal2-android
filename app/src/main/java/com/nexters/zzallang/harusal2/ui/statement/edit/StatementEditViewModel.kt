@@ -12,22 +12,12 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase): Ba
     val statementMemo = MutableLiveData("")
     private var statementType = Constants.STATEMENT_TYPE_DEFALT
 
-    fun setTypeIn(){
-        statementType = Constants.STATEMENT_TYPE_IN
+    fun setType(type: Int){
+        statementType = type
     }
 
-    fun setTypeOut(){
-        statementType = Constants.STATEMENT_TYPE_OUT
-    }
-
-    /*
-     TODO :
-     id > auto로 해야하지 않는가 제안하기
-     Date format 물어보기
-     amount and memo nullable 고민
-     */
     suspend fun updateStatement(){
-        val statementModel = Statement(0L, Date(), statementMemo.value ?: "", (statementAmount.value ?: "0").toInt(), statementType)
+        val statementModel = Statement(date = Date(System.currentTimeMillis()), content = statementMemo.value ?: "", amount = (statementAmount.value ?: "0").toInt(), type = statementType)
         statementUseCase.updateStatement(statementModel)
     }
 }
