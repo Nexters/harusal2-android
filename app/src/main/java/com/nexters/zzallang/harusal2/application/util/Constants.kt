@@ -10,4 +10,5 @@ object Constants {
 
     const val STATEMENT_TYPE_IN: Int = 0
     const val STATEMENT_TYPE_OUT: Int = 1
+    const val STATEMENT_TYPE_DEFALT: Int = STATEMENT_TYPE_OUT
 }

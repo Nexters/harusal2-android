@@ -1,17 +1,15 @@
 package com.nexters.zzallang.harusal2.ui.statement
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddInputBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.lifecycle.Observer
+import com.nexters.zzallang.harusal2.application.util.Constants
 
 class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
     override fun layoutRes(): Int = R.layout.fragment_add_input
@@ -36,6 +34,19 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
             else binding.tvStatementUnit.setTextColor(resources.getColor(android.R.color.black))
             viewModel.updateConvertedAmount(it)
         })
+
+        binding.statementType.setOnCheckedChangeListener { radioGroup, id ->
+            var type = Constants.STATEMENT_TYPE_DEFALT
+            when(id){
+                binding.btnStatementOut.id -> {
+                    type = Constants.STATEMENT_TYPE_OUT
+                }
+                binding.btnStatementIn.id -> {
+                    type = Constants.STATEMENT_TYPE_IN
+                }
+            }
+            viewModel.setType(type)
+        }
 
         binding.btnStatementNext.setOnClickListener {
             val bundle = Bundle()

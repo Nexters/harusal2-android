@@ -12,12 +12,8 @@ class AddInputViewModel: BaseViewModel() {
     val statementAmount = MutableLiveData("")
     val convertedAmount : LiveData<String> get() = _convertedAmount
 
-    fun setTypeIn(){
-        statementType = Constants.STATEMENT_TYPE_IN
-    }
-
-    fun setTypeOut(){
-        statementType = Constants.STATEMENT_TYPE_OUT
+    fun setType(type: Int){
+        statementType = type
     }
 
     fun getType():Int{

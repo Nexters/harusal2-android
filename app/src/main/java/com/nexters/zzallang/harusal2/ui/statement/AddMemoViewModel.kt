@@ -23,9 +23,8 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase): BaseView
         statementType = type
     }
 
-    // TODO : id auto increment!/ Date format? / memo amount nullable?
     suspend fun createStatement(){
-        val statementData = Statement(0L, Date(), stateMemo.value ?: "", (stateAmount.value ?: "0").toInt(), statementType)
+        val statementData = Statement(date = Date(System.currentTimeMillis()), content = stateMemo.value ?: "", amount = (stateAmount.value ?: "0").toInt(), type = statementType)
         statementUseCase.insertData(statementData)
     }
 }
