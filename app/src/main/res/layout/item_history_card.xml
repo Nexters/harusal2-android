@@ -6,84 +6,99 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_history_card_background">
+        android:background="@drawable/shape_history_card_background"
+        android:elevation="10dp">
 
-        <!--TITLE-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="144dp"
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="64dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:text="22"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="48sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_day"
-                android:layout_width="64dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                android:text="22"
-                android:textColor="@color/colorDarkBlack"
-                android:textSize="48sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_spending_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="27dp"
+            android:text="나간 돈"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_day"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_spending_text"
-                android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_spending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginRight="20dp"
+            android:text="8000원"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_income_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="8dp"
+            android:text="들어온 돈"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_day"
+            app:layout_constraintTop_toBottomOf="@id/tv_spending_text" />
+
+        <TextView
+            android:id="@+id/tv_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:text="8000원"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_spending" />
+
+        <LinearLayout
+            android:id="@+id/layout_history_item_wrapper"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_income_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_expand"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_history_item"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="27dp"
-                android:text="나간 돈"
-                android:textColor="@color/colorDarkBlack"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toRightOf="@id/tv_day"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_spending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:layout_marginRight="20dp"
-                android:text="8000원"
-                android:textColor="@color/colorDarkBlack"
-                android:textSize="16sp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_income_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="8dp"
-                android:text="들어온 돈"
-                android:textColor="@color/colorDarkBlack"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toRightOf="@id/tv_day"
-                app:layout_constraintTop_toBottomOf="@id/tv_spending_text" />
-
-            <TextView
-                android:id="@+id/tv_income"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="20dp"
-                android:text="8000원"
-                android:textColor="@color/colorDarkBlack"
-                android:textSize="16sp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_spending" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/ic_btn_dropdown_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/btn_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_btn_dropdown_24"
+            app:layout_constraintTop_toBottomOf="@id/layout_history_item_wrapper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
