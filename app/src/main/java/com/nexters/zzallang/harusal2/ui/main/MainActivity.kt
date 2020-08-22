@@ -22,6 +22,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+
+        viewModel.refreshTodaySpendMoney()
     }
 
     override fun bindingView() {

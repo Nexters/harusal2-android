@@ -89,7 +89,8 @@
                     android:id="@+id/tv_current_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10,000원"
+                    android:text="@{vm.todaySpendMoney}"
+                    tools:text="10,000원"
                     android:textColor="#FFF"
                     android:textSize="38sp"/>
 
