@@ -145,7 +145,7 @@
             android:layout_gravity="bottom"
             android:background="@color/colorLightGray"
             app:field="@+id/edit_register_budget"
-            app:fieldMaxLength="15"
+            app:fieldMaxLength="10"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
