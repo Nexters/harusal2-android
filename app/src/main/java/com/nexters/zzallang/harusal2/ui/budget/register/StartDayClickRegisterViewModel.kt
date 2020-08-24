@@ -8,7 +8,6 @@ import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMont
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getMonth
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
@@ -23,7 +22,7 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
     }
 
     fun saveBudgetDay(budget: Int) {
-        GlobalScope.launch {
+        launch {
             budgetUseCase.insertBudget(
                 budget,
                 DateUtils.getTodayDate()

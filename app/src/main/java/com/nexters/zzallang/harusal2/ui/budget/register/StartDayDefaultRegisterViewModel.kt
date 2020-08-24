@@ -3,7 +3,6 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
@@ -22,8 +21,7 @@ class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase)
 
     fun saveBudgetDay(budget: Int) {
         val todayDate = DateUtils.getTodayDate()
-
-        GlobalScope.launch {
+        launch {
             budgetUseCase.insertBudget(
                 budget,
                 todayDate

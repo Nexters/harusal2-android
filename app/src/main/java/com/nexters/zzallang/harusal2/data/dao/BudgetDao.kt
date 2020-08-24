@@ -5,7 +5,7 @@ import com.nexters.zzallang.harusal2.data.entity.Budget
 
 @Dao
 interface BudgetDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertBudget(budget: Budget)
 
     @Query("select * from budget order by id desc LIMIT 1")
