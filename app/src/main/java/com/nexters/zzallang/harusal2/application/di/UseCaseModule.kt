@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val useCaseModule = module {
     single { StatementUseCase(get()) }
-    single { BudgetUseCase() }
+    single { BudgetUseCase(get()) }
 }
