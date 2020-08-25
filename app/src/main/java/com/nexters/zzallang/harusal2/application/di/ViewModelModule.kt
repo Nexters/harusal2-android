@@ -11,5 +11,5 @@ val viewModelModule = module {
     viewModel { BudgetRegisterViewModel(get()) }
     viewModel { StartDayDefaultRegisterViewModel(get()) }
     viewModel { StartDayClickRegisterViewModel(get()) }
-    viewModel { MainViewModel(get(), get()) }
+    viewModel { MainViewModel(get()) }
 }

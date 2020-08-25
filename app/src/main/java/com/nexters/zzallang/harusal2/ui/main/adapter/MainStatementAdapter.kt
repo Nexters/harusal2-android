@@ -80,12 +80,14 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
 
     private fun addStatement(item: MainStatement) {
         statementList.add(item)
+        notifyDataSetChanged()
     }
 
-    fun addStatements(items: ArrayList<MainStatement>) {
+    fun addStatements(items: List<MainStatement>) {
         for (item in items) {
             addStatement(item)
         }
+        notifyDataSetChanged()
     }
 
     abstract class BaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
