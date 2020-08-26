@@ -25,4 +25,9 @@ class BudgetRepository : BaseRepository(){
         withContext(coroutineContext){
             AppDatabase.instance.periodDao().update(budget)
         }
+
+    suspend fun findAll() =
+        withContext(coroutineContext){
+            AppDatabase.instance.periodDao().findAll()
+        }
 }

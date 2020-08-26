@@ -22,7 +22,7 @@ data class Statement(
         if (this.content.length > SUMMARY_CONTENT_LENGTH) {
             return this.content.substring(0, SUMMARY_CONTENT_LENGTH) + "..."
         }
-        return this.content.substring(0, SUMMARY_CONTENT_LENGTH) + "..."
+        return this.content
     }
 }
 

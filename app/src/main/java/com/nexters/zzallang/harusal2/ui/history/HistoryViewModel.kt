@@ -7,6 +7,7 @@ import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -15,10 +16,18 @@ class HistoryViewModel(
     private val statementUseCase: StatementUseCase
 ) : BaseViewModel() {
     private val todayDate = DateUtils.getTodayDate()
+    var budgetList:List<Budget> = ArrayList()
+
+    suspend fun initBudgetList(){
+        launch {
+            budgetList = budgetUseCase.findAll()
+        }
+    }
 
     suspend fun createHistory(selectedBudget: Budget): ArrayList<BaseHistoryRecyclerItem> {
         val recyclerItem = ArrayList<BaseHistoryRecyclerItem>()
         val recentBudget = budgetUseCase.findRecentBudget()
+
         val histories =
             statementUseCase.findByStartDateBetweenEndDate(
                 selectedBudget.startDate,
