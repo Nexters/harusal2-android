@@ -24,24 +24,26 @@ class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultB
         binding.tvDescription.text = viewModel.getDay().toString()
 
         binding.btnPrev.setOnClickListener {
-            val intent = Intent(this, BudgetRegisterActivity::class.java)
-            this.startActivity(intent)
+            this.startActivity(Intent(this, BudgetRegisterActivity::class.java))
+            this.finish()
         }
 
         binding.btnNext.setOnClickListener {
             val intent = Intent(this, StartDayClickRegisterActivity::class.java)
+            intent.putExtra("budget", this.intent.getStringExtra("budget"))
             this.startActivity(intent)
         }
 
         binding.btnComplete.setOnClickListener {
-            viewModel.saveBudgetDay()
+            viewModel.saveBudgetDay(this.intent.getStringExtra("budget").toInt())
             val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
+            this.finish()
         }
 
         binding.btnClose.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            this.startActivity(intent)
+            this.startActivity(Intent(this, MainActivity::class.java))
+            this.finish()
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.budget.register
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -40,14 +39,16 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
         })
 
         binding.btnNext.setOnClickListener {
-            viewModel.saveBudget()
+//            viewModel.saveBudget()
             val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)
+            intent.putExtra("budget", viewModel.budget.value)
             this.startActivity(intent)
         }
 
         binding.btnClose.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
+            this.finish()
         }
     }
 }

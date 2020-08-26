@@ -38,4 +38,23 @@ object DateUtils {
     }
 
     fun getToday(): String = "${getYear()}.${getMonth()}.${getDay()}"
+
+    fun getTodayDate(): Date{
+        return Date(System.currentTimeMillis())
+    }
+
+    fun endDate(date: Date): Date{
+        val newDate = Date()
+        val argsDate = date.date
+        newDate.month = when (argsDate) {
+            1 -> argsDate
+            else -> argsDate + 1
+        }
+
+        newDate.date = when (argsDate) {
+            1 -> this.getLastDayOfMonth()
+            else -> argsDate
+        }
+        return date
+    }
 }

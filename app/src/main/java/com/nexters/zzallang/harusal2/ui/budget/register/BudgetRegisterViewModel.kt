@@ -42,6 +42,6 @@ class BudgetRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseVi
             "" -> 0L
             else -> x.toLong()
         }
-        budgetUseCase.setAmount(savedBudget)
+//        budgetUseCase.setAmount(savedBudget)
     }
 }

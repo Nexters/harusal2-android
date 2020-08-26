@@ -23,15 +23,19 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
         super.bindingView()
 
         binding.pickerDay.minValue = 1
+
         binding.pickerDay.maxValue = DateUtils.getLastDayOfMonth()
+
         binding.pickerDay.setOnValueChangedListener({ picker, oldVal, newVal ->
             viewModel.pickedDayChanged(newVal)
         })
 
         binding.btnPrev.setOnClickListener { this.startActivity(Intent(this, StartDayDefaultRegisterActivity::class.java)) }
+
         binding.btnClose.setOnClickListener { this.startActivity(Intent(this, MainActivity::class.java)) }
+
         binding.btnComplete.setOnClickListener {
-            viewModel.saveBudgetDay()
+            viewModel.saveBudgetDay(this.intent.getStringExtra("budget").toInt())
             this.startActivity(Intent(this, MainActivity::class.java))
         }
     }
