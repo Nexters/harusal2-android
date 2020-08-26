@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.application.util
 
+import java.lang.StringBuilder
 import java.util.*
 
 object DateUtils {
@@ -27,5 +28,32 @@ object DateUtils {
         val calendar = Calendar.getInstance()
         calendar.time = date
         return calendar.get(Calendar.MONTH)
+    }
+
+    fun getTodayDate(): Date{
+        return Date(System.currentTimeMillis())
+    }
+
+    fun endDate(date: Date): Date{
+        val newDate = Date()
+        val argsDate = date.date
+        newDate.month = when (argsDate) {
+            1 -> argsDate
+            else -> argsDate + 1
+        }
+
+        newDate.date = when (argsDate) {
+            1 -> this.getLastDayOfMonth()
+            else -> argsDate
+        }
+        return date
+    }
+
+    fun startToEndToString(startDate:Date, endDate: Date):String{
+        return StringBuilder()
+            .append(startDate.year).append(".").append(startDate.month + 1).append(".").append(startDate.date)
+            .append(" - ")
+            .append(endDate.year).append(".").append(endDate.month + 1).append(".").append(endDate.date)
+            .toString()
     }
 }

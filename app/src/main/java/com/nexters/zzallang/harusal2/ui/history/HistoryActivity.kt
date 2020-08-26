@@ -31,6 +31,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {
         }
         binding.rcvHistory.layoutManager = LinearLayoutManager(this)
         binding.rcvHistory.addItemDecoration(HistoryDecoration())
+
         binding.rcvHistory.adapter = HistoryViewAdaptor(this).apply {
             clearHistoryStatement()
             addStatements(

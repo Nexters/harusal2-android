@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
-    viewModel { HistoryViewModel() }
+    viewModel { HistoryViewModel(get(), get()) }
     viewModel { BudgetRegisterViewModel(get()) }
     viewModel { StartDayDefaultRegisterViewModel(get()) }
     viewModel { StartDayClickRegisterViewModel(get()) }

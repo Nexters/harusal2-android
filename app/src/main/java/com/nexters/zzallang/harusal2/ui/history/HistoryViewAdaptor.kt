@@ -93,11 +93,12 @@ class HistoryViewAdaptor(private val context: Context) :
 
             item as HistoryCard
 
-            if(position == 2){
+            if(position == 2 && binding.layoutHistoryItem.visibility == View.GONE){
                 binding.layoutHistoryItem.visibility = View.VISIBLE
                 binding.btnExpand.setImageResource(R.drawable.ic_btn_dropup_24)
             }
 
+            binding.layoutHistoryItem.removeAllViews()
             item.historyStatements?.forEach { historyStatement: HistoryStatement ->
                 val layout = mInflater.inflate(
                     R.layout.item_history_statement,
