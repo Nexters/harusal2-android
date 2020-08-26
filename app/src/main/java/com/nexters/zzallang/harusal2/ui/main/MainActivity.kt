@@ -58,7 +58,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         CoroutineScope(Dispatchers.Main + job).launch {
             with(binding.rcvStatement.adapter as MainStatementAdapter) {
                 clearMainStatementList()
-                addStatements(viewModel.getTodaySpendStatementList())
+                val todaySpendStatementList = viewModel.getTodaySpendStatementList()
+                addStatements(todaySpendStatementList)
+
+                /* TODO: AppbarLayout의 스크롤을 막는 방법을 알게되면 활성화하여 같이 사용하도록 하자 */
+//                binding.rcvStatement.isNestedScrollingEnabled = todaySpendStatementList.isNotEmpty()
             }
         }
     }

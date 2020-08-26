@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:minHeight="140dp"
                 app:layoutDescription="@xml/motion_main_toolbar"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <RelativeLayout
                     android:id="@+id/layout_top"
