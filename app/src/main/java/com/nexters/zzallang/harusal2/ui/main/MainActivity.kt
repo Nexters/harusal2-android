@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun layoutRes(): Int = R.layout.activity_main
     override val viewModel: MainViewModel by viewModel()
-    val job = Job()
+    private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 /* TODO: AppbarLayout의 스크롤을 막는 방법을 알게되면 활성화하여 같이 사용하도록 하자 */
 //                binding.rcvStatement.isNestedScrollingEnabled = todaySpendStatementList.isNotEmpty()
             }
+            viewModel.refreshTodayLivingExpenses()
         }
     }
 }

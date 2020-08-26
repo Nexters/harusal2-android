@@ -108,7 +108,8 @@
                         android:id="@+id/tv_today_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="오늘의 생활비 10000원"
+                        android:text="@{vm.todayLivingExpenses}"
+                        tools:text="오늘의 생활비 10000원"
                         android:textColor="#FFFFFF"
                         android:textSize="12sp"/>
                 </RelativeLayout>
