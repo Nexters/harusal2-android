@@ -25,3 +25,4 @@ data class Statement(
         return this.content.substring(0, SUMMARY_CONTENT_LENGTH) + "..."
     }
 }
+
