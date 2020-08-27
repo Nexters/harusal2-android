@@ -40,18 +40,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_back_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <Spinner
-                        android:id="@+id/spinner_budget"
+
+                    <LinearLayout
+                        android:id="@+id/layout_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_menu_title"
+                            android:layout_width="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorDarkBlack"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_dropdown_s_20" />
+                    </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.appcompat.widget.Toolbar>

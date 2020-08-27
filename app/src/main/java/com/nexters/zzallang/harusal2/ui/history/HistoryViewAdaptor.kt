@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryCardBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryInfoBinding
@@ -76,7 +77,7 @@ class HistoryViewAdaptor(private val context: Context) :
         histories.clear()
     }
 
-    fun addStatements(items: ArrayList<BaseHistoryRecyclerItem>) {
+    fun addStatements(items: List<BaseHistoryRecyclerItem>) {
         histories.addAll(items)
     }
 
@@ -205,6 +206,8 @@ class HistoryViewAdaptor(private val context: Context) :
         BaseViewHolder(binding.root) {
         override fun onBind(item: BaseHistoryRecyclerItem, position: Int) {
             item as HistoryInfo
+            binding.ivHistoryEmoji.playAnimation()
+            binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
             binding.tvPeriod.text = item.period
             binding.tvMoney.text = item.money.toString() + "원"
         }

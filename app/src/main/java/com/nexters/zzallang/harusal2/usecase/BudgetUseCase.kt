@@ -35,4 +35,6 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
         budgetRepository.findRecentBudget()
 
     suspend fun findAll(): List<Budget> = budgetRepository.findAll()
+
+    suspend fun findAllDesc(): List<Budget> = budgetRepository.findAllDesc()
 }

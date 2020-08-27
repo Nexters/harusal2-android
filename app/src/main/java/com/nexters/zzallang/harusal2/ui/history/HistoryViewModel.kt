@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.history
 
+import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
@@ -7,7 +8,6 @@ import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
-import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -16,17 +16,17 @@ class HistoryViewModel(
     private val statementUseCase: StatementUseCase
 ) : BaseViewModel() {
     private val todayDate = DateUtils.getTodayDate()
-    var budgetList:List<Budget> = ArrayList()
+    private var recentBudget:Budget? = null
+    var budgetList: List<Budget> = ArrayList()
+    var cards: MutableLiveData<List<BaseHistoryRecyclerItem>> = MutableLiveData()
 
-    suspend fun initBudgetList(){
-        launch {
-            budgetList = budgetUseCase.findAll()
-        }
+    suspend fun init() {
+        budgetList = budgetUseCase.findAllDesc()
+        recentBudget = budgetUseCase.findRecentBudget()
     }
 
-    suspend fun createHistory(selectedBudget: Budget): ArrayList<BaseHistoryRecyclerItem> {
+    suspend fun createHistory(selectedBudget: Budget) {
         val recyclerItem = ArrayList<BaseHistoryRecyclerItem>()
-        val recentBudget = budgetUseCase.findRecentBudget()
 
         val histories =
             statementUseCase.findByStartDateBetweenEndDate(
@@ -36,6 +36,11 @@ class HistoryViewModel(
         var totalAmount = 0
 
         histories.forEach { statement: Statement -> totalAmount += statement.amount }
+
+        val mainCardName = when(selectedBudget){
+            recentBudget -> "TODAY"
+            else -> "RECENT"
+        }
 
         val selectDate = when (selectedBudget) {
             recentBudget -> todayDate
@@ -62,26 +67,35 @@ class HistoryViewModel(
                         selectedBudget.endDate
                     )
                 ),
-                HistoryTitle("TODAY"),
-                createTodayCard(groupingMainHistories[0].second),
-                HistoryTitle("DAILY")
+                HistoryTitle(mainCardName),
+                createMainCard(
+                    selectDate,
+                    when (groupingHistories.isEmpty()) {
+                        true -> null
+                        else -> groupingMainHistories[0].second
+                    }
+                )
             )
         )
-        recyclerItem.addAll(createRemainderCard(groupingHistories))
-        return recyclerItem
+
+        if(groupingHistories.isNotEmpty()) {
+            HistoryTitle("DAILY")
+            recyclerItem.addAll(createRemainderCard(groupingHistories))
+        }
+        cards.postValue(recyclerItem)
     }
 
-    private fun createTodayCard(todayList: List<Statement>?): HistoryCard {
+    private fun createMainCard(date: Date, todayList: List<Statement>?): HistoryCard {
         if (todayList == null) {
-            return HistoryCard(day = todayDate.date)
+            return HistoryCard(day = date.date)
         }
 
-        return createCard(todayDate, todayList)
+        return createCard(date, todayList)
     }
 
-    private fun createRemainderCard(historyGroup: List<Pair<Date, List<Statement>>>?): List<HistoryCard> {
+    private fun createRemainderCard(historyGroup: List<Pair<Date, List<Statement>>>): List<HistoryCard> {
         val remainderHistoryCards = ArrayList<HistoryCard>()
-        if (historyGroup == null) {
+        if (historyGroup.isEmpty()) {
             return remainderHistoryCards
         }
 

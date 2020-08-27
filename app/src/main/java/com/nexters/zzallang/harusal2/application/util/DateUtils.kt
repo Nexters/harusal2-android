@@ -1,9 +1,12 @@
 package com.nexters.zzallang.harusal2.application.util
 
-import java.lang.StringBuilder
+import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtils {
+    private var dateFormatContainYear: SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+    private var dateFormatNoYear: SimpleDateFormat = SimpleDateFormat("MM.dd")
+
     fun getLastDayOfMonth(): Int {
         return getLastDayOfMonthAfter(0)
     }
@@ -51,9 +54,17 @@ object DateUtils {
 
     fun startToEndToString(startDate:Date, endDate: Date):String{
         return StringBuilder()
-            .append(startDate.year).append(".").append(startDate.month + 1).append(".").append(startDate.date)
+            .append(dateFormatContainYear.format(startDate))
             .append(" - ")
-            .append(endDate.year).append(".").append(endDate.month + 1).append(".").append(endDate.date)
+            .append(dateFormatContainYear.format(endDate))
+            .toString()
+    }
+
+    fun startToEndToStringNoYear(startDate:Date, endDate: Date):String{
+        return StringBuilder()
+            .append(dateFormatNoYear.format(startDate))
+            .append(" - ")
+            .append(dateFormatNoYear.format(endDate))
             .toString()
     }
 }

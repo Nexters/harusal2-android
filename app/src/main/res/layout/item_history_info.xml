@@ -6,15 +6,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_history_statement"
         android:layout_width="match_parent"
-        android:background="@color/colorWhite"
-        android:layout_height="148dp">
+        android:layout_height="148dp"
+        android:background="@color/colorWhite">
 
         <TextView
-            android:layout_marginTop="32dp"
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
             android:text="이번달 남은 금액"
             android:textColor="@color/colorDarkBlack"
             android:textSize="14sp"
@@ -30,6 +30,7 @@
             android:text="300,000원"
             android:textColor="@color/colorDarkBlack"
             android:textSize="28sp"
+            android:lineSpacingExtra="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
@@ -45,13 +46,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_money" />
 
-        <ImageView
-            android:layout_marginTop="32dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_history_emoji"
             android:layout_width="136dp"
             android:layout_height="88dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="32dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorWarning"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_fileName="volcano_coin_draft2.json" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

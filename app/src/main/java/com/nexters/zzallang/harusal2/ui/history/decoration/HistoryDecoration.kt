@@ -28,6 +28,5 @@ class HistoryDecoration: RecyclerView.ItemDecoration() {
                 TypedValue.COMPLEX_UNIT_DIP, 20F, App.app.resources.displayMetrics
             ).toInt()
         }
-
     }
 }
