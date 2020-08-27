@@ -23,9 +23,11 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
 
     fun saveBudgetDay(budget: Int) {
         launch {
+            val startDate = DateUtils.getTodayDate()
+            startDate.date = pickedDay.value ?: todayDay
             budgetUseCase.insertBudget(
                 budget,
-                DateUtils.getTodayDate()
+                startDate
             )
         }
     }

@@ -37,14 +37,14 @@ object DateUtils {
         val newDate = Date()
         val argsDate = date.date
         newDate.month = when (argsDate) {
-            1 -> argsDate
-            else -> argsDate + 1
+            1 -> newDate.month
+            else -> newDate.month + 1
         }
 
         newDate.date = when (argsDate) {
             1 -> this.getLastDayOfMonth()
-            else -> argsDate
+            else -> argsDate - 1
         }
-        return date
+        return newDate
     }
 }
