@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nexters.zzallang.harusal2.R
 import kotlinx.android.synthetic.main.layout_history_listview.*
 
-class CustomViewDialog(private var activity: Activity, private var adapter: RecyclerView.Adapter<*>) : Dialog(activity),
+class HistoryMenuDialog(private var activity: Activity, private var adapter: RecyclerView.Adapter<*>) : Dialog(activity),
     View.OnClickListener {
 
-    internal var recyclerView: RecyclerView? = null
+    private var recyclerView: RecyclerView? = null
     private var mLayoutManager: RecyclerView.LayoutManager? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +27,6 @@ class CustomViewDialog(private var activity: Activity, private var adapter: Recy
         recyclerView?.adapter = adapter
     }
 
-
     override fun onClick(v: View) {
-        dismiss()
     }
 }

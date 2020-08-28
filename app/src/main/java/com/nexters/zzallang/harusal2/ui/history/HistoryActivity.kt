@@ -1,13 +1,10 @@
 package com.nexters.zzallang.harusal2.ui.history
 
 import android.os.Bundle
-import android.view.Menu
-import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
-import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.databinding.ActivityHistoryBinding
@@ -20,7 +17,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
     HistoryMenuAdaptor.RecyclerViewItemClickListener {
     override fun layoutRes(): Int = R.layout.activity_history
     override val viewModel: HistoryViewModel by viewModel()
-    private var customDialog: CustomViewDialog? = null
+    private var customDialog: HistoryMenuDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +36,18 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         CoroutineScope(Dispatchers.Main + job).launch {
             withContext(Dispatchers.Default) { viewModel.init() }
 
+            val historyMenuAdaptor = HistoryMenuAdaptor(this@HistoryActivity).apply {
+                clear()
+                addBudget(viewModel.budgetList)
+            }
+
+            customDialog = HistoryMenuDialog(this@HistoryActivity, historyMenuAdaptor)
+
+            if(viewModel.budgetList.isNotEmpty()) {
+                this@HistoryActivity.clickOnItem(viewModel.budgetList[0])
+            }
+
             binding.layoutMenu.setOnClickListener {
-                val historyMenuAdaptor = HistoryMenuAdaptor(viewModel.budgetList, this@HistoryActivity)
-                customDialog = CustomViewDialog(this@HistoryActivity, historyMenuAdaptor)
                 customDialog!!.show()
             }
         }
@@ -64,7 +70,6 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         }
 
         binding.tvMenuTitle.text = DateUtils.startToEndToStringNoYear(budget.startDate, budget.endDate)
-
         if (customDialog != null) {
             customDialog!!.dismiss()
         }
