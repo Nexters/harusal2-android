@@ -22,7 +22,7 @@ import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterA
 import com.nexters.zzallang.harusal2.ui.history.model.*
 
 
-class HistoryViewAdaptor(private val context: Context) :
+class HistoryViewAdaptor(private val context: Context, private val onedayBudget: Int) :
     RecyclerView.Adapter<HistoryViewAdaptor.BaseViewHolder>() {
     private val histories = arrayListOf<BaseHistoryRecyclerItem>()
 
@@ -106,6 +106,11 @@ class HistoryViewAdaptor(private val context: Context) :
                     binding.layoutHistoryItem,
                     false
                 ) as ConstraintLayout
+
+                if(item.spending >  onedayBudget){
+                    layout.findViewById<TextView>(R.id.tv_money).setTextColor(context.getColor(R.color.colorSpendColor))
+                }
+
                 layout.findViewById<TextView>(R.id.tv_money).text =
                     historyStatement.money.toString()
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
@@ -120,8 +125,15 @@ class HistoryViewAdaptor(private val context: Context) :
             }
 
             binding.tvDay.text = item.day.toString()
-            binding.tvIncome.text = item.income
-            binding.tvSpending.text = item.spending
+            
+
+            binding.tvIncome.text = item.income.toString() + "원"
+
+            if(item.spending > onedayBudget){
+                binding.tvSpending.setTextColor(context.getColor(R.color.colorSpendColor))
+            }
+
+            binding.tvSpending.text =  item.spending.toString() + "원"
             binding.btnExpand.setOnClickListener {
                 when (binding.layoutHistoryItem.visibility) {
                     View.GONE -> {

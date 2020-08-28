@@ -14,4 +14,5 @@
     <color name="colorBtnBlack">#2C2C2C</color>
     <color name="colorLightGray">#F4F5F9</color>
     <color name="colorHistoryTitle">#B7BBCB</color>
+    <color name="colorSpendColor">#D90C0C</color>
 </resources>

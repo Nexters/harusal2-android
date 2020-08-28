@@ -56,7 +56,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         binding.rcvHistory.addItemDecoration(HistoryDecoration())
         binding.rcvHistory.setHasFixedSize(true)
         viewModel.cards.observe(this, Observer {
-            binding.rcvHistory.adapter = HistoryViewAdaptor(this@HistoryActivity).apply {
+            binding.rcvHistory.adapter = HistoryViewAdaptor(this@HistoryActivity, viewModel.oneDayBudget).apply {
                 clearHistoryStatement()
                 addStatements(it)
             }

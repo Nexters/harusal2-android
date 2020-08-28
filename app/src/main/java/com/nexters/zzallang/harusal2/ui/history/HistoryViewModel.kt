@@ -19,14 +19,21 @@ class HistoryViewModel(
     private var recentBudget:Budget? = null
     var budgetList: List<Budget> = ArrayList()
     var cards: MutableLiveData<List<BaseHistoryRecyclerItem>> = MutableLiveData()
+    var oneDayBudget:Int = 0
 
     suspend fun init() {
         budgetList = budgetUseCase.findAllDesc()
         recentBudget = budgetUseCase.findRecentBudget()
     }
 
+    private fun calculateOnedayBudget(budget: Budget){
+        val diff = budget.endDate.time - budget.startDate.time
+        oneDayBudget = (diff / (24*60*60*1000)).toInt()
+    }
+
     suspend fun createHistory(selectedBudget: Budget) {
         val recyclerItem = ArrayList<BaseHistoryRecyclerItem>()
+        this.calculateOnedayBudget(selectedBudget)
 
         val histories =
             statementUseCase.findByStartDateBetweenEndDate(
@@ -120,6 +127,6 @@ class HistoryViewModel(
                 }
             }
         }
-        return HistoryCard(date.date, income.toString(), spend.toString(), histories)
+        return HistoryCard(date.date, income, spend, histories)
     }
 }
