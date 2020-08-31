@@ -6,6 +6,7 @@
     <string name="add_statement_title">기록추가</string>
     <string name="amount_title">금액</string>
     <string name="memo_title">내역</string>
+    <string name="date_title">날짜</string>
 
     <string name="btn_text_in">나간 돈</string>
     <string name="btn_text_out">들어온 돈</string>

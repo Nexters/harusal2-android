@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.statement.edit
 
+import android.app.DatePickerDialog
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,8 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.ext.scope
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
     override fun layoutRes(): Int = R.layout.fragment_edit_statement
@@ -67,7 +70,6 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
         }
 
         binding.btnStatementEditDone.setOnClickListener {
-            Log.e("check log", "what..")
             GlobalScope.launch {
                 viewModel.updateStatement()
             }
@@ -75,8 +77,31 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
     }
 
     fun bindingEditDefault(){
-        binding.tvStatementEditDate.text = requireArguments().getString("date")
+        viewModel.setDate(requireArguments().getString("date")?:"")
         binding.editStatementEditAmount.setText(requireArguments().getString("amount"))
         binding.editStatementEditMemo.setText(requireArguments().getString("memo"))
+    }
+
+    fun initDatePicker(): DatePickerDialog {
+        val cal = Calendar.getInstance()
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, month)
+                cal.set(Calendar.DAY_OF_MONTH, day)
+                viewModel.setDate(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(cal.time))
+            }
+
+        val datePickerDialog = DatePickerDialog(requireContext(), R.style.DialogTheme, dateSetListener,
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+
+        datePickerDialog.datePicker.minDate = viewModel.getMinDate()
+        datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+
+        return datePickerDialog
     }
 }
