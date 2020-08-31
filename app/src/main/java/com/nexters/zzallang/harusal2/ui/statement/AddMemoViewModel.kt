@@ -69,7 +69,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         calendar.set(
             date.substring(0,4).toInt(),
             date.substring(5,7).toInt(),
-            date.substring(9,11).toInt())
+            date.substring(8).toInt())
         return calendar.time
     }
 
