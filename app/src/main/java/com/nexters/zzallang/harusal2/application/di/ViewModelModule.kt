@@ -27,5 +27,5 @@ val viewModelModule = module {
     }
     viewModel { StatementViewModel(get()) }
     viewModel { StatementEditViewModel(get(), get()) }
-    viewModel { StatementDetailViewModel() }
+    viewModel { StatementDetailViewModel(get()) }
 }

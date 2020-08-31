@@ -21,6 +21,23 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     val statementDate: LiveData<String> get() = _statementDate
 
     private var statementType = Constants.STATEMENT_TYPE_DEFALT
+    private lateinit var statement: Statement
+
+    fun setStatement(id: Long){
+        // TODO 뷰 연결 후 if-else 제거
+        if(id == 0L) statement = Statement(0L, DateUtils.getTodayDate(), "메모", 0, Constants.STATEMENT_TYPE_DEFALT)
+        else{
+            launch {
+                statement = statementUseCase.getData(id)!!
+            }
+        }
+    }
+
+    fun initData(){
+        _statementDate.postValue(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
+        statementAmount.postValue(statement.amount.toString())
+        statementMemo.postValue(statement.content)
+    }
 
     fun setType(type: Int){
         statementType = type

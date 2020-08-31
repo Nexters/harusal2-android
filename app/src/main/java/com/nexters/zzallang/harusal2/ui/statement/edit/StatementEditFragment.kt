@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseFragment
@@ -39,12 +40,13 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
 
     override fun onResume() {
         super.onResume()
-
-        bindingEditDefault()
+        viewModel.initData()
     }
 
     override fun bindingView() {
         super.bindingView()
+
+        viewModel.setStatement(requireArguments().getLong("id"))
 
         binding.editStatementEditAmount.onFocusChangeListener =
             View.OnFocusChangeListener { v, isFocused ->
@@ -55,12 +57,8 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
         binding.btnGroupStatementEdit.setOnCheckedChangeListener { radioGroup, id ->
             var type = Constants.STATEMENT_TYPE_DEFALT
             when(id){
-                binding.btnEditTypeOut.id -> {
-                    type = Constants.STATEMENT_TYPE_OUT
-                }
-                binding.btnEditTypeIn.id -> {
-                    type = Constants.STATEMENT_TYPE_IN
-                }
+                binding.btnEditTypeOut.id -> { type = Constants.STATEMENT_TYPE_OUT }
+                binding.btnEditTypeIn.id -> { type = Constants.STATEMENT_TYPE_IN }
             }
             viewModel.setType(type)
         }
@@ -78,12 +76,6 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
         binding.layoutStatementEditDate.setOnClickListener {
             initDatePicker().show()
         }
-    }
-
-    fun bindingEditDefault(){
-        viewModel.setDate(requireArguments().getString("date")?:"")
-        binding.editStatementEditAmount.setText(requireArguments().getString("amount"))
-        binding.editStatementEditMemo.setText(requireArguments().getString("memo"))
     }
 
     fun initDatePicker(): DatePickerDialog {
