@@ -51,7 +51,8 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
         binding.btnStatementNext.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("type", viewModel.getType())
-            bundle.putString("amount", viewModel.statementAmount.value)
+            if (viewModel.statementAmount.value == "") bundle.putString("amount", "0")
+            else bundle.putString("amount", viewModel.statementAmount.value)
             parentFragmentManager.beginTransaction().replace(R.id.fragment_container_add_statement, AddMemoFragment().apply {
                 arguments = bundle
             }).addToBackStack(null).commit()

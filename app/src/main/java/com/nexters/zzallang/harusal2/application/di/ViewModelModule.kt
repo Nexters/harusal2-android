@@ -17,5 +17,5 @@ val viewModelModule = module {
     viewModel { StartDayClickRegisterViewModel(get()) }
     viewModel { AddStatementViewModel() }
     viewModel { AddInputViewModel() }
-    viewModel { AddMemoViewModel(get()) }
+    viewModel { AddMemoViewModel(get(), get()) }
 }

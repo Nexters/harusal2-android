@@ -31,7 +31,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="32dp"
-                android:text="금액"
+                android:text="@string/amount_title"
                 android:textColor="@color/colorGray"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
@@ -50,25 +50,73 @@
                 android:textSize="16sp"/>
 
             <TextView
-                android:id="@+id/tv_statement_memo_title"
+                android:id="@+id/tv_statement_date_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount"
                 android:layout_marginTop="40dp"
-                android:text="내역"
+                android:text="@string/date_title"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                android:textStyle="normal">
+
+            </TextView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_statement_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_date_title"
+                android:layout_marginTop="12dp"
+                android:padding="17dp"
+                android:background="@drawable/selector_edit">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@{vm.stateDate}"
+                    android:textColor="@color/colorDarkBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold">
+                </TextView>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/icn_date_24">
+
+                </ImageView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_statement_memo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_statement_date"
+                android:layout_marginTop="40dp"
+                android:text="@string/amount_title"
                 android:textColor="@color/colorGray"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
 
             <EditText
+                android:id="@+id/edit_statement_memo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_memo_title"
                 android:layout_marginTop="12dp"
                 android:padding="17dp"
                 android:background="@drawable/selector_edit"
-                android:hint="내역을 입력해주세요."
+                android:hint="@string/memo_hint_text"
                 android:text="@={vm.stateMemo}"
                 android:textSize="16sp"
                 android:textColor="@color/colorDarkBlack"
@@ -76,6 +124,7 @@
                 android:maxLines="2"
                 android:maxLength="20"
                 />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
