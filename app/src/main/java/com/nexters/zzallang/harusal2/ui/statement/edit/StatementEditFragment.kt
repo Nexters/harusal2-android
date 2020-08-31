@@ -74,6 +74,10 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
                 viewModel.updateStatement()
             }
         }
+
+        binding.layoutStatementEditDate.setOnClickListener {
+            initDatePicker().show()
+        }
     }
 
     fun bindingEditDefault(){
@@ -93,12 +97,12 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
                 viewModel.setDate(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(cal.time))
             }
 
+        cal.time = viewModel.stringToDate(requireArguments().getString("date")?:viewModel.getDateForNow())
         val datePickerDialog = DatePickerDialog(requireContext(), R.style.DialogTheme, dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
+            cal.time.year,
+            cal.time.month,
+            cal.time.date
         )
-
         datePickerDialog.datePicker.minDate = viewModel.getMinDate()
         datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
 
