@@ -26,7 +26,7 @@ object DateUtils {
         val date = Date()
         val calendar = Calendar.getInstance()
         calendar.time = date
-        return calendar.get(Calendar.MONTH)
+        return calendar.get(Calendar.MONTH) + 1
     }
     
     fun getYear(): Int{
@@ -35,6 +35,16 @@ object DateUtils {
         calendar.time = date
         return calendar.get(Calendar.YEAR)
     }
+
+    fun getYear(): Int {
+        val date = Date()
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        return calendar.get(Calendar.YEAR)
+    }
+
+    fun getToday(): String = "${getYear()}.${getMonth()}.${getDay()}"
 
     fun getTodayDate(): Date{
         return Date(System.currentTimeMillis())

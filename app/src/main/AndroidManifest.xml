@@ -17,10 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity"/>
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity"/>
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity"/>
+        <activity android:name=".ui.main.MainActivity" />
     </application>
 
 </manifest>

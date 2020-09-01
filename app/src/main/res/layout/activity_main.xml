@@ -1,48 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.MainViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_whole"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        android:background="@color/colorPointYellowBackground">
 
-        <EditText
-            android:id="@+id/edit_id"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/layout_appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="360dp"
+            android:background="@color/colorPointYellowBackground">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edit_id"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <com.nexters.zzallang.harusal2.CollapsibleToolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="140dp"
+                app:layoutDescription="@xml/motion_main_toolbar"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-        <Button
-            android:id="@+id/insert_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="추가"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/get_button"
-            app:layout_constraintStart_toStartOf="parent" />
+                <RelativeLayout
+                    android:id="@+id/layout_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
 
-        <Button
-            android:id="@+id/get_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="가져오기"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/insert_button" />
+                    <ImageView
+                        android:id="@+id/iv_menu"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/icn_menu_24"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_centerVertical="true"/>
+                    <ImageView
+                        android:id="@+id/iv_list"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/icn_list_24"
+                        android:layout_toStartOf="@id/iv_menu"
+                        android:layout_marginEnd="12dp"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_speech_bubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icn_talk"
+                        android:layout_marginStart="7dp"
+                        android:layout_below="@id/iv_speech_bubble"
+                        android:layout_marginTop="-1dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/iv_speech_bubble"
+                        android:layout_width="169dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/emoji_bubble_background">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="오늘은 깔끔하게 딱 이정도만!"
+                            android:textSize="12sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/iv_emoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:lottie_fileName="welcome_coin.json"/>
+
+                <TextView
+                    android:id="@+id/tv_current_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.todayRemainMoney}"
+                    tools:text="10,000원"
+                    android:textColor="#FFF"
+                    android:textSize="38sp"/>
+
+                <RelativeLayout
+                    android:id="@+id/layout_today_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_main_today_money"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="11dp">
+
+                    <TextView
+                        android:id="@+id/tv_today_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.todayLivingExpenses}"
+                        tools:text="오늘의 생활비 10000원"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+            </com.nexters.zzallang.harusal2.CollapsibleToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_statement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/icn_addbtn"
+            app:backgroundTint="#000000"
+            android:layout_margin="30dp"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
