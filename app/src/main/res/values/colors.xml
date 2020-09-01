@@ -9,6 +9,7 @@
     <color name="colorGray">#969696</color>
     <color name="colorPointBlue">#0C6EC8</color>
     <color name="colorPointGreen">#179F87</color>
+    <color name="colorPointDefault">#DADBE1</color>
     <color name="colorPointYellow">#FBA806</color>
     <color name="colorPointOrange">#D8560D</color>
     <color name="colorPointRed">#A72F09</color>
@@ -18,6 +19,7 @@
 
     <color name="colorPointBlueBackground">#18A7F8</color>
     <color name="colorPointGreenBackground">#58D4BE</color>
+    <color name="colorPointDefaultBackground">#F4F5F9</color>
     <color name="colorPointYellowBackground">#FBB606</color>
     <color name="colorPointOrangeBackground">#FA6E1F</color>
     <color name="colorPointRedBackground">#CA4015</color>

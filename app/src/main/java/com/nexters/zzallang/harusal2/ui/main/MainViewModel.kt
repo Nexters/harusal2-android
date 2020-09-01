@@ -80,15 +80,17 @@ class MainViewModel(
         }
 
         return if ((livingExpenses / 10) < remainMoney) {
-            SpendState.EXCELLENT
+            SpendState.FLEX
         } else if ((livingExpenses / 20) < remainMoney) {
-            SpendState.GREAT
+            SpendState.CLAP
         } else if (-(livingExpenses / 25) < remainMoney) {
-            SpendState.GOOD
+            SpendState.DEFAULT
         } else if (-(livingExpenses / 10) < remainMoney) {
-            SpendState.BAD
+            SpendState.EMBARRASSED
+        } else if (-(livingExpenses / 6) < remainMoney) {
+            SpendState.CRY
         } else {
-            SpendState.WORST
+            SpendState.VOLCANO
         }
     }
 }

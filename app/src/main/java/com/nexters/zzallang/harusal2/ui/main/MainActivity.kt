@@ -32,41 +32,53 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        binding.ivEmoji.playAnimation()
-        binding.ivEmoji.repeatCount = LottieDrawable.INFINITE
-
         binding.rcvStatement.layoutManager = LinearLayoutManager(this)
         binding.rcvStatement.addItemDecoration(MainStatementDecoration())
         binding.rcvStatement.adapter = MainStatementAdapter()
         binding.rcvStatement.setHasFixedSize(true)
     }
 
-    private fun setBackgroundColor(state: SpendState) {
+    private fun setSpendStateViews(state: SpendState) {
         val backgroundColor: Int
         val todayLivingExpensesBackgroundColor: Int
+        val emojiName: String
 
         when (state) {
-            SpendState.EXCELLENT -> {
+            SpendState.FLEX -> {
                 backgroundColor = R.color.colorPointBlueBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointBlue
+                emojiName = "flex_coin.json"
             }
-            SpendState.GREAT -> {
+            SpendState.CLAP -> {
                 backgroundColor = R.color.colorPointGreenBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointGreen
+                emojiName = "clap_coin.json"
             }
-            SpendState.GOOD -> {
+            SpendState.DEFAULT -> {
+                backgroundColor = R.color.colorPointDefaultBackground
+                todayLivingExpensesBackgroundColor = R.color.colorPointDefault
+                emojiName = "default_coin.json"
+            }
+            SpendState.EMBARRASSED -> {
                 backgroundColor = R.color.colorPointYellowBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointYellow
+                emojiName = "embassed_coin.json"
             }
-            SpendState.BAD -> {
+            SpendState.CRY -> {
                 backgroundColor = R.color.colorPointOrangeBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointOrange
+                emojiName = "cry_coin.json"
             }
             else -> {
                 backgroundColor = R.color.colorPointRedBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointRed
+                emojiName = "volcano_coin_draft2.json"
             }
         }
+
+        binding.ivEmoji.setAnimation(emojiName)
+        binding.ivEmoji.playAnimation()
+        binding.ivEmoji.repeatCount = LottieDrawable.INFINITE
 
         val color = resources.getColor(backgroundColor, null)
         binding.layoutWhole.setBackgroundColor(color)
@@ -84,7 +96,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun refreshMainData() {
         CoroutineScope(Dispatchers.Main + job).launch {
             val spendState = viewModel.checkCurrentSpendState()
-            setBackgroundColor(spendState)
+            setSpendStateViews(spendState)
 
             with(binding.rcvStatement.adapter as MainStatementAdapter) {
                 clearMainStatementList()
