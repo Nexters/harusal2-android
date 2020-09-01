@@ -7,19 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
-import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.databinding.ActivityHistoryBinding
 import com.nexters.zzallang.harusal2.ui.history.decoration.HistoryDecoration
 import com.nexters.zzallang.harusal2.ui.history.model.HistoryInfo
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
-import com.nexters.zzallang.harusal2.ui.main.SpendState
 import com.nexters.zzallang.harusal2.ui.main.SpendState.Companion.getBackgroundColor
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
-    HistoryMenuAdaptor.RecyclerViewItemClickListener {
+    HistoryMenuDialog.ItemClickListener {
     override fun layoutRes(): Int = R.layout.activity_history
     override val viewModel: HistoryViewModel by viewModel()
     private var customDialog: HistoryMenuDialog? = null
@@ -45,16 +43,15 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         val job = Job()
         CoroutineScope(Dispatchers.Main + job).launch {
             withContext(Dispatchers.Default) { viewModel.init() }
-
-            val historyMenuAdaptor = HistoryMenuAdaptor(this@HistoryActivity).apply {
+            val historyMenuAdapter = HistoryMenuAdapter(this@HistoryActivity).apply {
                 clear()
                 addBudget(viewModel.budgetList)
             }
 
-            customDialog = HistoryMenuDialog(this@HistoryActivity, historyMenuAdaptor)
+            customDialog = HistoryMenuDialog(this@HistoryActivity, historyMenuAdapter)
 
             if (viewModel.budgetList.isNotEmpty()) {
-                this@HistoryActivity.clickOnItem(viewModel.budgetList[0])
+                this@HistoryActivity.clickOnItem(0)
             }
 
             binding.layoutMenu.setOnClickListener {
@@ -69,14 +66,19 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
             binding.rcvHistory.adapter =
                 HistoryViewAdaptor(this@HistoryActivity, viewModel.oneDayBudget).apply {
                     val info = it[0] as HistoryInfo
-                    binding.appbar.setBackgroundColor(this@HistoryActivity.getColor(getBackgroundColor(info.state)))
+                    binding.appbar.setBackgroundColor(
+                        this@HistoryActivity.getColor(
+                            getBackgroundColor(info.state)
+                        )
+                    )
                     clearHistoryStatement()
                     addStatements(it)
                 }
         })
     }
 
-    override fun clickOnItem(budget: Budget) {
+    override fun clickOnItem(position: Int) {
+        val budget = viewModel.budgetList[position]
         val newJob = Job()
         CoroutineScope(Dispatchers.Main + newJob).launch {
             viewModel.createHistory(budget)
