@@ -31,7 +31,7 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
         )
     }
 
-    suspend fun findRecentBudget(): Budget? =
+    suspend fun findRecentBudget(): Budget =
         budgetRepository.findRecentBudget()
 
     suspend fun findAll(): List<Budget> = budgetRepository.findAll()

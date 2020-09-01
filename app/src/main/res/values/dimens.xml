@@ -5,4 +5,5 @@
     <dimen name="history_card_radius">10dp</dimen>
     <dimen name="history_title_radius">100dp</dimen>
     <dimen name="btn_round_radius">10dp</dimen>
+    <dimen name="item_main_statement_height">56dp</dimen>
 </resources>
