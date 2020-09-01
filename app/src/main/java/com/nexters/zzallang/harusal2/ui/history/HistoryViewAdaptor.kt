@@ -20,6 +20,7 @@ import com.nexters.zzallang.harusal2.databinding.ItemHistoryInfoBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryTitleBinding
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
 import com.nexters.zzallang.harusal2.ui.history.model.*
+import com.nexters.zzallang.harusal2.ui.main.SpendState
 
 
 class HistoryViewAdaptor(private val context: Context, private val onedayBudget: Int) :
@@ -218,7 +219,43 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
         BaseViewHolder(binding.root) {
         override fun onBind(item: BaseHistoryRecyclerItem, position: Int) {
             item as HistoryInfo
+
+            val backgroundColor: Int
+            val emojiName: String
+
+            when (item.state) {
+                SpendState.FLEX -> {
+                    backgroundColor = R.color.colorPointBlueBackground
+                    emojiName = "flex_coin.json"
+                }
+                SpendState.CLAP -> {
+                    backgroundColor = R.color.colorPointGreenBackground
+                    emojiName = "clap_coin.json"
+                }
+                SpendState.DEFAULT -> {
+                    backgroundColor = R.color.colorWhite
+                    emojiName = "default_coin.json"
+                }
+                SpendState.EMBARRASSED -> {
+                    backgroundColor = R.color.colorPointYellowBackground
+                    emojiName = "embassed_coin.json"
+                }
+                SpendState.CRY -> {
+                    backgroundColor = R.color.colorPointOrangeBackground
+                    emojiName = "cry_coin.json"
+                }
+                else -> {
+                    backgroundColor = R.color.colorPointRedBackground
+                    emojiName = "volcano_coin_draft2.json"
+                }
+            }
+
+            binding.ivHistoryEmoji.setAnimation(emojiName)
             binding.ivHistoryEmoji.playAnimation()
+
+            val color = context.getColor(backgroundColor)
+            binding.layoutHistoryStatement.setBackgroundColor(color)
+
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
             binding.tvPeriod.text = item.period
             binding.tvMoney.text = item.money.toString() + "원"

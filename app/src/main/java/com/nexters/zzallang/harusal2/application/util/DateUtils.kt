@@ -32,8 +32,8 @@ object DateUtils {
         calendar.time = date
         return calendar.get(Calendar.MONTH) + 1
     }
-    
-    fun getYear(): Int{
+
+    fun getYear(): Int {
         val date = Date()
         val calendar = Calendar.getInstance()
         calendar.time = date
@@ -42,11 +42,11 @@ object DateUtils {
 
     fun getToday(): String = "${getYear()}.${getMonth()}.${getDay()}"
 
-    fun getTodayDate(): Date{
+    fun getTodayDate(): Date {
         return Date(System.currentTimeMillis())
     }
 
-    fun endDate(date: Date): Date{
+    fun endDate(date: Date): Date {
         val newDate = Date()
         val argsDate = date.date
         newDate.month = when (argsDate) {
@@ -61,7 +61,7 @@ object DateUtils {
         return newDate
     }
 
-    fun startToEndToString(startDate:Date, endDate: Date):String{
+    fun startToEndToString(startDate: Date, endDate: Date): String {
         return StringBuilder()
             .append(dateFormatContainYear.format(startDate))
             .append(" - ")
@@ -69,11 +69,15 @@ object DateUtils {
             .toString()
     }
 
-    fun startToEndToStringNoYear(startDate:Date, endDate: Date):String{
+    fun startToEndToStringNoYear(startDate: Date, endDate: Date): String {
         return StringBuilder()
             .append(dateFormatNoYear.format(startDate))
             .append(" - ")
             .append(dateFormatNoYear.format(endDate))
             .toString()
+    }
+
+    fun calculateDate(startDate: Date, endDate: Date): Int {
+        return ((endDate.time - startDate.time) / (24 * 60 * 60 * 1000)).toInt() + 1
     }
 }
