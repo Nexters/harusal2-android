@@ -16,4 +16,13 @@ data class Statement(
     @ColumnInfo(name = "amount") val amount: Int,
     @ColumnInfo(name = "type") val type: Int,
     @ColumnInfo(name = "budget_id") val budgetId: Long
-)
+) {
+    fun summaryContent() : String {
+        val SUMMARY_CONTENT_LENGTH = 12
+        if (this.content.length > SUMMARY_CONTENT_LENGTH) {
+            return this.content.substring(0, SUMMARY_CONTENT_LENGTH) + "..."
+        }
+        return this.content
+    }
+}
+
