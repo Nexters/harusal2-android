@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">harusal2</string>
+    <string name="text_flex">세상에..완전 체고체고~!</string>
+    <string name="text_clap">굳굳, 이대로만 계속 가다오~</string>
+    <string name="text_default">오늘은 깔끔하게 딱 이정도만!</string>
+    <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
+    <string name="text_cry">안돼, 이제 그만써!!</string>
+    <string name="text_volcano">아이구...파산났네 났어~!</string>
 </resources>
