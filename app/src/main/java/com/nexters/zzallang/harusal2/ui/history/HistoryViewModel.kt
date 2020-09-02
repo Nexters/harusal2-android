@@ -31,33 +31,33 @@ class HistoryViewModel(
         oneDayBudget = budget.budget / DateUtils.calculateDate(budget.startDate, budget.endDate)
     }
 
-    private fun calculateState(budget: Budget, spentMoney: Int, isToday:Boolean): SpendState {
+    private fun calculateState(budget: Budget, spentMoney: Int, isToday: Boolean): SpendState {
         if (spentMoney == 0) {
             return SpendState.FLEX
         }
 
-        val endDate = when(isToday){
+        val endDate = when (isToday) {
             true -> Date()
             false -> budget.endDate
         }
 
         val safeMoney = this.oneDayBudget * DateUtils.calculateDate(budget.startDate, endDate)
-        val calulate: Double = 1 - (safeMoney / spentMoney).toDouble()
+        val calculate: Double = 1 - (safeMoney / spentMoney).toDouble()
 
         when {
-            calulate > 0.15 -> {
+            calculate > 0.15 -> {
                 return SpendState.VOLCANO
             }
-            calulate > 0.1 -> {
+            calculate > 0.1 -> {
                 return SpendState.CRY
             }
-            calulate > 0.04 -> {
+            calculate > 0.04 -> {
                 return SpendState.EMBARRASSED
             }
-            calulate > -0.05 -> {
+            calculate > -0.05 -> {
                 return SpendState.DEFAULT
             }
-            calulate > -0.1 -> {
+            calculate > -0.1 -> {
                 return SpendState.CLAP
             }
             else -> return SpendState.FLEX
@@ -76,17 +76,17 @@ class HistoryViewModel(
         var totalAmount = 0
 
         histories.forEach { statement: Statement -> totalAmount += statement.amount }
-        val mainCardName:String
-        val selectDate:Date
-        val isCurrent:Boolean
+        val mainCardName: String
+        val selectDate: Date
+        val isCurrent: Boolean
 
-        when(selectedBudget){
+        when (selectedBudget) {
             recentBudget -> {
                 mainCardName = "TODAY"
                 selectDate = todayDate
                 isCurrent = true
             }
-            else ->{
+            else -> {
                 mainCardName = "RECENT"
                 selectDate = selectedBudget.endDate
                 isCurrent = false
@@ -126,9 +126,10 @@ class HistoryViewModel(
         )
 
         if (groupingHistories.isNotEmpty()) {
-            HistoryTitle("DAILY")
+            recyclerItem.add(HistoryTitle("DAILY"))
             recyclerItem.addAll(createRemainderCard(groupingHistories))
         }
+
         cards.postValue(recyclerItem)
     }
 

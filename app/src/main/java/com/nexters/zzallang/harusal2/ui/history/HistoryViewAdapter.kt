@@ -23,8 +23,8 @@ import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.ui.main.SpendState
 
 
-class HistoryViewAdaptor(private val context: Context, private val onedayBudget: Int) :
-    RecyclerView.Adapter<HistoryViewAdaptor.BaseViewHolder>() {
+class HistoryViewAdapter(private val context: Context, private val onedayBudget: Int) :
+    RecyclerView.Adapter<HistoryViewAdapter.BaseViewHolder>() {
     private val histories = arrayListOf<BaseHistoryRecyclerItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
@@ -95,7 +95,7 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
 
             item as HistoryCard
 
-            if(position == 2 && binding.layoutHistoryItem.visibility == View.GONE){
+            if (position == 2 && binding.layoutHistoryItem.visibility == View.GONE) {
                 binding.layoutHistoryItem.visibility = View.VISIBLE
                 binding.btnExpand.setImageResource(R.drawable.ic_btn_dropup_24)
             }
@@ -108,12 +108,20 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
                     false
                 ) as ConstraintLayout
 
-                if(item.spending >  onedayBudget){
-                    layout.findViewById<TextView>(R.id.tv_money).setTextColor(context.getColor(R.color.colorSpendColor))
+                if (historyStatement.money > onedayBudget) {
+                    layout.findViewById<TextView>(R.id.tv_money)
+                        .setTextColor(context.getColor(R.color.colorSpendColor))
+                } else {
+                    layout.findViewById<TextView>(R.id.tv_money)
+                        .setTextColor(context.getColor(R.color.colorDarkBlack))
                 }
 
                 layout.findViewById<TextView>(R.id.tv_money).text =
-                    historyStatement.money.toString()
+                    when {
+                        historyStatement.money > 0 -> "+"
+                        else -> ""
+                    } + historyStatement.money.toString()
+
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
 
                 //TODO : Activity 변경
@@ -126,15 +134,23 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
             }
 
             binding.tvDay.text = item.day.toString()
-            
 
-            binding.tvIncome.text = item.income.toString() + "원"
 
-            if(item.spending > onedayBudget){
+
+
+            binding.tvIncome.text = when {
+                item.income > 0 -> "+"
+                else -> ""
+            } + """${item.income}원"""
+
+            if (-item.spending > onedayBudget) {
                 binding.tvSpending.setTextColor(context.getColor(R.color.colorSpendColor))
+            } else {
+                binding.tvSpending.setTextColor(context.getColor(R.color.colorDarkBlack))
             }
 
-            binding.tvSpending.text =  item.spending.toString() + "원"
+            binding.tvSpending.text =  "${item.spending}원"
+
             binding.btnExpand.setOnClickListener {
                 when (binding.layoutHistoryItem.visibility) {
                     View.GONE -> {
@@ -151,7 +167,6 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
         }
 
         private fun expand(mLinearLayout: LinearLayout) {
-            //set Visible
             mLinearLayout.visibility = View.VISIBLE
             val widthSpec = View.MeasureSpec.makeMeasureSpec(
                 0,
@@ -258,7 +273,7 @@ class HistoryViewAdaptor(private val context: Context, private val onedayBudget:
 
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
             binding.tvPeriod.text = item.period
-            binding.tvMoney.text = item.money.toString() + "원"
+            binding.tvMoney.text = """${item.money}원"""
         }
     }
 }

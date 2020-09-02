@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.history
+package com.nexters.zzallang.harusal2.ui.history.menu
 
 import android.app.Activity
 import android.app.Dialog

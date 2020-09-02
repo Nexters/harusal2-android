@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.history
+package com.nexters.zzallang.harusal2.ui.history.menu
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.data.entity.Budget
+import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
 
 class HistoryMenuAdapter(private val historyActivity: HistoryActivity) : BaseAdapter() {
     private val budgets = arrayListOf<Budget>()
@@ -22,7 +23,8 @@ class HistoryMenuAdapter(private val historyActivity: HistoryActivity) : BaseAda
             val layoutInflater =
                 parent?.context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = layoutInflater.inflate(R.layout.item_history_menu, parent, false)
-            viewHolder = HistoryMenuViewHolder()
+            viewHolder =
+                HistoryMenuViewHolder()
             viewHolder.tvPeriod = view.findViewById(R.id.tv_menu_period)
             viewHolder.ivRadio = view.findViewById(R.id.iv_menu_radio)
 

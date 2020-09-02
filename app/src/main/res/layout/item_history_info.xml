@@ -7,7 +7,8 @@
         android:id="@+id/layout_history_statement"
         android:layout_width="match_parent"
         android:layout_height="148dp"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:elevation="10dp">
 
         <TextView
             android:id="@+id/tv_description"
