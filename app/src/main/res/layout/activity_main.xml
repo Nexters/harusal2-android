@@ -65,14 +65,19 @@
 
                     <RelativeLayout
                         android:id="@+id/iv_speech_bubble"
-                        android:layout_width="169dp"
-                        android:layout_height="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
                         android:background="@drawable/emoji_bubble_background">
 
                         <TextView
+                            android:id="@+id/tv_speech_bubble"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="오늘은 깔끔하게 딱 이정도만!"
+                            android:text="오 아주 훌륭해요! 이대로만 계속 가다오~"
                             android:textSize="12sp"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"/>
