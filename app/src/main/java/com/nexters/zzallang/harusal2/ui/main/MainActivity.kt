@@ -42,39 +42,48 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val backgroundColor: Int
         val todayLivingExpensesBackgroundColor: Int
         val emojiName: String
+        val speechBubbleText: String
 
         when (state) {
             SpendState.FLEX -> {
                 backgroundColor = R.color.colorPointBlueBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointBlue
                 emojiName = "flex_coin.json"
+                speechBubbleText = getString(R.string.text_flex)
             }
             SpendState.CLAP -> {
                 backgroundColor = R.color.colorPointGreenBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointGreen
                 emojiName = "clap_coin.json"
+                speechBubbleText = getString(R.string.text_clap)
             }
             SpendState.DEFAULT -> {
                 backgroundColor = R.color.colorPointDefaultBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointDefault
                 emojiName = "default_coin.json"
+                speechBubbleText = getString(R.string.text_default)
             }
             SpendState.EMBARRASSED -> {
                 backgroundColor = R.color.colorPointYellowBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointYellow
                 emojiName = "embassed_coin.json"
+                speechBubbleText = getString(R.string.text_embarrassed)
             }
             SpendState.CRY -> {
                 backgroundColor = R.color.colorPointOrangeBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointOrange
                 emojiName = "cry_coin.json"
+                speechBubbleText = getString(R.string.text_cry)
             }
             else -> {
                 backgroundColor = R.color.colorPointRedBackground
                 todayLivingExpensesBackgroundColor = R.color.colorPointRed
                 emojiName = "volcano_coin_draft2.json"
+                speechBubbleText = getString(R.string.text_volcano)
             }
         }
+
+        binding.tvSpeechBubble.text = speechBubbleText
 
         binding.ivEmoji.setAnimation(emojiName)
         binding.ivEmoji.playAnimation()
