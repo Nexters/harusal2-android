@@ -237,7 +237,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
 
             val backgroundColor: Int
             val emojiName: String
-
+            var textColor: Int =  context.getColor(R.color.colorWhite)
             when (item.state) {
                 SpendState.FLEX -> {
                     backgroundColor = R.color.colorPointBlueBackground
@@ -250,6 +250,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                 SpendState.DEFAULT -> {
                     backgroundColor = R.color.colorWhite
                     emojiName = "default_coin.json"
+                    textColor = context.getColor(R.color.colorDarkBlack)
                 }
                 SpendState.EMBARRASSED -> {
                     backgroundColor = R.color.colorPointYellowBackground
@@ -274,6 +275,10 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
             binding.tvPeriod.text = item.period
             binding.tvMoney.text = """${item.money}원"""
+
+            binding.tvDescription.setTextColor(textColor)
+            binding.tvPeriod.setTextColor(textColor)
+            binding.tvMoney.setTextColor(textColor)
         }
     }
 }
