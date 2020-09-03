@@ -25,4 +25,3 @@ data class Statement(
         return this.content
     }
 }
-
