@@ -67,7 +67,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         return maxDate.time.time
     }
 
-    fun stringToDate(date: String): Date{
+    fun stringToDate(inputDate: String): Date{
         val date = Date()
         date.year = inputDate.substring(0,4).toInt()
         date.month = inputDate.substring(5,7).toInt()
