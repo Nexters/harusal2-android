@@ -68,13 +68,11 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     }
 
     fun stringToDate(date: String): Date{
-        val calendar = Calendar.getInstance()
-        calendar.time = Date()
-        calendar.set(
-            date.substring(0,4).toInt(),
-            date.substring(5,7).toInt(),
-            date.substring(9,11).toInt())
-        return calendar.time
+        val date = Date()
+        date.year = inputDate.substring(0,4).toInt()
+        date.month = inputDate.substring(5,7).toInt()
+        date.date = inputDate.substring(8).toInt()
+        return date
     }
 
     suspend fun createStatement(){
