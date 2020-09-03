@@ -31,6 +31,12 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         statementType = type
     }
 
+    fun applyType(amount: Int): Int{
+        var resultAmount = amount;
+        if(statementType == Constants.STATEMENT_TYPE_OUT) resultAmount*=-1
+        return resultAmount
+    }
+
     fun setDate(date: String){
         _stateDate.postValue(date)
     }
@@ -41,10 +47,9 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
 
     fun getMinDate(): Long{
         val minDate = Calendar.getInstance()
-        minDate.set(DateUtils.getYear(), DateUtils.getMonth(), DateUtils.getDay()-15)
         launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val startDate = budgetUseCase.findRecentBudget()!!.startDate
+            val budget = budgetUseCase.findRecentBudget()?.let {
+                val startDate = it.startDate
                 minDate.set(startDate.year, startDate.month, startDate.day)
             }
         }
@@ -53,11 +58,10 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
 
     fun getMaxDate(): Long{
         val maxDate = Calendar.getInstance()
-        maxDate.set(DateUtils.getYear(), DateUtils.getMonth(), DateUtils.getDay()+15)
         launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val endDate = budgetUseCase.findRecentBudget()!!.endDate
-                maxDate.set(endDate.year, endDate.month, endDate.date)
+            val budget = budgetUseCase.findRecentBudget()?.let {
+                val endDate = it.endDate
+                maxDate.set(endDate.year, endDate.month, endDate.day)
             }
         }
         return maxDate.time.time
@@ -74,7 +78,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     }
 
     suspend fun createStatement(){
-        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = (stateAmount.value ?: "0").toInt(), type = statementType)
+        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType((stateAmount.value ?: "0").toInt()))
         statementUseCase.insertData(statementData)
     }
 }
