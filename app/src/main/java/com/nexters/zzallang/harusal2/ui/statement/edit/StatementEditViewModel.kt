@@ -88,7 +88,7 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     }
 
     suspend fun updateStatement(){
-        val statementModel = Statement(date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()))
+        val statementModel = Statement(date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()), budgetId = 0L)
         statementUseCase.updateStatement(statementModel)
     }
 }

@@ -14,7 +14,6 @@ data class Statement(
     @ColumnInfo(name = "date") val date: Date,
     @ColumnInfo(name = "content") val content: String,
     @ColumnInfo(name = "amount") val amount: Int,
-    @ColumnInfo(name = "type") val type: Int,
     @ColumnInfo(name = "budget_id") val budgetId: Long
 ) {
     fun summaryContent() : String {

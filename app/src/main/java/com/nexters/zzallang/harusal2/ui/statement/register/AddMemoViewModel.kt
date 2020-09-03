@@ -76,7 +76,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     }
 
     suspend fun createStatement(){
-        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType((stateAmount.value ?: "0").toInt()))
+        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType((stateAmount.value ?: "0").toInt()), budgetId = 0L)
         statementUseCase.insertData(statementData)
     }
 }
