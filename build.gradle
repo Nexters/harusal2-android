@@ -4,6 +4,7 @@ buildscript {
     ext.koin_version = "2.1.6"
     ext.room_version = "2.2.5"
     ext.flipper_version = "0.51.0"
+    ext.lottieVersion = "3.4.1"
 
     repositories {
         google()

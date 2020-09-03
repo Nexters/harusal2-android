@@ -1,0 +1,98 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:motionInterpolator="linear">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/layout_speech_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layout_top"
+            android:layout_marginTop="32dp"/>
+
+        <Constraint
+            android:id="@+id/iv_emoji"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/layout_speech_bubble"/>
+
+        <Constraint
+            android:id="@+id/tv_current_money"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/layout_today_money"
+            android:layout_marginBottom="4dp"/>
+
+        <Constraint
+            android:id="@+id/layout_today_money"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="13dp"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <!-- 140dp(toolbar minHeight) + 20dp(top marginTop) = 160dp -->
+        <!-- TODO: 20dp는 centerVertical 로 생기는건데.. 고정으로 20dp를 더하지 않고 해결할 수 있는 방법에 대해 생각해보자 -->
+        <Constraint
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="220dp" />
+
+        <Constraint
+            android:id="@+id/layout_speech_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/iv_emoji"
+            android:layout_marginTop="32dp"/>
+
+        <Constraint
+            android:id="@+id/iv_emoji"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/layout_top"/>
+
+        <Constraint
+            android:id="@+id/tv_current_money"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"/>
+
+        <Constraint
+            android:id="@+id/layout_today_money"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="28dp"/>
+    </ConstraintSet>
+
+</MotionScene>

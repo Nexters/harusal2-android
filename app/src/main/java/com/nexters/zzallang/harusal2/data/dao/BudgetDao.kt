@@ -19,4 +19,7 @@ interface BudgetDao {
 
     @Update
     suspend fun update(budget: Budget)
+
+    @Query("select * from budget order by id desc")
+    suspend fun findAllDesc(): List<Budget>
 }
