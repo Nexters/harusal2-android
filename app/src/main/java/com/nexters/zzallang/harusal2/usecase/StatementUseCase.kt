@@ -43,4 +43,25 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
 
         return statementRepository.selectAllStatementByDate(startTime, endTime)
     }
+
+    suspend fun findByStartDateBetweenEndDate(startDate: Date, endDate: Date) : List<Statement> {
+        return statementRepository.selectAllStatementByDate(
+            startTime = startDate.time,
+            endTime = endDate.time
+        )
+    }
+
+    suspend fun getStatementHistoryAtDate(date: Date) : List<Statement> {
+        date.hours = 0
+        date.minutes = 0
+        date.seconds = 0
+        val startTime = date.time
+
+        date.hours = 23
+        date.minutes = 59
+        date.seconds = 59
+        val endTime = date.time
+
+        return statementRepository.selectAllStatementByDate(startTime, endTime)
+    }
 }

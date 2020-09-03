@@ -6,7 +6,7 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayClickBinding
-import com.nexters.zzallang.harusal2.ui.MainActivity
+import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBinding>() {

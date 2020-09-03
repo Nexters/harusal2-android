@@ -7,7 +7,7 @@ import java.util.*
 
 
 class BudgetUseCase(private val budgetRepository: BudgetRepository) {
-    suspend fun updateBudget(budget: Budget){
+    suspend fun updateBudget(budget: Budget) {
         budgetRepository.update(budget)
     }
 
@@ -31,6 +31,10 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
         )
     }
 
-    suspend fun findRecentBudget(): Budget? =
+    suspend fun findRecentBudget(): Budget =
         budgetRepository.findRecentBudget()
+
+    suspend fun findAll(): List<Budget> = budgetRepository.findAll()
+
+    suspend fun findAllDesc(): List<Budget> = budgetRepository.findAllDesc()
 }
