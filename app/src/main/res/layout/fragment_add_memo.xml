@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.statement.register.AddMemoFragment">
+        tools:context=".ui.statement.AddMemoFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -50,18 +50,66 @@
                 android:textSize="16sp"/>
 
             <TextView
-                android:id="@+id/tv_statement_memo_title"
+                android:id="@+id/tv_statement_date_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount"
                 android:layout_marginTop="40dp"
-                android:text="@string/memo_title"
+                android:text="@string/date_title"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                android:textStyle="normal">
+
+            </TextView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_statement_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_date_title"
+                android:layout_marginTop="12dp"
+                android:padding="17dp"
+                android:background="@drawable/selector_edit">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="@{vm.stateDate}"
+                    android:textColor="@color/colorDarkBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold">
+                </TextView>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/icn_date_24">
+
+                </ImageView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_statement_memo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_statement_date"
+                android:layout_marginTop="40dp"
+                android:text="@string/amount_title"
                 android:textColor="@color/colorGray"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
 
             <EditText
+                android:id="@+id/edit_statement_memo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_memo_title"
@@ -76,6 +124,7 @@
                 android:maxLines="2"
                 android:maxLength="20"
                 />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,7 +143,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/btn_statement_done"
                 android:background="@color/colorBtnBlack"
-                android:text="@string/btn_text_pre"
+                android:text="이전"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold">
@@ -108,7 +157,7 @@
                 app:layout_constraintLeft_toRightOf="@id/btn_statement_pre"
                 app:layout_constraintRight_toRightOf="parent"
                 android:background="@color/colorPointYellow"
-                android:text="@string/btn_text_done"
+                android:text="완료"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="@android:color/white">

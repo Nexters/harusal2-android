@@ -24,12 +24,8 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     private lateinit var statement: Statement
 
     fun setStatement(id: Long){
-        // TODO 뷰 연결 후 if-else 제거
-        if(id == 0L) statement = Statement(0L, DateUtils.getTodayDate(), "메모", 0, Constants.STATEMENT_TYPE_DEFALT)
-        else{
-            launch {
-                statement = statementUseCase.getData(id)!!
-            }
+        launch {
+            statement = statementUseCase.getData(id)!!
         }
     }
 
@@ -41,6 +37,12 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
 
     fun setType(type: Int){
         statementType = type
+    }
+
+    fun applyType(amount: Int): Int{
+        var resultAmount = amount;
+        if(statementType == Constants.STATEMENT_TYPE_OUT) resultAmount*=-1
+        return resultAmount
     }
 
     fun setDate(date: String){
@@ -86,7 +88,7 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     }
 
     suspend fun updateStatement(){
-        val statementModel = Statement(date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = (statementAmount.value ?: "0").toInt(), type = statementType)
+        val statementModel = Statement(date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()))
         statementUseCase.updateStatement(statementModel)
     }
 }

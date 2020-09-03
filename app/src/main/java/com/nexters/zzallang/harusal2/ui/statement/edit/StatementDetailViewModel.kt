@@ -13,12 +13,8 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
     private lateinit var statement: Statement
 
     fun setStatement(id: Long){
-        // TODO 뷰 연결 후 if-else 제거
-        if(id == 0L) statement = Statement(0L, DateUtils.getTodayDate(), "메모", 0, Constants.STATEMENT_TYPE_DEFALT)
-        else{
-            launch {
-                statement = statementUseCase.getData(id)!!
-            }
+        launch {
+            statement = statementUseCase.getData(id)!!
         }
     }
 

@@ -40,7 +40,6 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:textColor="@color/btn_text_color"
-                android:onClick="@{()->vm.setTypeOut()}"
                 >
 
             </RadioButton>
@@ -56,8 +55,7 @@
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:textColor="@color/btn_text_color"
-                android:onClick="@{()->vm.setTypeIn()}">
+                android:textColor="@color/btn_text_color">
             </RadioButton>
 
         </RadioGroup>

@@ -8,8 +8,12 @@ import com.nexters.zzallang.harusal2.databinding.ActivityBridgeBinding
 import com.nexters.zzallang.harusal2.ui.MainActivity
 import com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity
+<<<<<<< HEAD
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
+=======
+import com.nexters.zzallang.harusal2.ui.statement.AddStatementActivity
+>>>>>>> feature/#11-add_statement
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
