@@ -14,8 +14,8 @@ data class Statement(
     @ColumnInfo(name = "date") var date: Date,
     @ColumnInfo(name = "content") var content: String,
     @ColumnInfo(name = "amount") var amount: Int,
-    @ColumnInfo(name = "type") var type: Int,
     @ColumnInfo(name = "budget_id") var budgetId: Long
+
 ) {
     fun summaryContent() : String {
         val SUMMARY_CONTENT_LENGTH = 12
@@ -25,4 +25,3 @@ data class Statement(
         return this.content
     }
 }
-

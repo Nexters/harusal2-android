@@ -21,6 +21,8 @@
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity"/>
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity"/>
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity"/>
+        <activity android:name=".ui.statement.register.AddStatementActivity"/>
+        <activity android:name=".ui.statement.edit.StatementActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.budget.edit.StartDayEditActivity"/>
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
