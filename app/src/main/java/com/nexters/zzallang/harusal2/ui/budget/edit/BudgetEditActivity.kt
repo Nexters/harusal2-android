@@ -1,18 +1,21 @@
 package com.nexters.zzallang.harusal2.ui.budget.edit
 
-import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityChangeBudgetBinding
-import com.nexters.zzallang.harusal2.ui.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BudgetChangeActivity : BaseActivity<ActivityChangeBudgetBinding>() {
+class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
     override fun layoutRes(): Int = R.layout.activity_change_budget
-    override val viewModel: BudgetChangeViewModel by viewModel()
-
+    override val viewModel: BudgetEditViewModel by viewModel()
+    private val job = Job()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -28,16 +31,19 @@ class BudgetChangeActivity : BaseActivity<ActivityChangeBudgetBinding>() {
         })
 
         binding.btnPrev.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             this.finish()
-//            this.startActivity(intent)
         }
 
         binding.btnComplete.setOnClickListener {
-            viewModel.saveBudget()
-            val intent = Intent(this, MainActivity::class.java)
-            this.finish()
-            this.startActivity(intent)
+            CoroutineScope(Dispatchers.Main + job).launch {
+                val isSave = viewModel.saveBudget()
+                if (isSave) {
+                    this@BudgetEditActivity.finish()
+                }
+                Toast.makeText(this@BudgetEditActivity, "저장에 실패했습니다.", Toast.LENGTH_LONG).show()
+            }
         }
+
+        viewModel.init()
     }
 }

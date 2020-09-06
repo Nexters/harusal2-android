@@ -4,22 +4,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
+import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
+import kotlinx.coroutines.launch
 
-class BudgetChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
+class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
     companion object {
         private const val PREFIX = "일일 생활비 "
     }
 
     val budget = MutableLiveData("")
-
+    private var currentBudget: Budget? = null
     private val _hangeulBudget = MutableLiveData("0원")
     private val _averageBudget = MutableLiveData(PREFIX + "0원")
     val hangeulBudget: LiveData<String> get() = _hangeulBudget
     val averageBudget: LiveData<String> get() = _averageBudget
 
-    init {
-        budget.postValue(budgetUseCase.getAmount().toString())
+    fun init() {
+        launch {
+            currentBudget = budgetUseCase.findRecentBudget()
+            budget.postValue(currentBudget?.budget.toString())
+        }
     }
 
     fun budgetChanged(text: String) {
@@ -28,18 +33,21 @@ class BudgetChangeViewModel(private val budgetUseCase: BudgetUseCase) : BaseView
             return
         }
 
-        val inputBudget: Long = java.lang.Long.valueOf(text)
+        val inputBudget: Long = text.toLong()
 
-        setAverageBudget((java.lang.Long.valueOf(text) / 30L).toString() + "원")
+        setAverageBudget((inputBudget / 30).toString() + "원")
         setHangleBudget(inputBudget)
     }
 
-    fun saveBudget() {
-        val savedBudget = when (val x = budget.value.toString()) {
-            "" -> 0L
-            else -> x.toLong()
+    suspend fun saveBudget(): Boolean {
+        try {
+            currentBudget?.budget = budget.value?.toInt()!!
+            budgetUseCase.updateBudget(currentBudget!!)
+            return true
+        } catch (e: Exception) {
+
         }
-        budgetUseCase.setAmount(savedBudget)
+        return false
     }
 
     private fun textClear() {

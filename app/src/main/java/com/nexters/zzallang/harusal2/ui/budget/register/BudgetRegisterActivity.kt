@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterBudgetBinding
-import com.nexters.zzallang.harusal2.ui.MainActivity
+import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
@@ -39,14 +39,16 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
         })
 
         binding.btnNext.setOnClickListener {
-            viewModel.saveBudget()
+//            viewModel.saveBudget()
             val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)
+            intent.putExtra("budget", viewModel.budget.value)
             this.startActivity(intent)
         }
 
         binding.btnClose.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
+            this.finish()
         }
     }
 }

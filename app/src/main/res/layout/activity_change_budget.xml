@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.zzallang.harusal2.ui.budget.edit.BudgetChangeViewModel" />
+            type="com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
