@@ -32,6 +32,7 @@ class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultB
             val intent = Intent(this, StartDayClickRegisterActivity::class.java)
             intent.putExtra("budget", this.intent.getStringExtra("budget"))
             this.startActivity(intent)
+            this.finish()
         }
 
         binding.btnComplete.setOnClickListener {

@@ -43,6 +43,7 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
             val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)
             intent.putExtra("budget", viewModel.budget.value)
             this.startActivity(intent)
+            this.finish()
         }
 
         binding.btnClose.setOnClickListener {

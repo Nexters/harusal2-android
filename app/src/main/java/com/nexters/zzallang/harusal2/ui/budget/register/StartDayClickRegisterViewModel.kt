@@ -5,55 +5,81 @@ import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getDay
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMonth
-import com.nexters.zzallang.harusal2.application.util.DateUtils.getMonth
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import kotlinx.coroutines.launch
+import java.util.*
 
 class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
     private val todayDay = getDay()
     private val _description = MutableLiveData("")
     val description: LiveData<String> get() = _description
-    val pickedDay = MutableLiveData(15)
+    val pickedDate = MutableLiveData(15)
+
+    private lateinit var startDate: Date
+    private lateinit var endDate: Date
 
     init {
-        pickedDay.postValue(todayDay)
+        pickedDate.postValue(todayDay)
         setDescription(todayDay)
     }
 
     fun saveBudgetDay(budget: Int) {
         launch {
-            val startDate = DateUtils.getTodayDate()
-            startDate.date = pickedDay.value ?: todayDay
             budgetUseCase.insertBudget(
                 budget,
-                startDate
+                startDate = startDate,
+                endDate = endDate
             )
         }
     }
 
-    fun pickedDayChanged(pickedDay: Int) {
-        this.pickedDay.postValue(pickedDay)
-        this.setDescription(pickedDay)
+    fun pickedDayChanged(pickedDate: Int) {
+        this.pickedDate.postValue(pickedDate)
+        this.setDescription(pickedDate)
     }
 
-    private fun setDescription(pickedDay: Int) {
-        val thisMonth = getMonth()
+    private fun setDescription(pickedDate: Int) {
+        val todayDate = Date()
 
-        val nextMonth = when (pickedDay) {
-            1 -> thisMonth
-            else -> thisMonth + 1
+        val startCalendar = when {
+            pickedDate <= todayDate.date -> {
+                Calendar.getInstance()
+            }
+            else -> {
+                val cal = Calendar.getInstance()
+                cal.add(Calendar.MONTH, -1)
+                cal
+            }
         }
-        val nextDay = when (pickedDay) {
-            1 -> getLastDayOfMonth()
-            else -> pickedDay - 1
+        startCalendar.set(Calendar.DATE, pickedDate)
+        startDate = Date(startCalendar.timeInMillis)
+
+        val endCalendar = when {
+            pickedDate == 1 -> {
+                Calendar.getInstance()
+            }
+            pickedDate <= todayDate.date -> {
+                val cal = Calendar.getInstance()
+                cal.add(Calendar.MONTH, 1)
+                cal
+            }
+            else -> {
+                Calendar.getInstance()
+            }
         }
+
+        when (pickedDate) {
+            1 -> endCalendar.set(Calendar.DATE, getLastDayOfMonth())
+            else -> endCalendar.set(Calendar.DATE, pickedDate - 1)
+        }
+        endDate = Date(endCalendar.timeInMillis)
 
         _description.postValue(
             StringBuilder("생활비 사용기간은 ")
-                .append(thisMonth).append(".").append(pickedDay)
+                .append(startDate.month + 1).append(".").append(startDate.date)
                 .append(" - ")
-                .append(nextMonth).append(".").append(nextDay)
+                .append(endDate.month + 1).append(".").append(endDate.date)
                 .toString()
         )
     }
