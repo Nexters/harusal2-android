@@ -64,4 +64,20 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
 
         return statementRepository.selectAllStatementByDate(startTime, endTime)
     }
+
+    suspend fun findByDate(startDate: Date) : List<Statement> {
+        val endDate = startDate.clone() as Date
+        startDate.hours = 0
+        startDate.minutes = 0
+        startDate.seconds = 0
+
+        endDate.hours = 23
+        endDate.minutes = 59
+        endDate.seconds = 59
+
+        return statementRepository.selectAllStatementByDate(
+            startTime = startDate.time,
+            endTime = endDate.time
+        )
+    }
 }

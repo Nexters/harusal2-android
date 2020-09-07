@@ -1,5 +1,7 @@
 package com.nexters.zzallang.harusal2.application.di
 
+import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditViewModel
+import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayEditViewModel
 import com.nexters.zzallang.harusal2.ui.history.HistoryViewModel
 import com.nexters.zzallang.harusal2.ui.main.MainViewModel
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterViewModel
@@ -16,7 +18,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { HistoryViewModel(get(), get()) }
-    viewModel { BudgetRegisterViewModel(get()) }
+    viewModel { BudgetRegisterViewModel() }
     viewModel { StartDayDefaultRegisterViewModel(get()) }
     viewModel { StartDayClickRegisterViewModel(get()) }
     viewModel { AddStatementViewModel() }
@@ -26,4 +28,6 @@ val viewModelModule = module {
     viewModel { StatementEditViewModel(get(), get()) }
     viewModel { StatementDetailViewModel(get()) }
     viewModel { MainViewModel(get(), get()) }
+    viewModel { StartDayEditViewModel(get()) }
+    viewModel { BudgetEditViewModel(get()) }
 }

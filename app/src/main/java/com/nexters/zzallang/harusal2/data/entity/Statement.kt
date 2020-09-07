@@ -11,10 +11,11 @@ import java.util.*
 @TypeConverters(DateConverter::class)
 data class Statement(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0L,
-    @ColumnInfo(name = "date") val date: Date,
-    @ColumnInfo(name = "content") val content: String,
-    @ColumnInfo(name = "amount") val amount: Int,
-    @ColumnInfo(name = "budget_id") val budgetId: Long
+    @ColumnInfo(name = "date") var date: Date,
+    @ColumnInfo(name = "content") var content: String,
+    @ColumnInfo(name = "amount") var amount: Int,
+    @ColumnInfo(name = "budget_id") var budgetId: Long
+
 ) {
     fun summaryContent() : String {
         val SUMMARY_CONTENT_LENGTH = 12

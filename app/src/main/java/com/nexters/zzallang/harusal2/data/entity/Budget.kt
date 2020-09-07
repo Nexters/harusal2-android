@@ -11,7 +11,7 @@ import java.util.*
 @TypeConverters(DateConverter::class)
 data class Budget(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0L,
-    @ColumnInfo(name = "budget") val budget: Int,
+    @ColumnInfo(name = "budget") var budget: Int,
     @ColumnInfo(name = "startDate") val startDate: Date,
-    @ColumnInfo(name = "endDate") val endDate: Date
+    @ColumnInfo(name = "endDate") var endDate: Date
 )
