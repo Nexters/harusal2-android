@@ -35,8 +35,8 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
 
         val inputBudget: Long = text.toLong()
 
-        setAverageBudget((inputBudget / 30).toString() + "원")
-        setHangleBudget(inputBudget)
+        setAverageBudget("${inputBudget/30L} 원")
+        setHangeulBudget(inputBudget)
     }
 
     suspend fun saveBudget(): Boolean {
@@ -51,16 +51,15 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
     }
 
     private fun textClear() {
-        setHangleBudget(0)
+        setHangeulBudget(0)
         setAverageBudget("0원")
-        return
     }
 
     private fun setAverageBudget(averageBudget: String) {
         _averageBudget.postValue(PREFIX + averageBudget)
     }
 
-    private fun setHangleBudget(budget: Long) {
+    private fun setHangeulBudget(budget: Long) {
         _hangeulBudget.postValue(MoneyUtils.convertString(budget))
     }
 }
