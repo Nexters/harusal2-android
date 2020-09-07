@@ -30,13 +30,20 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
             viewModel.pickedDayChanged(newVal)
         })
 
-        binding.btnPrev.setOnClickListener { this.startActivity(Intent(this, StartDayDefaultRegisterActivity::class.java)) }
+        binding.btnPrev.setOnClickListener {
+            this.startActivity(Intent(this, StartDayDefaultRegisterActivity::class.java))
+            this.finish()
+        }
 
-        binding.btnClose.setOnClickListener { this.startActivity(Intent(this, MainActivity::class.java)) }
+        binding.btnClose.setOnClickListener {
+            this.startActivity(Intent(this, MainActivity::class.java))
+            this.finish()
+        }
 
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudgetDay(this.intent.getStringExtra("budget").toInt())
             this.startActivity(Intent(this, MainActivity::class.java))
+            this.finish()
         }
     }
 }
