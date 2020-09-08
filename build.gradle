@@ -4,13 +4,14 @@ buildscript {
     ext.koin_version = "2.1.6"
     ext.room_version = "2.2.5"
     ext.flipper_version = "0.51.0"
+    ext.lottieVersion = "3.4.1"
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.koin:koin-gradle-plugin:$koin_version"
 

@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">harusal2</string>
+
+    <string name="money_unit_kr">원</string>
+
+    <string name="add_statement_title">기록추가</string>
+    <string name="amount_title">금액</string>
+    <string name="memo_title">내역</string>
+    <string name="date_title">날짜</string>
+
+    <string name="btn_text_in">나간 돈</string>
+    <string name="btn_text_out">들어온 돈</string>
+    <string name="btn_text_next">다음</string>
+    <string name="btn_text_pre">이전</string>
+    <string name="btn_text_done">완료</string>
+    <string name="btn_text_ok">확인</string>
+    <string name="btn_text_store">저장하기</string>
+    <string name="btn_text_edit">수정하기</string>
+
+    <string name="memo_hint_text">내역을 입력해주세요.</string>
+
+    <string name="text_flex">세상에..완전 체고체고~!</string>
+    <string name="text_clap">굳굳, 이대로만 계속 가다오~</string>
+    <string name="text_default">오늘은 깔끔하게 딱 이정도만!</string>
+    <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
+    <string name="text_cry">안돼, 이제 그만써!!</string>
+    <string name="text_volcano">아이구...파산났네 났어~!</string>
 </resources>

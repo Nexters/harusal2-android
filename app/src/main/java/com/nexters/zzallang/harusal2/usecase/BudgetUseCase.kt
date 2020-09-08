@@ -1,40 +1,40 @@
 package com.nexters.zzallang.harusal2.usecase
 
-import android.content.Context
-import android.content.SharedPreferences
-import com.nexters.zzallang.harusal2.application.App
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.data.entity.Budget
+import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
+import java.util.*
 
 
-class BudgetUseCase {
-    private val sharedPreferences: SharedPreferences = App.app.applicationContext.getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
-    private val prefEditor: SharedPreferences.Editor = sharedPreferences.edit()
-
-    fun setAmount(amount: Long){
-        prefEditor.putLong(Constants.AMOUNT_KEY, amount).apply()
+class BudgetUseCase(private val budgetRepository: BudgetRepository) {
+    suspend fun updateBudget(budget: Budget) {
+        budgetRepository.update(budget)
     }
 
-    fun setStartDate(startDate: Int){
-        prefEditor.putInt(Constants.START_DATE_KEY, startDate).apply()
+    suspend fun insertBudget(budget: Int, startDate: Date) {
+        budgetRepository.insertBudget(
+            Budget(
+                startDate = startDate,
+                budget = budget,
+                endDate = DateUtils.endDate(startDate)
+            )
+        )
     }
 
-    fun getAmount(): Long {
-        return sharedPreferences.getLong(Constants.AMOUNT_KEY, Constants.DEFAULT_AMOUNT)
+    suspend fun insertBudget(budget: Int, startDate: Date, endDate: Date) {
+        budgetRepository.insertBudget(
+            Budget(
+                startDate = startDate,
+                budget = budget,
+                endDate = endDate
+            )
+        )
     }
 
-    fun getStartDate(): Int {
-        return sharedPreferences.getInt(Constants.START_DATE_KEY, Constants.DEFAULT_STARTDATE)
-    }
+    suspend fun findRecentBudget(): Budget =
+        budgetRepository.findRecentBudget()
 
-    fun removeAmount(){
-        prefEditor.remove(Constants.AMOUNT_KEY).apply()
-    }
+    suspend fun findAll(): List<Budget> = budgetRepository.findAll()
 
-    fun removeStartDate(){
-        prefEditor.remove(Constants.START_DATE_KEY).apply()
-    }
-
-    fun clearBudget(){
-        prefEditor.clear().apply()
-    }
+    suspend fun findAllDesc(): List<Budget> = budgetRepository.findAllDesc()
 }
