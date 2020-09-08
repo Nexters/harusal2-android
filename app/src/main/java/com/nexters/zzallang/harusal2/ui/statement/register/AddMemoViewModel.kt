@@ -24,7 +24,12 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     private var statementType = Constants.STATEMENT_TYPE_OUT
 
     fun setAmount(amount: String){
-        _stateAmount.postValue(amount+"원")
+        _stateAmount.postValue(amount+Constants.MONEY_UNIT)
+    }
+
+    fun getAmount(): Int{
+        val amount = _stateAmount.value?:""
+        return amount.substring(0, amount.length-1).toInt()
     }
 
     fun setType(type: Int){
@@ -76,7 +81,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     }
 
     suspend fun createStatement(){
-        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType((stateAmount.value ?: "0").toInt()), budgetId = budgetUseCase.findRecentBudget().id)
+        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType(getAmount()), budgetId = budgetUseCase.findRecentBudget().id)
         statementUseCase.insertData(statementData)
     }
 }
