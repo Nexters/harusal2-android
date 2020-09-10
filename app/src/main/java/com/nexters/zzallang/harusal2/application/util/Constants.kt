@@ -13,4 +13,6 @@ object Constants {
     const val STATEMENT_TYPE_DEFALT: Int = STATEMENT_TYPE_OUT
 
     const val DATE_FORMAT: String = "yyyy.MM.dd"
+
+    const val MONEY_UNIT: String = "원"
 }
