@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.main
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -10,8 +11,10 @@ import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
+import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
 import com.nexters.zzallang.harusal2.ui.main.adapter.MainStatementAdapter
 import com.nexters.zzallang.harusal2.ui.main.decoration.MainStatementDecoration
+import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,6 +39,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.rcvStatement.addItemDecoration(MainStatementDecoration())
         binding.rcvStatement.adapter = MainStatementAdapter()
         binding.rcvStatement.setHasFixedSize(true)
+        binding.ivList.setOnClickListener {
+            this.startActivity(Intent(this, HistoryActivity::class.java))
+        }
+        binding.btnAddStatement.setOnClickListener {
+            this.startActivity(Intent(this, AddStatementActivity::class.java))
+        }
     }
 
     private fun setSpendStateViews(state: SpendState) {
@@ -95,7 +104,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         val layoutTodayMoneyDrawable: Drawable = binding.layoutTodayMoney.background
         if (layoutTodayMoneyDrawable is GradientDrawable) {
-            layoutTodayMoneyDrawable.setColor(ContextCompat.getColor(this, todayLivingExpensesBackgroundColor))
+            layoutTodayMoneyDrawable.setColor(
+                ContextCompat.getColor(
+                    this,
+                    todayLivingExpensesBackgroundColor
+                )
+            )
         }
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

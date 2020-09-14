@@ -9,6 +9,7 @@ import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.ui.main.SpendState
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -42,25 +43,19 @@ class HistoryViewModel(
         }
 
         val safeMoney = this.oneDayBudget * DateUtils.calculateDate(budget.startDate, endDate)
-        val calculate: Double = 1 - (safeMoney / spentMoney).toDouble()
 
-        when {
-            calculate > 0.15 -> {
-                return SpendState.VOLCANO
-            }
-            calculate > 0.1 -> {
-                return SpendState.CRY
-            }
-            calculate > 0.04 -> {
-                return SpendState.EMBARRASSED
-            }
-            calculate > -0.05 -> {
-                return SpendState.DEFAULT
-            }
-            calculate > -0.1 -> {
-                return SpendState.CLAP
-            }
-            else -> return SpendState.FLEX
+        return if ((safeMoney / 10) < spentMoney) {
+            SpendState.FLEX
+        } else if ((safeMoney / 20) < spentMoney) {
+            SpendState.CLAP
+        } else if (-(safeMoney / 25) < spentMoney) {
+            SpendState.DEFAULT
+        } else if (-(safeMoney / 10) < spentMoney) {
+            SpendState.EMBARRASSED
+        } else if (-(safeMoney / 6) < spentMoney) {
+            SpendState.CRY
+        } else {
+            SpendState.VOLCANO
         }
     }
 
@@ -69,13 +64,16 @@ class HistoryViewModel(
         this.calculateOnedayBudget(selectedBudget)
 
         val histories =
-            statementUseCase.findByStartDateBetweenEndDate(
-                selectedBudget.startDate,
-                selectedBudget.endDate
+            statementUseCase.findStatementByBudgetId(
+                selectedBudget!!.id
             )
         var totalAmount = 0
 
-        histories.forEach { statement: Statement -> totalAmount += statement.amount }
+        val formatter = SimpleDateFormat("yyyy.MM.dd")
+        histories.forEach { statement: Statement ->
+            statement.date = formatter.parse(formatter.format(statement.date))
+            totalAmount += statement.amount
+        }
         val mainCardName: String
         val selectDate: Date
         val isCurrent: Boolean
@@ -94,12 +92,10 @@ class HistoryViewModel(
         }
 
         val groupingMainHistories = histories
-            .filter { statement -> statement.date == selectDate }
-            .groupBy { statement: Statement -> statement.date }
-            .toList()
+            .filter { statement -> statement.date.date == selectDate.date }
 
         val groupingHistories = histories
-            .filter { statement -> statement.date != selectDate }
+            .filter { statement -> statement.date.date != selectDate.date }
             .groupBy { statement: Statement -> statement.date }
             .toList()
             .sortedByDescending { pair -> pair.first }
@@ -107,7 +103,7 @@ class HistoryViewModel(
         recyclerItem.addAll(
             arrayListOf(
                 HistoryInfo(
-                    selectedBudget.budget - totalAmount,
+                    selectedBudget.budget + totalAmount,
                     DateUtils.startToEndToString(
                         selectedBudget.startDate,
                         selectedBudget.endDate
@@ -117,9 +113,9 @@ class HistoryViewModel(
                 HistoryTitle(mainCardName),
                 createMainCard(
                     selectDate,
-                    when (groupingHistories.isEmpty()) {
+                    when (groupingMainHistories.isEmpty()) {
                         true -> null
-                        else -> groupingMainHistories[0].second
+                        else -> groupingMainHistories
                     }
                 )
             )
@@ -160,11 +156,16 @@ class HistoryViewModel(
         val histories = ArrayList<HistoryStatement>()
         statements.forEach { statement: Statement ->
             run {
-                histories.add(HistoryStatement(statement.amount, statement.summaryContent()))
-                if (statement.amount < 0) {
-                    spend += statement.amount
-                } else {
-                    income += statement.amount
+                histories.add(
+                    HistoryStatement(
+                        statement.id,
+                        statement.amount,
+                        statement.summaryContent()
+                    )
+                )
+                when {
+                    statement.amount < 0 -> spend += statement.amount
+                    else -> income += statement.amount
                 }
             }
         }

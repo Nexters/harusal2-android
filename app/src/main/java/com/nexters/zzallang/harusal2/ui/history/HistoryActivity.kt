@@ -14,6 +14,7 @@ import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuDialog
 import com.nexters.zzallang.harusal2.ui.history.model.HistoryInfo
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import com.nexters.zzallang.harusal2.ui.main.SpendState.Companion.getBackgroundColor
+import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,8 +40,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         }
 
         binding.btnAddStatement.setOnClickListener {
-            //TODO : 내역 등록으로 이동
-            this.startActivity(Intent(this, MainActivity::class.java))
+            this.startActivity(Intent(this, AddStatementActivity::class.java))
         }
 
         binding.rcvHistory.layoutManager = LinearLayoutManager(this@HistoryActivity)
