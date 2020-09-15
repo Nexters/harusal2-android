@@ -43,10 +43,15 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
         viewModel.initData()
     }
 
+    override fun init() {
+        super.init()
+        GlobalScope.launch {
+            viewModel.setStatement(requireArguments().getLong("statementId"))
+        }
+    }
+
     override fun bindingView() {
         super.bindingView()
-
-        viewModel.setStatement(requireArguments().getLong("id"))
 
         binding.editStatementEditAmount.onFocusChangeListener =
             View.OnFocusChangeListener { v, isFocused ->

@@ -24,7 +24,7 @@ class StatementActivity: BaseActivity<ActivityStatementBinding>(){
         viewModel.setId(this.intent.getLongExtra("statementId", 0L))
 
         val bundle = Bundle()
-        bundle.putLong("id", viewModel.getId())
+        bundle.putLong("statementId", viewModel.getId())
         supportFragmentManager.beginTransaction().add(R.id.fragment_container_statement,
             StatementDetailFragment().apply {
                 arguments = bundle
