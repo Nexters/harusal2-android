@@ -29,10 +29,10 @@ class StatementActivity: BaseActivity<ActivityStatementBinding>(){
             StatementDetailFragment().apply {
                 arguments = bundle
             }
-        ).commit()
+        ).addToBackStack(null).commit()
 
         binding.btnStatementBack.setOnClickListener {
-            onBackPressed()
+            finish()
         }
 
         binding.btnStatementDelete.setOnClickListener {
