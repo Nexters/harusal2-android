@@ -18,6 +18,7 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
     abstract fun layoutRes() : Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        init()
         binding = DataBindingUtil.inflate(inflater, layoutRes(), container, false)
         return binding.root
     }
@@ -28,6 +29,10 @@ abstract class BaseFragment<B: ViewDataBinding> : Fragment() {
     }
 
     open fun bindingView(){
+
+    }
+
+    open fun init(){
 
     }
 }

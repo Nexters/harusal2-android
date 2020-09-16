@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.base.BaseViewModel
+import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
@@ -18,16 +19,19 @@ class MainViewModel(
     val todayRemainMoney: LiveData<String> get() = _todayRemainMoney
     private val _todayLivingExpenses = MutableLiveData<String>("오늘의 생활비 0원")
     val todayLivingExpenses: LiveData<String> get() = _todayLivingExpenses
-
+    lateinit var budget:Budget
     private var remainMoney: Int = 0
     private var livingExpenses: Int = 0
 
     private suspend fun refreshTodaySpendMoney() {
-        val list = statementUseCase.getStatementHistoryAtDate(Date(System.currentTimeMillis()))
+        val list = withContext(Dispatchers.IO + job) {
+            statementUseCase.findStatementByBudgetId(budget.id)
+        }
+        list.filter { statement -> statement.date.date == Date().date }
 
         var tempMoney = livingExpenses
         for (item in list) {
-            tempMoney -= item.amount
+            tempMoney += item.amount
         }
 
         remainMoney = tempMoney
@@ -36,19 +40,20 @@ class MainViewModel(
 
     suspend fun getTodaySpendStatementList(): List<MainStatement> {
         val list = withContext(Dispatchers.IO + job) {
-            statementUseCase.getStatementHistoryAtDate(Date(System.currentTimeMillis()))
+            statementUseCase.findStatementByBudgetId(budget.id)
         }
+        list.filter { statement -> statement.date.date == Date().date }
         val result = arrayListOf<MainStatement>()
 
         for (item in list) {
-            result.add(MainStatement(item.amount, item.content))
+            result.add(MainStatement(item.id, item.amount, item.content))
         }
 
         return result
     }
 
     private suspend fun refreshTodayLivingExpenses() {
-        val budget = withContext(Dispatchers.IO + job) {
+        budget = withContext(Dispatchers.IO + job) {
             budgetUseCase.findRecentBudget()
         }
 

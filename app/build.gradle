@@ -64,6 +64,9 @@ dependencies {
     debugImplementation "com.facebook.soloader:soloader:0.9.0"
     releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_version"
 
+    /* Android Debug Database Library */
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
     implementation 'com.shawnlin:number-picker:2.4.10'
     releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_version"
 

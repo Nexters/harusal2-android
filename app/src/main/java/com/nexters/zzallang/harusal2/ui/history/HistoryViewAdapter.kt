@@ -21,6 +21,8 @@ import com.nexters.zzallang.harusal2.databinding.ItemHistoryTitleBinding
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
 import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.ui.main.SpendState
+import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
+import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 
 class HistoryViewAdapter(private val context: Context, private val onedayBudget: Int) :
@@ -108,7 +110,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                     false
                 ) as ConstraintLayout
 
-                if (historyStatement.money > onedayBudget) {
+                if (-historyStatement.money > onedayBudget) {
                     layout.findViewById<TextView>(R.id.tv_money)
                         .setTextColor(context.getColor(R.color.colorSpendColor))
                 } else {
@@ -126,7 +128,8 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
 
                 //TODO : Activity 변경
                 layout.findViewById<ImageButton>(R.id.btn_statement_detail).setOnClickListener {
-                    val intent = Intent(context, StartDayDefaultRegisterActivity::class.java)
+                    val intent = Intent(context, StatementActivity::class.java)
+                    intent.putExtra("statementId", historyStatement.id)
                     context.startActivity(intent)
                 }
 

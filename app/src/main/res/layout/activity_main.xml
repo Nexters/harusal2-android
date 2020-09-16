@@ -128,6 +128,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_statement"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="bottom|end"

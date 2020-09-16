@@ -5,7 +5,7 @@ import com.nexters.zzallang.harusal2.data.repository.StatementRepository
 import java.util.*
 
 class StatementUseCase(private val statementRepository: StatementRepository) {
-    suspend fun getData(id: Long) : Statement? = statementRepository.getStatement(id)
+    suspend fun getData(id: Long) : Statement = statementRepository.getStatement(id)
 
     suspend fun insertData(statement: Statement) {
         statementRepository.insertStatement(statement)
@@ -19,49 +19,16 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
         statementRepository.deleteStatement(id)
     }
 
-    suspend fun getStatementHistoryAtMonth(date: Date) : List<Statement> {
-        date.date = 1
-        date.hours = 0
-        date.minutes = 0
-        date.seconds = 0
-        val startTime = date.time
-
-        date.date = when(date.month) {
-            1, 3, 5, 7, 8, 10, 12 -> 31
-            2 -> if (date.year % 4 == 0) {
-                29
-            } else {
-                28
-            }
-            else -> 30
-        }
-
-        date.hours = 23
-        date.minutes = 59
-        date.seconds = 59
-        val endTime = date.time
-
-        return statementRepository.selectAllStatementByDate(startTime, endTime)
-    }
-
-    suspend fun findByStartDateBetweenEndDate(startDate: Date, endDate: Date) : List<Statement> {
-        return statementRepository.selectAllStatementByDate(
-            startTime = startDate.time,
-            endTime = endDate.time
-        )
-    }
-
     suspend fun getStatementHistoryAtDate(date: Date) : List<Statement> {
         date.hours = 0
         date.minutes = 0
         date.seconds = 0
-        val startTime = date.time
+        val startTime = date.clone() as Date
 
         date.hours = 23
         date.minutes = 59
         date.seconds = 59
-        val endTime = date.time
-
+        val endTime = date.clone() as Date
         return statementRepository.selectAllStatementByDate(startTime, endTime)
     }
 
@@ -76,8 +43,12 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
         endDate.seconds = 59
 
         return statementRepository.selectAllStatementByDate(
-            startTime = startDate.time,
-            endTime = endDate.time
+            startTime = startDate,
+            endTime = endDate
         )
+    }
+
+    suspend fun findStatementByBudgetId(budgetId: Long): List<Statement> {
+        return statementRepository.findStatementByBudgetId(budgetId)
     }
 }

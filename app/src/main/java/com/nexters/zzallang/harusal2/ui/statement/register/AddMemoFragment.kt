@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,8 +58,9 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
             startActivity(intent)
         }
 
+        val datePicker = initDatePicker()
         binding.layoutStatementDate.setOnClickListener {
-            initDatePicker().show()
+            datePicker.show()
         }
     }
 
@@ -79,8 +81,10 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
             cal.get(Calendar.DAY_OF_MONTH)
         )
 
-        datePickerDialog.datePicker.minDate = viewModel.getMinDate()
-        datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        GlobalScope.launch {
+            datePickerDialog.datePicker.minDate = viewModel.getMinDate()
+            datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        }
 
         return datePickerDialog
     }
