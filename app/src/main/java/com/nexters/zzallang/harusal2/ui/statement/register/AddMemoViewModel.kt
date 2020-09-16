@@ -77,7 +77,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     fun stringToDate(inputDate: String): Date{
         val date = Date()
         date.year = inputDate.substring(0,4).toInt()-1900
-        date.month = inputDate.substring(5,7).toInt()
+        date.month = inputDate.substring(5,7).toInt()-1
         date.date = inputDate.substring(8).toInt()
         return date
     }

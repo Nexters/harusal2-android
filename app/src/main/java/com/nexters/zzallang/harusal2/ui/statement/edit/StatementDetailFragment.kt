@@ -1,11 +1,9 @@
 package com.nexters.zzallang.harusal2.ui.statement.edit
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentStatementDetailBinding
@@ -49,7 +47,7 @@ class StatementDetailFragment: BaseFragment<FragmentStatementDetailBinding>() {
                 StatementEditFragment().apply {
                     arguments = bundle
                 }
-            ).addToBackStack(null).commit()
+            ).commit()
         }
     }
 }
