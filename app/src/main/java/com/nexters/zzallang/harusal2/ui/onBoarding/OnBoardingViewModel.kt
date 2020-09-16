@@ -6,9 +6,15 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 
 class OnBoardingViewModel: BaseViewModel() {
     private val _text = MutableLiveData("")
+    private val _title = MutableLiveData("")
     val text: LiveData<String> get() = _text
+    val title: LiveData<String> get() = _title
 
-    fun setText(message: String) {
-        _text.postValue(message)
+    fun setText(text: String) {
+        _text.postValue(text)
+    }
+
+    fun setTitle(title: String){
+        _title.postValue(title)
     }
 }

@@ -21,8 +21,9 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
     override fun bindingView() {
         super.bindingView()
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(OnBoardingFragment.newInstance("first fragment"))
-        adapter.addFragment(OnBoardingFragment.newInstance("second fragment"))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding1), getString(R.string.text_onboarding1), "1"))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding2), getString(R.string.text_onboarding2), "2"))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding3), getString(R.string.text_onboarding3), "3"))
 
         binding.pagerOnboarding.adapter = adapter
     }

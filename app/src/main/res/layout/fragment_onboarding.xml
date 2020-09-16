@@ -13,17 +13,44 @@
         android:layout_height="match_parent"
         >
         
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_onboarding"
+            android:layout_width="280dp"
+            android:layout_height="240dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="136dp">
+
+        </com.airbnb.lottie.LottieAnimationView>
+        
+        <TextView
+            android:id="@+id/tv_onboarding_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottie_onboarding"
+            android:layout_marginTop="32dp"
+            android:text="@{vm.title}"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold">
+
+        </TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_onboarding_title"
+            android:layout_marginTop="10dp"
             android:text="@{vm.text}"
-            android:textColor="@color/colorDarkBlack"
-            android:textSize="20sp"
-            android:textStyle="bold">
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textAlignment="center">
 
         </TextView>
 
