@@ -9,7 +9,9 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -50,23 +52,23 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         return SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(DateUtils.getTodayDate())
     }
 
-    fun getMinDate(): Long{
+    suspend fun getMinDate(): Long{
         val minDate = Calendar.getInstance()
-        launch {
-            val budget = budgetUseCase.findRecentBudget()?.let {
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
                 val startDate = it.startDate
-                minDate.set(startDate.year, startDate.month, startDate.day)
+                minDate.time = startDate
             }
         }
         return minDate.time.time
     }
 
-    fun getMaxDate(): Long{
+    suspend fun getMaxDate(): Long{
         val maxDate = Calendar.getInstance()
-        launch {
-            val budget = budgetUseCase.findRecentBudget()?.let {
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
                 val endDate = it.endDate
-                maxDate.set(endDate.year, endDate.month, endDate.day)
+                maxDate.time = endDate
             }
         }
         return maxDate.time.time
@@ -74,7 +76,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
 
     fun stringToDate(inputDate: String): Date{
         val date = Date()
-        date.year = inputDate.substring(0,4).toInt()
+        date.year = inputDate.substring(0,4).toInt()-1900
         date.month = inputDate.substring(5,7).toInt()
         date.date = inputDate.substring(8).toInt()
         return date

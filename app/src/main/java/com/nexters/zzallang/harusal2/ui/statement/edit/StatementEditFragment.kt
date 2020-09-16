@@ -53,6 +53,9 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
     override fun bindingView() {
         super.bindingView()
 
+        Log.e("init type", viewModel.initType().toString())
+        if(viewModel.initType() == Constants.STATEMENT_TYPE_IN) binding.btnEditTypeIn.isChecked = true
+
         binding.editStatementEditAmount.onFocusChangeListener =
             View.OnFocusChangeListener { v, isFocused ->
                 if(isFocused) binding.layoutStatementEditKeypad.visibility = View.VISIBLE
@@ -78,8 +81,9 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
             }
         }
 
+        val datePicker = initDatePicker()
         binding.layoutStatementEditDate.setOnClickListener {
-            initDatePicker().show()
+            datePicker.show()
         }
     }
 
@@ -96,12 +100,14 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
 
         cal.time = viewModel.stringToDate(requireArguments().getString("date")?:viewModel.getDateForNow())
         val datePickerDialog = DatePickerDialog(requireContext(), R.style.DialogTheme, dateSetListener,
-            cal.time.year,
-            cal.time.month,
-            cal.time.date
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
         )
-        datePickerDialog.datePicker.minDate = viewModel.getMinDate()
-        datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        GlobalScope.launch {
+            datePickerDialog.datePicker.minDate = viewModel.getMinDate()
+            datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        }
 
         return datePickerDialog
     }

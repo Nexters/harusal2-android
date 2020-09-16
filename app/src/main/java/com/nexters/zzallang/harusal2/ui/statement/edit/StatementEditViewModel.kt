@@ -37,9 +37,15 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
         statementMemo.postValue(statement.content)
     }
 
+    fun initType(): Int{
+        if(statement.amount.toString()[0] == '-') return Constants.STATEMENT_TYPE_OUT
+        return Constants.STATEMENT_TYPE_IN
+    }
+
     fun setType(type: Int){
         statementType = type
     }
+
 
     fun applyType(amount: Int): Int{
         var resultAmount = amount;
@@ -63,27 +69,23 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
         return date
     }
 
-    fun getMinDate(): Long{
+    suspend fun getMinDate(): Long{
         val minDate = Calendar.getInstance()
-        minDate.time = stringToDate(statementDate.value?:getDateForNow())
-        minDate.set(minDate.time.year, minDate.time.month, minDate.time.date-15)
-        launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val startDate = budgetUseCase.findRecentBudget()!!.startDate
-                minDate.set(startDate.year, startDate.month, startDate.day)
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
+                val startDate = it.startDate
+                minDate.time = startDate
             }
         }
         return minDate.time.time
     }
 
-    fun getMaxDate(): Long{
+    suspend fun getMaxDate(): Long{
         val maxDate = Calendar.getInstance()
-        maxDate.time = stringToDate(statementDate.value?:getDateForNow())
-        maxDate.set(maxDate.time.year, maxDate.time.month, maxDate.time.date+15)
-        launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val endDate = budgetUseCase.findRecentBudget()!!.endDate
-                maxDate.set(endDate.year, endDate.month, endDate.date)
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
+                val endDate = it.endDate
+                maxDate.time = endDate
             }
         }
         return maxDate.time.time
