@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.onBoarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentOnboardingBinding
+import com.nexters.zzallang.harusal2.ui.main.MainActivity
+import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
     companion object {
@@ -45,5 +48,15 @@ class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
         binding.lottieOnboarding.setAnimation("onboarding"+requireArguments().getString("num")+".json")
         binding.lottieOnboarding.playAnimation()
         binding.lottieOnboarding.repeatCount = LottieDrawable.INFINITE
+
+        if (requireArguments().getString("num") == "3"){
+            binding.btnOnboardingStart.visibility = View.VISIBLE
+        }
+
+        binding.btnOnboardingStart.setOnClickListener {
+            activity?.finish()
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -16,6 +16,7 @@
     <string name="btn_text_ok">확인</string>
     <string name="btn_text_store">저장하기</string>
     <string name="btn_text_edit">수정하기</string>
+    <string name="btn_text_start">시작하기</string>
 
     <string name="memo_hint_text">내역을 입력해주세요.</string>
 
