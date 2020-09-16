@@ -15,4 +15,11 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+    override fun bindingView() {
+        super.bindingView()
+        binding.ivClose.setOnClickListener {
+            finish()
+        }
+    }
 }
