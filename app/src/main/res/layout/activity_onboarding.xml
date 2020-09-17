@@ -10,13 +10,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#fbb606">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager_onboarding"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPointYellow">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
         </androidx.viewpager.widget.ViewPager>
 
@@ -26,51 +27,29 @@
             android:layout_height="24dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
             android:src="@drawable/ic_close_24"
             android:background="@android:color/transparent"
             >
 
         </ImageButton>
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_onboarding"
+            app:tabIndicator="@null"
+            app:tabBackground="@drawable/indicator"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="100dp"
-            android:orientation="horizontal"
-            >
+            android:layout_marginBottom="140dp"
+            app:tabGravity="center"
+            app:tabPadding="10dp"
+            app:tabIndicatorGravity="center">
 
-            <ImageButton
-                android:id="@+id/indicator1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/indicator"
-                android:layout_marginRight="4dp"
-                >
-            </ImageButton>
-
-            <ImageButton
-                android:id="@+id/indicator2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/indicator"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp">
-            </ImageButton>
-
-            <ImageButton
-                android:id="@+id/indicator3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/indicator"
-                android:layout_marginLeft="4dp">
-            </ImageButton>
-
-        </LinearLayout>
+        </com.google.android.material.tabs.TabLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
