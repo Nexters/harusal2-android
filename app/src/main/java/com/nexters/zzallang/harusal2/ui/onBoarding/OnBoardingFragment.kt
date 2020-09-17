@@ -10,7 +10,6 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentOnboardingBinding
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
-import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
     companion object {

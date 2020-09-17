@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.preference.PreferenceManager
+import android.util.Log
+import android.widget.ImageButton
+import androidx.viewpager.widget.ViewPager
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityOnboardingBinding
@@ -23,7 +26,7 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
     override fun bindingView() {
         super.bindingView()
 
-        checkSharedPreference()
+        //checkSharedPreference()
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding1), getString(R.string.text_onboarding1), "1"))
@@ -31,6 +34,12 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
         adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding3), getString(R.string.text_onboarding3), "3"))
 
         binding.pagerOnboarding.adapter = adapter
+
+        binding.btnOnboardingClose.setOnClickListener {
+            finish()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun checkSharedPreference(){
