@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.R
@@ -20,6 +21,10 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
         super.bindingView()
         binding.ivClose.setOnClickListener {
             finish()
+        }
+
+        binding.btnAlarmSetting.setOnClickListener {
+            startActivity(Intent(this, AlarmSettingActivity::class.java))
         }
     }
 }
