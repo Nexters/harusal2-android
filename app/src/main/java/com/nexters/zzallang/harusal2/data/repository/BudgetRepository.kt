@@ -8,30 +8,30 @@ import kotlinx.coroutines.withContext
 class BudgetRepository : BaseRepository() {
     suspend fun insertBudget(budget: Budget) =
         withContext(coroutineContext) {
-            AppDatabase.instance.periodDao().insertBudget(budget)
+            AppDatabase.instance.budgetDao().insertBudget(budget)
         }
 
     suspend fun findById(id: Long) =
         withContext(coroutineContext) {
-            AppDatabase.instance.periodDao().findById(id)
+            AppDatabase.instance.budgetDao().findById(id)
         }
 
     suspend fun findRecentBudget() =
         withContext(coroutineContext) {
-            AppDatabase.instance.periodDao().findRecentBudget()
+            AppDatabase.instance.budgetDao().findRecentBudget()
         }
 
     suspend fun update(budget: Budget) =
         withContext(coroutineContext) {
-            AppDatabase.instance.periodDao().update(budget)
+            AppDatabase.instance.budgetDao().update(budget)
         }
 
     suspend fun findAll() =
         withContext(coroutineContext) {
-            AppDatabase.instance.periodDao().findAll()
+            AppDatabase.instance.budgetDao().findAll()
         }
 
     suspend fun findAllDesc() = withContext(coroutineContext) {
-        AppDatabase.instance.periodDao().findAllDesc()
+        AppDatabase.instance.budgetDao().findAllDesc()
     }
 }
