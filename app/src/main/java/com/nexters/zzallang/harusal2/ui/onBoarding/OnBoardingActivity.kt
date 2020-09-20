@@ -23,12 +23,10 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
     override fun bindingView() {
         super.bindingView()
 
-        checkSharedPreference()
-
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding1), getString(R.string.text_onboarding1), "1"))
-        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding2), getString(R.string.text_onboarding2), "2"))
-        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding3), getString(R.string.text_onboarding3), "3"))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding1), getString(R.string.text_onboarding1), 1))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding2), getString(R.string.text_onboarding2), 2))
+        adapter.addFragment(OnBoardingFragment.newInstance(getString(R.string.title_onboarding3), getString(R.string.text_onboarding3), 3))
 
         binding.pagerOnboarding.adapter = adapter
         binding.tabOnboarding.setupWithViewPager(binding.pagerOnboarding)
@@ -37,19 +35,6 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
             finish()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }
-    }
-
-    fun checkSharedPreference(){
-        PreferenceManager.getDefaultSharedPreferences(this).apply {
-            if(getBoolean("onboarding", false)){
-                finish()
-                val intent = Intent(this@OnBoardingActivity, MainActivity::class.java)
-                startActivity(intent)
-            }
-            else{
-                edit().putBoolean("onboarding", true).apply()
-            }
         }
     }
 }

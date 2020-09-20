@@ -13,12 +13,12 @@ import com.nexters.zzallang.harusal2.ui.main.MainActivity
 
 class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
     companion object {
-        fun newInstance(title: String, text: String, num: String): OnBoardingFragment {
+        fun newInstance(title: String, text: String, num: Int): OnBoardingFragment {
             val fragment = OnBoardingFragment()
             val bundle = Bundle()
             bundle.putString("title", title)
             bundle.putString("text", text)
-            bundle.putString("num", num)
+            bundle.putInt("num", num)
             fragment.arguments = bundle
             return fragment
         }
@@ -44,11 +44,11 @@ class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
         viewModel.setTitle(requireArguments().getString("title") ?: "null")
         viewModel.setText(requireArguments().getString("text") ?: "null")
 
-        binding.lottieOnboarding.setAnimation("onboarding"+requireArguments().getString("num")+".json")
+        binding.lottieOnboarding.setAnimation("onboarding"+requireArguments().getInt("num")+".json")
         binding.lottieOnboarding.playAnimation()
         binding.lottieOnboarding.repeatCount = LottieDrawable.INFINITE
 
-        if (requireArguments().getString("num") == "3"){
+        if (requireArguments().getInt("num") == 3){
             binding.btnOnboardingStart.visibility = View.VISIBLE
         }
 
