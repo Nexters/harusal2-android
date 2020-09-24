@@ -81,6 +81,8 @@ class StatementEditFragment: BaseFragment<FragmentEditStatementBinding>() {
         val datePicker = initDatePicker()
         binding.layoutStatementEditDate.setOnClickListener {
             datePicker.show()
+            datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.colorPointBlue))
+            datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.colorPointBlue))
         }
     }
 
