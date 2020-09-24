@@ -6,4 +6,5 @@
     <dimen name="history_title_radius">100dp</dimen>
     <dimen name="btn_round_radius">10dp</dimen>
     <dimen name="item_main_statement_height">56dp</dimen>
+    <dimen name="empty_main_icon_top_margin">18dp</dimen>
 </resources>

@@ -25,4 +25,7 @@
     <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
     <string name="text_cry">안돼, 이제 그만써!!</string>
     <string name="text_volcano">아이구...파산났네 났어~!</string>
+    <string name="empty_main_title">이번 달 예산을\n정해주세요!</string>
+    <string name="empty_main_speech_bubble_text">이번 달 얼마로 살아볼까요?</string>
+    <string name="budget_setting">예산설정</string>
 </resources>
