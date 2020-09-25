@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentStatementDetailBinding
 import kotlinx.coroutines.*
@@ -39,6 +40,11 @@ class StatementDetailFragment: BaseFragment<FragmentStatementDetailBinding>() {
         binding.tvStatementDate.text = viewModel.getDate()
         binding.tvStatementAmount.text = viewModel.getAmount()
         binding.tvStatementMemo.text = viewModel.getMemo()
+        when(viewModel.setType()){
+            Constants.STATEMENT_TYPE_IN -> binding.tvStatementType.background = resources.getDrawable(R.drawable.bg_tag_in)
+
+            Constants.STATEMENT_TYPE_OUT -> binding.tvStatementType.background = resources.getDrawable(R.drawable.bg_tag_out)
+        }
 
         binding.btnStatementDetailEdit.setOnClickListener {
             val bundle = Bundle()
