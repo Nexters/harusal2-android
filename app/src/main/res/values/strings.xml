@@ -16,6 +16,7 @@
     <string name="btn_text_ok">확인</string>
     <string name="btn_text_store">저장하기</string>
     <string name="btn_text_edit">수정하기</string>
+    <string name="btn_text_start">시작하기</string>
 
     <string name="memo_hint_text">내역을 입력해주세요.</string>
 
@@ -25,4 +26,14 @@
     <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
     <string name="text_cry">안돼, 이제 그만써!!</string>
     <string name="text_volcano">아이구...파산났네 났어~!</string>
+
+    <string name="title_onboarding1">이번 달은 절대 텅장 No!</string>
+    <string name="title_onboarding2">일일 생활비 자동 계산</string>
+    <string name="title_onboarding3">소비 실시간 코멘트</string>
+    <string name="text_onboarding1">자꾸 텅장이 되는 미생들을 위한\n본격 생활비 지킴이 서비스</string>
+    <string name="text_onboarding2">한 달 예산을 입력하면,\n일일 생활비를 알아서 계산해줍니다.</string>
+    <string name="text_onboarding3">절약 중이라면 칭찬을,\n과소비 중이라면 지적해줍니다.</string>
+    <string name="empty_main_title">이번 달 예산을\n정해주세요!</string>
+    <string name="empty_main_speech_bubble_text">이번 달 얼마로 살아볼까요?</string>
+    <string name="budget_setting">예산설정</string>
 </resources>

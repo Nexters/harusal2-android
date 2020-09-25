@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.AppDatabase
+import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
+import com.nexters.zzallang.harusal2.ui.onBoarding.OnBoardingActivity
 import kotlinx.coroutines.*
 
 class SplashActivity : Activity() {
@@ -34,12 +36,10 @@ class SplashActivity : Activity() {
                     existsBudget = AppDatabase.instance.budgetDao().existsBudget()
                 }
                 if (isFirstLoading()) {
-                    //TODO ON_BOARD 추가하기
                     updateOnBoardingView()
-//                this.startActivity(Intent(this, OnBoardingActivity::class.java))
+                    activity = OnBoardingActivity::class.java
                 } else if (!existsBudget) {
-                    //TODO ON_BOARD 추가하기
-//                activity = EmptyMain::class.java
+                    activity = EmptyMainActivity::class.java
                 }
             }
 
