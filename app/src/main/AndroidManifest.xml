@@ -26,6 +26,7 @@
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.budget.edit.StartDayEditActivity"/>
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
+        <activity android:name=".ui.main.EmptyMainActivity"/>
     </application>
 
 </manifest>
