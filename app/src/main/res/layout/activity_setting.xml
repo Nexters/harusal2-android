@@ -54,6 +54,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/btn_edit_budget"
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
@@ -77,6 +78,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/btn_edit_start_day"
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
