@@ -1,7 +1,7 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
 import com.nexters.zzallang.harusal2.base.BaseViewModel
-import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayEditUseCase
+import com.nexters.zzallang.harusal2.usecase.StartDayEditUseCase
 import kotlinx.coroutines.launch
 
 class SettingViewModel(

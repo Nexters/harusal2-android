@@ -1,8 +1,6 @@
-package com.nexters.zzallang.harusal2.ui.budget.edit
+package com.nexters.zzallang.harusal2.usecase
 
 import com.nexters.zzallang.harusal2.data.entity.Statement
-import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
-import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import java.util.*
 
 class StartDayEditUseCase(
