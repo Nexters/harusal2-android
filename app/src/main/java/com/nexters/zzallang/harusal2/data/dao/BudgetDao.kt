@@ -22,4 +22,7 @@ interface BudgetDao {
 
     @Query("select * from budget order by id desc")
     suspend fun findAllDesc(): List<Budget>
+
+    @Query("select exists (select 1 from budget where id > 0)")
+    suspend fun existsBudget(): Boolean
 }
