@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.nexters.zzallang.harusal2.ui.setting.AlarmSettingViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,23 +53,28 @@
                 android:textSize="16sp" />
 
             <Switch
+                android:id="@+id/switch_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp" />
+                android:layout_marginEnd="20dp"
+                android:checked="false"/>
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/layout_contents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layout_setting_main"
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RelativeLayout
+                android:id="@+id/layout_morning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp">
@@ -77,14 +88,18 @@
                     android:textSize="14sp" />
 
                 <Switch
+                    android:id="@+id/switch_morning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:track="@drawable/bg_setting_switch"
+                    android:thumb="@drawable/thumb_setting_switch"/>
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_afternoon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp">
@@ -106,6 +121,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_evening"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
