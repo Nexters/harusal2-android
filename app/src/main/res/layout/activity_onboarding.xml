@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.nexters.zzallang.harusal2.ui.onBoarding.OnBoardingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fbb606">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager_onboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <ImageButton
+            android:id="@+id/btn_onboarding_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/ic_close_24"
+            android:background="@android:color/transparent"
+            >
+
+        </ImageButton>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_onboarding"
+            app:tabIndicator="@null"
+            app:tabBackground="@drawable/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="140dp"
+            app:tabGravity="center"
+            app:tabPadding="10dp"
+            app:tabIndicatorGravity="center">
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
