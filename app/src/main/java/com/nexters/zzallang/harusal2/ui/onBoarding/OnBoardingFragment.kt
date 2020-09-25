@@ -9,6 +9,7 @@ import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentOnboardingBinding
+import com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 
 class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
@@ -54,7 +55,7 @@ class OnBoardingFragment: BaseFragment<FragmentOnboardingBinding>() {
 
         binding.btnOnboardingStart.setOnClickListener {
             activity?.finish()
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, BudgetRegisterActivity::class.java)
             startActivity(intent)
         }
     }

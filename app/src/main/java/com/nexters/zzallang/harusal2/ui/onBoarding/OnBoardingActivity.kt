@@ -7,6 +7,7 @@ import android.preference.PreferenceManager
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityOnboardingBinding
+import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,7 +34,7 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
 
         binding.btnOnboardingClose.setOnClickListener {
             finish()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, EmptyMainActivity::class.java)
             startActivity(intent)
         }
     }
