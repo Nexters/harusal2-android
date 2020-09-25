@@ -33,4 +33,7 @@
     <string name="text_onboarding1">자꾸 텅장이 되는 미생들을 위한\n본격 생활비 지킴이 서비스</string>
     <string name="text_onboarding2">한 달 예산을 입력하면,\n일일 생활비를 알아서 계산해줍니다.</string>
     <string name="text_onboarding3">절약 중이라면 칭찬을,\n과소비 중이라면 지적해줍니다.</string>
+    <string name="empty_main_title">이번 달 예산을\n정해주세요!</string>
+    <string name="empty_main_speech_bubble_text">이번 달 얼마로 살아볼까요?</string>
+    <string name="budget_setting">예산설정</string>
 </resources>
