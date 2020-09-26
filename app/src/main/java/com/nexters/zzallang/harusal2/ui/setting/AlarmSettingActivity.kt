@@ -22,20 +22,34 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+    }
+
+    override fun bindingView() {
+        super.bindingView()
 
         binding.switchMain.setOnCheckedChangeListener { _, isChecked ->
             run {
                 binding.layoutContents.visibility = if (isChecked) View.VISIBLE else View.GONE
             }
         }
-    }
-
-    override fun bindingView() {
-        super.bindingView()
 
         binding.ivClose.setOnClickListener {
             finish()
             pushAlert()
+        }
+
+        /* TODO: 바디 크기가 안맞아서 고쳐야함. */
+        binding.switchMorning.apply {
+            setTrackResource(R.drawable.track_setting_switch)
+            setThumbResource(R.drawable.thumb_setting_switch)
+        }
+        binding.switchAfternoon.apply {
+            setTrackResource(R.drawable.track_setting_switch)
+            setThumbResource(R.drawable.thumb_setting_switch)
+        }
+        binding.switchEvening.apply{
+            setTrackResource(R.drawable.track_setting_switch)
+            setThumbResource(R.drawable.thumb_setting_switch)
         }
     }
 
