@@ -22,4 +22,7 @@ interface BudgetDao {
 
     @Query("select * from budget order by id desc")
     suspend fun findAllDesc(): List<Budget>
+
+    @Query("delete from budget")
+    suspend fun deleteAllBudget()
 }

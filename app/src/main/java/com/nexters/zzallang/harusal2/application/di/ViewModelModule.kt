@@ -31,5 +31,5 @@ val viewModelModule = module {
     viewModel { MainViewModel(get(), get()) }
     viewModel { BudgetEditViewModel(get()) }
     viewModel { AlarmSettingViewModel() }
-    viewModel { SettingViewModel(get()) }
+    viewModel { SettingViewModel(get(), get(), get()) }
 }

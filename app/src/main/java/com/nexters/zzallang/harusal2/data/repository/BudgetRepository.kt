@@ -34,4 +34,8 @@ class BudgetRepository : BaseRepository() {
     suspend fun findAllDesc() = withContext(coroutineContext) {
         AppDatabase.instance.periodDao().findAllDesc()
     }
+
+    suspend fun deleteAllBudget() = withContext(coroutineContext) {
+        AppDatabase.instance.periodDao().deleteAllBudget()
+    }
 }

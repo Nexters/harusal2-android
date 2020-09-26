@@ -102,11 +102,12 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/btn_reset_data"
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
             <ImageView
-                android:id="@+id/iv_refresh_date"
+                android:id="@+id/iv_reset_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -119,7 +120,7 @@
                 android:text="데이터 초기화"
                 android:textSize="16sp"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/iv_refresh_date"
+                android:layout_toEndOf="@id/iv_reset_data"
                 android:layout_marginStart="12dp"/>
 
         </RelativeLayout>

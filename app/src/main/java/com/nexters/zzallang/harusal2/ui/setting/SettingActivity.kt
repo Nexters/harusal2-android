@@ -1,22 +1,16 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
 import android.content.Intent
-import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivitySettingBinding
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditActivity
-import com.nexters.zzallang.harusal2.ui.budget.edit.StartDayEditDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class SettingActivity: BaseActivity<ActivitySettingBinding>() {
     override val viewModel: SettingViewModel by viewModel()
-
     override fun layoutRes(): Int = R.layout.activity_setting
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun bindingView() {
         super.bindingView()
@@ -33,12 +27,31 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
         }
 
         binding.btnEditStartDay.setOnClickListener {
-            val dialog = StartDayEditDialog(this)
+            val dialog = SettingDialog(this)
             dialog.setOnOKClickedListener {
-                viewModel.save()
+                viewModel.editBudgetDate()
             }
 
-            dialog.start(viewModel.initContent())
+            val todayDate: Int = Date().date
+            dialog.start(
+                getString(R.string.dialog_edit_budget_date_title, todayDate, todayDate),
+                getString(R.string.dialog_edit_budget_date_complete_button, todayDate)
+            )
+        }
+
+        binding.btnResetData.setOnClickListener {
+            val dialog = SettingDialog(this)
+            dialog.start(
+                getString(R.string.dialog_reset_data_title),
+                getString(R.string.dialog_reset_data_complete_button)
+            )
+
+            dialog.setOnOKClickedListener {
+                viewModel.deleteAllData()
+                /* TODO: 빈 메인화면 머지하고 startActivity 하자 */
+//                startActivity(Intent(this, EmptyMainActivity::class.java))
+                finish()
+            }
         }
     }
 }

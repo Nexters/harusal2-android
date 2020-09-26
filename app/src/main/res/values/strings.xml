@@ -25,4 +25,8 @@
     <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
     <string name="text_cry">안돼, 이제 그만써!!</string>
     <string name="text_volcano">아이구...파산났네 났어~!</string>
+    <string name="dialog_reset_data_title">지금까지 기록한 모든 정보가 사라지고\n기록 복구가 불가능합니다.\n정말 초기화 하시겠어요?</string>
+    <string name="dialog_reset_data_complete_button">네, 초기화 합니다.</string>
+    <string name="dialog_edit_budget_date_title">오늘은 %d일입니다.\n%d일로 시작일을 수정합니다.\n수정 후에는 새롭게 한 달 기준으로\n하루 생활비가 책정됩니다.</string>
+    <string name="dialog_edit_budget_date_complete_button">%d일로 시작</string>
 </resources>
