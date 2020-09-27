@@ -5,6 +5,7 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivitySettingBinding
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditActivity
+import com.nexters.zzallang.harusal2.ui.setting.view.SettingDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -27,7 +28,8 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
         }
 
         binding.btnEditStartDay.setOnClickListener {
-            val dialog = SettingDialog(this)
+            val dialog =
+                SettingDialog(this)
             dialog.setOnOKClickedListener {
                 viewModel.editBudgetDate()
             }
@@ -40,7 +42,8 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
         }
 
         binding.btnResetData.setOnClickListener {
-            val dialog = SettingDialog(this)
+            val dialog =
+                SettingDialog(this)
             dialog.start(
                 getString(R.string.dialog_reset_data_title),
                 getString(R.string.dialog_reset_data_complete_button)

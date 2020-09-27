@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.setting
+package com.nexters.zzallang.harusal2.ui.setting.view
 
 import android.app.Dialog
 import android.content.Context
@@ -6,7 +6,6 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import com.nexters.zzallang.harusal2.R
-import java.util.*
 
 class SettingDialog(context : Context) {
     private val dlg = Dialog(context)
@@ -39,7 +38,8 @@ class SettingDialog(context : Context) {
     }
 
     fun setOnOKClickedListener(listener: () -> Unit) {
-        this.listener = object: StartDayEditDialogListener {
+        this.listener = object:
+            StartDayEditDialogListener {
             override fun onCompleteClicked() {
                 listener()
             }

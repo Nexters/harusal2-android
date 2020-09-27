@@ -27,6 +27,7 @@
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
+        <receiver android:name=".ui.setting.receiver.Alarm"/>
     </application>
 
 </manifest>
