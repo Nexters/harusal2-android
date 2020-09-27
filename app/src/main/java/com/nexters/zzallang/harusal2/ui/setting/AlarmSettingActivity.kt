@@ -43,29 +43,33 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        binding.switchMain.setOnCheckedChangeListener { _, isChecked ->
-            if (!isChecked) {
-                binding.switchMorning.isChecked = false
-                binding.switchAfternoon.isChecked = false
-                binding.switchEvening.isChecked = false
-                alarmManager.cancel(pendingIntent)
-                val editor = pref.edit()
-                editor.putBoolean("main", false)
-                editor.putBoolean("morning", false)
-                editor.putBoolean("afternoon", false)
-                editor.putBoolean("evening", false).apply()
-            } else {
-                pref.edit().putBoolean("main", true).apply()
-            }
-
-            binding.layoutContents.visibility = if (isChecked) View.VISIBLE else View.GONE
-        }
-
         binding.ivClose.setOnClickListener {
             finish()
         }
 
         /* TODO: 바디 크기가 안맞아서 고쳐야함. */
+        binding.switchMain.apply {
+            setTrackResource(R.drawable.track_setting_switch)
+            setThumbResource(R.drawable.thumb_setting_switch)
+            setOnCheckedChangeListener { _, isChecked ->
+                if (!isChecked) {
+                    binding.switchMorning.isChecked = false
+                    binding.switchAfternoon.isChecked = false
+                    binding.switchEvening.isChecked = false
+                    alarmManager.cancel(pendingIntent)
+                    val editor = pref.edit()
+                    editor.putBoolean("main", false)
+                    editor.putBoolean("morning", false)
+                    editor.putBoolean("afternoon", false)
+                    editor.putBoolean("evening", false).apply()
+                } else {
+                    pref.edit().putBoolean("main", true).apply()
+                }
+
+                binding.layoutContents.visibility = if (isChecked) View.VISIBLE else View.GONE
+            }
+        }
+
         binding.switchMorning.apply {
             setTrackResource(R.drawable.track_setting_switch)
             setThumbResource(R.drawable.thumb_setting_switch)
@@ -113,7 +117,6 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
         binding.switchAfternoon.isChecked = pref.getBoolean("afternoon", false)
         binding.switchEvening.isChecked = pref.getBoolean("evening", false)
     }
-
 
     private fun alarmRegister(alertTime: AlertTime) {
         val calendar: Calendar = Calendar.getInstance().apply {
