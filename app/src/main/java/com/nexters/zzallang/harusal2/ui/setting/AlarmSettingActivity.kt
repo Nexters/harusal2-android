@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import com.nexters.zzallang.harusal2.R
@@ -24,17 +25,19 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
         전체가 취소되는 이슈가 생길 수 있다 해결 방안에 대해 모색하자.
         애초에 하나만 설정되고 나머지는 설정이 안될지도.. */
     private lateinit var pendingIntent: PendingIntent
+    private lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
-
         val intent = Intent(this, Alarm::class.java)
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        pref = getSharedPreferences("alarm_setting", Context.MODE_PRIVATE)
+
+        initSwitchState()
     }
 
     override fun bindingView() {
@@ -46,7 +49,15 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
                 binding.switchAfternoon.isChecked = false
                 binding.switchEvening.isChecked = false
                 alarmManager.cancel(pendingIntent)
+                val editor = pref.edit()
+                editor.putBoolean("main", false)
+                editor.putBoolean("morning", false)
+                editor.putBoolean("afternoon", false)
+                editor.putBoolean("evening", false).apply()
+            } else {
+                pref.edit().putBoolean("main", true).apply()
             }
+
             binding.layoutContents.visibility = if (isChecked) View.VISIBLE else View.GONE
         }
 
@@ -61,8 +72,10 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
             setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     alarmRegister(AlertTime.MORNING)
+                    pref.edit().putBoolean("morning", true).apply()
                 } else {
                     alarmManager.cancel(pendingIntent)
+                    pref.edit().putBoolean("morning", false).apply()
                 }
             }
         }
@@ -72,8 +85,10 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
             setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     alarmRegister(AlertTime.AFTERNOON)
+                    pref.edit().putBoolean("afternoon", true).apply()
                 } else {
                     alarmManager.cancel(pendingIntent)
+                    pref.edit().putBoolean("afternoon", false).apply()
                 }
             }
         }
@@ -83,15 +98,25 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
             setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     alarmRegister(AlertTime.EVENING)
+                    pref.edit().putBoolean("evening", true).apply()
                 } else {
                     alarmManager.cancel(pendingIntent)
+                    pref.edit().putBoolean("evening", false).apply()
                 }
             }
         }
     }
 
+    private fun initSwitchState() {
+        binding.switchMain.isChecked = pref.getBoolean("main", false)
+        binding.switchMorning.isChecked = pref.getBoolean("morning", false)
+        binding.switchAfternoon.isChecked = pref.getBoolean("afternoon", false)
+        binding.switchEvening.isChecked = pref.getBoolean("evening", false)
+    }
+
+
     private fun alarmRegister(alertTime: AlertTime) {
-        val calendar: Calendar = Calendar.getInstance().apply { // 1
+        val calendar: Calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
             set(Calendar.HOUR_OF_DAY, when (alertTime) {
                 AlertTime.MORNING -> 9
