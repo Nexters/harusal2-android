@@ -5,6 +5,7 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivitySettingBinding
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditActivity
+import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.setting.view.SettingDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -51,8 +52,7 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
 
             dialog.setOnOKClickedListener {
                 viewModel.deleteAllData()
-                /* TODO: 빈 메인화면 머지하고 startActivity 하자 */
-//                startActivity(Intent(this, EmptyMainActivity::class.java))
+                startActivity(Intent(this, EmptyMainActivity::class.java))
                 finish()
             }
         }
