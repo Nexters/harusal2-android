@@ -119,14 +119,7 @@ class AlarmSettingActivity: BaseActivity<ActivityAlarmSettingBinding>() {
     }
 
     private fun alarmRegister(alertTime: AlertTime) {
-        val calendar: Calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, when (alertTime) {
-                AlertTime.MORNING -> 9
-                AlertTime.AFTERNOON -> 12
-                else -> 20
-            })
-        }
+        val calendar: Calendar = viewModel.getAlarmCalender(alertTime)
 
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
