@@ -49,6 +49,22 @@
             </TextView>
             
             <TextView
+                android:id="@+id/tv_statement_type"
+                android:layout_width="48dp"
+                android:layout_height="22dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_statement_amount_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_statement_date"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="8dp"
+                android:text="@{vm.statementType}"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="normal"
+                android:gravity="center">
+
+            </TextView>
+            
+            <TextView
                 android:id="@+id/tv_statement_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

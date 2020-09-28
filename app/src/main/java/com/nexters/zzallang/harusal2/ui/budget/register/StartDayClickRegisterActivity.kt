@@ -6,6 +6,7 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayClickBinding
+import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,7 +37,7 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
         }
 
         binding.btnClose.setOnClickListener {
-            this.startActivity(Intent(this, MainActivity::class.java))
+            this.startActivity(Intent(this, EmptyMainActivity::class.java))
             this.finish()
         }
 

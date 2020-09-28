@@ -18,6 +18,8 @@
     <color name="colorLightGray">#F4F5F9</color>
     <color name="colorHistoryTitle">#B7BBCB</color>
     <color name="colorSpendColor">#D90C0C</color>
+    <color name="colorOut">#d90c0c</color>
+    <color name="colorIn">#0c83d9</color>
 
     <color name="colorPointBlueBackground">#18A7F8</color>
     <color name="colorPointGreenBackground">#58D4BE</color>

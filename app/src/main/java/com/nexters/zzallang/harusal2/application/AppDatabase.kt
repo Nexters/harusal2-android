@@ -14,7 +14,7 @@ import com.nexters.zzallang.harusal2.data.entity.Statement
 @TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun statementDao(): StatementDao
-    abstract fun periodDao(): BudgetDao
+    abstract fun budgetDao(): BudgetDao
 
     companion object {
         val instance: AppDatabase by lazy {

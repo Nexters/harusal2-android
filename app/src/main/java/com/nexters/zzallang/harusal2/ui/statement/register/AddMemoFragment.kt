@@ -2,17 +2,11 @@ package com.nexters.zzallang.harusal2.ui.statement.register
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.DatePicker
-import androidx.annotation.RequiresApi
+import android.view.*
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.App
 import com.nexters.zzallang.harusal2.application.util.Constants
-import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
@@ -57,8 +51,11 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
             startActivity(intent)
         }
 
+        val datePicker = initDatePicker()
         binding.layoutStatementDate.setOnClickListener {
-            initDatePicker().show()
+            datePicker.show()
+            datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.colorPointBlue))
+            datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.colorPointBlue))
         }
     }
 
@@ -79,8 +76,10 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
             cal.get(Calendar.DAY_OF_MONTH)
         )
 
-        datePickerDialog.datePicker.minDate = viewModel.getMinDate()
-        datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        GlobalScope.launch {
+            datePickerDialog.datePicker.minDate = viewModel.getMinDate()
+            datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
+        }
 
         return datePickerDialog
     }

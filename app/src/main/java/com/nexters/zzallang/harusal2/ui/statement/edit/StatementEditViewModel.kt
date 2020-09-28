@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.statement.edit
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
@@ -9,7 +8,8 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,10 +23,14 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     private var statementType = Constants.STATEMENT_TYPE_DEFALT
     private lateinit var statement: Statement
 
-    fun setStatement(id: Long){
-        launch {
-            statement = statementUseCase.getData(id)!!
+    suspend fun setStatement(id: Long){
+        statement = withContext(Dispatchers.IO + job){
+            statementUseCase.getData(id)
         }
+    }
+
+    fun getId():Long{
+        return statement.id
     }
 
     fun initData(){
@@ -35,9 +39,15 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
         statementMemo.postValue(statement.content)
     }
 
+    fun initType(): Int{
+        if(statement.amount.toString()[0] == '-') return Constants.STATEMENT_TYPE_OUT
+        return Constants.STATEMENT_TYPE_IN
+    }
+
     fun setType(type: Int){
         statementType = type
     }
+
 
     fun applyType(amount: Int): Int{
         var resultAmount = amount;
@@ -53,42 +63,42 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
         return SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(DateUtils.getTodayDate())
     }
 
+    fun getInitDate(): Date{
+        return stringToDate(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
+    }
+
     fun stringToDate(inputDate: String): Date{
         val date = Date()
-        date.year = inputDate.substring(0,4).toInt()
-        date.month = inputDate.substring(5,7).toInt()
+        date.year = inputDate.substring(0,4).toInt()-1900
+        date.month = inputDate.substring(5,7).toInt()-1
         date.date = inputDate.substring(8).toInt()
         return date
     }
 
-    fun getMinDate(): Long{
+    suspend fun getMinDate(): Long{
         val minDate = Calendar.getInstance()
-        minDate.time = stringToDate(statementDate.value?:getDateForNow())
-        minDate.set(minDate.time.year, minDate.time.month, minDate.time.date-15)
-        launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val startDate = budgetUseCase.findRecentBudget()!!.startDate
-                minDate.set(startDate.year, startDate.month, startDate.day)
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
+                val startDate = it.startDate
+                minDate.time = startDate
             }
         }
         return minDate.time.time
     }
 
-    fun getMaxDate(): Long{
+    suspend fun getMaxDate(): Long{
         val maxDate = Calendar.getInstance()
-        maxDate.time = stringToDate(statementDate.value?:getDateForNow())
-        maxDate.set(maxDate.time.year, maxDate.time.month, maxDate.time.date+15)
-        launch {
-            if(budgetUseCase.findRecentBudget() != null){
-                val endDate = budgetUseCase.findRecentBudget()!!.endDate
-                maxDate.set(endDate.year, endDate.month, endDate.date)
+        val budget = withContext(Dispatchers.IO + job){
+            budgetUseCase.findRecentBudget()?.let {
+                val endDate = it.endDate
+                maxDate.time = endDate
             }
         }
         return maxDate.time.time
     }
 
     suspend fun updateStatement(){
-        val statementModel = Statement(date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()), budgetId = budgetUseCase.findRecentBudget().id)
+        val statementModel = Statement(id = statement.id, date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()), budgetId = budgetUseCase.findRecentBudget().id)
         statementUseCase.updateStatement(statementModel)
     }
 }
