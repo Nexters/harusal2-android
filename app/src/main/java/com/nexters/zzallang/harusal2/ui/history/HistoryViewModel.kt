@@ -43,16 +43,16 @@ class HistoryViewModel(
         }
 
         val safeMoney = this.oneDayBudget * DateUtils.calculateDate(budget.startDate, endDate)
-
-        return if ((safeMoney / 10) < spentMoney) {
+        val spentMoney = -spentMoney
+        return if (spentMoney < safeMoney * 0.9) {
             SpendState.FLEX
-        } else if ((safeMoney / 20) < spentMoney) {
+        } else if (spentMoney < safeMoney * 0.95) {
             SpendState.CLAP
-        } else if (-(safeMoney / 25) < spentMoney) {
+        } else if (spentMoney < safeMoney * 1.04) {
             SpendState.DEFAULT
-        } else if (-(safeMoney / 10) < spentMoney) {
+        } else if (spentMoney < safeMoney * 1.1) {
             SpendState.EMBARRASSED
-        } else if (-(safeMoney / 6) < spentMoney) {
+        } else if (spentMoney < safeMoney * 1.15) {
             SpendState.CRY
         } else {
             SpendState.VOLCANO
@@ -78,8 +78,8 @@ class HistoryViewModel(
         val selectDate: Date
         val isCurrent: Boolean
 
-        when (selectedBudget) {
-            recentBudget -> {
+        when (selectedBudget.id) {
+            recentBudget!!.id -> {
                 mainCardName = "TODAY"
                 selectDate = todayDate
                 isCurrent = true
