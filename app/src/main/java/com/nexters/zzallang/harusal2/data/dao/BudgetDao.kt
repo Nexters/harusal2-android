@@ -25,4 +25,7 @@ interface BudgetDao {
 
     @Query("select exists (select 1 from budget where id > 0)")
     suspend fun existsBudget(): Boolean
+
+    @Query("delete from budget")
+    suspend fun deleteAllBudget()
 }

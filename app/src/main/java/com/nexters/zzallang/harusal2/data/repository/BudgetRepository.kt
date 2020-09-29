@@ -34,4 +34,8 @@ class BudgetRepository : BaseRepository() {
     suspend fun findAllDesc() = withContext(coroutineContext) {
         AppDatabase.instance.budgetDao().findAllDesc()
     }
+
+    suspend fun deleteAllBudget() = withContext(coroutineContext) {
+        AppDatabase.instance.budgetDao().deleteAllBudget()
+    }
 }

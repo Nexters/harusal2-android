@@ -29,6 +29,12 @@ class StatementRepository : BaseRepository() {
         }
     }
 
+    suspend fun deleteAllStatement() {
+        withContext(coroutineContext) {
+            AppDatabase.instance.statementDao().deleteAllStatement()
+        }
+    }
+
     suspend fun selectAllStatementByDate(startTime: Date, endTime: Date) =
         withContext(coroutineContext) {
             AppDatabase.instance.statementDao().selectStatementWhereDate(startTime, endTime)

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="환경설정"
+                android:layout_centerInParent="true"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_24"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_alarm_setting"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iv_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icn_bell_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알림 설정"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_alert"
+                android:layout_marginStart="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_edit_budget"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iv_config_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icn_coin_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이번 달 생활비 수정"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_config_statement"
+                android:layout_marginStart="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_edit_start_day"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iv_config_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icn_calendar_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매월 시작일 수정"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_config_date"
+                android:layout_marginStart="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_reset_data"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iv_reset_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icn_refresh_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="데이터 초기화"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_reset_data"
+                android:layout_marginStart="12dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

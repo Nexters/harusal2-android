@@ -19,6 +19,10 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
         statementRepository.deleteStatement(id)
     }
 
+    suspend fun deleteAllStatement() {
+        statementRepository.deleteAllStatement()
+    }
+
     suspend fun getStatementHistoryAtDate(date: Date) : List<Statement> {
         date.hours = 0
         date.minutes = 0

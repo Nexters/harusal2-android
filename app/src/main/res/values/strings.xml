@@ -36,4 +36,8 @@
     <string name="empty_main_title">이번 달 예산을\n정해주세요!</string>
     <string name="empty_main_speech_bubble_text">이번 달 얼마로 살아볼까요?</string>
     <string name="budget_setting">예산설정</string>
+    <string name="dialog_reset_data_title">지금까지 기록한 모든 정보가 사라지고\n기록 복구가 불가능합니다.\n정말 초기화 하시겠어요?</string>
+    <string name="dialog_reset_data_complete_button">네, 초기화 합니다.</string>
+    <string name="dialog_edit_budget_date_title">오늘은 %d일입니다.\n%d일로 시작일을 수정합니다.\n수정 후에는 새롭게 한 달 기준으로\n하루 생활비가 책정됩니다.</string>
+    <string name="dialog_edit_budget_date_complete_button">%d일로 시작</string>
 </resources>

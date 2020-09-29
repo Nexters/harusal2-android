@@ -24,11 +24,13 @@
         <activity android:name=".ui.statement.register.AddStatementActivity"/>
         <activity android:name=".ui.statement.edit.StatementActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.budget.edit.StartDayEditActivity"/>
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
         <activity android:name=".ui.spalsh.SplashActivity"/>
         <activity android:name=".ui.onBoarding.OnBoardingActivity" />
         <activity android:name=".ui.main.EmptyMainActivity"/>
+        <activity android:name=".ui.setting.SettingActivity"/>
+        <activity android:name=".ui.setting.AlarmSettingActivity"/>
+        <receiver android:name=".ui.setting.receiver.Alarm"/>
     </application>
 
 </manifest>
