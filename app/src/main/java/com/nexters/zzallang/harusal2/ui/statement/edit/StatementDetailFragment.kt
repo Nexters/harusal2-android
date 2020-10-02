@@ -37,9 +37,10 @@ class StatementDetailFragment: BaseFragment<FragmentStatementDetailBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        binding.tvStatementDate.text = viewModel.getDate()
-        binding.tvStatementAmount.text = viewModel.getAmount()
-        binding.tvStatementMemo.text = viewModel.getMemo()
+        viewModel.setAmount()
+        viewModel.setDate()
+        viewModel.setMemo()
+
         binding.tvStatementType.background = when(viewModel.setType()){
             Constants.STATEMENT_TYPE_IN -> resources.getDrawable(R.drawable.bg_tag_in)
             else -> resources.getDrawable(R.drawable.bg_tag_out)

@@ -10,16 +10,27 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 
 class StatementDetailViewModel(private val statementUseCase: StatementUseCase): BaseViewModel() {
     private lateinit var statement: Statement
     private val _statementType = MutableLiveData("")
+    private val _statementAmount = MutableLiveData("")
+    private val _statementMemo = MutableLiveData("")
+    private val _statementDate = MutableLiveData("")
     val statementType: LiveData<String> get() = _statementType
+    val statementAmount: LiveData<String> get() = _statementAmount
+    val statementMemo: LiveData<String> get() = _statementMemo
+    val statementDate: LiveData<String> get() = _statementDate
 
     suspend fun setStatement(id: Long){
         statement = withContext(Dispatchers.IO + job){
             statementUseCase.getData(id)
         }
+    }
+
+    fun getId(): Long{
+        return statement.id
     }
 
     fun setType(): Int{
@@ -32,19 +43,15 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
         }
     }
 
-    fun getId(): Long{
-        return statement.id
+    fun setDate(){
+        _statementDate.postValue(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
     }
 
-    fun getDate(): String{
-        return SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date)
+    fun setAmount(){
+        _statementAmount.postValue(abs(statement.amount).toString() + Constants.MONEY_UNIT)
     }
 
-    fun getAmount(): String{
-        return statement.amount.toString() + Constants.MONEY_UNIT
-    }
-
-    fun getMemo(): String{
-        return statement.content
+    fun setMemo(){
+        _statementMemo.postValue(statement.content)
     }
 }
