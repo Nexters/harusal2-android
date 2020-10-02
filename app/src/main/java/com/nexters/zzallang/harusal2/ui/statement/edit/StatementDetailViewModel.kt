@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 
 class StatementDetailViewModel(private val statementUseCase: StatementUseCase): BaseViewModel() {
     private lateinit var statement: Statement
@@ -47,7 +48,7 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
     }
 
     fun setAmount(){
-        _statementAmount.postValue(statement.amount.toString() + Constants.MONEY_UNIT)
+        _statementAmount.postValue(abs(statement.amount).toString() + Constants.MONEY_UNIT)
     }
 
     fun setMemo(){
