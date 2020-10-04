@@ -15,7 +15,7 @@ import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterA
 import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import com.nexters.zzallang.harusal2.ui.setting.SettingActivity
-import com.nexters.zzallang.harusal2.ui.spalsh.SplashActivity
+import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.ui.onBoarding.OnBoardingActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.spalsh
+package com.nexters.zzallang.harusal2.ui.splash
 
 import android.app.Activity
 import android.content.Intent
@@ -50,13 +50,11 @@ class SplashActivity : Activity() {
         }
     }
 
-    fun isFirstLoading(): Boolean {
-        return sharedPref.getBoolean(FIRST_LOADING, false)
+    private fun isFirstLoading(): Boolean {
+        return sharedPref.getBoolean(FIRST_LOADING, true)
     }
 
-    fun updateOnBoardingView() {
-        with(sharedPref.edit()) {
-            putBoolean(FIRST_LOADING, true)
-        }
+    private fun updateOnBoardingView() {
+        sharedPref.edit().putBoolean(FIRST_LOADING, false).apply()
     }
 }
