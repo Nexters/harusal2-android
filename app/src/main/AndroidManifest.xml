@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.bridge.BridgeActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +25,11 @@
         <activity android:name=".ui.statement.edit.StatementActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
-        <activity android:name=".ui.spalsh.SplashActivity"/>
         <activity android:name=".ui.onBoarding.OnBoardingActivity" />
         <activity android:name=".ui.main.EmptyMainActivity"/>
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
+        <activity android:name=".ui.bridge.BridgeActivity"/>
         <receiver android:name=".ui.setting.receiver.Alarm"/>
     </application>
 
