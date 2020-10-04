@@ -1,14 +1,11 @@
 package com.nexters.zzallang.harusal2.ui.onBoarding
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.preference.PreferenceManager
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityOnboardingBinding
-import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
@@ -33,9 +30,8 @@ class OnBoardingActivity: BaseActivity<ActivityOnboardingBinding>(){
         binding.tabOnboarding.setupWithViewPager(binding.pagerOnboarding)
 
         binding.btnOnboardingClose.setOnClickListener {
+            startActivity(IntentUtils.getEmptyMainActivityIntent(this))
             finish()
-            val intent = Intent(this, EmptyMainActivity::class.java)
-            startActivity(intent)
         }
     }
 }

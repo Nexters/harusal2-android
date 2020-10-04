@@ -23,7 +23,7 @@
         <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity"/>
         <activity android:name=".ui.statement.register.AddStatementActivity"/>
         <activity android:name=".ui.statement.edit.StatementActivity" />
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity" android:launchMode="singleTop"/>
         <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
         <activity android:name=".ui.spalsh.SplashActivity"/>
         <activity android:name=".ui.onBoarding.OnBoardingActivity" />

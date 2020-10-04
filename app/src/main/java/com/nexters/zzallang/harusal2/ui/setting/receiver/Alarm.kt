@@ -8,7 +8,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.App
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 
 class Alarm: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -24,7 +24,7 @@ class Alarm: BroadcastReceiver() {
             .setContentIntent(
                 PendingIntent.getActivity(
                     App.app, 0,
-                Intent(App.app, MainActivity::class.java), 0)
+                IntentUtils.getMainActivityIntent(App.app), 0)
             )
             .setAutoCancel(true)
 
