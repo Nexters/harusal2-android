@@ -29,6 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         refreshMainData()
     }
