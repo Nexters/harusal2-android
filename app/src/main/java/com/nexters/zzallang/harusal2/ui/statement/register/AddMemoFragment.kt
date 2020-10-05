@@ -7,6 +7,7 @@ import android.view.*
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.App
 import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
@@ -46,9 +47,7 @@ class AddMemoFragment: BaseFragment<FragmentAddMemoBinding>() {
             GlobalScope.launch {
                 viewModel.createStatement()
             }
-            val intent = Intent()
-            intent.setClass(App.app, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(IntentUtils.getMainActivityIntent(it.context))
         }
 
         val datePicker = initDatePicker()

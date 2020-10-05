@@ -14,6 +14,7 @@ import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
 import com.nexters.zzallang.harusal2.ui.main.adapter.MainStatementAdapter
 import com.nexters.zzallang.harusal2.ui.main.decoration.MainStatementDecoration
+import com.nexters.zzallang.harusal2.ui.setting.SettingActivity
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,6 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         refreshMainData()
     }
@@ -44,6 +49,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.btnAddStatement.setOnClickListener {
             this.startActivity(Intent(this, AddStatementActivity::class.java))
+        }
+        binding.ivMenu.setOnClickListener {
+            this.startActivity(Intent(this, SettingActivity::class.java))
         }
     }
 

@@ -3,10 +3,9 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 import android.content.Intent
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayDefaultBinding
-import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultBinding>(){
@@ -38,13 +37,12 @@ class StartDayDefaultRegisterActivity : BaseActivity<ActivityRegisterDayDefaultB
 
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudgetDay(this.intent.getStringExtra("budget").toInt())
-            val intent = Intent(this, MainActivity::class.java)
-            this.startActivity(intent)
+            this.startActivity(IntentUtils.getMainActivityIntent(this))
             this.finish()
         }
 
         binding.btnClose.setOnClickListener {
-            this.startActivity(Intent(this, EmptyMainActivity::class.java))
+            this.startActivity(IntentUtils.getEmptyMainActivityIntent(this))
             this.finish()
         }
     }

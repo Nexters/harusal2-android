@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayClickBinding
-import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBinding>() {
@@ -27,9 +26,9 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
 
         binding.pickerDay.maxValue = DateUtils.getLastDayOfMonth()
 
-        binding.pickerDay.setOnValueChangedListener({ picker, oldVal, newVal ->
+        binding.pickerDay.setOnValueChangedListener { _, _, newVal ->
             viewModel.pickedDayChanged(newVal)
-        })
+        }
 
         binding.btnPrev.setOnClickListener {
             this.startActivity(Intent(this, StartDayDefaultRegisterActivity::class.java))
@@ -37,13 +36,13 @@ class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBindi
         }
 
         binding.btnClose.setOnClickListener {
-            this.startActivity(Intent(this, EmptyMainActivity::class.java))
+            this.startActivity(IntentUtils.getEmptyMainActivityIntent(this))
             this.finish()
         }
 
         binding.btnComplete.setOnClickListener {
             viewModel.saveBudgetDay(this.intent.getStringExtra("budget").toInt())
-            this.startActivity(Intent(this, MainActivity::class.java))
+            this.startActivity(IntentUtils.getMainActivityIntent(this))
             this.finish()
         }
     }

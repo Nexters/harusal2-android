@@ -2,10 +2,10 @@ package com.nexters.zzallang.harusal2.ui.setting
 
 import android.content.Intent
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivitySettingBinding
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditActivity
-import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.setting.view.SettingDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -52,7 +52,7 @@ class SettingActivity: BaseActivity<ActivitySettingBinding>() {
 
             dialog.setOnOKClickedListener {
                 viewModel.deleteAllData()
-                startActivity(Intent(this, EmptyMainActivity::class.java))
+                startActivity(IntentUtils.getEmptyMainActivityIntent(this))
                 finish()
             }
         }
