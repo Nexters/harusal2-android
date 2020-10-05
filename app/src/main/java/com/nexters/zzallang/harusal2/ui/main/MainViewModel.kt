@@ -19,15 +19,14 @@ class MainViewModel(
     val todayRemainMoney: LiveData<String> get() = _todayRemainMoney
     private val _todayLivingExpenses = MutableLiveData<String>("오늘의 생활비 0원")
     val todayLivingExpenses: LiveData<String> get() = _todayLivingExpenses
-    lateinit var budget:Budget
+    lateinit var budget :Budget
     private var remainMoney: Int = 0
     private var livingExpenses: Int = 0
 
     private suspend fun refreshTodaySpendMoney() {
         val list = withContext(Dispatchers.IO + job) {
             statementUseCase.findStatementByBudgetId(budget.id)
-        }
-        list.filter { statement -> statement.date.date == Date().date }
+        }.filter { statement -> statement.date.date == Date().date }
 
         var tempMoney = livingExpenses
         for (item in list) {
@@ -41,8 +40,7 @@ class MainViewModel(
     suspend fun getTodaySpendStatementList(): List<MainStatement> {
         val list = withContext(Dispatchers.IO + job) {
             statementUseCase.findStatementByBudgetId(budget.id)
-        }
-        list.filter { statement -> statement.date.date == Date().date }
+        }.filter { statement -> statement.date.date == Date().date }
         val result = arrayListOf<MainStatement>()
 
         for (item in list) {
