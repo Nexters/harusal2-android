@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 
 class StatementEditViewModel(private val statementUseCase: StatementUseCase,
                              private val budgetUseCase: BudgetUseCase): BaseViewModel() {
@@ -35,7 +36,7 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
 
     fun initData(){
         _statementDate.postValue(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
-        statementAmount.postValue(statement.amount.toString())
+        statementAmount.postValue(abs(statement.amount).toString())
         statementMemo.postValue(statement.content)
     }
 
