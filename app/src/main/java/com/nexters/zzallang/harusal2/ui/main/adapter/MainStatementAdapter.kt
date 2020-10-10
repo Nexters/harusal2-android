@@ -15,6 +15,7 @@ import com.nexters.zzallang.harusal2.ui.main.model.BaseMainRecyclerViewStatement
 import com.nexters.zzallang.harusal2.ui.main.model.MainDate
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
+import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
     private val statementList = arrayListOf<MainStatement>()
@@ -120,6 +121,12 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
     }
 
     class MainEmptyStatementViewHolder(private val binding: ItemMainStatementEmptyBinding): BaseViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                it.context.startActivity(Intent(it.context, AddStatementActivity::class.java))
+            }
+        }
+
         override fun onBind(item: BaseMainRecyclerViewStatementItem) {}
     }
 }
