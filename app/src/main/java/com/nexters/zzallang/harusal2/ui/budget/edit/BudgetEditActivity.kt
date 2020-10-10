@@ -6,10 +6,7 @@ import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityChangeBudgetBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
@@ -37,10 +34,15 @@ class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
         binding.btnComplete.setOnClickListener {
             CoroutineScope(Dispatchers.Main + job).launch {
                 val isSave = viewModel.saveBudget()
+
                 if (isSave) {
                     this@BudgetEditActivity.finish()
+                    Toast.makeText(this@BudgetEditActivity, "생활비를 수정하였습니다.", Toast.LENGTH_LONG).show()
+
+                    return@launch;
                 }
-                Toast.makeText(this@BudgetEditActivity, "저장에 실패했습니다.", Toast.LENGTH_LONG).show()
+
+                Toast.makeText(this@BudgetEditActivity, "생활비 수정을 실패했습니다.", Toast.LENGTH_LONG).show()
             }
         }
 
