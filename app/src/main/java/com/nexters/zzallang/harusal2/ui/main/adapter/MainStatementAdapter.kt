@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.main.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.nexters.zzallang.harusal2.databinding.ItemMainStatementEmptyBinding
 import com.nexters.zzallang.harusal2.ui.main.model.BaseMainRecyclerViewStatementItem
 import com.nexters.zzallang.harusal2.ui.main.model.MainDate
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
+import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
 
 class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
     private val statementList = arrayListOf<MainStatement>()
@@ -106,6 +108,14 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
             item as MainStatement
             binding.tvMoney.text = "${item.money}원"
             binding.tvContent.text = item.content
+
+
+            binding.root.setOnClickListener {
+                val intent = Intent(it.context, StatementActivity::class.java)
+                intent.putExtra("statementId", item.id)
+
+                it.context.startActivity(intent)
+            }
         }
     }
 
