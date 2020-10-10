@@ -8,14 +8,18 @@ import com.nexters.zzallang.harusal2.ui.main.MainActivity
 object IntentUtils {
     fun getMainActivityIntent(context: Context): Intent {
         val intent = Intent(context, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                or Intent.FLAG_ACTIVITY_NEW_TASK
+                or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
         return intent
     }
 
     fun getEmptyMainActivityIntent(context: Context): Intent {
         val intent = Intent(context, EmptyMainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                or Intent.FLAG_ACTIVITY_NEW_TASK
+                or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
         return intent
     }
