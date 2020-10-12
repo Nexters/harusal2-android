@@ -77,20 +77,23 @@ class MainViewModel(
     }
 
     suspend fun checkCurrentSpendState(): SpendState {
+        var statementListSize: Int = 0
+
         withContext(Dispatchers.IO + job) {
             refreshTodayLivingExpenses()
             refreshTodaySpendMoney()
+            statementListSize = getTodaySpendStatementList().size
         }
 
-        return if ((livingExpenses / 10) < remainMoney) {
-            SpendState.FLEX
-        } else if ((livingExpenses / 20) < remainMoney) {
-            SpendState.CLAP
-        } else if (-(livingExpenses / 25) < remainMoney) {
+        return if (statementListSize == 0) {
             SpendState.DEFAULT
-        } else if (-(livingExpenses / 10) < remainMoney) {
+        } else if ((livingExpenses * (7f / 10)) < remainMoney) {
+            SpendState.FLEX
+        } else if ((livingExpenses * (1f / 10)) < remainMoney) {
+            SpendState.CLAP
+        } else if (-(livingExpenses * (4f / 10)) < remainMoney) {
             SpendState.EMBARRASSED
-        } else if (-(livingExpenses / 6) < remainMoney) {
+        } else if (-(livingExpenses * (8f / 10)) < remainMoney) {
             SpendState.CRY
         } else {
             SpendState.VOLCANO
