@@ -67,43 +67,55 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_header" />
 
-        <EditText
-            android:id="@+id/edit_register_budget"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginRight="38sp"
-            android:background="@android:color/transparent"
-            android:gravity="center_horizontal"
-            android:hint="0"
-            android:inputType="number"
-            android:text="@={vm.budget}"
-            android:textColor="@color/colorDarkBlack"
-            android:textSize="38sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+            app:layout_constraintTop_toBottomOf="@id/tv_description">
+
+            <EditText
+                android:id="@+id/edit_register_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="38sp"
+                android:background="@android:color/transparent"
+                android:gravity="center_horizontal"
+                android:hint="0"
+                android:inputType="number"
+                android:text="@={vm.budget}"
+                android:textColor="@color/colorDarkBlack"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:textStyle="bold"
+                android:textColor="@color/colorDarkBlack"
+                android:textSize="38sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/edit_register_budget"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tv_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="원"
-            android:textColor="@color/colorDarkBlack"
-            android:textSize="38sp"
-            app:layout_constraintStart_toEndOf="@id/edit_register_budget"
-            app:layout_constraintTop_toBottomOf="@id/tv_description" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:text="@{vm.hangeulBudget}"
             android:textColor="@color/colorGray"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_register_budget" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_edit" />
 
         <LinearLayout
             android:id="@+id/layout_warning_wrapper"

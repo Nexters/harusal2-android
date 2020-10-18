@@ -1,6 +1,7 @@
 package com.nexters.zzallang.harusal2.ui.budget.edit
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
@@ -24,6 +25,15 @@ class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
 
         viewModel.budget.observe(this, Observer {
             viewModel.budgetChanged(it)
+            when (it) {
+                "" -> {
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
+                }
+                else -> {
+                    binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
+                }
+            }
+
             binding.editRegisterBudget.setSelection(binding.editRegisterBudget.text.length)
         })
 
