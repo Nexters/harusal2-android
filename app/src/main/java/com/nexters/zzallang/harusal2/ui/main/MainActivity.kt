@@ -75,8 +75,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 speechBubbleText = getString(R.string.text_clap)
             }
             SpendState.DEFAULT -> {
-                backgroundColor = R.color.colorPointDefaultBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointDefault
+                backgroundColor = R.color.colorPointBlueBackground
+                todayLivingExpensesBackgroundColor = R.color.colorPointBlue
                 emojiName = "default_coin.json"
                 speechBubbleText = getString(R.string.text_default)
             }

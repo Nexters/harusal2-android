@@ -126,7 +126,6 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
 
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
 
-                //TODO : Activity 변경
                 layout.findViewById<ImageButton>(R.id.btn_statement_detail).setOnClickListener {
                     val intent = Intent(context, StatementActivity::class.java)
                     intent.putExtra("statementId", historyStatement.id)
