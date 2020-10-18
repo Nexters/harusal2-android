@@ -5,13 +5,13 @@
 
     <!--regular-->
     <font
-        app:font="@font/spoaregular"
+        app:font="@font/spoqahansansregular"
         app:fontStyle="normal"
         app:fontWeight="400" />
 
     <!--bold-->
     <font
-        app:font="@font/spoqabold"
+        app:font="@font/spoqahansansbold"
         app:fontStyle="normal"
         app:fontWeight="700" />
 </font-family>

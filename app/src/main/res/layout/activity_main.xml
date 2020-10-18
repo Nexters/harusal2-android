@@ -97,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{vm.todayRemainMoney}"
                     tools:text="10,000원"
+                    android:textStyle="bold"
                     android:textColor="#FFF"
                     android:textSize="38sp"/>
 
