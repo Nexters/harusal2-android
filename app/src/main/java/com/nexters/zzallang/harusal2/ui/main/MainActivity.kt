@@ -27,6 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = 0
         binding.vm = viewModel
         binding.lifecycleOwner = this
     }

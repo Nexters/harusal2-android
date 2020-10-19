@@ -2,6 +2,8 @@ package com.nexters.zzallang.harusal2.ui.history
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.R
@@ -12,7 +14,6 @@ import com.nexters.zzallang.harusal2.ui.history.decoration.HistoryDecoration
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuAdapter
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuDialog
 import com.nexters.zzallang.harusal2.ui.history.model.HistoryInfo
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import com.nexters.zzallang.harusal2.ui.main.SpendState.Companion.getBackgroundColor
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 import kotlinx.coroutines.*
@@ -28,6 +29,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = 0
         binding.vm = viewModel
         binding.lifecycleOwner = this
     }
@@ -48,17 +50,22 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         binding.rcvHistory.setHasFixedSize(true)
 
         viewModel.cards.observe(this, Observer {
+            val color: Int
             binding.rcvHistory.adapter =
                 HistoryViewAdapter(this@HistoryActivity, viewModel.oneDayBudget).apply {
                     val info = it[0] as HistoryInfo
+                    color = getBackgroundColor(info.state)
                     binding.appbar.setBackgroundColor(
                         this@HistoryActivity.getColor(
-                            getBackgroundColor(info.state)
+                            color
                         )
                     )
                     clearHistoryStatement()
                     addStatements(it)
                 }
+
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = resources.getColor(color, null)
         })
 
         binding.layoutMenu.setOnClickListener {
