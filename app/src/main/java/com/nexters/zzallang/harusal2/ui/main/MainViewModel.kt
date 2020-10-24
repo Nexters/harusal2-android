@@ -63,13 +63,17 @@ class MainViewModel(
 
         val remainDate =
             if (budget.startDate.month == today.month) {
-                when (budget.startDate.month) {
-                    1, 3, 5, 7, 8, 10, 12 -> 31
-                    2 -> 28
-                    else -> 30
-                } - today.date + budget.endDate.date
+                if (budget.startDate.month == budget.endDate.month) {
+                    budget.endDate.date - today.date + 1
+                } else {
+                    when (budget.startDate.month) {
+                        1, 3, 5, 7, 8, 10, 12 -> 31
+                        2 -> 28
+                        else -> 30
+                    } - today.date + budget.endDate.date + 1
+                }
             } else {
-                budget.endDate.date - today.date
+                budget.endDate.date - today.date + 1
             }
 
         livingExpenses = budget.budget / remainDate
