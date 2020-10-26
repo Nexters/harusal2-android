@@ -56,7 +56,7 @@ class MainViewModel(
             budgetUseCase.findRecentBudget()
         }
 
-        val remainDate = DateUtils.calculateDate(Date(System.currentTimeMillis()), budget.endDate)
+        val remainDate = DateUtils.calculateDate(Date(), budget.endDate)
 
         livingExpenses = budget.budget / remainDate
         _todayLivingExpenses.postValue("오늘의 생활비 ${livingExpenses}원")
