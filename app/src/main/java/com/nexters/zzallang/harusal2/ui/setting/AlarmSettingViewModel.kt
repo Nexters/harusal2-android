@@ -20,7 +20,7 @@ class AlarmSettingViewModel: BaseViewModel() {
             set(Calendar.SECOND, 0)
 
             if (before(Calendar.getInstance())) {
-                add(Calendar.DATE, 1);
+                add(Calendar.DATE, 1)
             }
         }
 }
