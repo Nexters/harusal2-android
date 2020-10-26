@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom Font -->
+    <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customButtonFontStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customEditTextFontStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customRadioButtonFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customCheckboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customDatePickerFontStyle" parent="@style/AppTheme.Picker">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+
+    <style name="customDateDialogFontStyle" parent="@style/DialogTheme">
+        <item name="android:fontFamily">@font/font_spoqa_family</item>
+    </style>
+</resources>
