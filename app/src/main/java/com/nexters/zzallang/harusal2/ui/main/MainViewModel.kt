@@ -44,6 +44,9 @@ class MainViewModel(
         val result = arrayListOf<MainStatement>()
 
         for (item in list) {
+            if (item.content.length > 10) {
+                item.content = item.content.substring(0..10).plus("...")
+            }
             result.add(MainStatement(item.id, item.amount, item.content))
         }
 

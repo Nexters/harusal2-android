@@ -103,7 +103,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_statement_date"
                 android:layout_marginTop="40dp"
-                android:text="@string/amount_title"
+                android:text="@string/memo_title"
                 android:textColor="@color/colorGray"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
@@ -121,9 +121,8 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorDarkBlack"
                 android:textStyle="bold"
-                android:maxLines="2"
-                android:maxLength="20"
-                />
+                android:singleLine="true"
+                android:maxLength="20" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
