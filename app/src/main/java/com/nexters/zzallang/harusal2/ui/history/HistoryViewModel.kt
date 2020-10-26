@@ -44,18 +44,12 @@ class HistoryViewModel(
 
         val safeMoney = this.oneDayBudget * DateUtils.calculateDate(budget.startDate, endDate)
         val spentMoney = -spentMoney
-        return if (spentMoney < safeMoney * 0.9) {
-            SpendState.FLEX
-        } else if (spentMoney < safeMoney * 0.95) {
-            SpendState.CLAP
-        } else if (spentMoney < safeMoney * 1.04) {
-            SpendState.DEFAULT
-        } else if (spentMoney < safeMoney * 1.1) {
-            SpendState.EMBARRASSED
-        } else if (spentMoney < safeMoney * 1.15) {
-            SpendState.CRY
-        } else {
-            SpendState.VOLCANO
+        return when {
+            spentMoney > safeMoney * 1.8 -> SpendState.VOLCANO
+            spentMoney > safeMoney * 1.4 -> SpendState.CRY
+            spentMoney > safeMoney * 1.1 -> SpendState.EMBARRASSED
+            spentMoney > safeMoney * 0.3 -> SpendState.CLAP
+            else -> SpendState.FLEX
         }
     }
 
