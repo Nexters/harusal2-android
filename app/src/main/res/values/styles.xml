@@ -9,6 +9,8 @@
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
         <item name="android:datePickerStyle">@style/customDatePickerFontStyle</item>
         <item name="android:dialogTheme">@style/customDateDialogFontStyle</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Keyboard" />
