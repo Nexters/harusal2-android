@@ -2,6 +2,7 @@ package com.nexters.zzallang.harusal2.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
@@ -55,26 +56,7 @@ class MainViewModel(
             budgetUseCase.findRecentBudget()
         }
 
-        val today = Date(System.currentTimeMillis())
-        // 00:00:00 으로 해야 날짜 계산할 때 오차가 생기지 않음
-        today.hours = 0
-        today.minutes = 0
-        today.seconds = 0
-
-        val remainDate =
-            if (budget.startDate.month == today.month) {
-                if (budget.startDate.month == budget.endDate.month) {
-                    budget.endDate.date - today.date + 1
-                } else {
-                    when (budget.startDate.month) {
-                        1, 3, 5, 7, 8, 10, 12 -> 31
-                        2 -> 28
-                        else -> 30
-                    } - today.date + budget.endDate.date + 1
-                }
-            } else {
-                budget.endDate.date - today.date + 1
-            }
+        val remainDate = DateUtils.calculateDate(Date(System.currentTimeMillis()), budget.endDate)
 
         livingExpenses = budget.budget / remainDate
         _todayLivingExpenses.postValue("오늘의 생활비 ${livingExpenses}원")
