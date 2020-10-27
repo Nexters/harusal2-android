@@ -194,7 +194,9 @@
                 android:text="@={vm.statementMemo}"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:maxLength="20"
+                android:maxLines="1"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

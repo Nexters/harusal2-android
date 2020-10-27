@@ -39,7 +39,7 @@
             <TextView
                 android:id="@+id/tv_statement_amount"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount_title"
                 android:layout_marginTop="12dp"
                 android:padding="17dp"
@@ -122,7 +122,8 @@
                 android:textColor="@color/colorDarkBlack"
                 android:textStyle="bold"
                 android:singleLine="true"
-                android:maxLength="20" />
+                android:maxLength="20"
+                android:maxLines="1"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
