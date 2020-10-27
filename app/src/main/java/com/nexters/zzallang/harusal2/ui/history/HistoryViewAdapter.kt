@@ -110,23 +110,18 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                     false
                 ) as ConstraintLayout
 
-                if (-historyStatement.money > onedayBudget) {
-                    layout.findViewById<TextView>(R.id.tv_money)
-                        .setTextColor(context.getColor(R.color.colorSpendColor))
-                } else {
-                    layout.findViewById<TextView>(R.id.tv_money)
-                        .setTextColor(context.getColor(R.color.colorDarkBlack))
-                }
+                layout.findViewById<TextView>(R.id.tv_money)
+                    .setTextColor(context.getColor(R.color.colorDarkBlack))
 
                 layout.findViewById<TextView>(R.id.tv_money).text =
-                    when {
-                        historyStatement.money > 0 -> "+"
-                        else -> ""
-                    } + historyStatement.money.toString()
+                    if (historyStatement.money > 0) {
+                        "+"
+                    } else {
+                        ""
+                    }.plus(historyStatement.money)
 
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
 
-                //TODO : Activity 변경
                 layout.findViewById<ImageButton>(R.id.btn_statement_detail).setOnClickListener {
                     val intent = Intent(context, StatementActivity::class.java)
                     intent.putExtra("statementId", historyStatement.id)

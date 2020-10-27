@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.AppDatabase
 import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
@@ -22,6 +24,9 @@ class SplashActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = resources.getColor(R.color.colorPointYellowBackground, null)
+        window.decorView.systemUiVisibility = 0
         sharedPref = this.getPreferences(MODE_PRIVATE)
         startLoading()
     }
