@@ -18,11 +18,9 @@ import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryCardBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryInfoBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryTitleBinding
-import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity
 import com.nexters.zzallang.harusal2.ui.history.model.*
 import com.nexters.zzallang.harusal2.ui.main.SpendState
-import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
-import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
+import com.nexters.zzallang.harusal2.ui.statement.edit.StatementDetailActivity
 
 
 class HistoryViewAdapter(private val context: Context, private val onedayBudget: Int) :
@@ -123,7 +121,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
 
                 layout.findViewById<ImageButton>(R.id.btn_statement_detail).setOnClickListener {
-                    val intent = Intent(context, StatementActivity::class.java)
+                    val intent = Intent(context, StatementDetailActivity::class.java)
                     intent.putExtra("statementId", historyStatement.id)
                     context.startActivity(intent)
                 }

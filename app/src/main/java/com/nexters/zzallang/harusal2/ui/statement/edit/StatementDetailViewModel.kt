@@ -54,4 +54,8 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
     fun setMemo(){
         _statementMemo.postValue(statement.content)
     }
+
+    suspend fun deleteStatement(){
+        statementUseCase.deleteStatement(getId())
+    }
 }

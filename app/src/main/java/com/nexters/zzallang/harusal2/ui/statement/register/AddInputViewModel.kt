@@ -9,7 +9,7 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 class AddInputViewModel: BaseViewModel() {
     private var statementType = Constants.STATEMENT_TYPE_OUT
     private val _convertedAmount = MutableLiveData("")
-    val statementAmount = MutableLiveData("0")
+    val statementAmount = MutableLiveData("")
     val convertedAmount : LiveData<String> get() = _convertedAmount
 
     fun setType(type: Int){
@@ -21,7 +21,7 @@ class AddInputViewModel: BaseViewModel() {
     }
 
     fun clear(){
-        _convertedAmount.postValue("0")
+        _convertedAmount.postValue("")
     }
 
     fun updateConvertedAmount(amount: String){
