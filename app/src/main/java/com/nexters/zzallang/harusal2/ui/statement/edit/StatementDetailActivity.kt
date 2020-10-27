@@ -51,10 +51,8 @@ class StatementDetailActivity: BaseActivity<ActivityStatementDetailBinding>() {
     fun updateStatement(){
         CoroutineScope(Dispatchers.Main + job).launch{
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
-            viewModel.setAmount()
-            viewModel.setDate()
-            viewModel.setMemo()
-            binding.tvStatementType.background = when(viewModel.setType()){
+            viewModel.update()
+            binding.tvStatementType.background = when(viewModel.getType()){
                 Constants.STATEMENT_TYPE_IN -> resources.getDrawable(R.drawable.bg_tag_in)
                 else -> resources.getDrawable(R.drawable.bg_tag_out)
             }

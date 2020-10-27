@@ -31,8 +31,9 @@ class StatementEditActivity: BaseActivity<ActivityEditStatementBinding>() {
 
             viewModel.initData()
 
-            if (viewModel.initType() == Constants.STATEMENT_TYPE_IN) binding.btnEditTypeIn.isChecked =
-                true
+            if (viewModel.initType() == Constants.STATEMENT_TYPE_IN){
+                binding.btnEditTypeIn.isChecked = true
+            }
 
             binding.editStatementEditAmount.onFocusChangeListener =
                 View.OnFocusChangeListener { v, isFocused ->
