@@ -119,6 +119,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                     } else {
                         ""
                     }.plus(historyStatement.money)
+                        .plus("원")
 
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
 
@@ -140,12 +141,6 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                 item.income > 0 -> "+"
                 else -> ""
             } + """${item.income}원"""
-
-            if (-item.spending > onedayBudget) {
-                binding.tvSpending.setTextColor(context.getColor(R.color.colorSpendColor))
-            } else {
-                binding.tvSpending.setTextColor(context.getColor(R.color.colorDarkBlack))
-            }
 
             binding.tvSpending.text =  "${item.spending}원"
 
