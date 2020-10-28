@@ -102,4 +102,8 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
         val statementModel = Statement(id = statement.id, date = stringToDate(statementDate.value?:getDateForNow()), content = statementMemo.value ?: "", amount = applyType((statementAmount.value ?: "0").toInt()), budgetId = budgetUseCase.findRecentBudget().id)
         statementUseCase.updateStatement(statementModel)
     }
+
+    suspend fun deleteStatement(){
+        statementUseCase.deleteStatement(getId())
+    }
 }

@@ -14,7 +14,7 @@ import com.nexters.zzallang.harusal2.databinding.ItemMainStatementEmptyBinding
 import com.nexters.zzallang.harusal2.ui.main.model.BaseMainRecyclerViewStatementItem
 import com.nexters.zzallang.harusal2.ui.main.model.MainDate
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement
-import com.nexters.zzallang.harusal2.ui.statement.edit.StatementActivity
+import com.nexters.zzallang.harusal2.ui.statement.edit.StatementDetailActivity
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
@@ -112,7 +112,7 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
 
 
             binding.root.setOnClickListener {
-                val intent = Intent(it.context, StatementActivity::class.java)
+                val intent = Intent(it.context, StatementDetailActivity::class.java)
                 intent.putExtra("statementId", item.id)
 
                 it.context.startActivity(intent)

@@ -33,25 +33,42 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
         return statement.id
     }
 
-    fun setType(): Int{
-        return if(statement.amount < 0){
-            _statementType.postValue("나간 돈")
-            Constants.STATEMENT_TYPE_OUT
-        } else{
+    private fun setType(){
+        var type = "나간 돈"
+        if(statement.amount >= 0){
             _statementType.postValue("들어온 돈")
-            Constants.STATEMENT_TYPE_IN
         }
+        _statementType.postValue(type)
     }
 
-    fun setDate(){
+    private fun setDate(){
         _statementDate.postValue(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
     }
 
-    fun setAmount(){
+    private fun setAmount(){
         _statementAmount.postValue(abs(statement.amount).toString() + Constants.MONEY_UNIT)
     }
 
-    fun setMemo(){
+    private fun setMemo(){
         _statementMemo.postValue(statement.content)
+    }
+
+    fun getType(): Int{
+        var type = Constants.STATEMENT_TYPE_OUT
+        if(statementType.value == "들어온 돈"){
+            type = Constants.STATEMENT_TYPE_IN
+        }
+        return type
+    }
+
+    fun update(){
+        setType()
+        setDate()
+        setAmount()
+        setMemo()
+    }
+
+    suspend fun deleteStatement(){
+        statementUseCase.deleteStatement(getId())
     }
 }
