@@ -34,6 +34,12 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         binding.lifecycleOwner = this
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        refreshHistories()
+    }
+
     override fun bindingView() {
         super.bindingView()
 
