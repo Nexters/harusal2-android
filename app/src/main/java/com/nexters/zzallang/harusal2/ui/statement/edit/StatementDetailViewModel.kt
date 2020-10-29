@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 
-class StatementDetailViewModel(private val statementUseCase: StatementUseCase): BaseViewModel() {
+class StatementDetailViewModel(private val statementUseCase: StatementUseCase) : BaseViewModel() {
     private lateinit var statement: Statement
     private val _statementType = MutableLiveData("")
     private val _statementAmount = MutableLiveData("")
@@ -23,52 +23,55 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase): 
     val statementMemo: LiveData<String> get() = _statementMemo
     val statementDate: LiveData<String> get() = _statementDate
 
-    suspend fun setStatement(id: Long){
-        statement = withContext(Dispatchers.IO + job){
-            statementUseCase.getData(id)
-        }
+    suspend fun setStatement(id: Long) {
+        statement = statementUseCase.getData(id)
     }
 
-    fun getId(): Long{
+    fun getId(): Long {
         return statement.id
     }
 
-    private fun setType(){
+    private fun setType() {
         var type = "나간 돈"
-        if(statement.amount >= 0){
-            _statementType.postValue("들어온 돈")
+        if (statement.amount >= 0) {
+            type = "들어온 돈"
         }
         _statementType.postValue(type)
     }
 
-    private fun setDate(){
-        _statementDate.postValue(SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(statement.date))
+    private fun setDate() {
+        _statementDate.postValue(
+            SimpleDateFormat(
+                Constants.DATE_FORMAT,
+                Locale.getDefault()
+            ).format(statement.date)
+        )
     }
 
-    private fun setAmount(){
+    private fun setAmount() {
         _statementAmount.postValue(abs(statement.amount).toString() + Constants.MONEY_UNIT)
     }
 
-    private fun setMemo(){
+    private fun setMemo() {
         _statementMemo.postValue(statement.content)
     }
 
-    fun getType(): Int{
+    fun getType(): Int {
         var type = Constants.STATEMENT_TYPE_OUT
-        if(statementType.value == "들어온 돈"){
+        if (statement.amount >= 0) {
             type = Constants.STATEMENT_TYPE_IN
         }
         return type
     }
 
-    fun update(){
+    fun update() {
         setType()
         setDate()
         setAmount()
         setMemo()
     }
 
-    suspend fun deleteStatement(){
+    suspend fun deleteStatement() {
         statementUseCase.deleteStatement(getId())
     }
 }

@@ -28,8 +28,6 @@ class StatementDetailActivity: BaseActivity<ActivityStatementDetailBinding>() {
     override fun bindingView() {
         super.bindingView()
 
-        updateStatement()
-
         binding.btnStatementDetailEdit.setOnClickListener {
             val intent = Intent(it.context, StatementEditActivity::class.java)
             intent.putExtra("statementId", viewModel.getId())
@@ -48,7 +46,7 @@ class StatementDetailActivity: BaseActivity<ActivityStatementDetailBinding>() {
         }
     }
 
-    fun updateStatement(){
+    private fun updateStatement(){
         CoroutineScope(Dispatchers.Main + job).launch{
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
             viewModel.update()
