@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.DateUtils.stringToDate
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
@@ -54,7 +55,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
 
     suspend fun getMinDate(): Long{
         val minDate = Calendar.getInstance()
-        val budget = withContext(Dispatchers.IO + job){
+        withContext(Dispatchers.IO + job){
             budgetUseCase.findRecentBudget()?.let {
                 val startDate = it.startDate
                 minDate.time = startDate
@@ -65,21 +66,13 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
 
     suspend fun getMaxDate(): Long{
         val maxDate = Calendar.getInstance()
-        val budget = withContext(Dispatchers.IO + job){
+        withContext(Dispatchers.IO + job){
             budgetUseCase.findRecentBudget()?.let {
                 val endDate = it.endDate
                 maxDate.time = endDate
             }
         }
         return maxDate.time.time
-    }
-
-    fun stringToDate(inputDate: String): Date{
-        val date = Date()
-        date.year = inputDate.substring(0,4).toInt()-1900
-        date.month = inputDate.substring(5,7).toInt()-1
-        date.date = inputDate.substring(8).toInt()
-        return date
     }
 
     suspend fun createStatement(){

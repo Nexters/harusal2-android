@@ -16,7 +16,10 @@ import com.nexters.zzallang.harusal2.ui.main.adapter.MainStatementAdapter
 import com.nexters.zzallang.harusal2.ui.main.decoration.MainStatementDecoration
 import com.nexters.zzallang.harusal2.ui.setting.SettingActivity
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
