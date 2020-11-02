@@ -21,9 +21,9 @@ interface StatementDao {
     @Query("DELETE FROM statement")
     suspend fun deleteAllStatement()
 
-    @Query("select * from statement where date between :startTime AND :endTime ORDER BY date")
+    @Query("select * from statement where date between :startTime AND :endTime ORDER BY date, id DESC")
     suspend fun selectStatementWhereDate(startTime: Date, endTime: Date): List<Statement>
 
-    @Query("select * from statement where budget_id = :budgetId ORDER BY date DESC")
+    @Query("select * from statement where budget_id = :budgetId ORDER BY date DESC, id DESC")
     suspend fun findStatementByBudgetId(budgetId: Long): List<Statement>
 }

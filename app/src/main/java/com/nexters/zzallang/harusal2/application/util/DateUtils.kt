@@ -82,4 +82,10 @@ object DateUtils {
     fun calculateDate(startDate: Date, endDate: Date): Int {
         return ((endDate.time / MILLIS) - (startDate.time / MILLIS) + 1).toInt()
     }
+
+    fun stringToDate(inputDate: String): Date{
+        return Date(inputDate.substring(0,4).toInt()-1900,
+            inputDate.substring(5,7).toInt()-1,
+            inputDate.substring(8).toInt())
+    }
 }

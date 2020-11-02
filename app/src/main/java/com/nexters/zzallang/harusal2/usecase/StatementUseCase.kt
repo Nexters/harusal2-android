@@ -23,19 +23,6 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
         statementRepository.deleteAllStatement()
     }
 
-    suspend fun getStatementHistoryAtDate(date: Date) : List<Statement> {
-        date.hours = 0
-        date.minutes = 0
-        date.seconds = 0
-        val startTime = date.clone() as Date
-
-        date.hours = 23
-        date.minutes = 59
-        date.seconds = 59
-        val endTime = date.clone() as Date
-        return statementRepository.selectAllStatementByDate(startTime, endTime)
-    }
-
     suspend fun findByDate(startDate: Date) : List<Statement> {
         val endDate = startDate.clone() as Date
         startDate.hours = 0
