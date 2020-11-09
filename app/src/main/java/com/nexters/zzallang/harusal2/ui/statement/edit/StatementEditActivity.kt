@@ -11,6 +11,7 @@ import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.lifecycle.Observer
 
 class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
     override fun layoutRes(): Int = R.layout.activity_edit_statement
@@ -34,6 +35,16 @@ class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
             if (viewModel.initType() == Constants.STATEMENT_TYPE_IN) {
                 binding.btnEditTypeIn.isChecked = true
             }
+
+            viewModel.statementAmount.observe(this@StatementEditActivity, Observer{
+                if(it == ""){
+                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                    binding.btnStatementEditKeypad.isEnabled = false
+                }else{
+                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.colorBtnBlack))
+                    binding.btnStatementEditKeypad.isEnabled = true
+                }
+            })
 
             binding.editStatementEditAmount.onFocusChangeListener =
                 View.OnFocusChangeListener { v, isFocused ->

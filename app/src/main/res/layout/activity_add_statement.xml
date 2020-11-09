@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         tools:context=".ui.statement.register.AddStatementActivity">
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_add_statement"
             android:layout_width="match_parent"

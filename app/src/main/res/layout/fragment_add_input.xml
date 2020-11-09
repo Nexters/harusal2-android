@@ -81,7 +81,8 @@
                 android:text="@={vm.statementAmount}"
                 android:textStyle="bold"
                 android:textSize="38sp"
-                android:textColor="@color/colorDarkBlack" />
+                android:textColor="@color/colorDarkBlack"
+                android:maxLength="7"/>
 
             <TextView
                 android:id="@+id/tv_statement_unit"

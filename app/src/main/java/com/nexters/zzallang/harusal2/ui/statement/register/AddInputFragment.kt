@@ -30,8 +30,16 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
         super.bindingView()
 
         viewModel.statementAmount.observe(viewLifecycleOwner, Observer{
-            if(it == "") binding.tvStatementUnit.setTextColor(resources.getColor(R.color.colorGray))
-            else binding.tvStatementUnit.setTextColor(resources.getColor(android.R.color.black))
+            if(it == ""){
+                binding.tvStatementUnit.setTextColor(resources.getColor(R.color.colorGray))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                binding.btnStatementNext.isEnabled = false
+            }
+            else{
+                binding.tvStatementUnit.setTextColor(resources.getColor(android.R.color.black))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorBtnBlack))
+                binding.btnStatementNext.isEnabled = true
+            }
             viewModel.updateConvertedAmount(it)
         })
 

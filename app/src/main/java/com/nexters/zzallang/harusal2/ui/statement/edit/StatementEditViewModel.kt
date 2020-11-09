@@ -18,7 +18,7 @@ import kotlin.math.abs
 class StatementEditViewModel(private val statementUseCase: StatementUseCase,
                              private val budgetUseCase: BudgetUseCase): BaseViewModel() {
     private val _statementDate = MutableLiveData("")
-    val statementAmount = MutableLiveData("0")
+    val statementAmount = MutableLiveData("")
     val statementMemo = MutableLiveData("")
     val statementDate: LiveData<String> get() = _statementDate
 
