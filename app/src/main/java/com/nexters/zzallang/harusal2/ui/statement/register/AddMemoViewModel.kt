@@ -75,8 +75,9 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         return maxDate.time.time
     }
 
-    suspend fun createStatement(){
-        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = stateMemo.value ?: "", amount = applyType(getAmount()), budgetId = budgetUseCase.findRecentBudget().id)
+    suspend fun createStatement() {
+        val memo = if (stateMemo.value?.trim().isNullOrEmpty()) "짤랑짤랑~" else stateMemo.value?.trim() ?: "짤랑짤랑~"
+        val statementData = Statement(date = stringToDate(stateDate.value?:getDateForNow()), content = memo, amount = applyType(getAmount()), budgetId = budgetUseCase.findRecentBudget().id)
         statementUseCase.insertData(statementData)
     }
 }

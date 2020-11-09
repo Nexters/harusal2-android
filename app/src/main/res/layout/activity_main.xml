@@ -99,7 +99,7 @@
                     tools:text="10,000원"
                     android:textStyle="bold"
                     android:textColor="#FFF"
-                    android:textSize="38sp"/>
+                    android:textSize="34sp"/>
 
                 <RelativeLayout
                     android:id="@+id/layout_today_money"
