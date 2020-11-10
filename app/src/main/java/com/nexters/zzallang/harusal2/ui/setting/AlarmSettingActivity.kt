@@ -22,9 +22,9 @@ class AlarmSettingActivity : BaseActivity<ActivityAlarmSettingBinding>() {
         private const val MORNING_PREF_NAME = "morning"
         private const val AFTERNOON_PREF_NAME = "afternoon"
         private const val EVENING_PREF_NAME = "evening"
-        private const val MORNING_INTENT_CODE = 0
-        private const val AFTERNOON_INTENT_CODE = 1
-        private const val EVENING_INTENT_CODE = 2
+        const val MORNING_INTENT_CODE = 0
+        const val AFTERNOON_INTENT_CODE = 1
+        const val EVENING_INTENT_CODE = 2
     }
 
     override val viewModel: AlarmSettingViewModel by viewModel()

@@ -99,9 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="원"
-                android:textStyle="bold"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="38sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/edit_register_budget"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -117,7 +117,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_edit" />
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_warning_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,16 +131,22 @@
                 android:id="@+id/iv_warning"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@drawable/ic_info_18" />
+                android:src="@drawable/ic_info_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_avg_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
                 android:text="이번달 하루 생활비 "
                 android:textColor="@color/colorWarning"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_warning"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_avg_budget"
@@ -147,8 +154,11 @@
                 android:layout_height="wrap_content"
                 android:text="@{vm.averageBudget}"
                 android:textColor="@color/colorWarning"
-                android:textSize="12sp" />
-        </LinearLayout>
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_avg_budget"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"

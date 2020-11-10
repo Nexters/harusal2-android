@@ -69,28 +69,29 @@
                 android:layout_marginRight="24dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
+                android:hint="0"
                 android:inputType="number"
                 android:text="@={vm.budget}"
-                android:hint="0"
-                android:textStyle="bold"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="40sp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="원"
-                android:textStyle="bold"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="40sp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/edit_register_budget"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,29 +103,37 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_edit" />
 
-        <ImageView
-            android:id="@+id/iv_navigation"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@null"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_info_18"
-            app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_warning"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginBottom="16dp"
-            android:text="금액 수정시 남은 잔여일수 기준으로 다시 계산됩니다."
-            android:textColor="@color/colorWarning"
-            android:textSize="12sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@id/keyboard_numeric"
-            app:layout_constraintLeft_toRightOf="@id/iv_navigation" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_navigation"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_info_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:text="금액 수정시 남은 잔여일수 기준으로 다시 계산됩니다."
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/iv_navigation"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.nexters.zzallang.harusal2.keyboard.NumericKeyboard
             android:id="@+id/keyboard_numeric"

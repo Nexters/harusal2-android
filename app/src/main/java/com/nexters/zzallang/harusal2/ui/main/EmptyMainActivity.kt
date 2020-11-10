@@ -23,9 +23,7 @@ class EmptyMainActivity: BaseActivity<ActivityEmptyMainBinding>() {
             playAnimation()
             repeatCount = LottieDrawable.INFINITE
         }
-        binding.ivSetting.setOnClickListener {
-            startActivity(Intent(this, SettingActivity::class.java))
-        }
+
         binding.btnSettingBudget.setOnClickListener {
             startActivity(Intent(this, BudgetRegisterActivity::class.java))
         }
