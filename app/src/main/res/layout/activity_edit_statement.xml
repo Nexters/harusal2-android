@@ -197,8 +197,8 @@
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:maxLength="20"
-                android:maxLines="1"/>
+                android:singleLine="true"
+                android:maxLength="20"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
