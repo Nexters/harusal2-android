@@ -2,7 +2,6 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getDay
 import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMonth
 import com.nexters.zzallang.harusal2.base.BaseViewModel

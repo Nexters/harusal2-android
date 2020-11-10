@@ -50,7 +50,6 @@ class AlarmSettingActivity : BaseActivity<ActivityAlarmSettingBinding>() {
             finish()
         }
 
-        /* TODO: 바디 크기가 안맞아서 고쳐야함. */
         binding.switchMain.apply {
             setTrackResource(R.drawable.track_setting_switch)
             setThumbResource(R.drawable.thumb_setting_switch)

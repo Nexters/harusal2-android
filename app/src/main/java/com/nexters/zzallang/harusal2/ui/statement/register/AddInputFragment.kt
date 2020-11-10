@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddInputBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.lifecycle.Observer
-import com.nexters.zzallang.harusal2.application.util.Constants
 
 class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
     override fun layoutRes(): Int = R.layout.fragment_add_input

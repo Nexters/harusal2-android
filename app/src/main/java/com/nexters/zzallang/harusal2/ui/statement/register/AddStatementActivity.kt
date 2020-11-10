@@ -1,11 +1,9 @@
 package com.nexters.zzallang.harusal2.ui.statement.register
 
-import android.content.Intent
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityAddStatementBinding
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddStatementActivity: BaseActivity<ActivityAddStatementBinding>() {

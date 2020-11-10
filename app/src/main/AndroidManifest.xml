@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.history.HistoryActivity"/>
-        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.BudgetRegisterActivity"/>
-        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterActivity"/>
-        <activity android:name="com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterActivity"/>
+        <activity android:name=".ui.budget.register.BudgetRegisterActivity"/>
+        <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity"/>
+        <activity android:name=".ui.budget.register.StartDayClickRegisterActivity"/>
         <activity android:name=".ui.statement.register.AddStatementActivity"/>
         <activity android:name=".ui.statement.edit.StatementDetailActivity" />
         <activity android:name=".ui.statement.edit.StatementEditActivity" />
@@ -31,7 +31,6 @@
         <activity android:name=".ui.main.EmptyMainActivity" android:launchMode="singleTop"/>
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
-        <activity android:name=".ui.bridge.BridgeActivity"/>
         <receiver android:name=".ui.setting.receiver.Alarm"/>
     </application>
 

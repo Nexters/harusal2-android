@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.application.util
 
-import org.koin.ext.scope
 import java.text.SimpleDateFormat
 import java.util.*
 

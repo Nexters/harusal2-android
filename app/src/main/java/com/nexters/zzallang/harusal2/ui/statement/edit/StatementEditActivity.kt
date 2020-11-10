@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
@@ -11,7 +12,6 @@ import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
-import androidx.lifecycle.Observer
 
 class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
     override fun layoutRes(): Int = R.layout.activity_edit_statement

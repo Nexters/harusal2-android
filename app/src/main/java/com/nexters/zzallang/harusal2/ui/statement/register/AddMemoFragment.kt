@@ -1,16 +1,15 @@
 package com.nexters.zzallang.harusal2.ui.statement.register
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.App
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
-import com.nexters.zzallang.harusal2.ui.main.MainActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
