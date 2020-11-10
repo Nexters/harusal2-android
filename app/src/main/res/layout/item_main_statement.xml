@@ -34,7 +34,7 @@
             android:textSize="14sp"
             android:textColor="@color/colorDarkBlack"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_statement_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

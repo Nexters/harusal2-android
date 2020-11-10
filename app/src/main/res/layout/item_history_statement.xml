@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="돈을 사용한 내역" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_statement_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

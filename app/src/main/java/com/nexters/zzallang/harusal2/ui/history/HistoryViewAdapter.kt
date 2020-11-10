@@ -7,7 +7,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -118,10 +117,8 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                         ""
                     }.plus(historyStatement.money)
                         .plus("원")
-
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
-
-                layout.findViewById<ImageButton>(R.id.btn_statement_detail).setOnClickListener {
+                layout.setOnClickListener {
                     val intent = Intent(context, StatementDetailActivity::class.java)
                     intent.putExtra("statementId", historyStatement.id)
                     context.startActivity(intent)
