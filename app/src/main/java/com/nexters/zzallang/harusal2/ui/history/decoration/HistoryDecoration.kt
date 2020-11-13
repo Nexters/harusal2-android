@@ -12,10 +12,9 @@ class HistoryDecoration: RecyclerView.ItemDecoration() {
         val dp = when(parent.getChildAdapterPosition(view)){
             0 -> 20F
             1, 3 -> 10F
-            2 -> 40F
+            2, parent.adapter!!.itemCount - 1 -> 40F
             else -> 12F
         }
-
         outRect.bottom = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, dp, App.app.resources.displayMetrics
         ).toInt()
