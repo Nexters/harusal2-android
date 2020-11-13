@@ -1,6 +1,7 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
 import com.nexters.zzallang.harusal2.base.BaseViewModel
+import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StartDayEditUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
@@ -15,6 +16,10 @@ class SettingViewModel(
         launch {
             startDayEditUseCase.saveBudgetDate()
         }
+    }
+
+    suspend fun findBudget(): Budget {
+        return budgetUseCase.findRecentBudget();
     }
 
     fun deleteAllData() {

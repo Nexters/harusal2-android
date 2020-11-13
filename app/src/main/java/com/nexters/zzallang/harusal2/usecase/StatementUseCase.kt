@@ -28,6 +28,7 @@ class StatementUseCase(private val statementRepository: StatementRepository) {
         startDate.hours = 0
         startDate.minutes = 0
         startDate.seconds = 0
+        startDate.time -= 1000
 
         endDate.hours = 23
         endDate.minutes = 59
