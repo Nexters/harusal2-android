@@ -1,6 +1,5 @@
 package com.nexters.zzallang.harusal2.ui.statement.edit
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
