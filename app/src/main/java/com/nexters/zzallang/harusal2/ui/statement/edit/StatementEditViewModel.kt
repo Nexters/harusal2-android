@@ -42,8 +42,12 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
     }
 
     fun initType(): Int{
-        if(statement.amount.toString()[0] == '-') return Constants.STATEMENT_TYPE_OUT
-        return Constants.STATEMENT_TYPE_IN
+        var type = Constants.STATEMENT_TYPE_DEFALT
+        if(statement.amount.toString()[0] != '-') {
+            type = Constants.STATEMENT_TYPE_IN
+        }
+        setType(type)
+        return type
     }
 
     fun setType(type: Int){
@@ -52,7 +56,7 @@ class StatementEditViewModel(private val statementUseCase: StatementUseCase,
 
 
     fun applyType(amount: Int): Int{
-        var resultAmount = amount;
+        var resultAmount = amount
         if(statementType == Constants.STATEMENT_TYPE_OUT) resultAmount*=-1
         return resultAmount
     }
