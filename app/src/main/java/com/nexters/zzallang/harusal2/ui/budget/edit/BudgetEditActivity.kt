@@ -30,9 +30,13 @@ class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
             when (it) {
                 "" -> {
                     binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
+                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.colorPointDefault))
+                    binding.btnComplete.isEnabled = false
                 }
                 else -> {
                     binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
+                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.colorDarkBlack))
+                    binding.btnComplete.isEnabled = true
                 }
             }
 

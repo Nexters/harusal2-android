@@ -2,6 +2,7 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 
@@ -12,6 +13,7 @@ class BudgetRegisterViewModel() : BaseViewModel() {
     private val _averageBudget = MutableLiveData("")
     val hangeulBudget: LiveData<String> get() = _hangeulBudget
     val averageBudget: LiveData<String> get() = _averageBudget
+    private val duration: Int = DateUtils.getLastDayOfMonth()
 
     fun textClear() {
         _hangeulBudget.postValue("0원")
@@ -25,9 +27,9 @@ class BudgetRegisterViewModel() : BaseViewModel() {
             return
         }
 
-        val inputBudget: Long = java.lang.Long.valueOf(text)
+        val inputBudget = text.toLong()
 
-        _averageBudget.postValue((inputBudget / 30L).toString() + "원")
+        _averageBudget.postValue((inputBudget / duration).toString() + "원")
         hangeulBudget(inputBudget)
     }
 

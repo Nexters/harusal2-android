@@ -156,7 +156,7 @@
                 android:textColor="@color/colorWarning"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_avg_budget"
+                app:layout_constraintStart_toEndOf="@id/tv_avg_description"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
