@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.budget.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
@@ -16,7 +17,7 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
     val budget = MutableLiveData("0")
     private var currentBudget: Budget? = null
     private val _hangeulBudget = MutableLiveData("0원")
-    private val _averageBudget = MutableLiveData(PREFIX + "0원")
+    private val _averageBudget = MutableLiveData(PREFIX + "0 원")
     val hangeulBudget: LiveData<String> get() = _hangeulBudget
     val averageBudget: LiveData<String> get() = _averageBudget
 
@@ -35,7 +36,7 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
 
         val inputBudget: Long = text.toLong()
 
-        setAverageBudget("${inputBudget/30L} 원")
+        setAverageBudget("${NumberUtils.decimalFormat.format(inputBudget/30L)} 원")
         setHangeulBudget(inputBudget)
     }
 

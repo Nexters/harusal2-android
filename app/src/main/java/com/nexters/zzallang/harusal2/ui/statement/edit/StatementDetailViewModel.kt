@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
@@ -47,7 +48,7 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase) :
     }
 
     private fun setAmount() {
-        _statementAmount.postValue(abs(statement.amount).toString() + Constants.MONEY_UNIT)
+        _statementAmount.postValue(NumberUtils.decimalFormat.format(abs(statement.amount)) + Constants.MONEY_UNIT)
     }
 
     private fun setMemo() {

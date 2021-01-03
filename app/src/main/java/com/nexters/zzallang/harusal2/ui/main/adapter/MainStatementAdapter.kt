@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.databinding.ItemMainDateBinding
 import com.nexters.zzallang.harusal2.databinding.ItemMainStatementBinding
 import com.nexters.zzallang.harusal2.databinding.ItemMainStatementEmptyBinding
@@ -107,7 +108,7 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
     class MainStatementViewHolder(private val binding: ItemMainStatementBinding): BaseViewHolder(binding.root) {
         override fun onBind(item: BaseMainRecyclerViewStatementItem) {
             item as MainStatement
-            binding.tvMoney.text = "${item.money}원"
+            binding.tvMoney.text = "${NumberUtils.decimalFormat.format(item.money)}원"
             binding.tvContent.text = item.content
 
 
