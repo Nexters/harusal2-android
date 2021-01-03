@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryCardBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryInfoBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryTitleBinding
@@ -115,7 +116,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                         "+"
                     } else {
                         ""
-                    }.plus(historyStatement.money)
+                    }.plus(NumberUtils.decimalFormat.format(historyStatement.money))
                         .plus("원")
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
                 layout.setOnClickListener {
@@ -129,15 +130,12 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
 
             binding.tvDay.text = item.day.toString()
 
-
-
-
             binding.tvIncome.text = when {
                 item.income > 0 -> "+"
                 else -> ""
-            } + """${item.income}원"""
+            } + """${NumberUtils.decimalFormat.format(item.income)}원"""
 
-            binding.tvSpending.text =  "${item.spending}원"
+            binding.tvSpending.text =  "${NumberUtils.decimalFormat.format(item.spending)}원"
 
             binding.btnExpand.setOnClickListener {
                 when (binding.layoutHistoryItem.visibility) {
@@ -262,7 +260,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
 
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
             binding.tvPeriod.text = item.period
-            binding.tvMoney.text = """${item.money}원"""
+            binding.tvMoney.text = """${NumberUtils.decimalFormat.format(item.money)}원"""
 
             binding.tvDescription.setTextColor(textColor)
             binding.tvPeriod.setTextColor(textColor)

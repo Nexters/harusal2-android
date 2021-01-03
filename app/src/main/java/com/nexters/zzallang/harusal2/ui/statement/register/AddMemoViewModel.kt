@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.DateUtils.stringToDate
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
@@ -25,7 +26,7 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     private var statementType = Constants.STATEMENT_TYPE_OUT
 
     fun setAmount(amount: String){
-        _stateAmount.postValue(amount+Constants.MONEY_UNIT)
+        _stateAmount.postValue(NumberUtils.decimalFormat.format(amount.toInt()) + Constants.MONEY_UNIT)
     }
 
     fun getAmount(): Int{

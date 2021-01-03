@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
@@ -34,7 +35,7 @@ class MainViewModel(
         }
 
         remainMoney = tempMoney
-        _todayRemainMoney.postValue("${remainMoney}원")
+        _todayRemainMoney.postValue("${NumberUtils.decimalFormat.format(remainMoney)}원")
     }
 
     fun getTodaySpendStatementList(): List<MainStatement> {
@@ -64,7 +65,7 @@ class MainViewModel(
         val remainDate = DateUtils.calculateDate(Date(), budget.endDate)
 
         livingExpenses = (budget.budget + spentMoney) / remainDate
-        _todayLivingExpenses.postValue("오늘의 생활비 ${livingExpenses}원")
+        _todayLivingExpenses.postValue("오늘의 생활비 ${NumberUtils.decimalFormat.format(livingExpenses)}원")
     }
 
     suspend fun checkCurrentSpendState(): SpendState {
