@@ -10,7 +10,11 @@ class StartDayEditUseCase(
 ) {
     suspend fun saveBudgetDate() {
         var currentBudget = budgetUseCase.findRecentBudget()
-        val todayDate = Date()
+        val todayDate = Date().apply {
+            hours = 0
+            minutes = 0
+            seconds = 0
+        }
         val yesterdayDate = Date(todayDate.time + (1000 * 60 * 60 * 24 * -1))
 
         val statements = statementUseCase.findByDate(Date())
