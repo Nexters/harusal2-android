@@ -8,6 +8,7 @@ import com.nexters.zzallang.harusal2.ui.history.HistoryViewModel
 import com.nexters.zzallang.harusal2.ui.main.MainViewModel
 import com.nexters.zzallang.harusal2.ui.setting.AlarmSettingViewModel
 import com.nexters.zzallang.harusal2.ui.setting.SettingViewModel
+import com.nexters.zzallang.harusal2.ui.splash.SplashViewModel
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementDetailViewModel
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementEditViewModel
 import com.nexters.zzallang.harusal2.ui.statement.register.AddInputViewModel
@@ -30,4 +31,5 @@ val viewModelModule = module {
     viewModel { BudgetEditViewModel(get()) }
     viewModel { AlarmSettingViewModel() }
     viewModel { SettingViewModel(get(), get(), get()) }
+    viewModel {SplashViewModel(get())}
 }
