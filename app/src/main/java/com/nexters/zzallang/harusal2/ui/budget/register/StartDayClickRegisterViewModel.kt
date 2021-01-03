@@ -52,7 +52,11 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
             }
         }
         startCalendar.set(Calendar.DATE, pickedDate)
-        startDate = Date(startCalendar.timeInMillis)
+        startDate = Date(startCalendar.timeInMillis).apply {
+            hours = 0
+            minutes = 0
+            seconds = 0
+        }
 
         val endCalendar = when {
             pickedDate == 1 -> {
@@ -72,7 +76,11 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
             1 -> endCalendar.set(Calendar.DATE, getLastDayOfMonth())
             else -> endCalendar.set(Calendar.DATE, pickedDate - 1)
         }
-        endDate = Date(endCalendar.timeInMillis)
+        endDate = Date(endCalendar.timeInMillis).apply {
+            hours = 23
+            minutes = 59
+            seconds = 59
+        }
 
         _description.postValue(
             StringBuilder("생활비 사용기간은 ")
