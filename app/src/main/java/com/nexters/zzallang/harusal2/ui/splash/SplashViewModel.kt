@@ -15,26 +15,33 @@ class SplashViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel(
             }
 
             budget?.let {
-                if (Date().time < budget.endDate.time) {
-                    return@launch
+                val currentTime = Date().time
+                val budgetDateList: ArrayList<Pair<Date, Date>> = arrayListOf()
+                var tempBudgetEndDate = it.copy().endDate
+
+                while (currentTime > tempBudgetEndDate.time) {
+                    val startDate = tempBudgetEndDate.apply {
+                        date += 1
+                        hours = 0
+                        minutes = 0
+                        seconds = 0
+                    }
+
+                    val endDate = (startDate.clone() as Date).apply {
+                        month += 1
+                        date -= 1
+                        hours = 23
+                        minutes = 59
+                        seconds = 59
+                    }
+
+                    budgetDateList.add(Pair(startDate, endDate))
+                    tempBudgetEndDate = endDate.clone() as Date
                 }
 
-                val startDate = budget.endDate.apply {
-                    date += 1
-                    hours = 0
-                    minutes = 0
-                    seconds = 0
+                for ((start, end) in budgetDateList) {
+                    budgetUseCase.insertBudget(it.budget, start, end)
                 }
-
-                val endDate = (startDate.clone() as Date).apply {
-                    month += 1
-                    date -= 1
-                    hours = 23
-                    minutes = 59
-                    seconds = 59
-                }
-
-                budgetUseCase.insertBudget(budget.budget, startDate, endDate)
             }
         }
     }
