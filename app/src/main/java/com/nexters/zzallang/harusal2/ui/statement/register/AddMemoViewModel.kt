@@ -29,8 +29,8 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
         _stateAmount.postValue(NumberUtils.decimalFormat.format(amount.toInt()) + Constants.MONEY_UNIT)
     }
 
-    fun getAmount(): Int{
-        val amount = _stateAmount.value?:""
+    private fun getAmount(): Int {
+        val amount = _stateAmount.value?.replace(",", "")?: ""
         return amount.substring(0, amount.length-1).toInt()
     }
 
