@@ -46,7 +46,13 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
             GlobalScope.launch {
                 viewModel.createStatement()
             }
-            startActivity(IntentUtils.getMainActivityIntent(it.context))
+
+            activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.remove(this)
+                    ?.commit()
+
+            activity?.finish()
         }
 
         val datePicker = initDatePicker()
