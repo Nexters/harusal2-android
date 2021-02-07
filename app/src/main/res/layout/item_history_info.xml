@@ -44,7 +44,7 @@
                 android:id="@+id/tv_used_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사용한 돈 5,000,000원"
+                android:text="누적 사용금액 500,000원"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"

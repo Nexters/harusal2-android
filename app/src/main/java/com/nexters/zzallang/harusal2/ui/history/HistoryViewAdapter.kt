@@ -261,7 +261,7 @@ class HistoryViewAdapter(private val context: Context) :
                     """${NumberUtils.decimalFormat.format(item.budget + item.totalAmount)}원"""
 
             binding.tvUsedMoney.text =
-                    """사용한 돈 ${NumberUtils.decimalFormat.format(item.totalAmount)}원"""
+                    """누적 사용금액 ${NumberUtils.decimalFormat.format(item.totalAmount)}원"""
 
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
 
