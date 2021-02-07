@@ -23,40 +23,39 @@ import com.nexters.zzallang.harusal2.ui.main.SpendState
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementDetailActivity
 
 
-class HistoryViewAdapter(private val context: Context, private val onedayBudget: Int) :
-    RecyclerView.Adapter<HistoryViewAdapter.BaseViewHolder>() {
+class HistoryViewAdapter(private val context: Context) :
+        RecyclerView.Adapter<HistoryViewAdapter.BaseViewHolder>() {
     private val histories = arrayListOf<BaseHistoryRecyclerItem>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
-        when (viewType) {
-            0 -> InfoTypeViewHolder(
-                DataBindingUtil
-                    .inflate(
-                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-                        R.layout.item_history_info,
-                        parent,
-                        false
-                    )
-            )
-            1 -> TitleTypeViewHolder(
-                DataBindingUtil
-                    .inflate(
-                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-                        R.layout.item_history_title,
-                        parent,
-                        false
-                    )
-            )
-            else -> CardTypeViewHolder(
-                DataBindingUtil
-                    .inflate(
-                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-                        R.layout.item_history_card,
-                        parent,
-                        false
-                    )
-            )
-        }
+            when (viewType) {
+                0 -> InfoTypeViewHolder(
+                        DataBindingUtil
+                                .inflate(
+                                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                                        R.layout.item_history_info,
+                                        parent,
+                                        false
+                                )
+                )
+                1 -> TitleTypeViewHolder(
+                        DataBindingUtil
+                                .inflate(
+                                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                                        R.layout.item_history_title,
+                                        parent,
+                                        false
+                                )
+                )
+                else -> CardTypeViewHolder(
+                        DataBindingUtil
+                                .inflate(
+                                        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                                        R.layout.item_history_card,
+                                        parent,
+                                        false
+                                )
+                )
+            }
 
     override fun getItemCount(): Int {
         return histories.size
@@ -87,11 +86,11 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
     }
 
     inner class CardTypeViewHolder(private val binding: ItemHistoryCardBinding) :
-        BaseViewHolder(binding.root) {
+            BaseViewHolder(binding.root) {
 
         override fun onBind(item: BaseHistoryRecyclerItem, position: Int) {
             val mInflater =
-                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
             item as HistoryCard
 
@@ -103,21 +102,21 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
             binding.layoutHistoryItem.removeAllViews()
             item.historyStatements?.forEach { historyStatement: HistoryStatement ->
                 val layout = mInflater.inflate(
-                    R.layout.item_history_statement,
-                    binding.layoutHistoryItem,
-                    false
+                        R.layout.item_history_statement,
+                        binding.layoutHistoryItem,
+                        false
                 ) as ConstraintLayout
 
                 layout.findViewById<TextView>(R.id.tv_money)
-                    .setTextColor(context.getColor(R.color.colorDarkBlack))
+                        .setTextColor(context.getColor(R.color.colorDarkBlack))
 
                 layout.findViewById<TextView>(R.id.tv_money).text =
-                    if (historyStatement.money > 0) {
-                        "+"
-                    } else {
-                        ""
-                    }.plus(NumberUtils.decimalFormat.format(historyStatement.money))
-                        .plus("원")
+                        if (historyStatement.money > 0) {
+                            "+"
+                        } else {
+                            ""
+                        }.plus(NumberUtils.decimalFormat.format(historyStatement.money))
+                                .plus("원")
                 layout.findViewById<TextView>(R.id.tv_content).text = historyStatement.content
                 layout.setOnClickListener {
                     val intent = Intent(context, StatementDetailActivity::class.java)
@@ -135,7 +134,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
                 else -> ""
             } + """${NumberUtils.decimalFormat.format(item.income)}원"""
 
-            binding.tvSpending.text =  "${NumberUtils.decimalFormat.format(item.spending)}원"
+            binding.tvSpending.text = "${NumberUtils.decimalFormat.format(item.spending)}원"
 
             binding.btnExpand.setOnClickListener {
                 when (binding.layoutHistoryItem.visibility) {
@@ -155,16 +154,16 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
         private fun expand(mLinearLayout: LinearLayout) {
             mLinearLayout.visibility = View.VISIBLE
             val widthSpec = View.MeasureSpec.makeMeasureSpec(
-                0,
-                View.MeasureSpec.UNSPECIFIED
+                    0,
+                    View.MeasureSpec.UNSPECIFIED
             )
             val heightSpec = View.MeasureSpec.makeMeasureSpec(
-                0,
-                View.MeasureSpec.UNSPECIFIED
+                    0,
+                    View.MeasureSpec.UNSPECIFIED
             )
             mLinearLayout.measure(widthSpec, heightSpec)
             val mAnimator: ValueAnimator =
-                slideAnimator(mLinearLayout, 0, mLinearLayout.measuredHeight)
+                    slideAnimator(mLinearLayout, 0, mLinearLayout.measuredHeight)
             mAnimator.start()
         }
 
@@ -191,9 +190,9 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
         }
 
         private fun slideAnimator(
-            mLinearLayout: LinearLayout,
-            start: Int,
-            end: Int
+                mLinearLayout: LinearLayout,
+                start: Int,
+                end: Int
         ): ValueAnimator {
             val animator = ValueAnimator.ofInt(start, end)
 
@@ -208,7 +207,7 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
     }
 
     inner class TitleTypeViewHolder(private val binding: ItemHistoryTitleBinding) :
-        BaseViewHolder(binding.root) {
+            BaseViewHolder(binding.root) {
 
         override fun onBind(item: BaseHistoryRecyclerItem, position: Int) {
             item as HistoryTitle
@@ -217,13 +216,13 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
     }
 
     inner class InfoTypeViewHolder(private val binding: ItemHistoryInfoBinding) :
-        BaseViewHolder(binding.root) {
+            BaseViewHolder(binding.root) {
         override fun onBind(item: BaseHistoryRecyclerItem, position: Int) {
             item as HistoryInfo
 
             val backgroundColor: Int
             val emojiName: String
-            var textColor: Int =  context.getColor(R.color.colorWhite)
+            var textColor: Int = context.getColor(R.color.colorWhite)
             when (item.state) {
                 SpendState.FLEX -> {
                     backgroundColor = R.color.colorPointBlueBackground
@@ -258,13 +257,17 @@ class HistoryViewAdapter(private val context: Context, private val onedayBudget:
             val color = context.getColor(backgroundColor)
             binding.layoutHistoryStatement.setBackgroundColor(color)
 
+            binding.tvRemainMoney.text =
+                    """${NumberUtils.decimalFormat.format(item.budget + item.totalAmount)}원"""
+
+            binding.tvUsedMoney.text =
+                    """사용한 돈 ${NumberUtils.decimalFormat.format(item.totalAmount)}원"""
+
             binding.ivHistoryEmoji.repeatCount = LottieDrawable.INFINITE
-            binding.tvPeriod.text = item.period
-            binding.tvMoney.text = """${NumberUtils.decimalFormat.format(item.money)}원"""
 
             binding.tvDescription.setTextColor(textColor)
-            binding.tvPeriod.setTextColor(textColor)
-            binding.tvMoney.setTextColor(textColor)
+            binding.tvRemainMoney.setTextColor(textColor)
+            binding.tvUsedMoney.setTextColor(textColor)
         }
     }
 }
