@@ -57,7 +57,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         viewModel.cards.observe(this, Observer {
             val color: Int
             binding.rcvHistory.adapter =
-                HistoryViewAdapter(this@HistoryActivity, viewModel.oneDayBudget).apply {
+                HistoryViewAdapter(this@HistoryActivity).apply {
                     val info = it[0] as HistoryInfo
                     color = getBackgroundColor(info.state)
                     binding.appbar.setBackgroundColor(

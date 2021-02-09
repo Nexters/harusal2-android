@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.history.HistoryActivity"/>
+        <activity android:name=".ui.history.HistoryActivity" android:launchMode="singleTop"/>
         <activity android:name=".ui.budget.register.BudgetRegisterActivity"/>
         <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity"/>
         <activity android:name=".ui.budget.register.StartDayClickRegisterActivity"/>

@@ -97,7 +97,8 @@ class HistoryViewModel(
         recyclerItem.addAll(
             arrayListOf(
                 HistoryInfo(
-                    selectedBudget.budget + totalAmount,
+                    selectedBudget.budget,
+                    totalAmount,
                     DateUtils.startToEndToString(
                         selectedBudget.startDate,
                         selectedBudget.endDate

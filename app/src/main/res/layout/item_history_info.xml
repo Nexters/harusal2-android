@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_money"
+                android:id="@+id/tv_remain_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
@@ -39,16 +39,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
-                android:id="@+id/tv_period"
+                android:id="@+id/tv_used_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="99dp"
-                android:text="2020.07.01 - 2020.07.30"
-                android:textColor="#5F626D"
-                android:textSize="12sp"
+                android:text="누적 사용금액 500,000원"
+                android:textColor="@color/colorDarkBlack"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_remain_money" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

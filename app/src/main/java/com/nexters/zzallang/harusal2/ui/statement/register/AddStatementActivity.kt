@@ -6,7 +6,7 @@ import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityAddStatementBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddStatementActivity: BaseActivity<ActivityAddStatementBinding>() {
+class AddStatementActivity : BaseActivity<ActivityAddStatementBinding>() {
     override fun layoutRes(): Int = R.layout.activity_add_statement
     override val viewModel: AddStatementViewModel by viewModel()
 
@@ -18,9 +18,11 @@ class AddStatementActivity: BaseActivity<ActivityAddStatementBinding>() {
 
     override fun bindingView() {
         super.bindingView()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container_add_statement,
-            AddInputFragment()
-        ).commit()
+        supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_add_statement,
+                        AddInputFragment()
+                ).commit()
 
         binding.btnStatementX.setOnClickListener {
             finish()
