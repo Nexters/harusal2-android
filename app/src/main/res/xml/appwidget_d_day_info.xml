@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+        android:initialLayout="@layout/appwidget_d_day"
+        android:minWidth="@dimen/appwidget_cell_2"
+        android:minHeight="@dimen/appwidget_cell_1"
+        android:resizeMode="horizontal|vertical" />
