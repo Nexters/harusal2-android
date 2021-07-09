@@ -17,7 +17,7 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
     val budget = MutableLiveData("0")
     private var currentBudget: Budget? = null
     private val _hangeulBudget = MutableLiveData("0원")
-    private val _averageBudget = MutableLiveData(PREFIX + "0 원")
+    private val _averageBudget = MutableLiveData(PREFIX + "0원")
     val hangeulBudget: LiveData<String> get() = _hangeulBudget
     val averageBudget: LiveData<String> get() = _averageBudget
 

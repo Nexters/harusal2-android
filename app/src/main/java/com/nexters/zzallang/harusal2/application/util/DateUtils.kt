@@ -1,90 +1,65 @@
 package com.nexters.zzallang.harusal2.application.util
 
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 object DateUtils {
-    private var dateFormatContainYear: SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
-    private var dateFormatNoYear: SimpleDateFormat = SimpleDateFormat("MM.dd")
-    private const val MILLIS = 24 * 60 * 60 * 1000
-
+    private const val NO_YEAR_FORMAT = "MM.dd"
+    private const val YEAR_FORMAT = "yyyy.MM.dd"
     fun getLastDayOfMonth(): Int {
         return getLastDayOfMonthAfter(0)
     }
 
     fun getLastDayOfMonthAfter(month: Int): Int {
-        val date = Date()
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        calendar.add(Calendar.MONTH, month)
-        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val date = LocalDate.now().plusMonths(month.toLong())
+        return date.lengthOfMonth()
     }
 
-    fun getDay(): Int {
-        val date = Date()
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        return calendar.get(Calendar.DAY_OF_MONTH)
-    }
-
-    fun getMonth(): Int {
-        val date = Date()
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        return calendar.get(Calendar.MONTH) + 1
-    }
-
-    fun getYear(): Int {
-        val date = Date()
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        return calendar.get(Calendar.YEAR)
-    }
-
-    fun getToday(): String = "${getYear()}.${getMonth()}.${getDay()}"
-
-    fun getTodayDate(): Date {
-        return Date(System.currentTimeMillis())
-    }
-
-    fun endDate(date: Date): Date {
-        val newDate = Date()
-        val argsDate = date.date
-        newDate.month = when (argsDate) {
-            1 -> newDate.month
-            else -> newDate.month + 1
+    fun endDate(date: LocalDate): LocalDate {
+        val month = when (date.dayOfMonth) {
+            1 -> date.month
+            else -> date.plusMonths(1).month
         }
 
-        newDate.date = when (argsDate) {
+        val day = when (date.dayOfMonth) {
             1 -> this.getLastDayOfMonth()
-            else -> argsDate - 1
+            else -> date.dayOfMonth - 1
         }
-        return newDate
+        return LocalDate.of(date.year, month, day)
     }
 
-    fun startToEndToString(startDate: Date, endDate: Date): String {
+    fun startToEndToString(startDate: LocalDate, endDate: LocalDate): String {
         return StringBuilder()
-            .append(dateFormatContainYear.format(startDate))
+            .append(this.toString(startDate, YEAR_FORMAT))
             .append(" - ")
-            .append(dateFormatContainYear.format(endDate))
+            .append(this.toString(endDate, YEAR_FORMAT))
             .toString()
     }
 
-    fun startToEndToStringNoYear(startDate: Date, endDate: Date): String {
+    fun startToEndToStringNoYear(startDate: LocalDate, endDate: LocalDate): String {
         return StringBuilder()
-            .append(dateFormatNoYear.format(startDate))
+            .append(this.toString(startDate, NO_YEAR_FORMAT))
             .append(" - ")
-            .append(dateFormatNoYear.format(endDate))
+            .append(this.toString(endDate, NO_YEAR_FORMAT))
             .toString()
     }
 
-    fun calculateDate(startDate: Date, endDate: Date): Int {
-        return ((endDate.time / MILLIS) - (startDate.time / MILLIS) + 1).toInt()
+    fun calculateDate(startDate: LocalDate, endDate: LocalDate): Int {
+        return Math.abs((endDate.toEpochDay() - startDate.toEpochDay()).toInt()) + 1
     }
 
-    fun stringToDate(inputDate: String): Date{
-        return Date(inputDate.substring(0,4).toInt()-1900,
-            inputDate.substring(5,7).toInt()-1,
-            inputDate.substring(8).toInt())
+    fun toTodayString(): String {
+        return this.toString(LocalDate.now(), YEAR_FORMAT)
+    }
+
+    fun stringToDate(inputDate: String): LocalDate{
+        val splitFormat = inputDate.split(".")
+        return LocalDate.of(splitFormat[0].toInt(),
+            splitFormat[1].toInt(),
+            splitFormat[2].toInt())
+    }
+
+    fun toString(localDate: LocalDate, pattern:String):String{
+        return localDate.format(DateTimeFormatter.ofPattern(pattern))
     }
 }

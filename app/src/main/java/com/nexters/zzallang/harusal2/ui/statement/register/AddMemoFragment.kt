@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
-import com.nexters.zzallang.harusal2.application.util.IntentUtils
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
@@ -65,27 +65,24 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
         }
     }
 
-    fun initDatePicker(): DatePickerDialog {
-        val cal = Calendar.getInstance()
-
+    private fun initDatePicker(): DatePickerDialog {
+        var todayDate = LocalDate.now()
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_MONTH, day)
-                viewModel.setDate(
-                    SimpleDateFormat(
-                        Constants.DATE_FORMAT,
-                        Locale.getDefault()
-                    ).format(cal.time)
-                )
+                todayDate = todayDate.withYear(year)
+                    .withMonth(month + 1)
+                    .withDayOfMonth(day)
+
+                viewModel.setDate(DateUtils.toString(todayDate, Constants.DATE_FORMAT))
             }
 
         val datePickerDialog = DatePickerDialog(
-            requireContext(), R.style.DialogTheme, dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
+            requireContext(),
+            R.style.DialogTheme,
+            dateSetListener,
+            todayDate.year,
+            todayDate.monthValue - 1,
+            todayDate.dayOfMonth
         )
 
         GlobalScope.launch {

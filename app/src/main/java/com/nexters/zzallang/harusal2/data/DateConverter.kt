@@ -1,12 +1,15 @@
 package com.nexters.zzallang.harusal2.data
 
 import androidx.room.TypeConverter
-import java.util.*
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 
 class DateConverter {
     @TypeConverter
-    fun toDate(date: Long): Date = Date(date)
+    fun toDate(date: Long): LocalDate =
+        Instant.ofEpochMilli(date).atZone(ZoneId.systemDefault()).toLocalDate()
 
     @TypeConverter
-    fun toLong(date: Date): Long = date.time
+    fun toLong(localDate: LocalDate) = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
 }

@@ -20,7 +20,7 @@ import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 
 class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewHolder>() {
     private val statementList = arrayListOf<MainStatement>()
-    private val date = MainDate(DateUtils.getToday())
+    private val date = MainDate(DateUtils.toTodayString())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         when (viewType) {

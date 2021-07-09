@@ -12,7 +12,7 @@ import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.time.LocalDate
 
 class MainViewModel(
     private val statementUseCase: StatementUseCase,
@@ -52,17 +52,13 @@ class MainViewModel(
     }
 
     private fun refreshTodayLivingExpenses() {
-        val yesterdayMillis = 1000 * 60 * 60 * 24
         var spentMoney = 0
-        var yesterdayDate = Date(Date().time - yesterdayMillis)
-        yesterdayDate.hours = 23
-        yesterdayDate.minutes = 59
-        yesterdayDate.seconds = 59
+        val now = LocalDate.now()
 
-        statements.filter { statement -> statement.date.before(yesterdayDate) }
+        statements.filter { statement -> statement.date.isBefore(now) }
             .forEach { statement: Statement -> spentMoney += statement.amount }
 
-        val remainDate = DateUtils.calculateDate(Date(), budget.endDate)
+        val remainDate = DateUtils.calculateDate(now, budget.endDate)
 
         livingExpenses = (budget.budget + spentMoney) / remainDate
         _todayLivingExpenses.postValue("오늘의 생활비 ${NumberUtils.decimalFormat.format(livingExpenses)}원")
@@ -77,7 +73,7 @@ class MainViewModel(
             statementUseCase.findStatementByBudgetId(budget.id)
         }
 
-        todayStatements = statements.filter { statement -> statement.date.date == Date().date }
+        todayStatements = statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
 
         refreshTodayLivingExpenses()
         refreshTodaySpendMoney()

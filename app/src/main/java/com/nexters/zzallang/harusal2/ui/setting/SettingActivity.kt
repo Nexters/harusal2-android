@@ -17,6 +17,7 @@ import com.nexters.zzallang.harusal2.ui.setting.receiver.Alarm
 import com.nexters.zzallang.harusal2.ui.setting.view.SettingDialog
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.time.LocalDate
 import java.util.*
 
 class SettingActivity : BaseActivity<ActivitySettingBinding>() {
@@ -49,9 +50,9 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>() {
                     recentBudget = viewModel.findBudget()
                 }
 
-                val todayDate: Int = Date().date
+                val todayDate: Int = LocalDate.now().dayOfMonth
 
-                if (recentBudget.startDate.date == todayDate) {
+                if (recentBudget.startDate.dayOfMonth == todayDate) {
                     Toast.makeText(
                         this@SettingActivity,
                         R.string.dialog_edit_budget_date_error,

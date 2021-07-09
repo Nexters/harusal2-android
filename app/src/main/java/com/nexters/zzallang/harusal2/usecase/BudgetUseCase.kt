@@ -3,7 +3,7 @@ package com.nexters.zzallang.harusal2.usecase
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
-import java.util.*
+import java.time.LocalDate
 
 
 class BudgetUseCase(private val budgetRepository: BudgetRepository) {
@@ -11,7 +11,7 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
         budgetRepository.update(budget)
     }
 
-    suspend fun insertBudget(budget: Int, startDate: Date) {
+    suspend fun insertBudget(budget: Int, startDate: LocalDate) {
         budgetRepository.insertBudget(
             Budget(
                 startDate = startDate,
@@ -21,7 +21,7 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
         )
     }
 
-    suspend fun insertBudget(budget: Int, startDate: Date, endDate: Date) {
+    suspend fun insertBudget(budget: Int, startDate: LocalDate, endDate: LocalDate) {
         budgetRepository.insertBudget(
             Budget(
                 startDate = startDate,
