@@ -12,8 +12,8 @@ import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalDate
+import java.time.ZoneId
 
 class AddMemoViewModel(private val statementUseCase: StatementUseCase,
                        private val budgetUseCase: BudgetUseCase): BaseViewModel() {
@@ -49,29 +49,27 @@ class AddMemoViewModel(private val statementUseCase: StatementUseCase,
     }
 
     fun getDateForNow(): String{
-        return SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(DateUtils.getTodayDate())
+        return DateUtils.toString(LocalDate.now(), Constants.DATE_FORMAT)
     }
 
     suspend fun getMinDate(): Long{
-        val minDate = Calendar.getInstance()
+        var minDate = LocalDate.now()
         withContext(Dispatchers.IO + job){
             budgetUseCase.findRecentBudget()?.let {
-                val startDate = it.startDate
-                minDate.time = startDate
+                minDate = it.startDate
             }
         }
-        return minDate.time.time
+        return minDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }
 
     suspend fun getMaxDate(): Long{
-        val maxDate = Calendar.getInstance()
+        var maxDate = LocalDate.now()
         withContext(Dispatchers.IO + job){
             budgetUseCase.findRecentBudget()?.let {
-                val endDate = it.endDate
-                maxDate.time = endDate
+                maxDate = it.endDate
             }
         }
-        return maxDate.time.time
+        return maxDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }
 
     suspend fun createStatement() {

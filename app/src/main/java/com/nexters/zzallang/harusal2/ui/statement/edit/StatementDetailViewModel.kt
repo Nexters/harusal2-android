@@ -3,12 +3,11 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.math.abs
 
 class StatementDetailViewModel(private val statementUseCase: StatementUseCase) : BaseViewModel() {
@@ -40,10 +39,7 @@ class StatementDetailViewModel(private val statementUseCase: StatementUseCase) :
 
     private fun setDate() {
         _statementDate.postValue(
-            SimpleDateFormat(
-                Constants.DATE_FORMAT,
-                Locale.getDefault()
-            ).format(statement.date)
+            DateUtils.toString(statement.date, Constants.DATE_FORMAT)
         )
     }
 

@@ -5,13 +5,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.nexters.zzallang.harusal2.data.DateConverter
-import java.util.*
+import java.time.LocalDate
 
 @Entity(tableName = "statement")
 @TypeConverters(DateConverter::class)
 data class Statement(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0L,
-    @ColumnInfo(name = "date") var date: Date,
+    @ColumnInfo(name = "date") var date: LocalDate,
     @ColumnInfo(name = "content") var content: String,
     @ColumnInfo(name = "amount") var amount: Int,
     @ColumnInfo(name = "budget_id") var budgetId: Long

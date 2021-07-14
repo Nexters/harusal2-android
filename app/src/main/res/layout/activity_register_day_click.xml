@@ -82,7 +82,7 @@
             android:layout_height="350dp"
             android:layout_centerInParent="true"
             android:value="@{vm.pickedDate}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_description"
+            app:layout_constraintBottom_toTopOf="@+id/layout_warning_wrapper"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_sub_description"
@@ -102,31 +102,40 @@
             android:textColor="@color/colorDarkBlack"
             android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_description"
+            app:layout_constraintBottom_toTopOf="@id/layout_warning_wrapper"
             app:layout_constraintStart_toEndOf="@id/picker_day"
             app:layout_constraintTop_toBottomOf="@id/tv_sub_description" />
 
-        <ImageView
-            android:id="@+id/iv_warning"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="18dp"
-            android:src="@drawable/ic_info_18"
-            app:layout_constraintBottom_toTopOf="@id/btn_complete"
-            app:layout_constraintLeft_toLeftOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_description"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_warning_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginBottom="19dp"
-            android:text="@{vm.description}"
-            android:textColor="@color/colorWarning"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_complete"
-            app:layout_constraintLeft_toRightOf="@id/iv_warning" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_complete">
+            <ImageView
+                android:id="@+id/iv_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_info_18"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@{vm.description}"
+                android:hint="생활비 사용기간은 ~일입니다."
+                android:textColor="@color/colorWarning"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_warning"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btn_complete"

@@ -4,7 +4,7 @@ import com.nexters.zzallang.harusal2.application.AppDatabase
 import com.nexters.zzallang.harusal2.base.BaseRepository
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.time.LocalDate
 
 class StatementRepository : BaseRepository() {
     suspend fun insertStatement(statement: Statement) {
@@ -35,7 +35,7 @@ class StatementRepository : BaseRepository() {
         }
     }
 
-    suspend fun selectAllStatementByDate(startTime: Date, endTime: Date) =
+    suspend fun selectAllStatementByDate(startTime: LocalDate, endTime: LocalDate) =
         withContext(coroutineContext) {
             AppDatabase.instance.statementDao().selectStatementWhereDate(startTime, endTime)
         }

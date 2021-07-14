@@ -6,11 +6,12 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityEditStatementBinding
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
@@ -98,28 +99,24 @@ class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
         }
     }
 
-    fun initDatePicker(): DatePickerDialog {
-        val cal = Calendar.getInstance()
-
+    private fun initDatePicker(): DatePickerDialog {
+        var todayDate = LocalDate.now()
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_MONTH, day)
-                viewModel.setDate(
-                    SimpleDateFormat(
-                        Constants.DATE_FORMAT,
-                        Locale.getDefault()
-                    ).format(cal.time)
-                )
+                todayDate = todayDate.withYear(year)
+                    .withMonth(month + 1)
+                    .withDayOfMonth(day)
+
+                viewModel.setDate(DateUtils.toString(todayDate, Constants.DATE_FORMAT))
             }
 
-        cal.time = viewModel.getInitDate()
         val datePickerDialog = DatePickerDialog(
-            this, R.style.DialogTheme, dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
+            this,
+            R.style.DialogTheme,
+            dateSetListener,
+            todayDate.year,
+            todayDate.monthValue - 1,
+            todayDate.dayOfMonth
         )
 
         GlobalScope.launch {

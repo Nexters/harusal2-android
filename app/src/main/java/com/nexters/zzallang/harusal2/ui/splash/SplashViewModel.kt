@@ -5,6 +5,7 @@ import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.LocalDate
 import java.util.*
 
 class SplashViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
@@ -15,28 +16,16 @@ class SplashViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel(
             }
 
             budget?.let {
-                val currentTime = Date().time
-                val budgetDateList: ArrayList<Pair<Date, Date>> = arrayListOf()
+                val todayDate = LocalDate.now()
+                val budgetDateList: ArrayList<Pair<LocalDate, LocalDate>> = arrayListOf()
                 var tempBudgetEndDate = it.copy().endDate
 
-                while (currentTime > tempBudgetEndDate.time) {
-                    val startDate = tempBudgetEndDate.apply {
-                        date += 1
-                        hours = 0
-                        minutes = 0
-                        seconds = 0
-                    }
-
-                    val endDate = (startDate.clone() as Date).apply {
-                        month += 1
-                        date -= 1
-                        hours = 23
-                        minutes = 59
-                        seconds = 59
-                    }
+                while (todayDate.isAfter(tempBudgetEndDate)) {
+                    val startDate = tempBudgetEndDate.plusDays(1)
+                    var endDate = startDate.plusMonths(1).plusDays(1)
 
                     budgetDateList.add(Pair(startDate, endDate))
-                    tempBudgetEndDate = endDate.clone() as Date
+                    tempBudgetEndDate = endDate
                 }
 
                 for ((start, end) in budgetDateList) {

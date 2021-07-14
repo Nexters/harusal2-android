@@ -1,8 +1,7 @@
 package com.nexters.zzallang.harusal2.usecase
 
-import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
-import java.util.*
+import java.time.LocalDate
 
 class StartDayEditUseCase(
     private val statementUseCase: StatementUseCase,
@@ -10,15 +9,11 @@ class StartDayEditUseCase(
 ) {
     suspend fun saveBudgetDate() {
         var currentBudget = budgetUseCase.findRecentBudget()
-        val todayDate = Date().apply {
-            hours = 0
-            minutes = 0
-            seconds = 0
-        }
-        val yesterdayDate = Date(todayDate.time + (1000 * 60 * 60 * 24 * -1))
+        val todayDate = LocalDate.now()
+        val yesterday = todayDate.minusDays(1)
 
-        val statements = statementUseCase.findByDate(Date())
-        currentBudget.endDate = yesterdayDate
+        val statements = statementUseCase.findByDate(todayDate)
+        currentBudget.endDate = yesterday
         budgetUseCase.updateBudget(currentBudget)
 
         budgetUseCase.insertBudget(budget = currentBudget.budget, startDate = todayDate)
