@@ -43,4 +43,7 @@
     <string name="dialog_edit_budget_date_error">시작일이 오늘과 같습니다.</string>
 
     <string name="text_used">이번 달 사용 금액</string>
+
+    <string name="appwidget_d_day">D-%d</string>
+    <string name="appwidget_money_left">%d원 남음</string>
 </resources>
