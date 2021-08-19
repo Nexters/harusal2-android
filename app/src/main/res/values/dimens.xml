@@ -7,4 +7,9 @@
     <dimen name="btn_round_radius">10dp</dimen>
     <dimen name="item_main_statement_height">56dp</dimen>
     <dimen name="empty_main_icon_top_margin">18dp</dimen>
+
+    <dimen name="appwidget_cell_1">40dp</dimen>
+    <dimen name="appwidget_cell_2">110dp</dimen>
+    <dimen name="appwidget_cell_3">180dp</dimen>
+    <dimen name="appwidget_cell_4">250dp</dimen>
 </resources>

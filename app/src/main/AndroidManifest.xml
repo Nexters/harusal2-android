@@ -10,6 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver android:name=".ui.appwidget.RemainedMoneyWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/appwidget_type_3_info" />
+        </receiver>
+
         <activity android:name=".ui.splash.SplashActivity"
             android:theme="@style/Splash.StatusBar">
             <intent-filter>
