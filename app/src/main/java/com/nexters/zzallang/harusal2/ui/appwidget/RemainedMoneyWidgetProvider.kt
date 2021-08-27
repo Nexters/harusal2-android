@@ -36,16 +36,18 @@ class RemainedMoneyWidgetProvider : AppWidgetProvider() {
 	override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
 		super.onUpdate(context, appWidgetManager, appWidgetIds)
 
-		appWidgetIds?.forEach { appWidgetId ->
-			RemoteViews(context?.packageName, R.layout.appwidget_type_3).also {
-				initData(context, appWidgetId, it)
+		CoroutineScope(Dispatchers.Main + job).launch {
+			appWidgetIds?.forEach { appWidgetId ->
+				RemoteViews(context?.packageName, R.layout.appwidget_type_3).also {
+					initData()
 
-				it.setImageViewResource(R.id.status, getStatus())
-				it.setTextViewText(R.id.tv_remain_money, NumberUtils.decimalFormat.format(livingExpenses))
-				it.setOnClickRefresh(context, appWidgetId)
-				it.setOnClickOpenApp(context, appWidgetId)
+					it.setImageViewResource(R.id.status, getStatus())
+					it.setTextViewText(R.id.tv_remain_money, NumberUtils.decimalFormat.format(livingExpenses))
+					it.setOnClickRefresh(context, appWidgetId)
+					it.setOnClickOpenApp(context, appWidgetId)
 
-				appWidgetManager?.updateAppWidget(appWidgetId, it)
+					appWidgetManager?.updateAppWidget(appWidgetId, it)
+				}
 			}
 		}
 	}
@@ -95,36 +97,33 @@ class RemainedMoneyWidgetProvider : AppWidgetProvider() {
 		}
 	}
 
-	private fun initData(context: Context?, appWidgetId: Int, remoteViews: RemoteViews) {
-		CoroutineScope(Dispatchers.IO + job).launch {
-			var spentMoney = 0
-			val now = LocalDate.now()
+	private suspend fun initData() {
+		var spentMoney = 0
+		val now = LocalDate.now()
 
-			val budget = withContext(Dispatchers.IO + job) {
-				budgetUseCase.findRecentBudget()
-			}
-
-			val statements = withContext(Dispatchers.IO + job) {
-				statementUseCase.findStatementByBudgetId(budget.id)
-			}
-
-			statements.filter { it.date.isBefore(now) }.forEach { spentMoney += it.amount }
-
-			val remainDate = DateUtils.calculateDate(now, budget.endDate)
-
-			livingExpenses = (budget.budget + spentMoney) / remainDate
-
-			val todayStatements = statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
-
-			var tempMoney = livingExpenses
-			for (item in todayStatements) {
-				tempMoney += item.amount
-			}
-
-			remainMoney = tempMoney
-
-			AppWidgetManager.getInstance(context)?.updateAppWidget(appWidgetId, remoteViews)
+		val budget = withContext(CoroutineScope(Dispatchers.IO + job).coroutineContext) {
+			budgetUseCase.findRecentBudget()
 		}
+
+		val statements = withContext(CoroutineScope(Dispatchers.IO + job).coroutineContext) {
+			statementUseCase.findStatementByBudgetId(budget.id)
+		}
+
+		statements.filter { it.date.isBefore(now) }.forEach { spentMoney += it.amount }
+
+		val remainDate = DateUtils.calculateDate(now, budget.endDate)
+
+		livingExpenses = (budget.budget + spentMoney) / remainDate
+
+		val todayStatements =
+			statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
+
+		var tempMoney = livingExpenses
+		for (item in todayStatements) {
+			tempMoney += item.amount
+		}
+
+		remainMoney = tempMoney
 	}
 
 	override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
