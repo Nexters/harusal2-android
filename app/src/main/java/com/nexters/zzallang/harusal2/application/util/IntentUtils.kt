@@ -6,7 +6,7 @@ import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
 import com.nexters.zzallang.harusal2.ui.main.MainActivity
 
 object IntentUtils {
-    fun getMainActivityIntent(context: Context): Intent {
+    fun getMainActivityIntent(context: Context?): Intent {
         val intent = Intent(context, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 or Intent.FLAG_ACTIVITY_NEW_TASK

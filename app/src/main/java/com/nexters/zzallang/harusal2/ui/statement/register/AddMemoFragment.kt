@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.application.util.IntentUtils.getMainActivityIntent
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import kotlinx.coroutines.GlobalScope
@@ -52,7 +53,7 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
                     ?.remove(this)
                     ?.commit()
 
-            activity?.finish()
+            activity?.startActivity(getMainActivityIntent(context))
         }
 
         val datePicker = initDatePicker()
