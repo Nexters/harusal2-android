@@ -9,4 +9,6 @@ object Constants {
     const val DATE_FORMAT: String = "yyyy.MM.dd"
 
     const val MONEY_UNIT: String = "원"
+
+    const val BEFORE_ACTIVITY_KEY: String = "beforeActivity"
 }

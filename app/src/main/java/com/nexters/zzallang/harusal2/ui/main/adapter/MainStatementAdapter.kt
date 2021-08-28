@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.databinding.ItemMainDateBinding
@@ -124,7 +125,10 @@ class MainStatementAdapter : RecyclerView.Adapter<MainStatementAdapter.BaseViewH
     class MainEmptyStatementViewHolder(private val binding: ItemMainStatementEmptyBinding): BaseViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                it.context.startActivity(Intent(it.context, AddStatementActivity::class.java))
+                val intent = Intent(it.context, AddStatementActivity::class.java)
+                intent.putExtra(Constants.BEFORE_ACTIVITY_KEY,"MAIN")
+
+                it.context.startActivity(intent)
             }
         }
 

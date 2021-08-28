@@ -79,6 +79,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:text="@{vm.stateDate}"
+                    android:hint="@string/memo_hint_date"
                     android:textColor="@color/colorDarkBlack"
                     android:textSize="16sp"
                     android:textStyle="bold">
