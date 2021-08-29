@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
@@ -52,7 +53,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             this.startActivity(Intent(this, HistoryActivity::class.java))
         }
         binding.btnAddStatement.setOnClickListener {
-            this.startActivity(Intent(this, AddStatementActivity::class.java))
+            val intent = Intent(it.context, AddStatementActivity::class.java)
+            intent.putExtra(Constants.BEFORE_ACTIVITY_KEY,"MAIN")
+
+            it.context.startActivity(intent)
         }
         binding.ivMenu.setOnClickListener {
             this.startActivity(Intent(this, SettingActivity::class.java))

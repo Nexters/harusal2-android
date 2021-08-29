@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
@@ -19,6 +20,7 @@ import java.util.*
 class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
     override fun layoutRes(): Int = R.layout.fragment_add_memo
     override val viewModel: AddMemoViewModel by viewModel()
+    private val addStatementViewModel: AddStatementViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +38,20 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
 
         viewModel.setAmount(requireArguments().getString("amount") ?: "0")
         viewModel.setType(requireArguments().getInt("type"))
-        viewModel.setDate(viewModel.getDateForNow())
+
+        if("MAIN" == addStatementViewModel.getBeforeActivity()){
+            viewModel.setDate(viewModel.getDateForNow())
+        }
+
+        viewModel.stateDate.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if(it == ""){
+                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                binding.btnStatementDone.isEnabled = false
+            } else{
+                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.colorPointYellow))
+                binding.btnStatementDone.isEnabled = true
+            }
+        })
 
         binding.btnStatementPre.setOnClickListener {
             parentFragmentManager.popBackStack()
@@ -92,5 +107,4 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
 
         return datePickerDialog
     }
-
 }
