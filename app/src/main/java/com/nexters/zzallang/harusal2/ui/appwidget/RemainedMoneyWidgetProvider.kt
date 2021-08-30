@@ -42,7 +42,7 @@ class RemainedMoneyWidgetProvider : AppWidgetProvider() {
 					initData()
 
 					it.setImageViewResource(R.id.status, getStatus())
-					it.setTextViewText(R.id.tv_remain_money, NumberUtils.decimalFormat.format(livingExpenses))
+					it.setTextViewText(R.id.tv_remain_money, NumberUtils.decimalFormat.format(remainMoney))
 					it.setOnClickRefresh(context, appWidgetId)
 					it.setOnClickOpenApp(context, appWidgetId)
 
@@ -57,7 +57,7 @@ class RemainedMoneyWidgetProvider : AppWidgetProvider() {
 			context,
 			APP_WIDGET_REQUEST_CODE + appWidgetId,
 			Intent(context, SplashActivity::class.java),
-			PendingIntent.FLAG_UPDATE_CURRENT
+			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)
 
 		setOnClickPendingIntent(R.id.root, pendingIntent)
@@ -73,7 +73,7 @@ class RemainedMoneyWidgetProvider : AppWidgetProvider() {
 			context,
 			APP_WIDGET_REQUEST_CODE + appWidgetId,
 			intent,
-			PendingIntent.FLAG_UPDATE_CURRENT
+			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)
 
 		setOnClickPendingIntent(R.id.refresh, pendingIntent)
