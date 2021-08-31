@@ -4,27 +4,29 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="colorDarkBlack">#111111</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGray">#969696</color>
-    <color name="colorPointBlue">#0C6EC8</color>
-    <color name="colorPointGreen">#179F87</color>
-    <color name="colorPointDefault">#DADBE1</color>
-    <color name="colorPointYellow">#FBA806</color>
-    <color name="colorPointOrange">#D8560D</color>
-    <color name="colorPointRed">#A72F09</color>
-    <color name="colorWarning">#E61B1B</color>
-    <color name="colorBtnBlack">#2C2C2C</color>
-    <color name="colorLightGray">#F4F5F9</color>
-    <color name="colorHistoryTitle">#B7BBCB</color>
-    <color name="colorSpendColor">#D90C0C</color>
-    <color name="colorOut">#d90c0c</color>
-    <color name="colorIn">#0c83d9</color>
+    <color name="white">#ffffff</color>
+    <color name="bg">#f4f5f9</color>
+    <color name="line">#dadbe1</color>
+    <color name="disable_txt">#969696</color>
+    <color name="gray_txt">#5f626d</color>
+    <color name="btn_black">#2c2c2c</color>
+    <color name="default_txt">#111111</color>
+    <color name="point_color">#fba806</color>
 
-    <color name="colorPointBlueBackground">#18A7F8</color>
-    <color name="colorPointGreenBackground">#58D4BE</color>
-    <color name="colorPointDefaultBackground">#F4F5F9</color>
-    <color name="colorPointYellowBackground">#FBB606</color>
-    <color name="colorPointOrangeBackground">#FA6E1F</color>
-    <color name="colorPointRedBackground">#CA4015</color>
+    <color name="minus_money">#d90c0c</color>
+    <color name="plus_money">#0c83d9</color>
+
+    <color name="bg_red">#da1e12</color>
+    <color name="bg_red_multiply">#a70909</color>
+    <color name="bg_orange">#fa6e1f</color>
+    <color name="bg_orange_multiply">#c34803</color>
+    <color name="bg_yellow">#fbb606</color>
+    <color name="bg_yellow_multiply">#ff8a00</color>
+    <color name="bg_mint">#57d2bc</color>
+    <color name="bg_mint_multiply">#179f87</color>
+    <color name="bg_blue">#18a7f8</color>
+    <color name="bg_blue_multiply">#0c6ec8</color>
+
+    <color name="warning_txt">#E61B1B</color>
+    <color name="bg_history_title">#B7BBCB</color>
 </resources>

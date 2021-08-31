@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        android:background="@color/white">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_statement"
             android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="32dp"
                 android:text="@{vm.statementDate}"
                 android:textSize="28sp"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textStyle="normal">
 
             </TextView>
@@ -79,7 +79,7 @@
                 android:text="@string/amount_title"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@color/colorGray">
+                android:textColor="@color/disable_txt">
 
             </TextView>
 
@@ -95,7 +95,7 @@
                 android:paddingRight="6dp"
                 android:text="@{vm.statementType}"
                 android:textSize="12sp"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/white"
                 android:textStyle="normal">
 
             </TextView>
@@ -108,7 +108,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount_title"
                 android:layout_marginTop="10dp"
                 android:text="@{vm.statementAmount}"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
 
@@ -122,7 +122,7 @@
                 android:text="@string/memo_title"
                 android:textStyle="normal"
                 android:textSize="16sp"
-                android:textColor="@color/colorGray"/>
+                android:textColor="@color/disable_txt"/>
 
             <TextView
                 android:id="@+id/tv_statement_memo"
@@ -132,7 +132,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_memo_title"
                 android:layout_marginTop="12dp"
                 android:text="@{vm.statementMemo}"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
 
@@ -143,7 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorBtnBlack"
+            android:background="@color/btn_black"
             android:text="@string/btn_text_edit"
             android:textColor="@android:color/white"
             android:textStyle="bold"

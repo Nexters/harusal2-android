@@ -71,38 +71,38 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         when (state) {
             SpendState.FLEX -> {
-                backgroundColor = R.color.colorPointBlueBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointBlue
+                backgroundColor = R.color.bg_blue
+                todayLivingExpensesBackgroundColor = R.color.bg_blue_multiply
                 emojiName = "flex_coin.json"
                 speechBubbleText = getString(R.string.text_flex)
             }
             SpendState.CLAP -> {
-                backgroundColor = R.color.colorPointGreenBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointGreen
+                backgroundColor = R.color.bg_mint
+                todayLivingExpensesBackgroundColor = R.color.bg_mint_multiply
                 emojiName = "clap_coin.json"
                 speechBubbleText = getString(R.string.text_clap)
             }
             SpendState.DEFAULT -> {
-                backgroundColor = R.color.colorPointBlueBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointBlue
+                backgroundColor = R.color.bg_blue
+                todayLivingExpensesBackgroundColor = R.color.bg_blue_multiply
                 emojiName = "default_coin.json"
                 speechBubbleText = getString(R.string.text_default)
             }
             SpendState.EMBARRASSED -> {
-                backgroundColor = R.color.colorPointYellowBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointYellow
+                backgroundColor = R.color.bg_yellow
+                todayLivingExpensesBackgroundColor = R.color.bg_yellow_multiply
                 emojiName = "embassed_coin.json"
                 speechBubbleText = getString(R.string.text_embarrassed)
             }
             SpendState.CRY -> {
-                backgroundColor = R.color.colorPointOrangeBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointOrange
+                backgroundColor = R.color.bg_orange
+                todayLivingExpensesBackgroundColor = R.color.bg_orange_multiply
                 emojiName = "cry_coin.json"
                 speechBubbleText = getString(R.string.text_cry)
             }
             else -> {
-                backgroundColor = R.color.colorPointRedBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointRed
+                backgroundColor = R.color.bg_red
+                todayLivingExpensesBackgroundColor = R.color.bg_red_multiply
                 emojiName = "volcano_coin_draft2.json"
                 speechBubbleText = getString(R.string.text_volcano)
             }

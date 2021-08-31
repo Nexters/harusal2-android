@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = resources.getColor(R.color.colorPointYellowBackground, null)
+        window.statusBarColor = resources.getColor(R.color.bg_yellow, null)
         window.decorView.systemUiVisibility = 0
         sharedPref = this.getPreferences(MODE_PRIVATE)
         viewModel.renewBudgetDay()

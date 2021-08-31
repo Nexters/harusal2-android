@@ -45,10 +45,10 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
 
         viewModel.stateDate.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if(it == ""){
-                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.line))
                 binding.btnStatementDone.isEnabled = false
             } else{
-                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.colorPointYellow))
+                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.point_color))
                 binding.btnStatementDone.isEnabled = true
             }
         })
@@ -74,9 +74,9 @@ class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
         binding.layoutStatementDate.setOnClickListener {
             datePicker.show()
             datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-                .setTextColor(resources.getColor(R.color.colorPointBlue))
+                .setTextColor(resources.getColor(R.color.bg_blue_multiply))
             datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE)
-                .setTextColor(resources.getColor(R.color.colorPointBlue))
+                .setTextColor(resources.getColor(R.color.bg_blue_multiply))
         }
     }
 

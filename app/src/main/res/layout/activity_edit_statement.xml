@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_statement"
@@ -66,7 +66,7 @@
                 android:text="@string/date_title"
                 android:textStyle="normal"
                 android:textSize="16sp"
-                android:textColor="@color/colorGray"/>
+                android:textColor="@color/disable_txt"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_statement_edit_date"
@@ -85,7 +85,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:text="@{vm.statementDate}"
-                    android:textColor="@color/colorDarkBlack"
+                    android:textColor="@color/default_txt"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
 
@@ -111,7 +111,7 @@
                 android:text="@string/amount_title"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@color/colorGray">
+                android:textColor="@color/disable_txt">
 
             </TextView>
 
@@ -165,7 +165,7 @@
                 android:background="@drawable/selector_edit"
                 android:padding="17dp"
                 android:text="@={vm.statementAmount}"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLength="7"
@@ -183,7 +183,7 @@
                 android:text="@string/memo_title"
                 android:textStyle="normal"
                 android:textSize="16sp"
-                android:textColor="@color/colorGray"/>
+                android:textColor="@color/disable_txt"/>
 
             <EditText
                 android:id="@+id/edit_statement_edit_memo"
@@ -194,7 +194,7 @@
                 android:background="@drawable/selector_edit"
                 android:padding="17dp"
                 android:text="@={vm.statementMemo}"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:singleLine="true"
@@ -208,7 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorBtnBlack"
+            android:background="@color/btn_black"
             android:text="@string/btn_text_store"
             android:textColor="@android:color/white"
             android:textStyle="bold"
@@ -229,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@id/btn_statement_edit_keypad"
-                android:background="@color/colorLightGray"
+                android:background="@color/bg"
                 app:field="@id/edit_statement_edit_amount"
                 app:fieldMaxLength="9">
 
@@ -240,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@color/colorBtnBlack"
+                android:background="@color/btn_black"
                 android:text="@string/btn_text_ok"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"

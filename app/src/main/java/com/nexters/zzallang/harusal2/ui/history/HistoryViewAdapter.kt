@@ -108,7 +108,7 @@ class HistoryViewAdapter(private val context: Context) :
                 ) as ConstraintLayout
 
                 layout.findViewById<TextView>(R.id.tv_money)
-                        .setTextColor(context.getColor(R.color.colorDarkBlack))
+                        .setTextColor(context.getColor(R.color.default_txt))
 
                 layout.findViewById<TextView>(R.id.tv_money).text =
                         if (historyStatement.money > 0) {
@@ -222,31 +222,31 @@ class HistoryViewAdapter(private val context: Context) :
 
             val backgroundColor: Int
             val emojiName: String
-            var textColor: Int = context.getColor(R.color.colorWhite)
+            var textColor: Int = context.getColor(R.color.white)
             when (item.state) {
                 SpendState.FLEX -> {
-                    backgroundColor = R.color.colorPointBlueBackground
+                    backgroundColor = R.color.bg_blue
                     emojiName = "flex_coin.json"
                 }
                 SpendState.CLAP -> {
-                    backgroundColor = R.color.colorPointGreenBackground
+                    backgroundColor = R.color.bg_mint
                     emojiName = "clap_coin.json"
                 }
                 SpendState.DEFAULT -> {
-                    backgroundColor = R.color.colorWhite
+                    backgroundColor = R.color.white
                     emojiName = "default_coin.json"
-                    textColor = context.getColor(R.color.colorDarkBlack)
+                    textColor = context.getColor(R.color.default_txt)
                 }
                 SpendState.EMBARRASSED -> {
-                    backgroundColor = R.color.colorPointYellowBackground
+                    backgroundColor = R.color.bg_yellow
                     emojiName = "embassed_coin.json"
                 }
                 SpendState.CRY -> {
-                    backgroundColor = R.color.colorPointOrangeBackground
+                    backgroundColor = R.color.bg_orange
                     emojiName = "cry_coin.json"
                 }
                 else -> {
-                    backgroundColor = R.color.colorPointRedBackground
+                    backgroundColor = R.color.bg_red
                     emojiName = "volcano_coin_draft2.json"
                 }
             }

@@ -28,14 +28,14 @@ class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
             when (it) {
                 "" -> {
                     binding.layoutWarningWrapper.visibility = View.INVISIBLE
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
-                    binding.btnNext.setBackgroundColor(this.getColor(R.color.colorPointDefault))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.disable_txt))
+                    binding.btnNext.setBackgroundColor(this.getColor(R.color.line))
                     binding.btnNext.isEnabled = false
                 }
                 else -> {
                     binding.layoutWarningWrapper.visibility = View.VISIBLE
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
-                    binding.btnNext.setBackgroundColor(this.getColor(R.color.colorBtnBlack))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.default_txt))
+                    binding.btnNext.setBackgroundColor(this.getColor(R.color.btn_black))
                     binding.btnNext.isEnabled = true
                 }
             }

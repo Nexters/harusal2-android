@@ -14,22 +14,22 @@ enum class SpendState {
         fun getBackgroundColor(state: SpendState): Int =
             when (state) {
                 FLEX -> {
-                    R.color.colorPointBlueBackground
+                    R.color.bg_blue
                 }
                 CLAP -> {
-                    R.color.colorPointGreenBackground
+                    R.color.bg_mint
                 }
                 DEFAULT -> {
-                    R.color.colorWhite
+                    R.color.white
                 }
                 EMBARRASSED -> {
-                    R.color.colorPointYellowBackground
+                    R.color.bg_yellow
                 }
                 CRY -> {
-                    R.color.colorPointOrangeBackground
+                    R.color.bg_orange
                 }
                 else -> {
-                    R.color.colorPointRedBackground
+                    R.color.bg_red
                 }
             }
     }
