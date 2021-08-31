@@ -31,13 +31,13 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
 
         viewModel.statementAmount.observe(viewLifecycleOwner, Observer{
             if(it == ""){
-                binding.tvStatementUnit.setTextColor(resources.getColor(R.color.colorGray))
-                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                binding.tvStatementUnit.setTextColor(resources.getColor(R.color.disable_txt))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.line))
                 binding.btnStatementNext.isEnabled = false
             }
             else{
                 binding.tvStatementUnit.setTextColor(resources.getColor(android.R.color.black))
-                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorBtnBlack))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.btn_black))
                 binding.btnStatementNext.isEnabled = true
             }
             viewModel.updateConvertedAmount(it)

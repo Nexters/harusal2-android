@@ -81,7 +81,7 @@
                 android:text="@={vm.statementAmount}"
                 android:textStyle="bold"
                 android:textSize="38sp"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:maxLength="7"/>
 
             <TextView
@@ -94,7 +94,7 @@
                 android:text="@string/money_unit_kr"
                 android:textStyle="bold"
                 android:textSize="38sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/disable_txt"
                 >
 
             </TextView>
@@ -110,7 +110,7 @@
             android:layout_marginTop="10dp"
             android:text="@{vm.convertedAmount}"
             android:textStyle="normal"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/disable_txt"
             android:textSize="12sp">
 
         </TextView>
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/btn_statement_next"
-            android:background="@color/colorLightGray"
+            android:background="@color/bg"
             app:field="@id/edit_statement_amount"
             app:fieldMaxLength="9"
 
@@ -133,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorBtnBlack"
+            android:background="@color/btn_black"
             android:text="@string/btn_text_next"
             android:textStyle="bold"
             android:textColor="@android:color/white"

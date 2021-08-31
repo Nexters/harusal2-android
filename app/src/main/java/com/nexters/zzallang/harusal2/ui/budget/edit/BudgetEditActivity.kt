@@ -29,13 +29,13 @@ class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
             viewModel.budgetChanged(it)
             when (it) {
                 "" -> {
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorGray))
-                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.colorPointDefault))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.disable_txt))
+                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.line))
                     binding.btnComplete.isEnabled = false
                 }
                 else -> {
-                    binding.tvUnit.setTextColor(this.getColor(R.color.colorDarkBlack))
-                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.colorDarkBlack))
+                    binding.tvUnit.setTextColor(this.getColor(R.color.default_txt))
+                    binding.btnComplete.setBackgroundColor(this.getColor(R.color.default_txt))
                     binding.btnComplete.isEnabled = true
                 }
             }

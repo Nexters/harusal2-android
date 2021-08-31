@@ -15,7 +15,7 @@
             android:gravity="center"
             android:text="TODAY"
             android:textSize="12sp"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityHistoryBinding
@@ -47,8 +48,10 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         }
 
         binding.btnAddStatement.setOnClickListener {
-            this.startActivity(Intent(this, AddStatementActivity::class.java))
-        }
+            val intent = Intent(it.context, AddStatementActivity::class.java)
+            intent.putExtra(Constants.BEFORE_ACTIVITY_KEY,"HISTORY")
+
+            it.context.startActivity(intent)        }
 
         binding.rcvHistory.layoutManager = LinearLayoutManager(this@HistoryActivity)
         binding.rcvHistory.addItemDecoration(HistoryDecoration())

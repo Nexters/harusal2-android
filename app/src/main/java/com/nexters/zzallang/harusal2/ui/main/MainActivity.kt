@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
@@ -52,7 +53,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             this.startActivity(Intent(this, HistoryActivity::class.java))
         }
         binding.btnAddStatement.setOnClickListener {
-            this.startActivity(Intent(this, AddStatementActivity::class.java))
+            val intent = Intent(it.context, AddStatementActivity::class.java)
+            intent.putExtra(Constants.BEFORE_ACTIVITY_KEY,"MAIN")
+
+            it.context.startActivity(intent)
         }
         binding.ivMenu.setOnClickListener {
             this.startActivity(Intent(this, SettingActivity::class.java))
@@ -67,38 +71,38 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         when (state) {
             SpendState.FLEX -> {
-                backgroundColor = R.color.colorPointBlueBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointBlue
+                backgroundColor = R.color.bg_blue
+                todayLivingExpensesBackgroundColor = R.color.bg_blue_multiply
                 emojiName = "flex_coin.json"
                 speechBubbleText = getString(R.string.text_flex)
             }
             SpendState.CLAP -> {
-                backgroundColor = R.color.colorPointGreenBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointGreen
+                backgroundColor = R.color.bg_mint
+                todayLivingExpensesBackgroundColor = R.color.bg_mint_multiply
                 emojiName = "clap_coin.json"
                 speechBubbleText = getString(R.string.text_clap)
             }
             SpendState.DEFAULT -> {
-                backgroundColor = R.color.colorPointBlueBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointBlue
+                backgroundColor = R.color.bg_blue
+                todayLivingExpensesBackgroundColor = R.color.bg_blue_multiply
                 emojiName = "default_coin.json"
                 speechBubbleText = getString(R.string.text_default)
             }
             SpendState.EMBARRASSED -> {
-                backgroundColor = R.color.colorPointYellowBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointYellow
+                backgroundColor = R.color.bg_yellow
+                todayLivingExpensesBackgroundColor = R.color.bg_yellow_multiply
                 emojiName = "embassed_coin.json"
                 speechBubbleText = getString(R.string.text_embarrassed)
             }
             SpendState.CRY -> {
-                backgroundColor = R.color.colorPointOrangeBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointOrange
+                backgroundColor = R.color.bg_orange
+                todayLivingExpensesBackgroundColor = R.color.bg_orange_multiply
                 emojiName = "cry_coin.json"
                 speechBubbleText = getString(R.string.text_cry)
             }
             else -> {
-                backgroundColor = R.color.colorPointRedBackground
-                todayLivingExpensesBackgroundColor = R.color.colorPointRed
+                backgroundColor = R.color.bg_red
+                todayLivingExpensesBackgroundColor = R.color.bg_red_multiply
                 emojiName = "volcano_coin_draft2.json"
                 speechBubbleText = getString(R.string.text_volcano)
             }
