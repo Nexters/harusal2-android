@@ -9,4 +9,6 @@
     <dimen name="empty_main_icon_top_margin">18dp</dimen>
 
     <dimen name="widget_padding">8dp</dimen>
+    <dimen name="widget_size1">40dp</dimen>
+    <dimen name="widget_size2">110dp</dimen>
 </resources>
