@@ -7,4 +7,6 @@
     <dimen name="btn_round_radius">10dp</dimen>
     <dimen name="item_main_statement_height">56dp</dimen>
     <dimen name="empty_main_icon_top_margin">18dp</dimen>
+
+    <dimen name="widget_padding">8dp</dimen>
 </resources>
