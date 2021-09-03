@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.main
+package com.nexters.zzallang.harusal2.constant
 
 import com.nexters.zzallang.harusal2.R
 

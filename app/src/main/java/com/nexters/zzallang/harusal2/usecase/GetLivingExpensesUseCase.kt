@@ -1,5 +1,6 @@
 package com.nexters.zzallang.harusal2.usecase
 
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
 import com.nexters.zzallang.harusal2.data.repository.StatementRepository
 import kotlinx.coroutines.Dispatchers
@@ -7,13 +8,16 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
 
-class GetRemainMoneyUseCase(
+class GetLivingExpensesUseCase(
     private val budgetRepository: BudgetRepository,
     private val statementRepository: StatementRepository
 ) {
     private val job = Job()
 
-    suspend fun getRemainMoney(livingExpenses: Int): Int {
+    suspend fun getLivingExpenses(): Int {
+        var spentMoney = 0
+        val now = LocalDate.now()
+
         val budget = withContext(Dispatchers.IO + job) {
             budgetRepository.findRecentBudget()
         }
@@ -22,14 +26,10 @@ class GetRemainMoneyUseCase(
             statementRepository.findStatementByBudgetId(budget.id)
         }
 
-        val todayStatements =
-            statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
+        statements.filter { it.date.isBefore(now) }.forEach { spentMoney += it.amount }
 
-        var remainMoney = livingExpenses
-        for (item in todayStatements) {
-            remainMoney += item.amount
-        }
+        val remainDate = DateUtils.calculateDate(now, budget.endDate)
 
-        return remainMoney
+        return (budget.budget + spentMoney) / remainDate
     }
 }
