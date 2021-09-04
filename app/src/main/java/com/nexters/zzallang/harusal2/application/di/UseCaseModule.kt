@@ -10,4 +10,5 @@ val useCaseModule = module {
     single { GetRemainMoneyUseCase(get(), get()) }
     single { GetSpentMoneyStatusUseCase() }
     single { GetLivingExpensesUseCase(get(), get()) }
+    single { GetRemainDayUseCase(get()) }
 }
