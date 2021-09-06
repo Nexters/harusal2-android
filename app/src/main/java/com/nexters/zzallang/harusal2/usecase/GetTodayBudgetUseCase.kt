@@ -8,13 +8,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
 
-class GetLivingExpensesUseCase(
+class GetTodayBudgetUseCase(
     private val budgetRepository: BudgetRepository,
     private val statementRepository: StatementRepository
 ) {
     private val job = Job()
 
-    suspend fun getLivingExpenses(): Int {
+    suspend fun getTodayBudget(): Int {
         var spentMoney = 0
         val now = LocalDate.now()
 

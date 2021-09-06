@@ -13,7 +13,7 @@ class GetRemainMoneyUseCase(
 ) {
     private val job = Job()
 
-    suspend fun getRemainMoney(livingExpenses: Int): Int {
+    suspend fun getRemainMoney(todayBudget: Int): Int {
         val budget = withContext(Dispatchers.IO + job) {
             budgetRepository.findRecentBudget()
         }
@@ -25,9 +25,9 @@ class GetRemainMoneyUseCase(
         val todayStatements =
             statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
 
-        var remainMoney = livingExpenses
-        for (item in todayStatements) {
-            remainMoney += item.amount
+        var remainMoney = todayBudget
+        for (todayStatement in todayStatements) {
+            remainMoney += todayStatement.amount
         }
 
         return remainMoney

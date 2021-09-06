@@ -9,6 +9,6 @@ val useCaseModule = module {
     single { StartDayEditUseCase(get(), get()) }
     single { GetRemainMoneyUseCase(get(), get()) }
     single { GetSpentMoneyStatusUseCase() }
-    single { GetLivingExpensesUseCase(get(), get()) }
+    single { GetTodayBudgetUseCase(get(), get()) }
     single { GetRemainDayUseCase(get()) }
 }
