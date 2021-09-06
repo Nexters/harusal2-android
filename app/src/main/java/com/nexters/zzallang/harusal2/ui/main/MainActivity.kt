@@ -9,8 +9,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
+import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
 import com.nexters.zzallang.harusal2.ui.main.adapter.MainStatementAdapter

@@ -19,7 +19,7 @@ import com.nexters.zzallang.harusal2.databinding.ItemHistoryCardBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryInfoBinding
 import com.nexters.zzallang.harusal2.databinding.ItemHistoryTitleBinding
 import com.nexters.zzallang.harusal2.ui.history.model.*
-import com.nexters.zzallang.harusal2.ui.main.SpendState
+import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.statement.edit.StatementDetailActivity
 
 
