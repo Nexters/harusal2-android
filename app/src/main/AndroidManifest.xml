@@ -10,7 +10,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <receiver android:name=".ui.appwidget.TypeThreeWidgetProvider">
+        <receiver
+                android:name=".ui.appwidget.TypeThreeWidgetProvider"
+                android:label="TY03_금액형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -19,7 +21,9 @@
                     android:resource="@xml/appwidget_type_three_info" />
         </receiver>
 
-        <receiver android:name=".ui.appwidget.TypeFiveWidgetProvider">
+        <receiver
+                android:name=".ui.appwidget.TypeFiveWidgetProvider"
+                android:label="TY05_혼합형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

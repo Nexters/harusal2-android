@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 class TypeThreeWidgetProvider : AppWidgetProvider() {
 	companion object {
-		const val APP_WIDGET_REQUEST_CODE = 100
+		const val THREE_REQUEST_CODE = 100
 	}
 
 	private val budgetRepository = BudgetRepository()
@@ -47,8 +47,8 @@ class TypeThreeWidgetProvider : AppWidgetProvider() {
 
 					val remainMoneyText = context?.resources?.getString(R.string.appwidget_remaining_money, NumberUtils.decimalFormat.format(remainMoney)).orEmpty()
 
-					it.setImageViewResource(R.id.status, getStatus(todayBudget, remainMoney))
-					it.setTextViewText(R.id.tv_remain_money, remainMoneyText)
+					it.setImageViewResource(R.id.spent_money_status, getStatus(todayBudget, remainMoney))
+					it.setTextViewText(R.id.remain_money, remainMoneyText)
 
 					it.setOnClickRefresh(context, appWidgetId)
 					it.setOnClickOpenApp(context, appWidgetId)
@@ -62,7 +62,7 @@ class TypeThreeWidgetProvider : AppWidgetProvider() {
 	private fun RemoteViews.setOnClickOpenApp(context: Context?, appWidgetId: Int) {
 		val pendingIntent = PendingIntent.getActivity(
 			context,
-			APP_WIDGET_REQUEST_CODE + appWidgetId,
+			THREE_REQUEST_CODE + appWidgetId,
 			Intent(context, SplashActivity::class.java),
 			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)
@@ -78,7 +78,7 @@ class TypeThreeWidgetProvider : AppWidgetProvider() {
 
 		val pendingIntent = PendingIntent.getBroadcast(
 			context,
-			APP_WIDGET_REQUEST_CODE + appWidgetId,
+			THREE_REQUEST_CODE + appWidgetId,
 			intent,
 			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)

@@ -8,7 +8,7 @@
         android:orientation="horizontal">
 
     <ImageView
-            android:id="@+id/status"
+            android:id="@+id/spent_money_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -17,7 +17,7 @@
             android:src="@drawable/appwidget_status_red" />
 
     <TextView
-            android:id="@+id/tv_remain_money"
+            android:id="@+id/remain_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

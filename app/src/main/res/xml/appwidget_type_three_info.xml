@@ -3,4 +3,5 @@
         android:initialLayout="@layout/appwidget_type_three_layout"
         android:minWidth="@dimen/appwidget_cell_3"
         android:minHeight="@dimen/appwidget_cell_1"
+        android:resizeMode="horizontal"
         android:updatePeriodMillis="1800000" />

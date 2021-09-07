@@ -50,8 +50,8 @@ class TypeFiveWidgetProvider : AppWidgetProvider() {
 					val remainDayText = context?.resources?.getString(R.string.appwidget_d_day, getRemainDayUseCase.getRemainDay()).orEmpty()
 					val remainMoneyText = context?.resources?.getString(R.string.appwidget_remaining_money, NumberUtils.decimalFormat.format(remainMoney)).orEmpty()
 
-					it.setTextViewText(R.id.d_day, remainDayText)
-					it.setTextViewText(R.id.tv_remain_money, remainMoneyText)
+					it.setTextViewText(R.id.remain_day, remainDayText)
+					it.setTextViewText(R.id.remain_money, remainMoneyText)
 
 					it.setOnClickRefresh(context, appWidgetId)
 					it.setOnClickOpenApp(context, appWidgetId)
