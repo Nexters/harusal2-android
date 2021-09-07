@@ -46,5 +46,5 @@
     <string name="text_used">이번 달 사용 금액</string>
 
     <string name="appwidget_d_day">D-%d</string>
-    <string name="appwidget_remaining_money">%d원 남음</string>
+    <string name="appwidget_remaining_money">%s원 남음</string>
 </resources>

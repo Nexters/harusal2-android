@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nexters.zzallang.harusal2">
+        package="com.nexters.zzallang.harusal2">
 
     <application
-        android:name=".application.App"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+            android:name=".application.App"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
         <receiver android:name=".ui.appwidget.TypeThreeWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -19,28 +19,47 @@
                     android:resource="@xml/appwidget_type_three_info" />
         </receiver>
 
-        <activity android:name=".ui.splash.SplashActivity"
-            android:theme="@style/Splash.StatusBar">
+        <receiver android:name=".ui.appwidget.TypeFiveWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/appwidget_type_five_info" />
+        </receiver>
+
+        <activity
+                android:name=".ui.splash.SplashActivity"
+                android:theme="@style/Splash.StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.history.HistoryActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.budget.register.BudgetRegisterActivity"/>
-        <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity"/>
-        <activity android:name=".ui.budget.register.StartDayClickRegisterActivity"/>
-        <activity android:name=".ui.statement.register.AddStatementActivity"/>
+        <activity
+                android:name=".ui.history.HistoryActivity"
+                android:launchMode="singleTop" />
+        <activity android:name=".ui.budget.register.BudgetRegisterActivity" />
+        <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity" />
+        <activity android:name=".ui.budget.register.StartDayClickRegisterActivity" />
+        <activity android:name=".ui.statement.register.AddStatementActivity" />
         <activity android:name=".ui.statement.edit.StatementDetailActivity" />
         <activity android:name=".ui.statement.edit.StatementEditActivity" />
-        <activity android:name=".ui.main.MainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
-        <activity android:name=".ui.onBoarding.OnBoardingActivity" android:theme="@style/Splash.StatusBar"/>
-        <activity android:name=".ui.main.EmptyMainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.setting.SettingActivity"/>
-        <activity android:name=".ui.setting.AlarmSettingActivity"/>
-        <receiver android:name=".ui.setting.receiver.Alarm"/>
+        <activity
+                android:name=".ui.main.MainActivity"
+                android:launchMode="singleTop" />
+        <activity android:name=".ui.budget.edit.BudgetEditActivity" />
+        <activity
+                android:name=".ui.onBoarding.OnBoardingActivity"
+                android:theme="@style/Splash.StatusBar" />
+        <activity
+                android:name=".ui.main.EmptyMainActivity"
+                android:launchMode="singleTop" />
+        <activity android:name=".ui.setting.SettingActivity" />
+        <activity android:name=".ui.setting.AlarmSettingActivity" />
+
+        <receiver android:name=".ui.setting.receiver.Alarm" />
     </application>
 
 </manifest>
