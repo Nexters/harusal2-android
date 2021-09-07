@@ -2,7 +2,7 @@ package com.nexters.zzallang.harusal2.ui.statement.register
 
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityAddStatementBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
+import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.ui.main.model.MainStatement

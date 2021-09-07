@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.application.util
+package com.nexters.zzallang.harusal2.constant
 
 object Constants {
     // shared preference

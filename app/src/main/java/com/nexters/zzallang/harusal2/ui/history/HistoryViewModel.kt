@@ -6,7 +6,7 @@ import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.ui.history.model.*
-import com.nexters.zzallang.harusal2.ui.main.SpendState
+import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import java.time.LocalDate
