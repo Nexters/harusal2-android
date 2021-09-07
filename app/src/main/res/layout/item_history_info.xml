@@ -6,7 +6,7 @@
         android:id="@+id/layout_history_statement"
         android:layout_width="match_parent"
         android:layout_height="148dp"
-        android:background="@color/colorWhite"
+        android:background="@color/white"
         android:elevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="이번달 남은 금액"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
                 android:text="300,000원"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="누적 사용금액 500,000원"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_remain_money" />

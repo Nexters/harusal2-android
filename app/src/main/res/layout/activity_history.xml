@@ -13,7 +13,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorLightGray"
+        android:background="@color/bg"
         android:fitsSystemWindows="true"
         tools:context=".ui.history.HistoryActivity">
 
@@ -61,7 +61,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:textColor="@color/colorDarkBlack"
+                            android:textColor="@color/default_txt"
                             android:textSize="16sp" />
 
                         <ImageView

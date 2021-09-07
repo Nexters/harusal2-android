@@ -3,7 +3,7 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import android.content.Intent
 import android.os.Bundle
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityStatementDetailBinding
 import kotlinx.coroutines.*

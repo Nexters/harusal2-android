@@ -1,6 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.history.model
 
-import com.nexters.zzallang.harusal2.ui.main.SpendState
+import com.nexters.zzallang.harusal2.constant.SpendState
 
 data class HistoryInfo(
     val budget: Int = 0,
