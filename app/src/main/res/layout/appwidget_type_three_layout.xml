@@ -14,7 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:paddingVertical="8dp"
-            android:src="@drawable/appwidget_status_red" />
+            android:src="@drawable/appwidget_type_three_status" />
 
     <TextView
             android:id="@+id/remain_money"
