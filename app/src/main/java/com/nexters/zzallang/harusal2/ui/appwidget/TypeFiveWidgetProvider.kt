@@ -8,8 +8,6 @@ import android.content.Intent
 import android.widget.RemoteViews
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
-import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
-import com.nexters.zzallang.harusal2.data.repository.StatementRepository
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
 import com.nexters.zzallang.harusal2.usecase.GetRemainMoneyUseCase
@@ -18,21 +16,21 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class TypeFiveWidgetProvider : AppWidgetProvider() {
+@KoinApiExtension
+class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
 	companion object {
 		const val FIVE_REQUEST_CODE = 101
 	}
 
-	private val budgetRepository = BudgetRepository()
-	private val statementRepository = StatementRepository()
-
-	private val getRemainDayUseCase = GetRemainDayUseCase(budgetRepository)
-
-	private val getTodayBudgetUseCase = GetTodayBudgetUseCase(budgetRepository, statementRepository)
-	private val getRemainMoneyUseCase = GetRemainMoneyUseCase(budgetRepository, statementRepository)
-
 	private val job = Job()
+
+	private val getRemainDayUseCase: GetRemainDayUseCase by inject()
+	private val getTodayBudgetUseCase: GetTodayBudgetUseCase by inject()
+	private val getRemainMoneyUseCase: GetRemainMoneyUseCase by inject()
 
 	override fun onReceive(context: Context?, intent: Intent?) {
 		super.onReceive(context, intent)

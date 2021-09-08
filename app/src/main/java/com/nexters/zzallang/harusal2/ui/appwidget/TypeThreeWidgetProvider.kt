@@ -5,30 +5,32 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.widget.RemoteViews
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.constant.SpendState
-import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
-import com.nexters.zzallang.harusal2.data.repository.StatementRepository
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
-import com.nexters.zzallang.harusal2.usecase.*
+import com.nexters.zzallang.harusal2.usecase.GetRemainMoneyUseCase
+import com.nexters.zzallang.harusal2.usecase.GetSpentMoneyStatusUseCase
+import com.nexters.zzallang.harusal2.usecase.GetTodayBudgetUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class TypeThreeWidgetProvider : AppWidgetProvider() {
+@KoinApiExtension
+class TypeThreeWidgetProvider: AppWidgetProvider(), KoinComponent {
 	companion object {
 		const val THREE_REQUEST_CODE = 100
 	}
 
-	private val budgetRepository = BudgetRepository()
-	private val statementRepository = StatementRepository()
-
-	private val getTodayBudgetUseCase = GetTodayBudgetUseCase(budgetRepository, statementRepository)
-	private val getRemainMoneyUseCase = GetRemainMoneyUseCase(budgetRepository, statementRepository)
-	private val getSpentMoneyStatusUseCase = GetSpentMoneyStatusUseCase()
+	private val getTodayBudgetUseCase: GetTodayBudgetUseCase by inject()
+	private val getRemainMoneyUseCase: GetRemainMoneyUseCase by inject()
+	private val getSpentMoneyStatusUseCase: GetSpentMoneyStatusUseCase by inject()
 
 	private val job = Job()
 
