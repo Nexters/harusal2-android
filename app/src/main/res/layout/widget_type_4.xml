@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="244dp"
+    android:layout_height="142dp"
+    android:background="#FFFFFF"
+    android:padding="12dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_remain_info"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/widget_type_4_remain_info_background_red">
+
+        <TextView
+            android:id="@+id/tv_remain_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/spoqahansansbold"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            tool:text="9,900" />
+
+        <TextView
+            android:id="@+id/tv_won_nam_um"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/tv_remain_money"
+            android:fontFamily="@font/spoqahansansregular"
+            android:text="원 남음"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/btn_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/icn_refresh_wh" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_statement_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_remain_info"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_spend_contents_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#5f626d"
+                android:textSize="12sp"
+                android:text="사용 내역 리스트" />
+
+            <TextView
+                android:id="@+id/tv_spend_money_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="#111111"
+                android:textSize="12sp"
+                android:text="-28,000원" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_spend_contents_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#5f626d"
+                android:textSize="12sp"
+                android:text="사용 내역 리스트" />
+
+            <TextView
+                android:id="@+id/tv_spend_money_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="#111111"
+                android:textSize="12sp"
+                android:text="-28,000원" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_spend_contents_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#5f626d"
+                android:textSize="12sp"
+                android:text="사용 내역 리스트" />
+
+            <TextView
+                android:id="@+id/tv_spend_money_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="#111111"
+                android:textSize="12sp"
+                android:text="-28,000원" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

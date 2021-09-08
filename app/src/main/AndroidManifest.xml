@@ -33,6 +33,14 @@
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
         <receiver android:name=".ui.setting.receiver.Alarm"/>
 
+        <receiver android:name=".widget.WidgetType4">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_type_4_info" />
+        </receiver>
         <receiver android:name=".widget.WidgetType6">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
