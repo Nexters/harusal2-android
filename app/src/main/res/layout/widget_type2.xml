@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="28sp"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:text="D-28"
             android:textAlignment="center"
