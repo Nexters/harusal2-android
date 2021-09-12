@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityEditStatementBinding
@@ -39,10 +39,10 @@ class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
 
             viewModel.statementAmount.observe(this@StatementEditActivity, Observer{
                 if(it == ""){
-                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.line))
                     binding.btnStatementEditKeypad.isEnabled = false
                 }else{
-                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.colorBtnBlack))
+                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.btn_black))
                     binding.btnStatementEditKeypad.isEnabled = true
                 }
             })
@@ -77,9 +77,9 @@ class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
             binding.layoutStatementEditDate.setOnClickListener {
                 datePicker.show()
                 datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-                    .setTextColor(resources.getColor(R.color.colorPointBlue))
+                    .setTextColor(resources.getColor(R.color.bg_blue_multiply))
                 datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE)
-                    .setTextColor(resources.getColor(R.color.colorPointBlue))
+                    .setTextColor(resources.getColor(R.color.bg_blue_multiply))
             }
 
             binding.btnStatementDelete.setOnClickListener {

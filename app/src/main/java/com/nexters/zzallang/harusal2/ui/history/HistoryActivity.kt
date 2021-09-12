@@ -6,6 +6,7 @@ import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityHistoryBinding
@@ -13,7 +14,7 @@ import com.nexters.zzallang.harusal2.ui.history.decoration.HistoryDecoration
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuAdapter
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuDialog
 import com.nexters.zzallang.harusal2.ui.history.model.HistoryInfo
-import com.nexters.zzallang.harusal2.ui.main.SpendState.Companion.getBackgroundColor
+import com.nexters.zzallang.harusal2.constant.SpendState.Companion.getBackgroundColor
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,8 +48,10 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         }
 
         binding.btnAddStatement.setOnClickListener {
-            this.startActivity(Intent(this, AddStatementActivity::class.java))
-        }
+            val intent = Intent(it.context, AddStatementActivity::class.java)
+            intent.putExtra(Constants.BEFORE_ACTIVITY_KEY,"HISTORY")
+
+            it.context.startActivity(intent)        }
 
         binding.rcvHistory.layoutManager = LinearLayoutManager(this@HistoryActivity)
         binding.rcvHistory.addItemDecoration(HistoryDecoration())

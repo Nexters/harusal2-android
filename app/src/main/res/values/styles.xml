@@ -1,7 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">@color/colorDarkBlack</item>
+        <item name="android:textColor">@color/default_txt</item>
         <item name="android:buttonStyle">@style/customButtonFontStyle</item>
         <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
         <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
@@ -9,7 +9,7 @@
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
         <item name="android:datePickerStyle">@style/customDatePickerFontStyle</item>
         <item name="android:dialogTheme">@style/customDateDialogFontStyle</item>
-        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
@@ -32,7 +32,7 @@
     </style>
 
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColorPrimary">@color/colorDarkBlack</item>
+        <item name="android:textColorPrimary">@color/default_txt</item>
         <item name="colorControlNormal">#C4C4C4</item>
         <item name="android:textColorHighlight">@color/colorPrimary</item>
         <item name="android:textSize">32sp</item>
@@ -40,13 +40,13 @@
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">@drawable/bg_datepicker</item>
-        <item name="colorAccent">@color/colorBtnBlack</item>
-        <item name="colorControlActivated">@color/colorPointYellow</item>
+        <item name="colorAccent">@color/btn_black</item>
+        <item name="colorControlActivated">@color/point_color</item>
     </style>
 
     <style name="Splash.StatusBar" parent="AppTheme">
         <!--Status Bar 배경색-->
-        <item name="android:statusBarColor">@color/colorPointYellowBackground</item>
+        <item name="android:statusBarColor">@color/bg_yellow</item>
         <!--Status Bar 글자색깔-->
         <item name="android:windowLightStatusBar">true</item>
     </style>

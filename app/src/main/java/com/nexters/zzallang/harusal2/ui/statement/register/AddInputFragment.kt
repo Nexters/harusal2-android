@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddInputBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,13 +31,13 @@ class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
 
         viewModel.statementAmount.observe(viewLifecycleOwner, Observer{
             if(it == ""){
-                binding.tvStatementUnit.setTextColor(resources.getColor(R.color.colorGray))
-                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorPointDefault))
+                binding.tvStatementUnit.setTextColor(resources.getColor(R.color.disable_txt))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.line))
                 binding.btnStatementNext.isEnabled = false
             }
             else{
                 binding.tvStatementUnit.setTextColor(resources.getColor(android.R.color.black))
-                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.colorBtnBlack))
+                binding.btnStatementNext.setBackgroundColor(resources.getColor(R.color.btn_black))
                 binding.btnStatementNext.isEnabled = true
             }
             viewModel.updateConvertedAmount(it)

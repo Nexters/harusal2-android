@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="32dp"
                 android:text="@string/amount_title"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/disable_txt"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
 
@@ -46,7 +46,7 @@
                 android:background="@drawable/shape_round_edit_gray"
                 android:text="@{vm.stateAmount}"
                 android:textStyle="bold"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textSize="16sp"/>
 
             <TextView
@@ -57,7 +57,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_statement_amount"
                 android:layout_marginTop="40dp"
                 android:text="@string/date_title"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/disable_txt"
                 android:textSize="16sp"
                 android:textStyle="normal">
 
@@ -79,7 +79,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:text="@{vm.stateDate}"
-                    android:textColor="@color/colorDarkBlack"
+                    android:hint="@string/memo_hint_date"
+                    android:textColor="@color/default_txt"
                     android:textSize="16sp"
                     android:textStyle="bold">
                 </TextView>
@@ -104,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_statement_date"
                 android:layout_marginTop="40dp"
                 android:text="@string/memo_title"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/disable_txt"
                 android:textSize="16sp"
                 android:textStyle="normal"/>
 
@@ -119,7 +120,7 @@
                 android:hint="@string/memo_hint_text"
                 android:text="@={vm.stateMemo}"
                 android:textSize="16sp"
-                android:textColor="@color/colorDarkBlack"
+                android:textColor="@color/default_txt"
                 android:textStyle="bold"
                 android:singleLine="true"
                 android:maxLength="20"/>
@@ -141,7 +142,7 @@
                 android:layout_height="match_parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/btn_statement_done"
-                android:background="@color/colorBtnBlack"
+                android:background="@color/btn_black"
                 android:text="이전"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"
@@ -155,7 +156,7 @@
                 android:layout_height="match_parent"
                 app:layout_constraintLeft_toRightOf="@id/btn_statement_pre"
                 app:layout_constraintRight_toRightOf="parent"
-                android:background="@color/colorPointYellow"
+                android:background="@color/point_color"
                 android:text="완료"
                 android:textStyle="bold"
                 android:textSize="16sp"

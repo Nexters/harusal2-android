@@ -18,7 +18,7 @@
             android:layout_marginTop="15dp"
             android:text="22"
             android:textStyle="bold"
-            android:textColor="@color/colorDarkBlack"
+            android:textColor="@color/default_txt"
             android:textSize="48sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
             android:layout_marginStart="44dp"
             android:layout_marginTop="27dp"
             android:text="나간 돈"
-            android:textColor="@color/colorDarkBlack"
+            android:textColor="@color/default_txt"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@id/tv_day"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
             android:layout_marginTop="27dp"
             android:layout_marginRight="20dp"
             android:text="8000원"
-            android:textColor="@color/colorDarkBlack"
+            android:textColor="@color/default_txt"
             android:textSize="16sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
             android:layout_marginStart="44dp"
             android:layout_marginTop="2dp"
             android:text="들어온 돈"
-            android:textColor="@color/colorDarkBlack"
+            android:textColor="@color/default_txt"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@id/tv_day"
             app:layout_constraintTop_toBottomOf="@id/tv_spending_text" />
@@ -66,7 +66,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="20dp"
             android:text="8000원"
-            android:textColor="@color/colorDarkBlack"
+            android:textColor="@color/default_txt"
             android:textSize="16sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_spending" />

@@ -2,7 +2,7 @@ package com.nexters.zzallang.harusal2.ui.statement.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.zzallang.harusal2.application.util.Constants
+import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.base.BaseViewModel
 

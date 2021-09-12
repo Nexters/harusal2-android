@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+    <ImageView
+            android:id="@+id/spent_money_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/appwidget_type_three_status" />
+
+    <TextView
+            android:id="@+id/remain_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/default_txt"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="9,000원 남음" />
+
+    <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/icn_refresh" />
+
+</RelativeLayout>

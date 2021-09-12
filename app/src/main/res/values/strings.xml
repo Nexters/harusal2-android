@@ -18,6 +18,7 @@
     <string name="btn_text_edit">수정하기</string>
     <string name="btn_text_start">시작하기</string>
 
+    <string name="memo_hint_date">날짜를 선택해주세요.</string>
     <string name="memo_hint_text">내역을 입력해주세요.</string>
 
     <string name="text_flex">세상에..완전 체고체고~!</string>
@@ -49,4 +50,7 @@
     <string name="dialog_edit_budget_date_error">시작일이 오늘과 같습니다.</string>
 
     <string name="text_used">이번 달 사용 금액</string>
+
+    <string name="appwidget_d_day">D-%d</string>
+    <string name="appwidget_remaining_money">%s원 남음</string>
 </resources>
