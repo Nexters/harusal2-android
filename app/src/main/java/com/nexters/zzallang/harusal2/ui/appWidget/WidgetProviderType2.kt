@@ -6,11 +6,17 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
+import com.nexters.zzallang.harusal2.usecase.GetRemainMoneyUseCase
 import com.nexters.zzallang.harusal2.usecase.GetSpentMoneyStatusUseCase
 import com.nexters.zzallang.harusal2.usecase.GetTodayBudgetUseCase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -20,7 +26,7 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
 
     private val getRemainDayUseCase: GetRemainDayUseCase by inject()
     private val getTodayBudgetUseCase : GetTodayBudgetUseCase by inject()
-    private val getRemainMoneyUseCase : GetRemainDayUseCase by inject()
+    private val getRemainMoneyUseCase : GetRemainMoneyUseCase by inject()
     private val getSpentMoneyStatusUseCase : GetSpentMoneyStatusUseCase by inject()
 
     override fun onUpdate(
@@ -28,12 +34,21 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
-        appWidgetIds?.forEach { appWidgetId ->
-            RemoteViews(context?.packageName, R.layout.widget_type2).also {
+        if(context == null) return
+        CoroutineScope(Dispatchers.IO).launch {
+            appWidgetIds?.forEach { appWidgetId ->
+                RemoteViews(context.packageName, R.layout.widget_type2).also {
 
-                it.setOnClickOpenApp(context, appWidgetId)
-                it.setOnClickRefresh(context, appWidgetId)
-                appWidgetManager?.updateAppWidget(appWidgetId, it)
+                    val remainDay = getRemainDayUseCase.getRemainDay()
+                    val todayBudget = getTodayBudgetUseCase.getTodayBudget()
+                    val remainMoney = getRemainMoneyUseCase.getRemainMoney(todayBudget)
+                    val spendState = getSpentMoneyStatusUseCase.getSpentMoneyStatus(todayBudget, remainMoney)
+
+                    it.updateView(context, appWidgetId, remainDay, spendState)
+                    it.setOnClickOpenApp(context, appWidgetId)
+                    it.setOnClickRefresh(context, appWidgetId)
+                    appWidgetManager?.updateAppWidget(appWidgetId, it)
+                }
             }
         }
     }
@@ -50,7 +65,8 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
     }
 
     private fun RemoteViews.setOnClickRefresh(context : Context?, appWidgetId : Int){
-        val intent = Intent(context, WidgetProviderType1::class.java).apply {
+        val intent = Intent(context,
+            WidgetProviderType2::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
         }
@@ -65,12 +81,14 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
         setOnClickPendingIntent(R.id.iv_refresh, pendingIntent)
     }
 
-    private fun initData(){
-
-
+    private fun RemoteViews.updateView(context: Context, appWidgetId: Int, remainDay: Int, spendState: SpendState){
+        setInt(R.id.widget_bg2, "setColorFilter", ContextCompat.getColor(context, SpendState.getBackgroundColor(spendState)))
+        setTextViewText(R.id.tv_dday, WidgetProviderType2.REMAIN_DAY_PREFIX +remainDay)
+        setImageViewResource(R.id.iv_emoji, SpendState.getEmojiImage(spendState))
     }
 
     companion object{
         const val APP_WIDGET_REQUEST_CODE2 = 102
+        const val REMAIN_DAY_PREFIX = "D-"
     }
 }

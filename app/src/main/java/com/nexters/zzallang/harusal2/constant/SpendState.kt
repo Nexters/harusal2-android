@@ -70,5 +70,24 @@ enum class SpendState {
                     R.string.text_flex_widget
                 }
             }
+
+        fun getEmojiImage(state: SpendState): Int =
+            when(state){
+                CLAP -> {
+                    R.drawable.ic_clap_coin
+                }
+                EMBARRASSED -> {
+                    R.drawable.ic_embarassed_coin
+                }
+                CRY -> {
+                    R.drawable.ic_cry_coin
+                }
+                VOLCANO -> {
+                    R.drawable.ic_volcano_coin
+                }
+                else -> {
+                    R.drawable.ic_flex_coin
+                }
+            }
     }
 }
