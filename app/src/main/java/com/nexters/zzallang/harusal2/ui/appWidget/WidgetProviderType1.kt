@@ -43,7 +43,7 @@ class WidgetProviderType1 : AppWidgetProvider(), KoinComponent {
                     val remainDay = getRemainDayUseCase.getRemainDay()
                     val todayBudget = getTodayBudgetUseCase.getTodayBudget()
                     val remainMoney = getRemainMoneyUseCase.getRemainMoney(todayBudget)
-                    val spendState = getSpentMoneyStatusUseCase.getSpentMoneyStatus(remainMoney, todayBudget)
+                    val spendState = getSpentMoneyStatusUseCase.getSpentMoneyStatus(todayBudget, remainMoney)
 
                     it.updateView(context, appWidgetId, remainDay, spendState)
                     it.setOnClickOpenApp(context, appWidgetId)
