@@ -27,6 +27,12 @@
     <string name="text_embarrassed">어휴 이게 무슨일이야..</string>
     <string name="text_cry">안돼, 이제 그만써!!</string>
     <string name="text_volcano">아이구...파산났네 났어~!</string>
+    
+    <string name="text_volcano_widget">파산났네 났어~!</string>
+    <string name="text_cry_widget">안돼, 이제 그만써!!</string>
+    <string name="text_embarrassed_widget">이게 무슨일이야..</string>
+    <string name="text_clap_widget">이대로만 가다오~</string>
+    <string name="text_flex_widget">완전 체고체고~!</string>
 
     <string name="title_onboarding1">이번 달은 절대 텅장 No!</string>
     <string name="title_onboarding2">일일 생활비 자동 계산</string>

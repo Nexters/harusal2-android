@@ -50,20 +50,30 @@
         <activity android:name=".ui.statement.register.AddStatementActivity" />
         <activity android:name=".ui.statement.edit.StatementDetailActivity" />
         <activity android:name=".ui.statement.edit.StatementEditActivity" />
-        <activity
-                android:name=".ui.main.MainActivity"
-                android:launchMode="singleTop" />
-        <activity android:name=".ui.budget.edit.BudgetEditActivity" />
-        <activity
-                android:name=".ui.onBoarding.OnBoardingActivity"
-                android:theme="@style/Splash.StatusBar" />
-        <activity
-                android:name=".ui.main.EmptyMainActivity"
-                android:launchMode="singleTop" />
-        <activity android:name=".ui.setting.SettingActivity" />
-        <activity android:name=".ui.setting.AlarmSettingActivity" />
+        <activity android:name=".ui.main.MainActivity" android:launchMode="singleTop"/>
+        <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
+        <activity android:name=".ui.onBoarding.OnBoardingActivity" android:theme="@style/Splash.StatusBar"/>
+        <activity android:name=".ui.main.EmptyMainActivity" android:launchMode="singleTop"/>
+        <activity android:name=".ui.setting.SettingActivity"/>
+        <activity android:name=".ui.setting.AlarmSettingActivity"/>
+        <receiver android:name=".ui.setting.receiver.Alarm"/>
 
-        <receiver android:name=".ui.setting.receiver.Alarm" />
+        <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="TY01_디데이형">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_type1_info" />
+        </receiver>
+        <receiver android:name=".ui.appWidget.WidgetProviderType2" android:label="TY02_디데이형">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_type2_info" />
+        </receiver>
     </application>
 
 </manifest>

@@ -32,5 +32,62 @@ enum class SpendState {
                     R.color.bg_red
                 }
             }
+
+        fun getMultiplyColor(state: SpendState): Int =
+            when(state){
+                CLAP -> {
+                    R.drawable.widget_text_bg_mint
+                }
+                EMBARRASSED -> {
+                    R.drawable.widget_text_bg_yellow
+                }
+                CRY -> {
+                    R.drawable.widget_text_bg_orange
+                }
+                VOLCANO -> {
+                    R.drawable.widget_text_bg_red
+                }
+                else -> {
+                    R.drawable.widget_text_bg_blue
+                }
+            }
+
+        fun getWidgetMessage(state: SpendState): Int =
+            when(state){
+                CLAP -> {
+                    R.string.text_clap_widget
+                }
+                EMBARRASSED -> {
+                    R.string.text_embarrassed_widget
+                }
+                CRY -> {
+                    R.string.text_cry_widget
+                }
+                VOLCANO -> {
+                    R.string.text_volcano_widget
+                }
+                else -> {
+                    R.string.text_flex_widget
+                }
+            }
+
+        fun getEmojiImage(state: SpendState): Int =
+            when(state){
+                CLAP -> {
+                    R.drawable.ic_clap_coin
+                }
+                EMBARRASSED -> {
+                    R.drawable.ic_embarassed_coin
+                }
+                CRY -> {
+                    R.drawable.ic_cry_coin
+                }
+                VOLCANO -> {
+                    R.drawable.ic_volcano_coin
+                }
+                else -> {
+                    R.drawable.ic_flex_coin
+                }
+            }
     }
 }
