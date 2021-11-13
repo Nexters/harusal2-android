@@ -3,5 +3,6 @@
         android:initialLayout="@layout/appwidget_type_five_layout"
         android:minWidth="@dimen/appwidget_cell_3"
         android:minHeight="@dimen/appwidget_cell_1"
+        android:previewImage="@drawable/ty_05"
         android:resizeMode="horizontal|vertical"
         android:updatePeriodMillis="1800000" />
