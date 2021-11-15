@@ -4,7 +4,7 @@
         android:id="@+id/root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/bg_widget_white"
         android:orientation="horizontal">
 
     <ImageView
