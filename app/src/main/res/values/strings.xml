@@ -53,4 +53,7 @@
 
     <string name="appwidget_d_day">D-%d</string>
     <string name="appwidget_remaining_money">%s원 남음</string>
+
+    <string name="appwidget_refresh_toast">정보를 새로 불러오고 있습니다.</string>
+    <string name="ACTION_BTN_CLICK">appwidget_action_btn_click</string>
 </resources>

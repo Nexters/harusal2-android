@@ -3,11 +3,13 @@ package com.nexters.zzallang.harusal2.ui.appWidget
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.AppWidgetToastUtil
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
@@ -55,6 +57,19 @@ class WidgetProviderType1 : AppWidgetProvider(), KoinComponent {
         }
     }
 
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+        if(intent == null || context == null) return
+
+        val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, WidgetProviderType1::class.java))
+        val widget = WidgetProviderType1()
+
+        if(intent.action.equals(context.resources.getString(R.string.ACTION_BTN_CLICK))){
+            AppWidgetToastUtil.showToast(context)
+            widget.onUpdate(context, AppWidgetManager.getInstance(context), ids)
+        }
+    }
+
     private fun RemoteViews.setOnClickOpenApp(context : Context?, appWidgetId : Int){
         val pendingIntent = PendingIntent.getActivity(
             context,
@@ -68,7 +83,7 @@ class WidgetProviderType1 : AppWidgetProvider(), KoinComponent {
 
     private fun RemoteViews.setOnClickRefresh(context : Context?, appWidgetId : Int){
         val intent = Intent(context, WidgetProviderType1::class.java).apply {
-            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            action = context?.resources?.getString(R.string.ACTION_BTN_CLICK)
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
         }
 
