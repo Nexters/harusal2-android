@@ -51,6 +51,18 @@
 
         </TextView>
 
+        <TextView
+            android:id="@+id/tv_remain_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:layout_gravity="center_horizontal"
+            android:text="9,900원 남음">
+
+        </TextView>
+
     </LinearLayout>
 
 </RelativeLayout>

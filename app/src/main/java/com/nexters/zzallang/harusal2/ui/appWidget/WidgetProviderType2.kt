@@ -8,6 +8,7 @@ import android.content.Intent
 import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
@@ -44,7 +45,7 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
                     val remainMoney = getRemainMoneyUseCase.getRemainMoney(todayBudget)
                     val spendState = getSpentMoneyStatusUseCase.getSpentMoneyStatus(todayBudget, remainMoney)
 
-                    it.updateView(context, appWidgetId, remainDay, spendState)
+                    it.updateView(context, appWidgetId, remainDay, spendState, remainMoney)
                     it.setOnClickOpenApp(context, appWidgetId)
                     it.setOnClickRefresh(context, appWidgetId)
                     appWidgetManager?.updateAppWidget(appWidgetId, it)
@@ -81,9 +82,11 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
         setOnClickPendingIntent(R.id.iv_refresh, pendingIntent)
     }
 
-    private fun RemoteViews.updateView(context: Context, appWidgetId: Int, remainDay: Int, spendState: SpendState){
+    private fun RemoteViews.updateView(context: Context, appWidgetId: Int, remainDay: Int, spendState: SpendState, remainMoney: Int){
+        val remainMoneyText = context.resources?.getString(R.string.appwidget_remaining_money, NumberUtils.decimalFormat.format(remainMoney)).orEmpty()
+        setTextViewText(R.id.tv_remain_money, remainMoneyText)
         setInt(R.id.widget_bg2, "setColorFilter", ContextCompat.getColor(context, SpendState.getBackgroundColor(spendState)))
-        setTextViewText(R.id.tv_dday, WidgetProviderType2.REMAIN_DAY_PREFIX +remainDay)
+        setTextViewText(R.id.tv_dday, REMAIN_DAY_PREFIX +remainDay)
         setImageViewResource(R.id.iv_emoji, SpendState.getEmojiImage(spendState))
     }
 
