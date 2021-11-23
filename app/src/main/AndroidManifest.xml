@@ -61,7 +61,6 @@
         <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="TY01_디데이형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="@string/ACTION_BTN_CLICK" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

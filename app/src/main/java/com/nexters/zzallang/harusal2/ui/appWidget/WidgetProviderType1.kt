@@ -10,6 +10,7 @@ import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.AppWidgetToastUtil
+import com.nexters.zzallang.harusal2.constant.Actions
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
@@ -64,7 +65,7 @@ class WidgetProviderType1 : AppWidgetProvider(), KoinComponent {
         val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, WidgetProviderType1::class.java))
         val widget = WidgetProviderType1()
 
-        if(intent.action.equals(context.resources.getString(R.string.ACTION_BTN_CLICK))){
+        if(intent.action.equals(Actions.ACTION_REFRESH)){
             AppWidgetToastUtil.showToast(context)
             widget.onUpdate(context, AppWidgetManager.getInstance(context), ids)
         }
@@ -83,7 +84,7 @@ class WidgetProviderType1 : AppWidgetProvider(), KoinComponent {
 
     private fun RemoteViews.setOnClickRefresh(context : Context?, appWidgetId : Int){
         val intent = Intent(context, WidgetProviderType1::class.java).apply {
-            action = context?.resources?.getString(R.string.ACTION_BTN_CLICK)
+            action = Actions.ACTION_REFRESH
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
         }
 
