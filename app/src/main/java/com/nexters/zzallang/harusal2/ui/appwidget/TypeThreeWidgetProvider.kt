@@ -3,12 +3,15 @@ package com.nexters.zzallang.harusal2.ui.appwidget
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
+import com.nexters.zzallang.harusal2.application.util.AppWidgetToastUtil
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
+import com.nexters.zzallang.harusal2.constant.Actions
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainMoneyUseCase
@@ -36,6 +39,15 @@ class TypeThreeWidgetProvider : AppWidgetProvider(), KoinComponent {
 
 	override fun onReceive(context: Context?, intent: Intent?) {
 		super.onReceive(context, intent)
+		if(intent == null || context == null) return
+
+		val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, TypeThreeWidgetProvider::class.java))
+		val widget = TypeThreeWidgetProvider()
+
+		if(intent.action.equals(Actions.ACTION_REFRESH)){
+			AppWidgetToastUtil.showToast(context)
+			widget.onUpdate(context, AppWidgetManager.getInstance(context), ids)
+		}
 	}
 
 	override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
@@ -87,7 +99,7 @@ class TypeThreeWidgetProvider : AppWidgetProvider(), KoinComponent {
 
 	private fun RemoteViews.setOnClickRefresh(context: Context, appWidgetId: Int) {
 		val intent = Intent(context, TypeThreeWidgetProvider::class.java).apply {
-			action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+			action = Actions.ACTION_REFRESH
 			putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
 		}
 
