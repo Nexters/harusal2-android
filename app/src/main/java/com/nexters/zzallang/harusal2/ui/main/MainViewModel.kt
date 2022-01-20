@@ -74,7 +74,12 @@ class MainViewModel(
             statementUseCase.findStatementByBudgetId(budget.id)
         }
 
-        todayStatements = statements.filter { statement -> statement.date.dayOfMonth == LocalDate.now().dayOfMonth }
+        todayStatements = statements.filter { statement ->
+            val now = LocalDate.now()
+            statement.date.dayOfMonth == now.dayOfMonth
+                && statement.date.month == now.month
+                && statement.date.year == now.year
+        }
 
         refreshTodayLivingExpenses()
         refreshTodaySpendMoney()
