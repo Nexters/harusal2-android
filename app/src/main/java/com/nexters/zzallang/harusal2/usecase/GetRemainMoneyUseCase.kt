@@ -32,4 +32,18 @@ class GetRemainMoneyUseCase(
 
         return remainMoney
     }
+
+    suspend fun getRemainMoney(): Int {
+        val budget = withContext(Dispatchers.IO + job) {
+            budgetRepository.findRecentBudget()
+        }
+
+        val statements = withContext(Dispatchers.IO + job) {
+            statementRepository.findStatementByBudgetId(budget.id)
+        }
+
+        val spentMoneyForMonth = statements.sumBy { it.amount }
+
+        return budget.budget + spentMoneyForMonth
+    }
 }

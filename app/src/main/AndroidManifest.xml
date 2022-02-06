@@ -10,28 +10,6 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <receiver
-                android:name=".ui.appwidget.TypeThreeWidgetProvider"
-                android:label="TY03_금액형">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_three_info" />
-        </receiver>
-
-        <receiver
-                android:name=".ui.appwidget.TypeFiveWidgetProvider"
-                android:label="TY05_혼합형">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_five_info" />
-        </receiver>
-
         <activity
                 android:name=".ui.splash.SplashActivity"
                 android:theme="@style/Splash.StatusBar">
@@ -57,23 +35,46 @@
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
         <receiver android:name=".ui.setting.receiver.Alarm"/>
-
-        <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="TY01_디데이형">
+        <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="디데이형01">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_type1_info" />
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/widget_type1_info" />
         </receiver>
-        <receiver android:name=".ui.appWidget.WidgetProviderType2" android:label="TY02_디데이형">
+        <receiver android:name=".ui.appWidget.WidgetProviderType2" android:label="디데이형02">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_type2_info" />
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/widget_type2_info" />
+        </receiver>
+        <receiver android:name=".ui.appWidget.TypeThreeWidgetProvider" android:label="금액형">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/appwidget_type_three_info" />
+        </receiver>
+
+        <receiver android:name=".ui.appWidget.TypeFiveWidgetProvider" android:label="혼합형01">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/appwidget_type_five_info" />
+        </receiver>
+        <receiver android:name=".ui.appWidget.MonthlyCombinationWidgetProvider" android:label="혼합형02">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/appwidget_monthly_combination_info" />
         </receiver>
     </application>
-
 </manifest>

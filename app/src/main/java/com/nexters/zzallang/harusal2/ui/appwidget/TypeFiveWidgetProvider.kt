@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.appwidget
+package com.nexters.zzallang.harusal2.ui.appWidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -26,7 +26,7 @@ import org.koin.core.component.inject
 @KoinApiExtension
 class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
 	companion object {
-		const val FIVE_REQUEST_CODE = 101
+		const val FIVE_REQUEST_CODE = 104
 	}
 
 	private val job = Job()
