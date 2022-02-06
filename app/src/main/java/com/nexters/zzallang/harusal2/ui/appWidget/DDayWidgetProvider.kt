@@ -26,7 +26,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 @KoinApiExtension
-class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
+class DDayWidgetProvider : AppWidgetProvider(), KoinComponent {
 
     private val getRemainDayUseCase: GetRemainDayUseCase by inject()
     private val getTodayBudgetUseCase : GetTodayBudgetUseCase by inject()
@@ -41,7 +41,7 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
         if(context == null) return
         CoroutineScope(Dispatchers.IO).launch {
             appWidgetIds?.forEach { appWidgetId ->
-                RemoteViews(context.packageName, R.layout.widget_type2).also {
+                RemoteViews(context.packageName, R.layout.widget_d_day_emoji_layout).also {
 
                     val remainDay = getRemainDayUseCase.getRemainDay()
                     val todayBudget = getTodayBudgetUseCase.getTodayBudget()
@@ -61,8 +61,8 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
         super.onReceive(context, intent)
         if(intent == null || context == null) return
 
-        val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, WidgetProviderType2::class.java))
-        val widget = WidgetProviderType2()
+        val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, DDayWidgetProvider::class.java))
+        val widget = DDayWidgetProvider()
 
         if(intent.action.equals(Actions.ACTION_REFRESH)){
             AppWidgetToastUtil.showToast(context)
@@ -73,7 +73,7 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
     private fun RemoteViews.setOnClickOpenApp(context : Context?, appWidgetId : Int){
         val pendingIntent = PendingIntent.getActivity(
             context,
-            APP_WIDGET_REQUEST_CODE2 + appWidgetId,
+            APP_WIDGET_REQUEST_CODE_D_DAY + appWidgetId,
             Intent(context, SplashActivity::class.java),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -83,14 +83,14 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
 
     private fun RemoteViews.setOnClickRefresh(context : Context?, appWidgetId : Int){
         val intent = Intent(context,
-            WidgetProviderType2::class.java).apply {
+            DDayWidgetProvider::class.java).apply {
             action = Actions.ACTION_REFRESH
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
         }
 
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            APP_WIDGET_REQUEST_CODE2 + appWidgetId,
+            APP_WIDGET_REQUEST_CODE_D_DAY + appWidgetId,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -107,7 +107,7 @@ class WidgetProviderType2 : AppWidgetProvider(), KoinComponent {
     }
 
     companion object{
-        const val APP_WIDGET_REQUEST_CODE2 = 102
+        const val APP_WIDGET_REQUEST_CODE_D_DAY = 102
         const val REMAIN_DAY_PREFIX = "D-"
     }
 }

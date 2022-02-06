@@ -51,7 +51,7 @@ class MonthlyCombinationWidgetProvider : AppWidgetProvider(), KoinComponent {
 
 		CoroutineScope(Dispatchers.Main + job).launch {
 			appWidgetIds?.forEach { appWidgetId ->
-				RemoteViews(context?.packageName, R.layout.appwidget_type_five_layout).also {
+				RemoteViews(context?.packageName, R.layout.widget_combination_layout).also {
 					val remainMoney = getRemainMoneyUseCase.getRemainMoney()
 
 					val remainDayText = context?.resources?.getString(R.string.appwidget_d_day, getRemainDayUseCase.getRemainDay()).orEmpty()

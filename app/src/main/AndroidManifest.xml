@@ -35,38 +35,38 @@
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.setting.AlarmSettingActivity"/>
         <receiver android:name=".ui.setting.receiver.Alarm"/>
-        <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="디데이형01">
+        <receiver android:name=".ui.appWidget.DDayWidgetProvider" android:label="디데이형01">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_type1_info" />
+                    android:resource="@xml/widget_d_day_info" />
         </receiver>
-        <receiver android:name=".ui.appWidget.WidgetProviderType2" android:label="디데이형02">
+        <receiver android:name=".ui.appWidget.DDayWithEmojiWidgetProvider" android:label="디데이형02">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_type2_info" />
+                    android:resource="@xml/widget_d_day_emoji_info" />
         </receiver>
-        <receiver android:name=".ui.appWidget.TypeThreeWidgetProvider" android:label="금액형">
+        <receiver android:name=".ui.appWidget.DailyShortenWidgetProvider" android:label="금액형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_three_info" />
+                    android:resource="@xml/widget_daily_shorten_info" />
         </receiver>
 
-        <receiver android:name=".ui.appWidget.TypeFiveWidgetProvider" android:label="혼합형01">
+        <receiver android:name=".ui.appWidget.DailyCombinationWidgetProvider" android:label="혼합형01">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_five_info" />
+                    android:resource="@xml/widget_daily_combination_info" />
         </receiver>
         <receiver android:name=".ui.appWidget.MonthlyCombinationWidgetProvider" android:label="혼합형02">
             <intent-filter>
@@ -74,7 +74,7 @@
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_monthly_combination_info" />
+                    android:resource="@xml/widget_monthly_combination_info" />
         </receiver>
     </application>
 </manifest>
