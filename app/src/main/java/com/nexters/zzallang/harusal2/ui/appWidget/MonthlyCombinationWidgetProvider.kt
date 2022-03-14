@@ -1,4 +1,4 @@
-package com.nexters.zzallang.harusal2.ui.appwidget
+package com.nexters.zzallang.harusal2.ui.appWidget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -14,7 +14,6 @@ import com.nexters.zzallang.harusal2.constant.Actions
 import com.nexters.zzallang.harusal2.ui.splash.SplashActivity
 import com.nexters.zzallang.harusal2.usecase.GetRemainDayUseCase
 import com.nexters.zzallang.harusal2.usecase.GetRemainMoneyUseCase
-import com.nexters.zzallang.harusal2.usecase.GetTodayBudgetUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,25 +23,24 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 @KoinApiExtension
-class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
+class MonthlyCombinationWidgetProvider : AppWidgetProvider(), KoinComponent {
 	companion object {
-		const val FIVE_REQUEST_CODE = 101
+		const val MONTHLY_COMBINATION_REQUEST_CODE = 105
 	}
 
 	private val job = Job()
 
 	private val getRemainDayUseCase: GetRemainDayUseCase by inject()
-	private val getTodayBudgetUseCase: GetTodayBudgetUseCase by inject()
 	private val getRemainMoneyUseCase: GetRemainMoneyUseCase by inject()
 
 	override fun onReceive(context: Context?, intent: Intent?) {
 		super.onReceive(context, intent)
-		if(intent == null || context == null) return
+		if (intent == null || context == null) return
 
-		val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, TypeFiveWidgetProvider::class.java))
-		val widget = TypeFiveWidgetProvider()
+		val ids = AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, MonthlyCombinationWidgetProvider::class.java))
+		val widget = MonthlyCombinationWidgetProvider()
 
-		if(intent.action.equals(Actions.ACTION_REFRESH)){
+		if (intent.action.equals(Actions.ACTION_REFRESH)) {
 			AppWidgetToastUtil.showToast(context)
 			widget.onUpdate(context, AppWidgetManager.getInstance(context), ids)
 		}
@@ -53,9 +51,8 @@ class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
 
 		CoroutineScope(Dispatchers.Main + job).launch {
 			appWidgetIds?.forEach { appWidgetId ->
-				RemoteViews(context?.packageName, R.layout.appwidget_type_five_layout).also {
-					val todayBudget = getTodayBudgetUseCase.getTodayBudget()
-					val remainMoney = getRemainMoneyUseCase.getRemainMoney(todayBudget)
+				RemoteViews(context?.packageName, R.layout.widget_combination_layout).also {
+					val remainMoney = getRemainMoneyUseCase.getRemainMoney()
 
 					val remainDayText = context?.resources?.getString(R.string.appwidget_d_day, getRemainDayUseCase.getRemainDay()).orEmpty()
 					val remainMoneyText = context?.resources?.getString(R.string.appwidget_remaining_money, NumberUtils.decimalFormat.format(remainMoney)).orEmpty()
@@ -75,7 +72,7 @@ class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
 	private fun RemoteViews.setOnClickOpenApp(context: Context?, appWidgetId: Int) {
 		val pendingIntent = PendingIntent.getActivity(
 			context,
-			FIVE_REQUEST_CODE + appWidgetId,
+			MONTHLY_COMBINATION_REQUEST_CODE + appWidgetId,
 			Intent(context, SplashActivity::class.java),
 			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)
@@ -84,14 +81,14 @@ class TypeFiveWidgetProvider : AppWidgetProvider(), KoinComponent {
 	}
 
 	private fun RemoteViews.setOnClickRefresh(context: Context?, appWidgetId: Int) {
-		val intent = Intent(context, TypeFiveWidgetProvider::class.java).apply {
+		val intent = Intent(context, MonthlyCombinationWidgetProvider::class.java).apply {
 			action = Actions.ACTION_REFRESH
 			putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
 		}
 
 		val pendingIntent = PendingIntent.getBroadcast(
 			context,
-			FIVE_REQUEST_CODE + appWidgetId,
+			MONTHLY_COMBINATION_REQUEST_CODE + appWidgetId,
 			intent,
 			PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
 		)
