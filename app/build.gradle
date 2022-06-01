@@ -11,8 +11,8 @@ android {
         applicationId "com.nexters.zzallang.harusal2"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.10"
+        versionCode 5
+        versionName "1.11"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
