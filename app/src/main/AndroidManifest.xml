@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.nexters.zzallang.harusal2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-            android:name=".application.App"
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:name=".application.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <receiver
-                android:name=".ui.appwidget.TypeThreeWidgetProvider"
-                android:label="TY03_금액형">
+            android:name=".ui.appwidget.TypeThreeWidgetProvider"
+            android:exported="false"
+            android:label="TY03_금액형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_three_info" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_type_three_info" />
         </receiver>
 
         <receiver
-                android:name=".ui.appwidget.TypeFiveWidgetProvider"
-                android:label="TY05_혼합형">
+            android:name=".ui.appwidget.TypeFiveWidgetProvider"
+            android:exported="false"
+            android:label="TY05_혼합형">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/appwidget_type_five_info" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_type_five_info" />
         </receiver>
 
         <activity
-                android:name=".ui.splash.SplashActivity"
-                android:theme="@style/Splash.StatusBar">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Splash.StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,33 +44,46 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.history.HistoryActivity"
-                android:launchMode="singleTop" />
+            android:name=".ui.history.HistoryActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".ui.budget.register.BudgetRegisterActivity" />
         <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity" />
         <activity android:name=".ui.budget.register.StartDayClickRegisterActivity" />
         <activity android:name=".ui.statement.register.AddStatementActivity" />
         <activity android:name=".ui.statement.edit.StatementDetailActivity" />
         <activity android:name=".ui.statement.edit.StatementEditActivity" />
-        <activity android:name=".ui.main.MainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
-        <activity android:name=".ui.onBoarding.OnBoardingActivity" android:theme="@style/Splash.StatusBar"/>
-        <activity android:name=".ui.main.EmptyMainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.setting.SettingActivity"/>
-        <activity android:name=".ui.setting.AlarmSettingActivity"/>
-        <receiver android:name=".ui.setting.receiver.Alarm"/>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.budget.edit.BudgetEditActivity" />
+        <activity
+            android:name=".ui.onBoarding.OnBoardingActivity"
+            android:theme="@style/Splash.StatusBar" />
+        <activity
+            android:name=".ui.main.EmptyMainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.setting.SettingActivity" />
+        <activity android:name=".ui.setting.AlarmSettingActivity" />
 
-        <receiver android:name=".ui.appWidget.WidgetProviderType1" android:label="TY01_디데이형">
+        <receiver android:name=".ui.setting.receiver.Alarm" />
+
+        <receiver
+            android:name=".ui.appWidget.WidgetProviderType1"
+            android:label="TY01_디데이형"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_type1_info" />
         </receiver>
-        <receiver android:name=".ui.appWidget.WidgetProviderType2" android:label="TY02_디데이형">
+        <receiver
+            android:name=".ui.appWidget.WidgetProviderType2"
+            android:exported="false"
+            android:label="TY02_디데이형">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
