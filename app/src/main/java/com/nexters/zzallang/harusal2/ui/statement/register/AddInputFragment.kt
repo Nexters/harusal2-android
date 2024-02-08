@@ -4,30 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
-import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddInputBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddInputFragment: BaseFragment<FragmentAddInputBinding>() {
-    override fun layoutRes(): Int = R.layout.fragment_add_input
-    override val viewModel: AddInputViewModel by viewModel()
+class AddInputFragment: Fragment() {
+    private lateinit var binding: FragmentAddInputBinding
+    private val viewModel: AddInputViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentAddInputBinding.inflate(inflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this@AddInputFragment
         return binding.root
     }
 
-    override fun bindingView() {
-        super.bindingView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.statementAmount.observe(viewLifecycleOwner, Observer{
             if(it == ""){

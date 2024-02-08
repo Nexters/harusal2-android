@@ -12,11 +12,11 @@ import java.util.*
 class SplashViewModel(private val budgetUseCase: BudgetUseCase) : ViewModel() {
     fun renewBudgetDay() {
         viewModelScope.launch {
-            val budget: Budget = withContext(coroutineContext) {
+            val budget: Budget? = withContext(coroutineContext) {
                 budgetUseCase.findRecentBudget()
             }
 
-            budget.let {
+            budget?.let {
                 val todayDate = LocalDate.now()
                 val budgetDateList: ArrayList<Pair<LocalDate, LocalDate>> = arrayListOf()
                 var tempBudgetEndDate = it.copy().endDate
