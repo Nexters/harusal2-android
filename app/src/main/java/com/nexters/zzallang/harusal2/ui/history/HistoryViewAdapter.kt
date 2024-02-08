@@ -172,18 +172,15 @@ class HistoryViewAdapter(private val context: Context) :
             val mAnimator: ValueAnimator = slideAnimator(mLinearLayout, finalHeight, 0)
 
             mAnimator.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-                }
+                override fun onAnimationRepeat(animation: Animator) = Unit
 
                 override fun onAnimationEnd(animation: Animator) {
                     mLinearLayout.visibility = View.GONE
                 }
 
-                override fun onAnimationCancel(animation: Animator?) {
-                }
+                override fun onAnimationCancel(animation: Animator) = Unit
 
-                override fun onAnimationStart(animation: Animator?) {
-                }
+                override fun onAnimationStart(animation: Animator) = Unit
             })
 
             mAnimator.start()

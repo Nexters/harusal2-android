@@ -7,7 +7,6 @@ import android.view.View
 import android.view.Window
 import android.widget.ListView
 import com.nexters.zzallang.harusal2.R
-import kotlinx.android.synthetic.main.layout_history_listview.*
 
 class HistoryMenuDialog(private var activity: Activity, private var adapter: HistoryMenuAdapter) :
     Dialog(activity),
@@ -19,7 +18,7 @@ class HistoryMenuDialog(private var activity: Activity, private var adapter: His
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.layout_history_listview)
 
-        listView = listview_menu
+        listView = findViewById(R.id.listview_menu)
         listView?.adapter = adapter
     }
 
