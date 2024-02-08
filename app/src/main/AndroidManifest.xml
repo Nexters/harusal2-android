@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.nexters.zzallang.harusal2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-            android:name=".application.App"
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:name=".application.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity
-                android:name=".ui.splash.SplashActivity"
-                android:theme="@style/Splash.StatusBar">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Splash.StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,61 +20,83 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.history.HistoryActivity"
-                android:launchMode="singleTop" />
+            android:name=".ui.history.HistoryActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".ui.budget.register.BudgetRegisterActivity" />
         <activity android:name=".ui.budget.register.StartDayDefaultRegisterActivity" />
         <activity android:name=".ui.budget.register.StartDayClickRegisterActivity" />
         <activity android:name=".ui.statement.register.AddStatementActivity" />
         <activity android:name=".ui.statement.edit.StatementDetailActivity" />
         <activity android:name=".ui.statement.edit.StatementEditActivity" />
-        <activity android:name=".ui.main.MainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.budget.edit.BudgetEditActivity"/>
-        <activity android:name=".ui.onBoarding.OnBoardingActivity" android:theme="@style/Splash.StatusBar"/>
-        <activity android:name=".ui.main.EmptyMainActivity" android:launchMode="singleTop"/>
-        <activity android:name=".ui.setting.SettingActivity"/>
-        <activity android:name=".ui.setting.AlarmSettingActivity"/>
-        <receiver android:name=".ui.setting.receiver.Alarm"/>
-        <receiver android:name=".ui.appWidget.DDayWidgetProvider" android:label="디데이형01">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_d_day_info" />
-        </receiver>
-        <receiver android:name=".ui.appWidget.DDayWithEmojiWidgetProvider" android:label="디데이형02">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_d_day_emoji_info" />
-        </receiver>
-        <receiver android:name=".ui.appWidget.DailyShortenWidgetProvider" android:label="금액형">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.budget.edit.BudgetEditActivity" />
+        <activity
+            android:name=".ui.onBoarding.OnBoardingActivity"
+            android:theme="@style/Splash.StatusBar" />
+        <activity
+            android:name=".ui.main.EmptyMainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.setting.SettingActivity" />
+        <activity android:name=".ui.setting.AlarmSettingActivity" />
+
+        <receiver android:name=".ui.setting.receiver.Alarm" />
+        <receiver
+            android:name=".ui.appWidget.DDayWidgetProvider"
+            android:exported="false"
+            android:label="디데이형01">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_daily_shorten_info" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_d_day_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.appWidget.DDayWithEmojiWidgetProvider"
+            android:exported="false"
+            android:label="디데이형02">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_d_day_emoji_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.appWidget.DailyShortenWidgetProvider"
+            android:exported="false"
+            android:label="금액형">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_daily_shorten_info" />
         </receiver>
 
-        <receiver android:name=".ui.appWidget.DailyCombinationWidgetProvider" android:label="혼합형01">
+        <receiver
+            android:name=".ui.appWidget.DailyCombinationWidgetProvider"
+            android:exported="false"
+            android:label="혼합형01">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_daily_combination_info" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_daily_combination_info" />
         </receiver>
-        <receiver android:name=".ui.appWidget.MonthlyCombinationWidgetProvider" android:label="혼합형02">
+        <receiver
+            android:name=".ui.appWidget.MonthlyCombinationWidgetProvider"
+            android:exported="false"
+            android:label="혼합형02">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widget_monthly_combination_info" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_monthly_combination_info" />
         </receiver>
     </application>
 </manifest>
