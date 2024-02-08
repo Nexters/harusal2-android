@@ -2,9 +2,9 @@ package com.nexters.zzallang.harusal2.ui.onBoarding
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nexters.zzallang.harusal2.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class OnBoardingViewModel: BaseViewModel() {
+class OnBoardingViewModel: ViewModel() {
     private val _text = MutableLiveData("")
     private val _title = MutableLiveData("")
     val text: LiveData<String> get() = _text

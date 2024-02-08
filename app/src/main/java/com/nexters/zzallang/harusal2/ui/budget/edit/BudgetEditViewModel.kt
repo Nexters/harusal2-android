@@ -2,14 +2,15 @@ package com.nexters.zzallang.harusal2.ui.budget.edit
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import kotlinx.coroutines.launch
 
-class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
+class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : ViewModel() {
     companion object {
         private const val PREFIX = "일일 생활비 "
     }
@@ -22,7 +23,7 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewMo
     val averageBudget: LiveData<String> get() = _averageBudget
 
     fun init() {
-        launch {
+        viewModelScope.launch {
             currentBudget = budgetUseCase.findRecentBudget()
             budget.postValue(currentBudget?.budget.toString())
         }

@@ -2,15 +2,17 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.usecase.StatementUseCase
 import kotlin.math.abs
 
-class StatementDetailViewModel(private val statementUseCase: StatementUseCase) : BaseViewModel() {
+class StatementDetailViewModel(
+    private val statementUseCase: StatementUseCase,
+) : ViewModel() {
     private lateinit var statement: Statement
     private val _statementType = MutableLiveData("")
     private val _statementAmount = MutableLiveData("")
