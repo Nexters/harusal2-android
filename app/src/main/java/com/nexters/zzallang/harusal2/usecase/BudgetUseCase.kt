@@ -16,7 +16,7 @@ class BudgetUseCase(private val budgetRepository: BudgetRepository) {
             Budget(
                 startDate = startDate,
                 budget = budget,
-                endDate = DateUtils.endDate(startDate)
+                endDate = DateUtils.getBudgetEndDate(startDate)
             )
         )
     }
