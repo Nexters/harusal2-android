@@ -20,13 +20,19 @@ class DateUtilsTests {
     }
 
     @Test
-    fun endDate_윤년_30일이마지막인_1일조회() {
+    fun endDate_윤년아닌_2월조회() {
+        assertEquals(LocalDate.of(2023, 3, 27),
+            DateUtils.getBudgetEndDate(LocalDate.of(2023,2,28)))
+    }
+
+    @Test
+    fun endDate_30일이_마지막인_1일조회() {
         assertEquals(LocalDate.of(2024, 4, 30),
             DateUtils.getBudgetEndDate(LocalDate.of(2024,4,1)))
     }
 
     @Test
-    fun endDate_윤년_31일이마지막인_1일조회() {
+    fun endDate_31일이_마지막인_1일조회() {
         assertEquals(LocalDate.of(2024, 5, 31),
             DateUtils.getBudgetEndDate(LocalDate.of(2024,5,1)))
     }
