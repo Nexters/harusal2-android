@@ -5,36 +5,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
+import com.nexters.zzallang.harusal2.base.BaseFragment
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
+import java.util.*
 
-class AddMemoFragment : Fragment() {
-    private lateinit var binding: FragmentAddMemoBinding
-    private val viewModel: AddMemoViewModel by viewModel()
+class AddMemoFragment : BaseFragment<FragmentAddMemoBinding>() {
+    override fun layoutRes(): Int = R.layout.fragment_add_memo
+    override val viewModel: AddMemoViewModel by viewModel()
     private val addStatementViewModel: AddStatementViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentAddMemoBinding.inflate(inflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this@AddMemoFragment
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun bindingView() {
+        super.bindingView()
 
         viewModel.setAmount(requireArguments().getString("amount") ?: "0")
         viewModel.setType(requireArguments().getInt("type"))
@@ -63,9 +63,9 @@ class AddMemoFragment : Fragment() {
             }
 
             activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(this)
-                ?.commit()
+                    ?.beginTransaction()
+                    ?.remove(this)
+                    ?.commit()
 
             activity?.finish()
         }
