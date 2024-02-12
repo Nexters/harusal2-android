@@ -1,11 +1,14 @@
 package com.nexters.zzallang.harusal2.ui.budget.register
 
-import com.nexters.zzallang.harusal2.base.BaseViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase) : BaseViewModel() {
+class StartDayDefaultRegisterViewModel(
+    private val budgetUseCase: BudgetUseCase,
+) : ViewModel() {
     private val todayDate = LocalDate.now()
 
     fun getDescription(): String {
@@ -20,7 +23,7 @@ class StartDayDefaultRegisterViewModel(private val budgetUseCase: BudgetUseCase)
     }
 
     fun saveBudgetDay(budget: Int) {
-        launch {
+        viewModelScope.launch {
             budgetUseCase.insertBudget(
                 budget,
                 todayDate

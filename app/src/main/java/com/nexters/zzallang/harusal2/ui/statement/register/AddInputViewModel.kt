@@ -2,11 +2,11 @@ package com.nexters.zzallang.harusal2.ui.statement.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 
-class AddInputViewModel: BaseViewModel() {
+class AddInputViewModel: ViewModel() {
     private var statementType = Constants.STATEMENT_TYPE_OUT
     private val _convertedAmount = MutableLiveData("")
     val statementAmount = MutableLiveData("")

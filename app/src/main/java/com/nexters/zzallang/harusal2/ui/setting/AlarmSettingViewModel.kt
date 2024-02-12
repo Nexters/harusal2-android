@@ -1,10 +1,10 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
-import com.nexters.zzallang.harusal2.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.ui.setting.type.AlertTime
 import java.util.*
 
-class AlarmSettingViewModel: BaseViewModel() {
+class AlarmSettingViewModel: ViewModel() {
     fun getAlarmCalender(alertTime: AlertTime): Calendar =
         Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()

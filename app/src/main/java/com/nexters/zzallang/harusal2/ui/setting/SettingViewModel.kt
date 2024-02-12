@@ -1,6 +1,7 @@
 package com.nexters.zzallang.harusal2.ui.setting
 
-import com.nexters.zzallang.harusal2.base.BaseViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import com.nexters.zzallang.harusal2.usecase.StartDayEditUseCase
@@ -11,9 +12,9 @@ class SettingViewModel(
     private val startDayEditUseCase: StartDayEditUseCase,
     private val budgetUseCase: BudgetUseCase,
     private val statementUseCase: StatementUseCase
-) : BaseViewModel() {
+) : ViewModel() {
     fun editBudgetDate() {
-        launch {
+        viewModelScope.launch {
             startDayEditUseCase.saveBudgetDate()
         }
     }
@@ -23,7 +24,7 @@ class SettingViewModel(
     }
 
     fun deleteAllData() {
-        launch {
+        viewModelScope.launch {
             budgetUseCase.deleteAllBudget()
             statementUseCase.deleteAllStatement()
         }

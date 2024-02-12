@@ -2,11 +2,11 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 
-class BudgetRegisterViewModel() : BaseViewModel() {
+class BudgetRegisterViewModel() : ViewModel() {
     val budget = MutableLiveData("")
 
     private val _hangeulBudget = MutableLiveData("")

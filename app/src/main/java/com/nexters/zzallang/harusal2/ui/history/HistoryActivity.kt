@@ -3,35 +3,41 @@ package com.nexters.zzallang.harusal2.ui.history
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
-import com.nexters.zzallang.harusal2.base.BaseActivity
+import com.nexters.zzallang.harusal2.constant.Constants
+import com.nexters.zzallang.harusal2.constant.SpendState.Companion.getBackgroundColor
 import com.nexters.zzallang.harusal2.databinding.ActivityHistoryBinding
 import com.nexters.zzallang.harusal2.ui.history.decoration.HistoryDecoration
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuAdapter
 import com.nexters.zzallang.harusal2.ui.history.menu.HistoryMenuDialog
 import com.nexters.zzallang.harusal2.ui.history.model.HistoryInfo
-import com.nexters.zzallang.harusal2.constant.SpendState.Companion.getBackgroundColor
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementActivity
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
-    HistoryMenuDialog.ItemClickListener {
-    override fun layoutRes(): Int = R.layout.activity_history
-    override val viewModel: HistoryViewModel by viewModel()
+class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener {
+    private lateinit var binding: ActivityHistoryBinding
+    private val viewModel: HistoryViewModel by viewModel()
     private var customDialog: HistoryMenuDialog? = null
     private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = 0
+        binding = ActivityHistoryBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
+
+        initViews()
     }
 
     override fun onResume() {
@@ -40,9 +46,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(),
         refreshHistories()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         binding.btnPrev.setOnClickListener {
             this.finish()
         }

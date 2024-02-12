@@ -1,8 +1,8 @@
 package com.nexters.zzallang.harusal2.ui.history
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.nexters.zzallang.harusal2.application.util.DateUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
 import com.nexters.zzallang.harusal2.ui.history.model.*
@@ -14,7 +14,7 @@ import java.time.LocalDate
 class HistoryViewModel(
     private val budgetUseCase: BudgetUseCase,
     private val statementUseCase: StatementUseCase
-) : BaseViewModel() {
+) : ViewModel() {
     private val todayDate = LocalDate.now()
     private var recentBudget: Budget? = null
     var budgetList: List<Budget> = ArrayList()

@@ -2,9 +2,10 @@ package com.nexters.zzallang.harusal2.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
-import com.nexters.zzallang.harusal2.base.BaseViewModel
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.entity.Statement
@@ -18,7 +19,7 @@ import java.time.LocalDate
 class MainViewModel(
     private val statementUseCase: StatementUseCase,
     private val budgetUseCase: BudgetUseCase
-) : BaseViewModel() {
+) : ViewModel() {
     private val _todayRemainMoney = MutableLiveData<String>("0원")
     val todayRemainMoney: LiveData<String> get() = _todayRemainMoney
     private val _todayLivingExpenses = MutableLiveData<String>("오늘의 생활비 0원")
@@ -66,11 +67,11 @@ class MainViewModel(
     }
 
     suspend fun checkCurrentSpendState(): SpendState {
-        budget = withContext(Dispatchers.IO + job) {
+        budget = withContext(Dispatchers.IO) {
             budgetUseCase.findRecentBudget()
         }
 
-        statements = withContext(Dispatchers.IO + job) {
+        statements = withContext(Dispatchers.IO) {
             statementUseCase.findStatementByBudgetId(budget.id)
         }
 

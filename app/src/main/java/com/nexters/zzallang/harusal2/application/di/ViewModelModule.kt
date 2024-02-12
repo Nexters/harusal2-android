@@ -6,6 +6,7 @@ import com.nexters.zzallang.harusal2.ui.budget.register.StartDayClickRegisterVie
 import com.nexters.zzallang.harusal2.ui.budget.register.StartDayDefaultRegisterViewModel
 import com.nexters.zzallang.harusal2.ui.history.HistoryViewModel
 import com.nexters.zzallang.harusal2.ui.main.MainViewModel
+import com.nexters.zzallang.harusal2.ui.onBoarding.OnBoardingViewModel
 import com.nexters.zzallang.harusal2.ui.setting.AlarmSettingViewModel
 import com.nexters.zzallang.harusal2.ui.setting.SettingViewModel
 import com.nexters.zzallang.harusal2.ui.splash.SplashViewModel
@@ -31,5 +32,6 @@ val viewModelModule = module {
     viewModel { BudgetEditViewModel(get()) }
     viewModel { AlarmSettingViewModel() }
     viewModel { SettingViewModel(get(), get(), get()) }
-    viewModel {SplashViewModel(get())}
+    viewModel { SplashViewModel(get()) }
+    viewModel { OnBoardingViewModel() }
 }

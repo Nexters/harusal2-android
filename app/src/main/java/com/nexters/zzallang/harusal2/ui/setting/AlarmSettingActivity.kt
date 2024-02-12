@@ -7,8 +7,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityAlarmSettingBinding
 import com.nexters.zzallang.harusal2.ui.setting.receiver.Alarm
 import com.nexters.zzallang.harusal2.ui.setting.type.AlertTime
@@ -16,24 +16,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class AlarmSettingActivity : BaseActivity<ActivityAlarmSettingBinding>() {
-    companion object {
-        const val ALARM_INTENT_NAME = "ALARM_INTENT"
-        private const val MORNING_PREF_NAME = "morning"
-        private const val AFTERNOON_PREF_NAME = "afternoon"
-        private const val EVENING_PREF_NAME = "evening"
-        const val MORNING_INTENT_CODE = 0
-        const val AFTERNOON_INTENT_CODE = 1
-        const val EVENING_INTENT_CODE = 2
-    }
+class AlarmSettingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAlarmSettingBinding
 
-    override val viewModel: AlarmSettingViewModel by viewModel()
-    override fun layoutRes(): Int = R.layout.activity_alarm_setting
+    private val viewModel: AlarmSettingViewModel by viewModel()
     private lateinit var alarmManager: AlarmManager
     private lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityAlarmSettingBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
 
@@ -41,11 +33,10 @@ class AlarmSettingActivity : BaseActivity<ActivityAlarmSettingBinding>() {
         pref = getSharedPreferences("alarm_setting", Context.MODE_PRIVATE)
 
         initSwitchState()
+        initViews()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         binding.ivClose.setOnClickListener {
             finish()
         }
@@ -160,5 +151,15 @@ class AlarmSettingActivity : BaseActivity<ActivityAlarmSettingBinding>() {
 
     private fun cancelAlarm(intentCode: Int) {
         alarmManager.cancel(getPendingIntent(intentCode))
+    }
+
+    companion object {
+        const val ALARM_INTENT_NAME = "ALARM_INTENT"
+        private const val MORNING_PREF_NAME = "morning"
+        private const val AFTERNOON_PREF_NAME = "afternoon"
+        private const val EVENING_PREF_NAME = "evening"
+        const val MORNING_INTENT_CODE = 0
+        const val AFTERNOON_INTENT_CODE = 1
+        const val EVENING_INTENT_CODE = 2
     }
 }

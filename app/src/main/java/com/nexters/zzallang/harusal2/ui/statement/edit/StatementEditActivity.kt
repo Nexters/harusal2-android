@@ -3,31 +3,33 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityEditStatementBinding
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
 import java.util.*
 
-class StatementEditActivity : BaseActivity<ActivityEditStatementBinding>() {
-    override fun layoutRes(): Int = R.layout.activity_edit_statement
-    override val viewModel: StatementEditViewModel by viewModel()
+class StatementEditActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityEditStatementBinding
+    private val viewModel: StatementEditViewModel by viewModel()
     private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityEditStatementBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
+
+        initViews()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         CoroutineScope(Dispatchers.Main + job).launch {
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
 

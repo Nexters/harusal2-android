@@ -1,8 +1,8 @@
 package com.nexters.zzallang.harusal2.ui.statement.register
 
-import com.nexters.zzallang.harusal2.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class AddStatementViewModel : BaseViewModel() {
+class AddStatementViewModel : ViewModel() {
     private var beforeActivity = ""
 
     fun setBeforeActivity(activityName: String) {

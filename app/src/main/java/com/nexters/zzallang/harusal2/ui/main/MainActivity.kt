@@ -5,12 +5,12 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.constant.SpendState
 import com.nexters.zzallang.harusal2.databinding.ActivityMainBinding
 import com.nexters.zzallang.harusal2.ui.history.HistoryActivity
@@ -25,16 +25,21 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun layoutRes(): Int = R.layout.activity_main
-    override val viewModel: MainViewModel by viewModel()
+class MainActivity : AppCompatActivity() {
+    private val viewModel: MainViewModel by viewModel()
     private val job = Job()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = 0
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
+
+        initViews()
     }
 
     override fun onResume() {
@@ -43,9 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         refreshMainData()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         binding.rcvStatement.layoutManager = LinearLayoutManager(this)
         binding.rcvStatement.addItemDecoration(MainStatementDecoration())
         binding.rcvStatement.adapter = MainStatementAdapter()
