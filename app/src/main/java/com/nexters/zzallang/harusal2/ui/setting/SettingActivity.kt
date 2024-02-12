@@ -7,9 +7,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.IntentUtils
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.databinding.ActivitySettingBinding
 import com.nexters.zzallang.harusal2.ui.budget.edit.BudgetEditActivity
@@ -18,16 +18,22 @@ import com.nexters.zzallang.harusal2.ui.setting.view.SettingDialog
 import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
-import java.util.*
 
-class SettingActivity : BaseActivity<ActivitySettingBinding>() {
-    override val viewModel: SettingViewModel by viewModel()
-    override fun layoutRes(): Int = R.layout.activity_setting
+class SettingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingBinding
+    private val viewModel: SettingViewModel by viewModel()
     private lateinit var alarmManager: AlarmManager
     private lateinit var pref: SharedPreferences
 
-    override fun bindingView() {
-        super.bindingView()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+        initViews()
+    }
+
+    private fun initViews() {
         binding.ivClose.setOnClickListener {
             finish()
         }

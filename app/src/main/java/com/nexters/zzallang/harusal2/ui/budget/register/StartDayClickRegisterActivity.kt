@@ -3,26 +3,26 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import com.nexters.zzallang.harusal2.R
+import androidx.appcompat.app.AppCompatActivity
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.IntentUtils
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterDayClickBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class StartDayClickRegisterActivity : BaseActivity<ActivityRegisterDayClickBinding>() {
-    override fun layoutRes(): Int = R.layout.activity_register_day_click
-    override val viewModel: StartDayClickRegisterViewModel by viewModel()
+class StartDayClickRegisterActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterDayClickBinding
+    private val viewModel: StartDayClickRegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityRegisterDayClickBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
+        initViews()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         binding.pickerDay.minValue = 1
 
         binding.pickerDay.maxValue = DateUtils.getLastDayOfMonthAfter(-1)

@@ -3,26 +3,28 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.IntentUtils
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityRegisterBudgetBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BudgetRegisterActivity : BaseActivity<ActivityRegisterBudgetBinding>() {
-    override fun layoutRes(): Int = R.layout.activity_register_budget
-    override val viewModel: BudgetRegisterViewModel by viewModel()
+class BudgetRegisterActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterBudgetBinding
+    private val viewModel: BudgetRegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityRegisterBudgetBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
+
+        initViews()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         viewModel.budget.observe(this, Observer {
 
             when (it) {

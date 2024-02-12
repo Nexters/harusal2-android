@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.constant.SpendState

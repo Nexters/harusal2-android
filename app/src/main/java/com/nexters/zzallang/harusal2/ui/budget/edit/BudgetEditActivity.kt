@@ -2,9 +2,9 @@ package com.nexters.zzallang.harusal2.ui.budget.edit
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.nexters.zzallang.harusal2.R
-import com.nexters.zzallang.harusal2.base.BaseActivity
 import com.nexters.zzallang.harusal2.databinding.ActivityChangeBudgetBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,19 +12,22 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BudgetEditActivity : BaseActivity<ActivityChangeBudgetBinding>() {
-    override fun layoutRes(): Int = R.layout.activity_change_budget
-    override val viewModel: BudgetEditViewModel by viewModel()
+class BudgetEditActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityChangeBudgetBinding
+    private val viewModel: BudgetEditViewModel by viewModel()
     private val job = Job()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityChangeBudgetBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
+
+        setContentView(binding.root)
+
+        initViews()
     }
 
-    override fun bindingView() {
-        super.bindingView()
-
+    private fun initViews() {
         viewModel.budget.observe(this, Observer {
             viewModel.budgetChanged(it)
             when (it) {

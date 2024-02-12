@@ -16,7 +16,7 @@ class SplashViewModel(private val budgetUseCase: BudgetUseCase) : ViewModel() {
                 budgetUseCase.findRecentBudget()
             }
 
-            budget.let {
+            budget?.let {
                 val todayDate = LocalDate.now()
                 val budgetDateList: ArrayList<Pair<LocalDate, LocalDate>> = arrayListOf()
                 var tempBudgetEndDate = it.copy().endDate
