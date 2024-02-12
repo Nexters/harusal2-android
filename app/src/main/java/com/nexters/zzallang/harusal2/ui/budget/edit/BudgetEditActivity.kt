@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.databinding.ActivityChangeBudgetBinding
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class BudgetEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChangeBudgetBinding
     private val viewModel: BudgetEditViewModel by viewModel()
-    private val job = Job()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangeBudgetBinding.inflate(layoutInflater)
@@ -28,7 +29,7 @@ class BudgetEditActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        viewModel.budget.observe(this, Observer {
+        viewModel.budget.observe(this) {
             viewModel.budgetChanged(it)
             when (it) {
                 "" -> {
@@ -36,6 +37,7 @@ class BudgetEditActivity : AppCompatActivity() {
                     binding.btnComplete.setBackgroundColor(this.getColor(R.color.line))
                     binding.btnComplete.isEnabled = false
                 }
+
                 else -> {
                     binding.tvUnit.setTextColor(this.getColor(R.color.default_txt))
                     binding.btnComplete.setBackgroundColor(this.getColor(R.color.default_txt))
@@ -44,14 +46,14 @@ class BudgetEditActivity : AppCompatActivity() {
             }
 
             binding.editRegisterBudget.setSelection(binding.editRegisterBudget.text.length)
-        })
+        }
 
         binding.btnPrev.setOnClickListener {
             this.finish()
         }
 
         binding.btnComplete.setOnClickListener {
-            CoroutineScope(Dispatchers.Main + job).launch {
+            lifecycleScope.launch {
                 val isSave = viewModel.saveBudget()
 
                 if (isSave) {

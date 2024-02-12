@@ -33,7 +33,7 @@ class StatementEditViewModel(
         }
     }
 
-    fun getId(): Long {
+    private fun getId(): Long {
         return statement.id
     }
 
@@ -57,7 +57,7 @@ class StatementEditViewModel(
     }
 
 
-    fun applyType(amount: Int): Int {
+    private fun applyType(amount: Int): Int {
         var resultAmount = amount
         if (statementType == Constants.STATEMENT_TYPE_OUT) resultAmount *= -1
         return resultAmount
@@ -67,7 +67,7 @@ class StatementEditViewModel(
         _statementDate.postValue(date)
     }
 
-    fun getDateForNow(): String {
+    private fun getDateForNow(): String {
         return DateUtils.toString(LocalDate.now(), Constants.DATE_FORMAT)
     }
 

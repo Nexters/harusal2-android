@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.constant.Constants
@@ -27,7 +28,6 @@ class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener
     private lateinit var binding: ActivityHistoryBinding
     private val viewModel: HistoryViewModel by viewModel()
     private var customDialog: HistoryMenuDialog? = null
-    private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +88,7 @@ class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener
     }
 
     private fun refreshHistories() {
-        CoroutineScope(Dispatchers.Main + job).launch {
+        lifecycleScope.launch {
             withContext(Dispatchers.Default) { viewModel.init() }
 
             val historyMenuAdapter = HistoryMenuAdapter(
@@ -112,8 +112,7 @@ class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener
 
     override fun clickOnItem(position: Int) {
         val budget = viewModel.budgetList[position]
-        val newJob = Job()
-        CoroutineScope(Dispatchers.Main + newJob).launch {
+        lifecycleScope.launch {
             viewModel.createHistory(budget)
         }
 

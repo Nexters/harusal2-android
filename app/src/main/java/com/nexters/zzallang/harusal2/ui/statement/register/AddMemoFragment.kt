@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.databinding.FragmentAddMemoBinding
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDate
@@ -43,22 +43,22 @@ class AddMemoFragment : Fragment() {
             viewModel.setDate(viewModel.getDateForNow())
         }
 
-        viewModel.stateDate.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if(it == ""){
+        viewModel.stateDate.observe(viewLifecycleOwner) {
+            if (it == "") {
                 binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.line))
                 binding.btnStatementDone.isEnabled = false
-            } else{
+            } else {
                 binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.point_color))
                 binding.btnStatementDone.isEnabled = true
             }
-        })
+        }
 
         binding.btnStatementPre.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
         binding.btnStatementDone.setOnClickListener {
-            GlobalScope.launch {
+            lifecycleScope.launch {
                 viewModel.createStatement()
             }
 
@@ -100,7 +100,7 @@ class AddMemoFragment : Fragment() {
             todayDate.dayOfMonth
         )
 
-        GlobalScope.launch {
+        lifecycleScope.launch {
             datePickerDialog.datePicker.minDate = viewModel.getMinDate()
             datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
         }

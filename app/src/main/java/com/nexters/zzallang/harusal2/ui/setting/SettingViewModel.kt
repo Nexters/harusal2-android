@@ -20,7 +20,7 @@ class SettingViewModel(
     }
 
     suspend fun findBudget(): Budget {
-        return budgetUseCase.findRecentBudget();
+        return budgetUseCase.findRecentBudget()
     }
 
     fun deleteAllData() {

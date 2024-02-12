@@ -25,8 +25,7 @@ class BudgetRegisterActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        viewModel.budget.observe(this, Observer {
-
+        viewModel.budget.observe(this) {
             when (it) {
                 "" -> {
                     binding.layoutWarningWrapper.visibility = View.INVISIBLE
@@ -34,6 +33,7 @@ class BudgetRegisterActivity : AppCompatActivity() {
                     binding.btnNext.setBackgroundColor(this.getColor(R.color.line))
                     binding.btnNext.isEnabled = false
                 }
+
                 else -> {
                     binding.layoutWarningWrapper.visibility = View.VISIBLE
                     binding.tvUnit.setTextColor(this.getColor(R.color.default_txt))
@@ -42,7 +42,7 @@ class BudgetRegisterActivity : AppCompatActivity() {
                 }
             }
             viewModel.budgetChanged(it)
-        })
+        }
 
         binding.btnNext.setOnClickListener {
             val intent = Intent(this, StartDayDefaultRegisterActivity::class.java)

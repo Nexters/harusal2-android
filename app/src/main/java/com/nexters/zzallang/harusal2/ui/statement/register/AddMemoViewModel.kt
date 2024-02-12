@@ -56,20 +56,16 @@ class AddMemoViewModel(
 
     suspend fun getMinDate(): Long {
         var minDate = LocalDate.now()
-        withContext(Dispatchers.IO) {
-            budgetUseCase.findRecentBudget()?.let {
-                minDate = it.startDate
-            }
+        budgetUseCase.findRecentBudget()?.let {
+            minDate = it.startDate
         }
         return minDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }
 
     suspend fun getMaxDate(): Long {
         var maxDate = LocalDate.now()
-        withContext(Dispatchers.IO) {
-            budgetUseCase.findRecentBudget()?.let {
-                maxDate = it.endDate
-            }
+        budgetUseCase.findRecentBudget()?.let {
+            maxDate = it.endDate
         }
         return maxDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }

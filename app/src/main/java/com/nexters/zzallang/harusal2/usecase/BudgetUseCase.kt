@@ -5,7 +5,6 @@ import com.nexters.zzallang.harusal2.data.entity.Budget
 import com.nexters.zzallang.harusal2.data.repository.BudgetRepository
 import java.time.LocalDate
 
-
 class BudgetUseCase(private val budgetRepository: BudgetRepository) {
     suspend fun updateBudget(budget: Budget) {
         budgetRepository.update(budget)

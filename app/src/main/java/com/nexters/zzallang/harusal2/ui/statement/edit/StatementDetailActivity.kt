@@ -3,6 +3,7 @@ package com.nexters.zzallang.harusal2.ui.statement.edit
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.databinding.ActivityStatementDetailBinding
@@ -41,7 +42,7 @@ class StatementDetailActivity: AppCompatActivity() {
         }
 
         binding.btnStatementDelete.setOnClickListener {
-            GlobalScope.launch {
+            lifecycleScope.launch {
                 viewModel.deleteStatement()
             }
             finish()
@@ -49,7 +50,7 @@ class StatementDetailActivity: AppCompatActivity() {
     }
 
     private fun updateStatement(){
-        CoroutineScope(Dispatchers.Main + job).launch{
+        lifecycleScope.launch{
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
             viewModel.update()
             binding.tvStatementType.background = when(viewModel.getType()){
