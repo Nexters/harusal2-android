@@ -12,7 +12,7 @@ class OnBoardingActivity: AppCompatActivity(){
     private lateinit var binding: ActivityOnboardingBinding
     private val viewModel: OnBoardingViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         binding.vm = viewModel
