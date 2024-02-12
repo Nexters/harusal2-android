@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.IntentUtils
 import com.nexters.zzallang.harusal2.data.entity.Budget
@@ -49,13 +50,8 @@ class SettingActivity : AppCompatActivity() {
         binding.btnEditStartDay.setOnClickListener {
             val dialog =
                 SettingDialog(this)
-            val job = Job()
-            CoroutineScope(Dispatchers.Main + job).launch {
-                var recentBudget: Budget
-                withContext(Dispatchers.Main + job) {
-                    recentBudget = viewModel.findBudget()
-                }
-
+            lifecycleScope.launch {
+                val recentBudget: Budget = viewModel.findBudget()
                 val todayDate: Int = LocalDate.now().dayOfMonth
 
                 if (recentBudget.startDate.dayOfMonth == todayDate) {
@@ -76,8 +72,6 @@ class SettingActivity : AppCompatActivity() {
                     getString(R.string.dialog_edit_budget_date_complete_button, todayDate)
                 )
             }
-
-
         }
 
         binding.btnResetData.setOnClickListener {

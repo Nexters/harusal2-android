@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieDrawable
 import com.nexters.zzallang.harusal2.R
@@ -27,7 +28,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModel()
-    private val job = Job()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refreshMainData() {
-        CoroutineScope(Dispatchers.Main + job).launch {
+        lifecycleScope.launch {
             val spendState = viewModel.checkCurrentSpendState()
             setSpendStateViews(spendState)
 

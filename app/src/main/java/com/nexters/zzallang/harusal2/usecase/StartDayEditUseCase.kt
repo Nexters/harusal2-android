@@ -25,6 +25,5 @@ class StartDayEditUseCase(
                 statementUseCase.updateStatement(statement)
             }
         }
-
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
@@ -17,7 +18,6 @@ import java.util.*
 class StatementEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditStatementBinding
     private val viewModel: StatementEditViewModel by viewModel()
-    private val job = Job()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class StatementEditActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        CoroutineScope(Dispatchers.Main + job).launch {
+        lifecycleScope.launch {
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
 
             viewModel.initData()
@@ -69,7 +69,7 @@ class StatementEditActivity : AppCompatActivity() {
             }
 
             binding.btnStatementEditDone.setOnClickListener {
-                GlobalScope.launch {
+                lifecycleScope.launch {
                     viewModel.updateStatement()
                 }
                 finish()
@@ -85,7 +85,7 @@ class StatementEditActivity : AppCompatActivity() {
             }
 
             binding.btnStatementDelete.setOnClickListener {
-                GlobalScope.launch {
+                lifecycleScope.launch {
                     viewModel.deleteStatement()
                 }
                 finish()
@@ -121,7 +121,7 @@ class StatementEditActivity : AppCompatActivity() {
             todayDate.dayOfMonth
         )
 
-        GlobalScope.launch {
+        lifecycleScope.launch {
             datePickerDialog.datePicker.minDate = viewModel.getMinDate()
             datePickerDialog.datePicker.maxDate = viewModel.getMaxDate()
         }
