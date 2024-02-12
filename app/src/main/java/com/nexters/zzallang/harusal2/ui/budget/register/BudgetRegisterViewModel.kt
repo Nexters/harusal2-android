@@ -13,7 +13,7 @@ class BudgetRegisterViewModel() : ViewModel() {
     private val _averageBudget = MutableLiveData("")
     val hangeulBudget: LiveData<String> get() = _hangeulBudget
     val averageBudget: LiveData<String> get() = _averageBudget
-    private val duration: Int = DateUtils.getLastDayOfMonth()
+    private val duration: Int = DateUtils.getLastDayOfThisMonth()
 
     fun textClear() {
         _hangeulBudget.postValue("0원")

@@ -2,9 +2,9 @@ package com.nexters.zzallang.harusal2.ui.budget.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexters.zzallang.harusal2.application.util.DateUtils.getLastDayOfMonth
 import com.nexters.zzallang.harusal2.usecase.BudgetUseCase
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -47,24 +47,9 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
                 todayDate.minusMonths(1)
             }
         }
+
         startDate = startDate.withDayOfMonth(pickedDate)
-
-        endDate = when {
-            (pickedDate == 1) -> {
-                LocalDate.now()
-            }
-            (pickedDate <= todayDate.dayOfMonth) -> {
-                todayDate.plusMonths(1).minusDays(1)
-            }
-            else -> {
-                LocalDate.now()
-            }
-        }
-
-        endDate = when (pickedDate) {
-            1 -> endDate.withDayOfMonth(getLastDayOfMonth())
-            else -> endDate.withDayOfMonth(pickedDate - 1)
-        }
+        endDate = DateUtils.getBudgetEndDate(startDate)
 
         _description.postValue(
             StringBuilder("생활비 사용기간은 ")

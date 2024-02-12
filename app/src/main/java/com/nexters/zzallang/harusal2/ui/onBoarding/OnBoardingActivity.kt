@@ -1,7 +1,6 @@
 package com.nexters.zzallang.harusal2.ui.onBoarding
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.util.IntentUtils

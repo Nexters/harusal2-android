@@ -6,8 +6,9 @@ import java.time.format.DateTimeFormatter
 object DateUtils {
     private const val NO_YEAR_FORMAT = "MM.dd"
     private const val YEAR_FORMAT = "yyyy.MM.dd"
-    fun getLastDayOfMonth(): Int {
-        return getLastDayOfMonthAfter(0)
+
+    fun getLastDayOfThisMonth(): Int {
+        return LocalDate.now().lengthOfMonth()
     }
 
     fun getLastDayOfMonthAfter(month: Int): Int {
@@ -15,17 +16,8 @@ object DateUtils {
         return date.lengthOfMonth()
     }
 
-    fun endDate(date: LocalDate): LocalDate {
-        val month = when (date.dayOfMonth) {
-            1 -> date.month
-            else -> date.plusMonths(1).month
-        }
-
-        val day = when (date.dayOfMonth) {
-            1 -> this.getLastDayOfMonth()
-            else -> date.dayOfMonth - 1
-        }
-        return LocalDate.of(date.year, month, day)
+    fun getBudgetEndDate(startDate: LocalDate): LocalDate {
+        return startDate.plusDays(startDate.lengthOfMonth().toLong() - 1)
     }
 
     fun startToEndToString(startDate: LocalDate, endDate: LocalDate): String {
