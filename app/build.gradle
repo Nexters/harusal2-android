@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.devtools.ksp'
 
 android {
     defaultConfig {
         applicationId "com.nexters.zzallang.harusal2"
-        compileSdk 34
+        compileSdk 36
         minSdkVersion 26
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 5
         versionName "1.11"
-        buildToolsVersion = "34.0.0"
+        buildToolsVersion = "35.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,11 +23,11 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+        jvmTarget = "21"
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
     buildFeatures {
@@ -38,46 +38,29 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation "androidx.fragment:fragment-ktx:1.6.2"
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation "androidx.fragment:fragment-ktx:1.8.9"
+    implementation 'androidx.appcompat:appcompat:1.7.1'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation "androidx.recyclerview:recyclerview:1.3.2"
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    implementation "androidx.recyclerview:recyclerview:1.4.0"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
 
-    // Koin AndroidX Scope features
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    // Koin AndroidX ViewModel features
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    // Koin AndroidX Fragment features
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
-    // Koin AndroidX Experimental features
-    implementation "org.koin:koin-androidx-ext:$koin_version"
+    // Koin
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     /* Room */
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
-    /* Flipper */
-//    debugImplementation "com.facebook.flipper:flipper:$flipper_version"
-//    debugImplementation "com.facebook.soloader:soloader:0.9.0"
-//    releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_version"
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 
-    /* Android Debug Database Library */
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-
-    implementation 'com.shawnlin:number-picker:2.4.10'
-//    releaseImplementation "com.facebook.flipper:flipper-noop:$flipper_version"
-
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.13.0'
 
     implementation "com.airbnb.android:lottie:$lottieVersion"
 }

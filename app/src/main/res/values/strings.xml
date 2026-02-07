@@ -45,8 +45,8 @@
     <string name="budget_setting">예산설정</string>
     <string name="dialog_reset_data_title">지금까지 기록한 모든 정보가 사라지고\n기록 복구가 불가능합니다.\n정말 초기화 하시겠어요?</string>
     <string name="dialog_reset_data_complete_button">네, 초기화 합니다.</string>
-    <string name="dialog_edit_budget_date_title">오늘은 %d일입니다.\n%d일로 시작일을 수정합니다.\n수정 후에는 새롭게 한 달 기준으로\n하루 생활비가 책정됩니다.</string>
-    <string name="dialog_edit_budget_date_complete_button">%d일로 시작</string>
+    <string name="dialog_edit_budget_date_title">오늘은 %1$d일입니다.\n%2$d일로 시작일을 수정합니다.\n수정 후에는 새롭게 한 달 기준으로\n하루 생활비가 책정됩니다.</string>
+    <string name="dialog_edit_budget_date_complete_button">%1$d일로 시작</string>
     <string name="dialog_edit_budget_date_error">시작일이 오늘과 같습니다.</string>
 
     <string name="text_used">이번 달 사용 금액</string>
