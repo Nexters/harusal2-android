@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.databinding.ActivityStatementDetailBinding
@@ -54,8 +55,8 @@ class StatementDetailActivity: AppCompatActivity() {
             viewModel.setStatement(intent.getLongExtra("statementId", 0L))
             viewModel.update()
             binding.tvStatementType.background = when(viewModel.getType()){
-                Constants.STATEMENT_TYPE_IN -> resources.getDrawable(R.drawable.bg_tag_in)
-                else -> resources.getDrawable(R.drawable.bg_tag_out)
+                Constants.STATEMENT_TYPE_IN -> ContextCompat.getDrawable(this@StatementDetailActivity, R.drawable.bg_tag_in)
+                else -> ContextCompat.getDrawable(this@StatementDetailActivity, R.drawable.bg_tag_out)
             }
         }
     }

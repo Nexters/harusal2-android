@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -32,8 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.decorView.systemUiVisibility = 0
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
@@ -118,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         binding.ivEmoji.playAnimation()
         binding.ivEmoji.repeatCount = LottieDrawable.INFINITE
 
-        val color = resources.getColor(backgroundColor, null)
+        val color = ContextCompat.getColor(this, backgroundColor)
         binding.layoutWhole.setBackgroundColor(color)
         binding.layoutAppbar.setBackgroundColor(color)
 
@@ -132,7 +129,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = color
     }
 

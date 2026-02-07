@@ -4,7 +4,6 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.os.Build
 import com.nexters.zzallang.harusal2.application.di.repositoryModule
 import com.nexters.zzallang.harusal2.application.di.useCaseModule
 import com.nexters.zzallang.harusal2.application.di.viewModelModule
@@ -42,17 +41,15 @@ class App : Application() {
     }
 
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "insertPushAlert"
-            val descriptionText = "입력 알림"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("insert_push_alert", name, importance).apply {
-                description = descriptionText
-            }
-
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+        val name = "insertPushAlert"
+        val descriptionText = "입력 알림"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("insert_push_alert", name, importance).apply {
+            description = descriptionText
         }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
@@ -41,10 +42,10 @@ class StatementEditActivity : AppCompatActivity() {
 
             viewModel.statementAmount.observe(this@StatementEditActivity, Observer{
                 if(it == ""){
-                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.line))
+                    binding.btnStatementEditKeypad.setBackgroundColor(ContextCompat.getColor(this@StatementEditActivity, R.color.line))
                     binding.btnStatementEditKeypad.isEnabled = false
                 }else{
-                    binding.btnStatementEditKeypad.setBackgroundColor(resources.getColor(R.color.btn_black))
+                    binding.btnStatementEditKeypad.setBackgroundColor(ContextCompat.getColor(this@StatementEditActivity, R.color.btn_black))
                     binding.btnStatementEditKeypad.isEnabled = true
                 }
             })
@@ -79,9 +80,9 @@ class StatementEditActivity : AppCompatActivity() {
             binding.layoutStatementEditDate.setOnClickListener {
                 datePicker.show()
                 datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-                    .setTextColor(resources.getColor(R.color.bg_blue_multiply))
+                    .setTextColor(ContextCompat.getColor(this@StatementEditActivity, R.color.bg_blue_multiply))
                 datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE)
-                    .setTextColor(resources.getColor(R.color.bg_blue_multiply))
+                    .setTextColor(ContextCompat.getColor(this@StatementEditActivity, R.color.bg_blue_multiply))
             }
 
             binding.btnStatementDelete.setOnClickListener {

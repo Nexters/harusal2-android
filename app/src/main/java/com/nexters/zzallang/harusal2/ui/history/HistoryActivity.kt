@@ -2,8 +2,8 @@ package com.nexters.zzallang.harusal2.ui.history
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +31,6 @@ class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.decorView.systemUiVisibility = 0
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = this
@@ -76,8 +75,7 @@ class HistoryActivity : AppCompatActivity(), HistoryMenuDialog.ItemClickListener
                     addStatements(it)
                 }
 
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = resources.getColor(color, null)
+            window.statusBarColor = ContextCompat.getColor(this@HistoryActivity, color)
         })
 
         binding.layoutMenu.setOnClickListener {

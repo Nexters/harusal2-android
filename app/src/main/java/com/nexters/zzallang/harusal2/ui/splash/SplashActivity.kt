@@ -3,8 +3,8 @@ package com.nexters.zzallang.harusal2.ui.splash
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.application.AppDatabase
 import com.nexters.zzallang.harusal2.ui.main.EmptyMainActivity
@@ -25,9 +25,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = resources.getColor(R.color.bg_yellow, null)
-        window.decorView.systemUiVisibility = 0
+        window.statusBarColor = ContextCompat.getColor(this, R.color.bg_yellow)
         sharedPref = this.getPreferences(MODE_PRIVATE)
         viewModel.renewBudgetDay()
         startLoading()

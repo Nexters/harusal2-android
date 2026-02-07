@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.core.content.ContextCompat
 import com.nexters.zzallang.harusal2.R
 import com.nexters.zzallang.harusal2.constant.Constants
 import com.nexters.zzallang.harusal2.application.util.DateUtils
@@ -45,10 +46,10 @@ class AddMemoFragment : Fragment() {
 
         viewModel.stateDate.observe(viewLifecycleOwner) {
             if (it == "") {
-                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.line))
+                binding.btnStatementDone.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.line))
                 binding.btnStatementDone.isEnabled = false
             } else {
-                binding.btnStatementDone.setBackgroundColor(resources.getColor(R.color.point_color))
+                binding.btnStatementDone.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.point_color))
                 binding.btnStatementDone.isEnabled = true
             }
         }
@@ -74,9 +75,9 @@ class AddMemoFragment : Fragment() {
         binding.layoutStatementDate.setOnClickListener {
             datePicker.show()
             datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE)
-                .setTextColor(resources.getColor(R.color.bg_blue_multiply))
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.bg_blue_multiply))
             datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE)
-                .setTextColor(resources.getColor(R.color.bg_blue_multiply))
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.bg_blue_multiply))
         }
     }
 
