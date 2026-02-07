@@ -19,8 +19,8 @@ class StartDayClickRegisterViewModel(private val budgetUseCase: BudgetUseCase) :
     private lateinit var endDate: LocalDate
 
     init {
-        pickedDate.postValue(todayDate.monthValue)
-        setDescription(todayDate.monthValue)
+        pickedDate.postValue(todayDate.dayOfMonth)
+        setDescription(todayDate.dayOfMonth)
     }
 
     fun saveBudgetDay(budget: Int) {

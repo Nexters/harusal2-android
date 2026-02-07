@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nexters.zzallang.harusal2.application.util.DateUtils
 import com.nexters.zzallang.harusal2.application.util.MoneyUtils
 import com.nexters.zzallang.harusal2.application.util.NumberUtils
 import com.nexters.zzallang.harusal2.data.entity.Budget
@@ -37,7 +38,8 @@ class BudgetEditViewModel(private val budgetUseCase: BudgetUseCase) : ViewModel(
 
         val inputBudget: Long = text.toLong()
 
-        setAverageBudget("${NumberUtils.decimalFormat.format(inputBudget/30L)} 원")
+        val duration = DateUtils.getLastDayOfThisMonth()
+        setAverageBudget("${NumberUtils.decimalFormat.format(inputBudget / duration)} 원")
         setHangeulBudget(inputBudget)
     }
 
