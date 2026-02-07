@@ -15,7 +15,7 @@ import com.nexters.zzallang.harusal2.ui.statement.edit.StatementEditViewModel
 import com.nexters.zzallang.harusal2.ui.statement.register.AddInputViewModel
 import com.nexters.zzallang.harusal2.ui.statement.register.AddMemoViewModel
 import com.nexters.zzallang.harusal2.ui.statement.register.AddStatementViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {

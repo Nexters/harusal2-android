@@ -18,11 +18,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-@KoinApiExtension
 class MonthlyCombinationWidgetProvider : AppWidgetProvider(), KoinComponent {
 	companion object {
 		const val MONTHLY_COMBINATION_REQUEST_CODE = 105

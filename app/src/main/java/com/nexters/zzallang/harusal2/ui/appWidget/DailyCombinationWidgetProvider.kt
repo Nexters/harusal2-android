@@ -19,11 +19,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-@KoinApiExtension
 class DailyCombinationWidgetProvider : AppWidgetProvider(), KoinComponent {
 	companion object {
 		const val DAILY_COMBINATION_REQUEST_CODE = 104
